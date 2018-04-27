@@ -50,7 +50,7 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -60,6 +60,50 @@
 </header>
       <div class="outer">
         <section id="main">
+  
+    <article id="post-domAPI" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/04/27/domAPI/" class="article-date">
+  <time datetime="2018-04-27T12:43:10.000Z" itemprop="datePublished">2018-04-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/27/domAPI/">domAPI</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="DOM-API"><a href="#DOM-API" class="headerlink" title="DOM API"></a>DOM API</h2><h4 id="DOM-是一棵树（tree）"><a href="#DOM-是一棵树（tree）" class="headerlink" title="DOM 是一棵树（tree）"></a>DOM 是一棵树（tree）</h4><h4 id="树上有-Node"><a href="#树上有-Node" class="headerlink" title="树上有 Node"></a>树上有 Node</h4><h4 id="Node-分为-Document（html）、Element（元素）和-Text（文本），以及其他不重要的。"><a href="#Node-分为-Document（html）、Element（元素）和-Text（文本），以及其他不重要的。" class="headerlink" title="Node 分为 Document（html）、Element（元素）和 Text（文本），以及其他不重要的。"></a>Node 分为 Document（html）、Element（元素）和 Text（文本），以及其他不重要的。</h4><p><img src="/2018/04/27/domAPI/d1.png" alt=""><br><img src="/2018/04/27/domAPI/d2.png" alt=""><br><img src="/2018/04/27/domAPI/d3.png" alt=""></p>
+<h4 id="nextSibling和prevousSilbling可能会获取文字节点"><a href="#nextSibling和prevousSilbling可能会获取文字节点" class="headerlink" title="nextSibling和prevousSilbling可能会获取文字节点"></a>nextSibling和prevousSilbling可能会获取文字节点</h4><h4 id="innerText和textContent有细微的差别，面试可能会问"><a href="#innerText和textContent有细微的差别，面试可能会问" class="headerlink" title="innerText和textContent有细微的差别，面试可能会问"></a>innerText和textContent有细微的差别，面试可能会问</h4><ul>
+<li>textContent 会获取所有元素的内容，包括<code>&lt;script&gt;</code> 和 <code>&lt;style&gt;</code>元素，然而 innerText 不会。</li>
+<li>innerText意识到样式，并且不会返回隐藏元素的文本，而textContent会。</li>
+<li>由于 innerText 受 CSS 样式的影响，它会触发重排（reflow），但textContent 不会。</li>
+<li>与 textContent 不同的是, 在 Internet Explorer (对于小于等于 IE11 的版本) 中对 innerText 进行修改， 不仅会移除当前元素的子节点，而且还会永久性地破坏所有后代文本节点（所以不可能再次将节点再次插入到任何其他元素或同一元素中）。</li>
+</ul>
+<h4 id="nodeType-1表示元素-3表示文本"><a href="#nodeType-1表示元素-3表示文本" class="headerlink" title="nodeType    1表示元素    3表示文本"></a>nodeType    1表示元素    3表示文本</h4><h4 id="cloneNode-分深拷贝和浅拷贝-参数为true是深拷贝，深拷贝是复制所有的子孙节点，浅拷贝只复制本身"><a href="#cloneNode-分深拷贝和浅拷贝-参数为true是深拷贝，深拷贝是复制所有的子孙节点，浅拷贝只复制本身" class="headerlink" title="cloneNode()分深拷贝和浅拷贝  参数为true是深拷贝，深拷贝是复制所有的子孙节点，浅拷贝只复制本身"></a>cloneNode()分深拷贝和浅拷贝  参数为true是深拷贝，深拷贝是复制所有的子孙节点，浅拷贝只复制本身</h4><h4 id="isEqualNode-和-isSameNode-区别-前者是返回-是否相等，后者返回的是-是否相等"><a href="#isEqualNode-和-isSameNode-区别-前者是返回-是否相等，后者返回的是-是否相等" class="headerlink" title="isEqualNode() 和 isSameNode()区别  前者是返回 == 是否相等，后者返回的是===是否相等"></a>isEqualNode() 和 isSameNode()区别  前者是返回 == 是否相等，后者返回的是===是否相等</h4><h4 id="document-write"><a href="#document-write" class="headerlink" title="document.write()"></a>document.write()</h4><p><img src="/2018/04/27/domAPI/d4.png" alt=""></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/04/27/domAPI/" data-id="cjghymk2v0004cqf4iqxnoqov" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
   
     <article id="post-function" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -92,7 +136,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/25/function/" data-id="cjgf2bdu10003uqf4f74r2om8" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/04/25/function/" data-id="cjghymk2o0003cqf4eu4d5fp7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -135,7 +179,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/25/array/" data-id="cjgf2bdtb0001uqf45f7srby5" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/04/25/array/" data-id="cjghymk210001cqf4do7strxm" class="article-share-link">Share</a>
       
       
     </footer>
@@ -190,7 +234,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/20/BFC学习/" data-id="cjgf2bdt40000uqf4mbwks9ih" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/04/20/BFC学习/" data-id="cjghymk1u0000cqf4dgirfblj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -230,7 +274,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/17/css/" data-id="cjgf2bdtm0002uqf45xmpl8cz" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/04/17/css/" data-id="cjghymk290002cqf4eq2d3qnw" class="article-share-link">Share</a>
       
       
     </footer>
@@ -280,7 +324,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/23/html续之部分标签/" data-id="cjgf2bduk0005uqf426ruzu5v" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/03/23/html续之部分标签/" data-id="cjghymk3g0006cqf4kxe34h3k" class="article-share-link">Share</a>
       
       
     </footer>
@@ -667,7 +711,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/11/如何部署hexo博客/" data-id="cjgf2bdv20007uqf4cysj0ib3" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/03/11/如何部署hexo博客/" data-id="cjghymk430008cqf4c910a5pr" class="article-share-link">Share</a>
       
       
     </footer>
@@ -698,7 +742,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/11/array/test/" data-id="cjgf2bdz10008uqf4stb0sbro" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/03/11/array/test/" data-id="cjghymk8m0009cqf4li9ii9o8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -748,7 +792,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/11/md内容展示/" data-id="cjgf2bdus0006uqf4v0tdleig" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/03/11/md内容展示/" data-id="cjghymk3q0007cqf43e39z2jq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -793,7 +837,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/11/hello-world/" data-id="cjgf2bdu80004uqf418cm3yi4" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/03/11/hello-world/" data-id="cjghymk350005cqf4qvv7r4pg" class="article-share-link">Share</a>
       
       
     </footer>
@@ -819,7 +863,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archiv</h3>
+    <h3 class="widget-title">Archives</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li></ul>
     </div>
@@ -829,9 +873,13 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">letzter Beitrag</h3>
+    <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2018/04/27/domAPI/">domAPI</a>
+          </li>
         
           <li>
             <a href="/2018/04/25/function/">function</a>
@@ -847,10 +895,6 @@
         
           <li>
             <a href="/2018/04/17/css/">css</a>
-          </li>
-        
-          <li>
-            <a href="/2018/03/23/html续之部分标签/">html续之部分标签</a>
           </li>
         
       </ul>
