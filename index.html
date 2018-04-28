@@ -50,7 +50,7 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -87,12 +87,15 @@
 <h4 id="这些简单的代码，只要对js有些了解都能看懂。也是我从前只能看懂的代码"><a href="#这些简单的代码，只要对js有些了解都能看懂。也是我从前只能看懂的代码" class="headerlink" title="这些简单的代码，只要对js有些了解都能看懂。也是我从前只能看懂的代码"></a>这些简单的代码，只要对js有些了解都能看懂。也是我从前只能看懂的代码</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//写出一个命名空间</span><br><span class="line">window.dom = &#123;&#125;</span><br><span class="line">dom.getSiblings = getSiblings;</span><br><span class="line">console.log(dom.getSiblings(item3))</span><br></pre></td></tr></table></figure>
 <h4 id="开辟一个命名空间能将所有API绑到一处。但是还是与jQuery不同，怎么办呢。"><a href="#开辟一个命名空间能将所有API绑到一处。但是还是与jQuery不同，怎么办呢。" class="headerlink" title="开辟一个命名空间能将所有API绑到一处。但是还是与jQuery不同，怎么办呢。"></a>开辟一个命名空间能将所有API绑到一处。但是还是与jQuery不同，怎么办呢。</h4><h4 id="而且，getSiblings-item3-看起来更方便。"><a href="#而且，getSiblings-item3-看起来更方便。" class="headerlink" title="而且，getSiblings(item3)看起来更方便。"></a>而且，<code>getSiblings(item3)</code>看起来更方便。</h4><h4 id="那么，我们可以在Node的原型上绑定getSiblings-方法"><a href="#那么，我们可以在Node的原型上绑定getSiblings-方法" class="headerlink" title="那么，我们可以在Node的原型上绑定getSiblings()方法"></a>那么，我们可以在Node的原型上绑定getSiblings()方法</h4><h4 id="如下：（需要使用this）"><a href="#如下：（需要使用this）" class="headerlink" title="如下：（需要使用this）"></a>如下：（需要使用this）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Node.prototype.getSiblings = function()&#123;</span><br><span class="line">  var allChildren = this.parentNode.children</span><br><span class="line">  var array = &#123;</span><br><span class="line">    length: 0</span><br><span class="line">  &#125;</span><br><span class="line">  for (let i = 0; i &lt; allChildren.length; i++) &#123;</span><br><span class="line">    if (allChildren[i] !== this) &#123;</span><br><span class="line">      array[array.length] = allChildren[i]</span><br><span class="line">      array.length += 1</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return array</span><br><span class="line">&#125;</span><br><span class="line">Node.prototype.addClass = function (classes) &#123;</span><br><span class="line">  classes.forEach( (value) =&gt; this.classList.add(value) )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="看起来是不是顺眼很多了"><a href="#看起来是不是顺眼很多了" class="headerlink" title="看起来是不是顺眼很多了"></a>看起来是不是顺眼很多了</h4><h4 id="但是这样随便改变原型链也有潜在的风险"><a href="#但是这样随便改变原型链也有潜在的风险" class="headerlink" title="但是这样随便改变原型链也有潜在的风险"></a>但是这样随便改变原型链也有潜在的风险</h4><h4 id="所以，继续使用命名空间方案-但是改动了一下"><a href="#所以，继续使用命名空间方案-但是改动了一下" class="headerlink" title="所以，继续使用命名空间方案,但是改动了一下"></a>所以，继续使用命名空间方案,但是改动了一下</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">function Node2(node)&#123;</span><br><span class="line">     return &#123;</span><br><span class="line">         element: node,</span><br><span class="line">         getSiblings: function()&#123;</span><br><span class="line"></span><br><span class="line">         &#125;,</span><br><span class="line">         addClass: function()&#123;</span><br><span class="line"></span><br><span class="line">         &#125;</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;</span><br><span class="line"> let node =document.getElementById(&apos;x&apos;)</span><br><span class="line"> let node2 = Node2(node)</span><br><span class="line"> node2.getSiblings()</span><br><span class="line"> node2.addClass()</span><br></pre></td></tr></table></figure>
-<h4 id="把-Node2-改个名字吧"><a href="#把-Node2-改个名字吧" class="headerlink" title="把 Node2 改个名字吧"></a>把 Node2 改个名字吧</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">function jQuery(node)&#123;</span><br><span class="line">    return &#123;</span><br><span class="line">        element: node,</span><br><span class="line">        getSiblings: function()&#123;</span><br><span class="line"></span><br><span class="line">        &#125;,</span><br><span class="line">        addClass: function()&#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">let node =document.getElementById(&apos;x&apos;)</span><br><span class="line">let node2 =jQuery(node)</span><br><span class="line">node2.getSiblings()</span><br><span class="line">node2.addClass()</span><br></pre></td></tr></table></figure>
-<h3 id="再给个缩写吧-alias"><a href="#再给个缩写吧-alias" class="headerlink" title="再给个缩写吧 alias"></a>再给个缩写吧 alias</h3><h4 id="window-jQuery"><a href="#window-jQuery" class="headerlink" title="window.$ = jQuery"></a><code>window.$ = jQuery</code></h4><h4 id="至此，可以看到jQuery的基本面貌了"><a href="#至此，可以看到jQuery的基本面貌了" class="headerlink" title="至此，可以看到jQuery的基本面貌了"></a>至此，可以看到jQuery的基本面貌了</h4><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><h4 id="使用jQuery库后，会将原来的元素包装一番并返回。返回的对象附带许多API，这就是jQuery的大致面目。"><a href="#使用jQuery库后，会将原来的元素包装一番并返回。返回的对象附带许多API，这就是jQuery的大致面目。" class="headerlink" title="使用jQuery库后，会将原来的元素包装一番并返回。返回的对象附带许多API，这就是jQuery的大致面目。"></a>使用jQuery库后，会将原来的元素包装一番并返回。返回的对象附带许多API，这就是jQuery的大致面目。</h4>
+<h3 id="把-Node2-改个名字吧"><a href="#把-Node2-改个名字吧" class="headerlink" title="把 Node2 改个名字吧"></a>把 Node2 改个名字吧</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">function jQuery(node)&#123;</span><br><span class="line">    return &#123;</span><br><span class="line">        element: node,</span><br><span class="line">        getSiblings: function()&#123;</span><br><span class="line"></span><br><span class="line">        &#125;,</span><br><span class="line">        addClass: function()&#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">let node =document.getElementById(&apos;x&apos;)</span><br><span class="line">let node2 =jQuery(node)</span><br><span class="line">node2.getSiblings()</span><br><span class="line">node2.addClass()</span><br></pre></td></tr></table></figure>
+<h3 id="添加完整内容"><a href="#添加完整内容" class="headerlink" title="添加完整内容"></a>添加完整内容</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">function jQuery(nodeOrSelector)&#123;</span><br><span class="line">    let node;</span><br><span class="line">    if(typeof nodeOrSelector === &quot;string&quot;)&#123;</span><br><span class="line">        node = document.querySelector(nodeOrSelector);</span><br><span class="line">        </span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        node = nodeOrSelector;</span><br><span class="line">    &#125;</span><br><span class="line">    console.log(node);</span><br><span class="line">    return &#123;</span><br><span class="line">        element: node,</span><br><span class="line">        getSiblings: function()&#123;</span><br><span class="line">            console.log(node.parentNode.children)</span><br><span class="line">            var allChildren = node.parentNode.children</span><br><span class="line">            var array = &#123;</span><br><span class="line">                length: 0</span><br><span class="line">            &#125;</span><br><span class="line">            for (let i = 0; i &lt; allChildren.length; i++) &#123;</span><br><span class="line">                if (allChildren[i] !== this) &#123;</span><br><span class="line">                array[array.length] = allChildren[i]</span><br><span class="line">                array.length += 1</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            return array</span><br><span class="line">        &#125;,</span><br><span class="line">        addClass: function(classes)&#123;</span><br><span class="line">            classes.forEach((value) =&gt; node.classList.add(value)</span><br><span class="line">            );</span><br><span class="line">        &#125;,</span><br><span class="line">        setText:function(text)&#123;</span><br><span class="line">            node.textContent = text;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">let node = jQuery(&quot;ul li:nth-child(3)&quot;)</span><br><span class="line">console.log(node.getSiblings())</span><br><span class="line">node.addClass([&quot;red&quot;,&quot;green&quot;])</span><br><span class="line">node.setText(&quot;hi&quot;)</span><br></pre></td></tr></table></figure>
+<p>###再给个缩写吧 alias</p>
+<h4 id="window-jQuery"><a href="#window-jQuery" class="headerlink" title="window.$ = jQuery"></a><code>window.$ = jQuery</code></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">window.$ = jQuery</span><br><span class="line">node = $(&quot;ul li:nth-child(3)&quot;)</span><br><span class="line">console.log(node.getSiblings())</span><br><span class="line">node.addClass([&quot;red&quot;,&quot;green&quot;])</span><br><span class="line">node.setText(&quot;hi&quot;)</span><br></pre></td></tr></table></figure>
+<h4 id="就可以看到jQuery的基本面貌了"><a href="#就可以看到jQuery的基本面貌了" class="headerlink" title="就可以看到jQuery的基本面貌了"></a>就可以看到jQuery的基本面貌了</h4><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><h4 id="使用jQuery库后，会将原来的元素包装一番并返回。返回的对象附带许多API，这就是jQuery的大致面目。"><a href="#使用jQuery库后，会将原来的元素包装一番并返回。返回的对象附带许多API，这就是jQuery的大致面目。" class="headerlink" title="使用jQuery库后，会将原来的元素包装一番并返回。返回的对象附带许多API，这就是jQuery的大致面目。"></a>使用jQuery库后，会将原来的元素包装一番并返回。返回的对象附带许多API，这就是jQuery的大致面目。</h4>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/27/jQuery入门探秘/" data-id="cjgi0qxbq0007wxf41is4fxn4" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/04/27/jQuery入门探秘/" data-id="cjgixnr1x0007zhf4ds8jv9lb" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -136,7 +139,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/27/domAPI/" data-id="cjgi0qxar0003wxf4tzpps7yl" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/04/27/domAPI/" data-id="cjgixnr0o0003zhf4elym1mei" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -177,7 +180,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/25/function/" data-id="cjgi0qxbj0006wxf45cxocndk" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/04/25/function/" data-id="cjgixnr0z0004zhf4h4q9q1s4" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -220,7 +223,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/25/array/" data-id="cjgi0qxa00002wxf47oqfrnm0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/04/25/array/" data-id="cjgixnqzo0000zhf4mh4n67ex" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -275,7 +278,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/20/BFC学习/" data-id="cjgi0qx9j0000wxf4rzdjapo3" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/04/20/BFC学习/" data-id="cjgixnr080002zhf4pfix2pi0" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -315,7 +318,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/17/css/" data-id="cjgi0qx9r0001wxf4qm7vlnuq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/04/17/css/" data-id="cjgixnqzw0001zhf45z8b4sdw" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -365,7 +368,38 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/23/html续之部分标签/" data-id="cjgi0qxba0005wxf481m8fwx7" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/03/23/html续之部分标签/" data-id="cjgixnr1o0006zhf4lioe13ht" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-array/test" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/03/11/array/test/" class="article-date">
+  <time datetime="2018-03-11T10:59:51.000Z" itemprop="datePublished">2018-03-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#css布局<br>———<br>css布局由横向布局和纵向布局构成。横向布局中常常有纵向布局。<br><img src="file:///Users/yingzhongbin/Desktop/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-03-16%20%E4%B8%8B%E5%8D%888.44.14.png" alt=""></p>
+<p>#html标签</p>
+<p>###iframe标签（用的很少）<br>’‘’</p>
+<p><style><br>iframe{<br>width: 100%;<br>height: 400px;<br>}<br></style></p>
+<p><iframe src="http://qq.com" frameborder="0"></iframe><br>‘’‘</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/03/11/array/test/" data-id="cjgixnr6p000azhf4dnstu2m1" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -752,38 +786,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/11/如何部署hexo博客/" data-id="cjgi0qxcd0009wxf44ajx277h" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-array/test" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/03/11/array/test/" class="article-date">
-  <time datetime="2018-03-11T10:59:51.000Z" itemprop="datePublished">2018-03-11</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>#css布局<br>———<br>css布局由横向布局和纵向布局构成。横向布局中常常有纵向布局。<br><img src="file:///Users/yingzhongbin/Desktop/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-03-16%20%E4%B8%8B%E5%8D%888.44.14.png" alt=""></p>
-<p>#html标签</p>
-<p>###iframe标签（用的很少）<br>’‘’</p>
-<p><style><br>iframe{<br>width: 100%;<br>height: 400px;<br>}<br></style></p>
-<p><iframe src="http://qq.com" frameborder="0"></iframe><br>‘’‘</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/11/array/test/" data-id="cjgi0qxgf000awxf4q6daauas" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/03/11/如何部署hexo博客/" data-id="cjgixnr320009zhf47ef5qqeq" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -833,7 +836,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/11/md内容展示/" data-id="cjgi0qxc10008wxf4x6rhl2xl" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/03/11/md内容展示/" data-id="cjgixnr2m0008zhf4npwb8c23" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -847,7 +850,7 @@
 
   <nav id="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">weiter &raquo;</a>
   </nav>
 
 </section>
@@ -864,7 +867,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
+    <h3 class="widget-title">Archiv</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li></ul>
     </div>
@@ -874,7 +877,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">letzter Beitrag</h3>
     <div class="widget">
       <ul>
         
