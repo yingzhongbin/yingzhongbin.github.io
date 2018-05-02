@@ -61,6 +61,51 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-DOM事件模型" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/02/DOM事件模型/" class="article-date">
+  <time datetime="2018-05-02T01:30:00.000Z" itemprop="datePublished">2018-05-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/02/DOM事件模型/">DOM事件模型</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="全局变量可耻，不能用。"><a href="#全局变量可耻，不能用。" class="headerlink" title="全局变量可耻，不能用。"></a>全局变量可耻，不能用。</h4><h4 id="不用全局对象，用局部变量"><a href="#不用全局对象，用局部变量" class="headerlink" title="不用全局对象，用局部变量"></a>不用全局对象，用局部变量</h4><h4 id="声明函数立即调用，即为局部变量"><a href="#声明函数立即调用，即为局部变量" class="headerlink" title="声明函数立即调用，即为局部变量"></a>声明函数立即调用，即为局部变量</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">function()&#123;</span><br><span class="line">&#125;()</span><br></pre></td></tr></table></figure>
+<h4 id="但是浏览器会报错，有几种改法"><a href="#但是浏览器会报错，有几种改法" class="headerlink" title="但是浏览器会报错，有几种改法"></a>但是浏览器会报错，有几种改法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">1.</span><br><span class="line">(function()&#123;</span><br><span class="line">&#125;())</span><br><span class="line">2.</span><br><span class="line">(function()&#123;</span><br><span class="line">&#125;)()</span><br><span class="line">3.</span><br><span class="line">+function()&#123;</span><br><span class="line">&#125;()</span><br><span class="line">4.</span><br><span class="line">-function()&#123;</span><br><span class="line">&#125;()</span><br><span class="line">5.</span><br><span class="line">!function()&#123;</span><br><span class="line">&#125;()</span><br><span class="line">6. </span><br><span class="line">~function()&#123;</span><br><span class="line">&#125;()</span><br><span class="line">ES6</span><br><span class="line">&#123;</span><br><span class="line">	let parent = </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="let逃不出-的范围，在-之外无法调用let声明的变量"><a href="#let逃不出-的范围，在-之外无法调用let声明的变量" class="headerlink" title="let逃不出{ }的范围，在{}之外无法调用let声明的变量"></a>let逃不出{ }的范围，在{}之外无法调用let声明的变量</h4><h4 id="HTML的onclick里选择B-C写法正确，JS里的onclick里选择A写法正确"><a href="#HTML的onclick里选择B-C写法正确，JS里的onclick里选择A写法正确" class="headerlink" title="HTML的onclick里选择B,C写法正确，JS里的onclick里选择A写法正确"></a>HTML的onclick里选择B,C写法正确，JS里的onclick里选择A写法正确</h4><p><img src="/2018/05/02/DOM事件模型/i1.png" alt=""></p>
+<h2 id="DOM事件"><a href="#DOM事件" class="headerlink" title="DOM事件"></a>DOM事件</h2><h4 id="DOM0是W3C还没有设定标准的民间事件集合-比如："><a href="#DOM0是W3C还没有设定标准的民间事件集合-比如：" class="headerlink" title="DOM0是W3C还没有设定标准的民间事件集合 比如："></a>DOM0是W3C还没有设定标准的民间事件集合 比如：</h4><ul>
+<li>onclick </li>
+<li>onerror</li>
+<li>onload </li>
+<li>onmouseenter<h4 id="但这种属性设定具有唯一性，可被覆盖"><a href="#但这种属性设定具有唯一性，可被覆盖" class="headerlink" title="但这种属性设定具有唯一性，可被覆盖"></a>但这种属性设定具有唯一性，可被覆盖</h4><img src="/2018/05/02/DOM事件模型/i2.png" alt=""><h4 id="到了DOM2-加了addEventListener"><a href="#到了DOM2-加了addEventListener" class="headerlink" title="到了DOM2 加了addEventListener"></a>到了DOM2 加了addEventListener</h4><img src="/2018/05/02/DOM事件模型/i3.png" alt=""><h4 id="addEventListener的添加是队列式的，不会产生覆盖"><a href="#addEventListener的添加是队列式的，不会产生覆盖" class="headerlink" title="addEventListener的添加是队列式的，不会产生覆盖"></a>addEventListener的添加是队列式的，不会产生覆盖</h4><h4 id="jQuery-里的one-的理解可参照下图"><a href="#jQuery-里的one-的理解可参照下图" class="headerlink" title="jQuery 里的one()的理解可参照下图"></a>jQuery 里的one()的理解可参照下图</h4><img src="/2018/05/02/DOM事件模型/i4.png" alt=""><h4 id="事件冒泡和事件捕获"><a href="#事件冒泡和事件捕获" class="headerlink" title="事件冒泡和事件捕获"></a>事件冒泡和事件捕获</h4><img src="/2018/05/02/DOM事件模型/i6.png" alt=""><br><img src="/2018/05/02/DOM事件模型/i5.png" alt=""><h4 id="直接触发到点击元素本身时，触发与代码顺序有关"><a href="#直接触发到点击元素本身时，触发与代码顺序有关" class="headerlink" title="直接触发到点击元素本身时，触发与代码顺序有关"></a>直接触发到点击元素本身时，触发与代码顺序有关</h4><img src="/2018/05/02/DOM事件模型/i6.png" alt=""><br><img src="/2018/05/02/DOM事件模型/i7.png" alt=""></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/05/02/DOM事件模型/" data-id="cjgoganql00019nf4jfuxxa0h" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-jQuery入门探秘" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/04/27/jQuery入门探秘/" class="article-date">
@@ -94,7 +139,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/27/jQuery入门探秘/" data-id="cjgixqjqe00061sf4b53np17j" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/04/27/jQuery入门探秘/" data-id="cjgogantc00089nf4pg8h35m1" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -138,7 +183,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/27/domAPI/" data-id="cjgixqjps00041sf4k5k837oh" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/04/27/domAPI/" data-id="cjgoganrs00049nf49aosk7v2" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -179,7 +224,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/25/function/" data-id="cjgixqjp100031sf4dey712wg" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/04/25/function/" data-id="cjgogans300059nf4pt9g22f5" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -222,7 +267,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/25/array/" data-id="cjgixqjoa00011sf4dxcxz9l1" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/04/25/array/" data-id="cjgoganqv00029nf4q5ysmmv5" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -277,7 +322,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/20/BFC学习/" data-id="cjgixqjo100001sf40z6k6n5q" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/04/20/BFC学习/" data-id="cjgoganq900009nf4ki7j2aim" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -317,7 +362,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/17/css/" data-id="cjgixqjol00021sf4k3k1soqq" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/04/17/css/" data-id="cjgoganre00039nf4m7gm3w8e" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -367,7 +412,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/23/html续之部分标签/" data-id="cjgixqjqn00071sf46aibfbkf" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/03/23/html续之部分标签/" data-id="cjgogansq00079nf4f0roe5r3" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -398,7 +443,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/11/array/test/" data-id="cjgixqjvt000a1sf4wat5v5ce" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/03/11/array/test/" data-id="cjgoganye000b9nf413rm00kl" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -785,57 +830,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/11/如何部署hexo博客/" data-id="cjgixqjr900091sf4o2au5ddz" class="article-share-link">Teilen</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-md内容展示" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/03/11/md内容展示/" class="article-date">
-  <time datetime="2018-03-11T10:58:26.000Z" itemprop="datePublished">2018-03-11</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/11/md内容展示/">md内容展示</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Heading-1-有下划线"><a href="#Heading-1-有下划线" class="headerlink" title="Heading 1 (有下划线)"></a>Heading 1 (有下划线)</h1><h2 id="Heading-2"><a href="#Heading-2" class="headerlink" title="Heading 2"></a>Heading 2</h2><h3 id="Heading-3"><a href="#Heading-3" class="headerlink" title="Heading 3"></a>Heading 3</h3><h4 id="Heading-4"><a href="#Heading-4" class="headerlink" title="Heading 4"></a>Heading 4</h4><h5 id="Heading-5"><a href="#Heading-5" class="headerlink" title="Heading 5"></a>Heading 5</h5><h6 id="Heading-6"><a href="#Heading-6" class="headerlink" title="Heading 6"></a>Heading 6</h6><p><em>Italic text</em><br><strong>Bold text</strong></p>
-<ul>
-<li>List Item 1</li>
-<li>List Item 2</li>
-<li>List Item 3</li>
-</ul>
-<p><a href="http://www.baidu.com&quot;To the site&quot;" target="_blank" rel="noopener">baidu链接</a></p>
-<h1 id="this-is-the-title"><a href="#this-is-the-title" class="headerlink" title="this is the title"></a>this is the title</h1><p>Before you do this you need to review these three thing:</p>
-<ol>
-<li>this thing(有空格)</li>
-<li>that thing</li>
-<li>the other thing</li>
-</ol>
-<p>the other thing you need to know</p>
-<h2 id=""><a href="#" class="headerlink" title=""></a><img src="/2018/03/11/md内容展示/xdml.png" alt="我是图片"></h2>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/11/md内容展示/" data-id="cjgixqjqx00081sf403bg6qcu" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/03/11/如何部署hexo博客/" data-id="cjgoganu3000a9nf4ipbux6ry" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -868,7 +863,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archiv</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li></ul>
     </div>
   </div>
 
@@ -879,6 +874,10 @@
     <h3 class="widget-title">letzter Beitrag</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2018/05/02/DOM事件模型/">DOM事件模型</a>
+          </li>
         
           <li>
             <a href="/2018/04/27/jQuery入门探秘/">jQuery入门探秘</a>
@@ -894,10 +893,6 @@
         
           <li>
             <a href="/2018/04/25/array/">array</a>
-          </li>
-        
-          <li>
-            <a href="/2018/04/20/BFC学习/">BFC学习</a>
           </li>
         
       </ul>
