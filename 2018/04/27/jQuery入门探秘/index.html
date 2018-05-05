@@ -7,16 +7,16 @@
   
   <title>jQuery入门探秘 | 应忠彬的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="以前自学过jQuery，也碰过jQuery和dom的互相转化问题，但是并没有弄清楚。下面，来一步步探究jQuery的内在机制到底是什么？看着$(“xxx”).yyy总觉得有许多疑惑。那么，就一步步来解除疑问吧。首先，先写出两个API123456789101112131415function getSiblings(node)&amp;#123;  var allChildren = node.parent">
+  <meta name="description" content="以前自学过jQuery，也碰过jQuery和dom的互相转化问题，但是并没有弄清楚。下面，来一步步探究jQuery的内在机制到底是什么？看着$(“xxx”).yyy总觉得有许多疑惑。那么，就一步步来解除疑问吧。首先，先写出一个API123456789101112131415function getSiblings(node)&amp;#123;  var allChildren = node.parent">
 <meta property="og:type" content="article">
 <meta property="og:title" content="jQuery入门探秘">
 <meta property="og:url" content="http://yoursite.com/2018/04/27/jQuery入门探秘/index.html">
 <meta property="og:site_name" content="应忠彬的博客">
-<meta property="og:description" content="以前自学过jQuery，也碰过jQuery和dom的互相转化问题，但是并没有弄清楚。下面，来一步步探究jQuery的内在机制到底是什么？看着$(“xxx”).yyy总觉得有许多疑惑。那么，就一步步来解除疑问吧。首先，先写出两个API123456789101112131415function getSiblings(node)&amp;#123;  var allChildren = node.parent">
-<meta property="og:updated_time" content="2018-04-28T05:18:04.000Z">
+<meta property="og:description" content="以前自学过jQuery，也碰过jQuery和dom的互相转化问题，但是并没有弄清楚。下面，来一步步探究jQuery的内在机制到底是什么？看着$(“xxx”).yyy总觉得有许多疑惑。那么，就一步步来解除疑问吧。首先，先写出一个API123456789101112131415function getSiblings(node)&amp;#123;  var allChildren = node.parent">
+<meta property="og:updated_time" content="2018-05-05T02:49:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="jQuery入门探秘">
-<meta name="twitter:description" content="以前自学过jQuery，也碰过jQuery和dom的互相转化问题，但是并没有弄清楚。下面，来一步步探究jQuery的内在机制到底是什么？看着$(“xxx”).yyy总觉得有许多疑惑。那么，就一步步来解除疑问吧。首先，先写出两个API123456789101112131415function getSiblings(node)&amp;#123;  var allChildren = node.parent">
+<meta name="twitter:description" content="以前自学过jQuery，也碰过jQuery和dom的互相转化问题，但是并没有弄清楚。下面，来一步步探究jQuery的内在机制到底是什么？看着$(“xxx”).yyy总觉得有许多疑惑。那么，就一步步来解除疑问吧。首先，先写出一个API123456789101112131415function getSiblings(node)&amp;#123;  var allChildren = node.parent">
   
     <link rel="alternate" href="/atom.xml" title="应忠彬的博客" type="application/atom+xml">
   
@@ -85,7 +85,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="以前自学过jQuery，也碰过jQuery和dom的互相转化问题，但是并没有弄清楚。下面，来一步步探究jQuery的内在机制到底是什么？看着-“xxx”-yyy总觉得有许多疑惑。那么，就一步步来解除疑问吧。"><a href="#以前自学过jQuery，也碰过jQuery和dom的互相转化问题，但是并没有弄清楚。下面，来一步步探究jQuery的内在机制到底是什么？看着-“xxx”-yyy总觉得有许多疑惑。那么，就一步步来解除疑问吧。" class="headerlink" title="以前自学过jQuery，也碰过jQuery和dom的互相转化问题，但是并没有弄清楚。下面，来一步步探究jQuery的内在机制到底是什么？看着$(“xxx”).yyy总觉得有许多疑惑。那么，就一步步来解除疑问吧。"></a>以前自学过jQuery，也碰过jQuery和dom的互相转化问题，但是并没有弄清楚。下面，来一步步探究jQuery的内在机制到底是什么？看着<code>$(“xxx”).yyy</code>总觉得有许多疑惑。那么，就一步步来解除疑问吧。</h4><h4 id="首先，先写出两个API"><a href="#首先，先写出两个API" class="headerlink" title="首先，先写出两个API"></a>首先，先写出两个API</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">function getSiblings(node)&#123;</span><br><span class="line">  var allChildren = node.parentNode.children</span><br><span class="line"></span><br><span class="line">  var array = &#123;</span><br><span class="line">    length: 0</span><br><span class="line">  &#125;</span><br><span class="line">  for (let i = 0; i &lt; allChildren.length; i++) &#123;</span><br><span class="line">    if (allChildren[i] !== node) &#123;</span><br><span class="line">      array[array.length] = allChildren[i]</span><br><span class="line">      array.length += 1</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return array</span><br><span class="line">&#125;</span><br><span class="line">console.dir(getSiblings(item3))</span><br></pre></td></tr></table></figure>
+        <h4 id="以前自学过jQuery，也碰过jQuery和dom的互相转化问题，但是并没有弄清楚。下面，来一步步探究jQuery的内在机制到底是什么？看着-“xxx”-yyy总觉得有许多疑惑。那么，就一步步来解除疑问吧。"><a href="#以前自学过jQuery，也碰过jQuery和dom的互相转化问题，但是并没有弄清楚。下面，来一步步探究jQuery的内在机制到底是什么？看着-“xxx”-yyy总觉得有许多疑惑。那么，就一步步来解除疑问吧。" class="headerlink" title="以前自学过jQuery，也碰过jQuery和dom的互相转化问题，但是并没有弄清楚。下面，来一步步探究jQuery的内在机制到底是什么？看着$(“xxx”).yyy总觉得有许多疑惑。那么，就一步步来解除疑问吧。"></a>以前自学过jQuery，也碰过jQuery和dom的互相转化问题，但是并没有弄清楚。下面，来一步步探究jQuery的内在机制到底是什么？看着<code>$(“xxx”).yyy</code>总觉得有许多疑惑。那么，就一步步来解除疑问吧。</h4><h4 id="首先，先写出一个API"><a href="#首先，先写出一个API" class="headerlink" title="首先，先写出一个API"></a>首先，先写出一个API</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">function getSiblings(node)&#123;</span><br><span class="line">  var allChildren = node.parentNode.children</span><br><span class="line"></span><br><span class="line">  var array = &#123;</span><br><span class="line">    length: 0</span><br><span class="line">  &#125;</span><br><span class="line">  for (let i = 0; i &lt; allChildren.length; i++) &#123;</span><br><span class="line">    if (allChildren[i] !== node) &#123;</span><br><span class="line">      array[array.length] = allChildren[i]</span><br><span class="line">      array.length += 1</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return array</span><br><span class="line">&#125;</span><br><span class="line">console.dir(getSiblings(item3))</span><br></pre></td></tr></table></figure>
 <h4 id="这些简单的代码，只要对js有些了解都能看懂。"><a href="#这些简单的代码，只要对js有些了解都能看懂。" class="headerlink" title="这些简单的代码，只要对js有些了解都能看懂。"></a>这些简单的代码，只要对js有些了解都能看懂。</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//写出一个命名空间</span><br><span class="line">window.dom = &#123;&#125;</span><br><span class="line">dom.getSiblings = getSiblings;</span><br><span class="line">console.log(dom.getSiblings(item3))</span><br></pre></td></tr></table></figure>
 <h4 id="开辟一个命名空间能将所有API绑到一处。但是还是与jQuery不同，怎么办呢。"><a href="#开辟一个命名空间能将所有API绑到一处。但是还是与jQuery不同，怎么办呢。" class="headerlink" title="开辟一个命名空间能将所有API绑到一处。但是还是与jQuery不同，怎么办呢。"></a>开辟一个命名空间能将所有API绑到一处。但是还是与jQuery不同，怎么办呢。</h4><h4 id="而且，getSiblings-item3-看起来更方便。"><a href="#而且，getSiblings-item3-看起来更方便。" class="headerlink" title="而且，getSiblings(item3)看起来更方便。"></a>而且，<code>getSiblings(item3)</code>看起来更方便。</h4><h4 id="那么，我们可以在Node的原型上绑定getSiblings-方法"><a href="#那么，我们可以在Node的原型上绑定getSiblings-方法" class="headerlink" title="那么，我们可以在Node的原型上绑定getSiblings()方法"></a>那么，我们可以在Node的原型上绑定getSiblings()方法</h4><h4 id="如下：（需要使用this）"><a href="#如下：（需要使用this）" class="headerlink" title="如下：（需要使用this）"></a>如下：（需要使用this）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Node.prototype.getSiblings = function()&#123;</span><br><span class="line">  var allChildren = this.parentNode.children</span><br><span class="line">  var array = &#123;</span><br><span class="line">    length: 0</span><br><span class="line">  &#125;</span><br><span class="line">  for (let i = 0; i &lt; allChildren.length; i++) &#123;</span><br><span class="line">    if (allChildren[i] !== this) &#123;</span><br><span class="line">      array[array.length] = allChildren[i]</span><br><span class="line">      array.length += 1</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return array</span><br><span class="line">&#125;</span><br><span class="line">Node.prototype.addClass = function (classes) &#123;</span><br><span class="line">  classes.forEach( (value) =&gt; this.classList.add(value) )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="看起来是不是顺眼很多了"><a href="#看起来是不是顺眼很多了" class="headerlink" title="看起来是不是顺眼很多了"></a>看起来是不是顺眼很多了</h4><h4 id="但是这样随便改变原型链也有潜在的风险"><a href="#但是这样随便改变原型链也有潜在的风险" class="headerlink" title="但是这样随便改变原型链也有潜在的风险"></a>但是这样随便改变原型链也有潜在的风险</h4><h4 id="所以，继续使用命名空间方案-但是改动了一下"><a href="#所以，继续使用命名空间方案-但是改动了一下" class="headerlink" title="所以，继续使用命名空间方案,但是改动了一下"></a>所以，继续使用命名空间方案,但是改动了一下</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">function Node2(node)&#123;</span><br><span class="line">     return &#123;</span><br><span class="line">         element: node,</span><br><span class="line">         getSiblings: function()&#123;</span><br><span class="line"></span><br><span class="line">         &#125;,</span><br><span class="line">         addClass: function()&#123;</span><br><span class="line"></span><br><span class="line">         &#125;</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;</span><br><span class="line"> let node =document.getElementById(&apos;x&apos;)</span><br><span class="line"> let node2 = Node2(node)</span><br><span class="line"> node2.getSiblings()</span><br><span class="line"> node2.addClass()</span><br></pre></td></tr></table></figure>
@@ -96,7 +96,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/27/jQuery入门探秘/" data-id="cjgogv31c0008gqf40wgt4w1t" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/04/27/jQuery入门探秘/" data-id="cjgssy6on000accf4bmbpb9g4" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -154,6 +154,10 @@
       <ul>
         
           <li>
+            <a href="/2018/05/05/jQuery入门探秘-作业/">jQuery入门探秘-作业</a>
+          </li>
+        
+          <li>
             <a href="/2018/05/02/DOM事件模型/">DOM事件模型</a>
           </li>
         
@@ -167,10 +171,6 @@
         
           <li>
             <a href="/2018/04/25/function/">function</a>
-          </li>
-        
-          <li>
-            <a href="/2018/04/25/array/">array</a>
           </li>
         
       </ul>
