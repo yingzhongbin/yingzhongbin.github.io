@@ -61,6 +61,87 @@
       <div class="outer">
         <section id="main">
   
+    <article id="n-html续之部分标签" class="article article-type-n" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/03/23/html续之部分标签/" class="article-date">
+  <time datetime="2018-03-23T07:34:52.000Z" itemprop="datePublished">2018-03-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/23/html续之部分标签/">html续之部分标签</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="css布局"><a href="#css布局" class="headerlink" title="css布局"></a>css布局</h1><p>———<br>css布局由横向布局和纵向布局构成。横向布局中常常有纵向布局。<br><img src="/2018/03/23/html续之部分标签/1.png" alt="我是图片"></p>
+<h1 id="html标签"><a href="#html标签" class="headerlink" title="html标签"></a>html标签</h1><h3 id="iframe标签（用的很少）"><a href="#iframe标签（用的很少）" class="headerlink" title="iframe标签（用的很少）"></a>iframe标签（用的很少）</h3><h5 id="iframe可以使用css控制外观"><a href="#iframe可以使用css控制外观" class="headerlink" title="iframe可以使用css控制外观"></a>iframe可以使用css控制外观</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">	iframe&#123;</span><br><span class="line">	width: 100%;</span><br><span class="line">	height: 400px;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">&lt;iframe src=&quot;http://qq.com&quot; frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="a标签（get请求）"><a href="#a标签（get请求）" class="headerlink" title="a标签（get请求）"></a>a标签（get请求）</h3><h5 id="点击a标签后显示在iframe中"><a href="#点击a标签后显示在iframe中" class="headerlink" title="点击a标签后显示在iframe中"></a>点击a标签后显示在iframe中</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;iframe src=&quot;&quot; name=&quot;xxx&quot; frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;</span><br><span class="line">&lt;a href=&quot;http://qq.com&quot; target=&quot;xxx&quot;&gt;qqq&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+<h5 id="设置iframe的边框，一般设为0"><a href="#设置iframe的边框，一般设为0" class="headerlink" title="设置iframe的边框，一般设为0"></a>设置iframe的边框，一般设为0</h5><p><code>frameborder=“0”</code></p>
+<h5 id="blank在新开页面打开-self在自身页面打开-parent在父级窗口打开-top在最顶级页面打开"><a href="#blank在新开页面打开-self在自身页面打开-parent在父级窗口打开-top在最顶级页面打开" class="headerlink" title="_blank在新开页面打开 _self在自身页面打开 _parent在父级窗口打开   _top在最顶级页面打开"></a>_blank在新开页面打开 _self在自身页面打开 _parent在父级窗口打开   _top在最顶级页面打开</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&quot;http://qq.com&quot; target=&quot;_blank&quot;&gt;&lt;/a&gt;</span><br><span class="line">&lt;a href=&quot;http://qq.com&quot; target=&quot;_self&quot;&gt;&lt;/a&gt;</span><br><span class="line">&lt;a href=&quot;http://qq.com&quot; target=&quot;_parent&quot;&gt;&lt;/a&gt;</span><br><span class="line">&lt;a href=&quot;http://qq.com&quot; target=&quot;_top&quot;&gt;&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+<h5 id="a标签的下载属性"><a href="#a标签的下载属性" class="headerlink" title="a标签的下载属性"></a>a标签的下载属性</h5><p><code>&lt;a href=&quot;http://qq.com&quot; download&gt;下载&lt;/a&gt;</code></p>
+<h5 id="a标签添加参数"><a href="#a标签添加参数" class="headerlink" title="a标签添加参数"></a>a标签添加参数</h5><p><code>&lt;a href=&quot;?name=yzb&quot; &gt;qqq&lt;/a&gt;</code></p>
+<h5 id="a标签添加javascript伪代码"><a href="#a标签添加javascript伪代码" class="headerlink" title="a标签添加javascript伪代码"></a>a标签添加javascript伪代码</h5><h5 id="a标签点击不跳转"><a href="#a标签点击不跳转" class="headerlink" title="a标签点击不跳转"></a>a标签点击不跳转</h5><p><code>&lt;a href=&quot;javascript:;&quot; &gt;qqq&lt;/a&gt;</code></p>
+<h5 id="a标签点击后跳转到页面上部"><a href="#a标签点击后跳转到页面上部" class="headerlink" title="a标签点击后跳转到页面上部"></a>a标签点击后跳转到页面上部</h5><p><code>&lt;a href=“#” &gt;qqq&lt;/a&gt;</code></p>
+<h5 id="a标签跳转到自身，刷新页面"><a href="#a标签跳转到自身，刷新页面" class="headerlink" title="a标签跳转到自身，刷新页面"></a>a标签跳转到自身，刷新页面</h5><p><code>&lt;a href=&quot;&quot; &gt;qqq&lt;/a&gt;</code></p>
+<h3 id="form标签-post请求"><a href="#form标签-post请求" class="headerlink" title="form标签(post请求)"></a>form标签(post请求)</h3><h5 id="失去submit提交将无法传输数据"><a href="#失去submit提交将无法传输数据" class="headerlink" title="失去submit提交将无法传输数据"></a>失去submit提交将无法传输数据</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action=&quot;users&quot; method=&quot;post&quot;&gt;</span><br><span class="line">	&lt;input type=&quot;text&quot; name=&quot;username&quot;&gt;</span><br><span class="line">	&lt;input type=&quot;password&quot; name=&quot;password&quot;&gt;</span><br><span class="line">	&lt;input type=&quot;submit&quot; value=&quot;提交&quot;&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
+<h5 id="file协议不支持post"><a href="#file协议不支持post" class="headerlink" title="file协议不支持post"></a>file协议不支持post</h5><h5 id="get默认将提交内容放到查询参数里，也即地址栏里。不会放入到第四部分"><a href="#get默认将提交内容放到查询参数里，也即地址栏里。不会放入到第四部分" class="headerlink" title="get默认将提交内容放到查询参数里，也即地址栏里。不会放入到第四部分"></a>get默认将提交内容放到查询参数里，也即地址栏里。不会放入到第四部分</h5><h5 id="post也可以将内容放入到查询参数里"><a href="#post也可以将内容放入到查询参数里" class="headerlink" title="post也可以将内容放入到查询参数里"></a>post也可以将内容放入到查询参数里</h5><pre><code>&lt;form action=&quot;users?xxx=1” method=&quot;post&quot;&gt;即可
+</code></pre><h5 id="form-与a标签一样使用target，也可target到iframe中"><a href="#form-与a标签一样使用target，也可target到iframe中" class="headerlink" title="form 与a标签一样使用target，也可target到iframe中"></a>form 与a标签一样使用target，也可target到iframe中</h5><h3 id="input标签"><a href="#input标签" class="headerlink" title="input标签"></a>input标签</h3><h5 id="如果一个form里只有一个按钮，-lt-button-gt-button-lt-button-gt-，执行submit功能。如果写了type-button，则失去这种功能"><a href="#如果一个form里只有一个按钮，-lt-button-gt-button-lt-button-gt-，执行submit功能。如果写了type-button，则失去这种功能" class="headerlink" title="如果一个form里只有一个按钮，&lt;button&gt;button&lt;/button&gt;，执行submit功能。如果写了type=button，则失去这种功能"></a>如果一个form里只有一个按钮，<code>&lt;button&gt;button&lt;/button&gt;</code>，执行submit功能。如果写了type=button，则失去这种功能</h5><h5 id="lt-input-type-quot-button-quot-value-quot-button-quot-gt-没有提交功能"><a href="#lt-input-type-quot-button-quot-value-quot-button-quot-gt-没有提交功能" class="headerlink" title="&lt;input type=&quot;button&quot; value=&quot;button&quot;&gt;没有提交功能"></a><code>&lt;input type=&quot;button&quot; value=&quot;button&quot;&gt;</code>没有提交功能</h5><h5 id="lt-input-type-“submit”-value-quot-button-quot-gt-可以提交"><a href="#lt-input-type-“submit”-value-quot-button-quot-gt-可以提交" class="headerlink" title="&lt;input type=“submit” value=&quot;button&quot;&gt;可以提交"></a><code>&lt;input type=“submit” value=&quot;button&quot;&gt;</code>可以提交</h5><h5 id="lt-input-type-quot-checkbox-quot-name-quot-yyy-quot-gt-lt-label-for-quot-yyy-quot-gt-loveme-lt-label-gt"><a href="#lt-input-type-quot-checkbox-quot-name-quot-yyy-quot-gt-lt-label-for-quot-yyy-quot-gt-loveme-lt-label-gt" class="headerlink" title="&lt;input type=&quot;checkbox&quot; name=&quot;yyy&quot;&gt;&lt;label for=&quot;yyy&quot;&gt;loveme&lt;/label&gt;"></a><code>&lt;input type=&quot;checkbox&quot; name=&quot;yyy&quot;&gt;&lt;label for=&quot;yyy&quot;&gt;loveme&lt;/label&gt;</code></h5><p>与下面代码功能一样，但下面代码更简洁，所以，用下面的代码了</p>
+<h5 id="lt-label-gt-lt-input-type-quot-checkbox-quot-name-quot-zzz-quot-gt-hateme-lt-label-gt"><a href="#lt-label-gt-lt-input-type-quot-checkbox-quot-name-quot-zzz-quot-gt-hateme-lt-label-gt" class="headerlink" title="&lt;label&gt;&lt;input type=&quot;checkbox&quot; name=&quot;zzz&quot;&gt;hateme&lt;/label&gt;"></a><code>&lt;label&gt;&lt;input type=&quot;checkbox&quot; name=&quot;zzz&quot;&gt;hateme&lt;/label&gt;</code></h5><p>input里的name还是要写的，传送数据时需要</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/03/23/html续之部分标签/" data-id="cjh4m6qdq00088of4w058qs77" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-array/test" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/03/11/array/test/" class="article-date">
+  <time datetime="2018-03-11T10:59:51.000Z" itemprop="datePublished">2018-03-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#css布局<br>———<br>css布局由横向布局和纵向布局构成。横向布局中常常有纵向布局。<br><img src="file:///Users/yingzhongbin/Desktop/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-03-16%20%E4%B8%8B%E5%8D%888.44.14.png" alt=""></p>
+<p>#html标签</p>
+<p>###iframe标签（用的很少）<br>’‘’</p>
+<p><style><br>iframe{<br>width: 100%;<br>height: 400px;<br>}<br></style></p>
+<p><iframe src="http://qq.com" frameborder="0"></iframe><br>‘’‘</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/03/11/array/test/" data-id="cjh4m6qm9000e8of4cdxglu1v" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-如何部署hexo博客" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/03/11/如何部署hexo博客/" class="article-date">
@@ -438,7 +519,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/11/如何部署hexo博客/" data-id="cjgstn0be000bnsf4qn5u6738" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/03/11/如何部署hexo博客/" data-id="cjh4m6qe8000d8of4uk7ym7pe" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -488,7 +569,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/11/md内容展示/" data-id="cjgstn06p000ansf4z8xtax9c" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/03/11/md内容展示/" data-id="cjh4m6qe5000c8of4s22mjtsv" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -533,7 +614,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/11/hello-world/" data-id="cjgstn06e0006nsf4biy2ub01" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/03/11/hello-world/" data-id="cjh4m6qdm00078of4ds2nj5cn" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -579,6 +660,14 @@
       <ul>
         
           <li>
+            <a href="/2018/05/13/JSONP/">JSONP</a>
+          </li>
+        
+          <li>
+            <a href="/2018/05/09/js杂七杂八/">js杂七杂八</a>
+          </li>
+        
+          <li>
             <a href="/2018/05/05/jQuery入门探秘-作业/">jQuery入门探秘-作业</a>
           </li>
         
@@ -588,14 +677,6 @@
         
           <li>
             <a href="/2018/04/27/jQuery入门探秘/">jQuery入门探秘</a>
-          </li>
-        
-          <li>
-            <a href="/2018/04/27/domAPI/">domAPI</a>
-          </li>
-        
-          <li>
-            <a href="/2018/04/25/function/">function</a>
           </li>
         
       </ul>

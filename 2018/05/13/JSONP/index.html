@@ -5,14 +5,22 @@
   
 
   
-  <title>Archiv: 2018/4 | 应忠彬的博客</title>
+  <title>JSONP | 应忠彬的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="应忠彬的博客">
-<meta property="og:url" content="http://yoursite.com/archives/2018/04/index.html">
+  <meta name="description" content="33高级：JSONP 是什么鬼JSONP的完整代码演变 面试问题：请问，为什么JSONP不支持POST请求？因为JSONP是通过动态创建script实现的，我们动态创建script时只能用GET，不能用POST">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JSONP">
+<meta property="og:url" content="http://yoursite.com/2018/05/13/JSONP/index.html">
 <meta property="og:site_name" content="应忠彬的博客">
+<meta property="og:description" content="33高级：JSONP 是什么鬼JSONP的完整代码演变 面试问题：请问，为什么JSONP不支持POST请求？因为JSONP是通过动态创建script实现的，我们动态创建script时只能用GET，不能用POST">
+<meta property="og:image" content="http://yoursite.com/2018/05/13/JSONP/p1.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/13/JSONP/p2.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/13/JSONP/p3.png">
+<meta property="og:updated_time" content="2018-05-13T09:23:24.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="应忠彬的博客">
+<meta name="twitter:title" content="JSONP">
+<meta name="twitter:description" content="33高级：JSONP 是什么鬼JSONP的完整代码演变 面试问题：请问，为什么JSONP不支持POST请求？因为JSONP是通过动态创建script实现的，我们动态创建script时只能用GET，不能用POST">
+<meta name="twitter:image" content="http://yoursite.com/2018/05/13/JSONP/p1.png">
   
     <link rel="alternate" href="/atom.xml" title="应忠彬的博客" type="application/atom+xml">
   
@@ -59,135 +67,52 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/04/27/jQuery入门探秘/" class="archive-article-date">
-  <time datetime="2018-04-27T13:00:39.000Z" itemprop="datePublished">Apr 27</time>
+        <section id="main"><article id="post-JSONP" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/13/JSONP/" class="article-date">
+  <time datetime="2018-05-13T09:15:05.000Z" itemprop="datePublished">2018-05-13</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/27/jQuery入门探秘/">jQuery入门探秘</a>
+    <h1 class="article-title" itemprop="name">
+      JSONP
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/04/27/domAPI/" class="archive-article-date">
-  <time datetime="2018-04-27T12:43:10.000Z" itemprop="datePublished">Apr 27</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/27/domAPI/">domAPI</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/04/25/function/" class="archive-article-date">
-  <time datetime="2018-04-25T12:05:41.000Z" itemprop="datePublished">Apr 25</time>
-</a>
+        <h1 id="33高级：JSONP-是什么鬼"><a href="#33高级：JSONP-是什么鬼" class="headerlink" title="33高级：JSONP 是什么鬼"></a>33高级：JSONP 是什么鬼</h1><h3 id="JSONP的完整代码演变"><a href="#JSONP的完整代码演变" class="headerlink" title="JSONP的完整代码演变"></a>JSONP的<a href="https://github.com/yingzhongbin/XDML/tree/master/server" target="_blank" rel="noopener">完整代码演变</a></h3><p><img src="/2018/05/13/JSONP/p1.png" alt=""><br><img src="/2018/05/13/JSONP/p2.png" alt=""><br><img src="/2018/05/13/JSONP/p3.png" alt=""></p>
+<h3 id="面试问题：请问，为什么JSONP不支持POST请求？"><a href="#面试问题：请问，为什么JSONP不支持POST请求？" class="headerlink" title="面试问题：请问，为什么JSONP不支持POST请求？"></a>面试问题：请问，为什么JSONP不支持POST请求？</h3><h4 id="因为JSONP是通过动态创建script实现的，我们动态创建script时只能用GET，不能用POST"><a href="#因为JSONP是通过动态创建script实现的，我们动态创建script时只能用GET，不能用POST" class="headerlink" title="因为JSONP是通过动态创建script实现的，我们动态创建script时只能用GET，不能用POST"></a>因为JSONP是通过动态创建script实现的，我们动态创建script时只能用GET，不能用POST</h4>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/25/function/">function</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/04/25/array/" class="archive-article-date">
-  <time datetime="2018-04-25T06:23:56.000Z" itemprop="datePublished">Apr 25</time>
-</a>
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/05/13/JSONP/" data-id="cjh4m6qd500028of4f2egz0mf" class="article-share-link">Teilen</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/25/array/">array</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/04/20/BFC学习/" class="archive-article-date">
-  <time datetime="2018-04-20T05:12:50.000Z" itemprop="datePublished">Apr 20</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/20/BFC学习/">BFC学习</a>
-    </h1>
-  
-
-    </header>
+    </footer>
   </div>
-</article>
   
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/04/17/css/" class="archive-article-date">
-  <time datetime="2018-04-17T06:26:07.000Z" itemprop="datePublished">Apr 17</time>
-</a>
-      
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/17/css/">css</a>
-    </h1>
   
+    <a href="/2018/05/09/js杂七杂八/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">js杂七杂八</div>
+    </a>
+  
+</nav>
 
-    </header>
-  </div>
+  
 </article>
-  
-  
-    </div></section>
-  
-
 
 </section>
         
