@@ -61,6 +61,46 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-css" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/04/17/css/" class="article-date">
+  <time datetime="2018-04-17T06:26:07.000Z" itemprop="datePublished">2018-04-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/17/css/">css</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="引用css的四种方法"><a href="#引用css的四种方法" class="headerlink" title="引用css的四种方法"></a>引用css的四种方法</h3><h5 id="1-使用标签上的style属性"><a href="#1-使用标签上的style属性" class="headerlink" title="1.使用标签上的style属性"></a>1.使用标签上的style属性</h5><h5 id="2-使用-lt-style-gt-标签"><a href="#2-使用-lt-style-gt-标签" class="headerlink" title="2.使用&lt;style&gt;标签"></a>2.<code>使用&lt;style&gt;标签</code></h5><h5 id="3-lt-link-rel-quot-stylesheet-quot-href-quot-style-css-quot-gt"><a href="#3-lt-link-rel-quot-stylesheet-quot-href-quot-style-css-quot-gt" class="headerlink" title="3. &lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt;"></a>3. <code>&lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt;</code></h5><h5 id="4-import-url-a-css"><a href="#4-import-url-a-css" class="headerlink" title="4.@import url (./a.css);"></a>4.@import url (./a.css);</h5><h3 id="浮动并去除bug"><a href="#浮动并去除bug" class="headerlink" title="浮动并去除bug"></a>浮动并去除bug</h3><h5 id="1-将子元素float"><a href="#1-将子元素float" class="headerlink" title="1.将子元素float"></a>1.将子元素float</h5><h5 id="2-将父元素加上clearfix类"><a href="#2-将父元素加上clearfix类" class="headerlink" title="2.将父元素加上clearfix类"></a>2.将父元素加上clearfix类</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">.clearfix::after&#123;</span><br><span class="line">    content:&apos;&apos;;</span><br><span class="line">    display: block;</span><br><span class="line">    clear:both;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="重要内容"><a href="#重要内容" class="headerlink" title="重要内容"></a>重要内容</h2><h4 id="字体默认的-line-height-由字体设计师决定"><a href="#字体默认的-line-height-由字体设计师决定" class="headerlink" title="字体默认的 line height 由字体设计师决定"></a>字体默认的 line height 由字体设计师决定</h4><h4 id="设置的行高可能会变动"><a href="#设置的行高可能会变动" class="headerlink" title="设置的行高可能会变动"></a>设置的行高可能会变动</h4><h4 id="CSS-中-width-的默认值auto"><a href="#CSS-中-width-的默认值auto" class="headerlink" title="CSS 中 width 的默认值auto"></a>CSS 中 width 的默认值auto</h4><h4 id="div的高度有其内部文档流元素的高度总和决定"><a href="#div的高度有其内部文档流元素的高度总和决定" class="headerlink" title="div的高度有其内部文档流元素的高度总和决定"></a>div的高度有其内部文档流元素的高度总和决定</h4><h4 id="文档流：文档内元素的流动方向。inline从左往右流动，block从上往下流动"><a href="#文档流：文档内元素的流动方向。inline从左往右流动，block从上往下流动" class="headerlink" title="文档流：文档内元素的流动方向。inline从左往右流动，block从上往下流动"></a>文档流：文档内元素的流动方向。inline从左往右流动，block从上往下流动</h4><h4 id="font-size的大小指的是字体中的字从最上方到最下方的高度。而包含字的span的高度与字体的建议行高有关，当设置line-height行高小于字体的建议行高，会有bug。大于时可垂直居中。"><a href="#font-size的大小指的是字体中的字从最上方到最下方的高度。而包含字的span的高度与字体的建议行高有关，当设置line-height行高小于字体的建议行高，会有bug。大于时可垂直居中。" class="headerlink" title="font-size的大小指的是字体中的字从最上方到最下方的高度。而包含字的span的高度与字体的建议行高有关，当设置line-height行高小于字体的建议行高，会有bug。大于时可垂直居中。"></a>font-size的大小指的是字体中的字从最上方到最下方的高度。而包含字的span的高度与字体的建议行高有关，当设置line-height行高小于字体的建议行高，会有bug。大于时可垂直居中。</h4><h4 id="不同字体放在一起将进行基线对齐"><a href="#不同字体放在一起将进行基线对齐" class="headerlink" title="不同字体放在一起将进行基线对齐"></a>不同字体放在一起将进行基线对齐</h4><h4 id="一个元素被fixed定位后，-它的宽度不会往外扩展，而是往内缩。解决问题的方法为宽度设为width-100-但如果有padding的话，这样设置会出bug，解决方法是设置一个子元素，在子元素里设置padding。"><a href="#一个元素被fixed定位后，-它的宽度不会往外扩展，而是往内缩。解决问题的方法为宽度设为width-100-但如果有padding的话，这样设置会出bug，解决方法是设置一个子元素，在子元素里设置padding。" class="headerlink" title="一个元素被fixed定位后， 它的宽度不会往外扩展，而是往内缩。解决问题的方法为宽度设为width:100%;但如果有padding的话，这样设置会出bug，解决方法是设置一个子元素，在子元素里设置padding。"></a>一个元素被fixed定位后， 它的宽度不会往外扩展，而是往内缩。解决问题的方法为宽度设为width:100%;但如果有padding的话，这样设置会出bug，解决方法是设置一个子元素，在子元素里设置padding。</h4><h4 id="使用svg进行垂直居中时，设置vertical-align-top"><a href="#使用svg进行垂直居中时，设置vertical-align-top" class="headerlink" title="使用svg进行垂直居中时，设置vertical-align: top;"></a>使用svg进行垂直居中时，设置vertical-align: top;</h4><h4 id="给display-inline元素设置宽高是无效的，设置margin-left-margin-right有效，margin-top，margin-bottom无效"><a href="#给display-inline元素设置宽高是无效的，设置margin-left-margin-right有效，margin-top，margin-bottom无效" class="headerlink" title="给display:inline元素设置宽高是无效的，设置margin-left,margin-right有效，margin-top，margin-bottom无效"></a>给display:inline元素设置宽高是无效的，设置margin-left,margin-right有效，margin-top，margin-bottom无效</h4><h4 id="设置了display-inline-block-内容下方会有一个空隙，设置vertical-align-top-可以去除空隙"><a href="#设置了display-inline-block-内容下方会有一个空隙，设置vertical-align-top-可以去除空隙" class="headerlink" title="设置了display:inline-block;内容下方会有一个空隙，设置vertical-align:top;可以去除空隙"></a>设置了display:inline-block;内容下方会有一个空隙，设置vertical-align:top;可以去除空隙</h4><h4 id="盒模型展示"><a href="#盒模型展示" class="headerlink" title="盒模型展示"></a>盒模型展示</h4><p><img src="/2018/04/17/css/case.png" alt="我是图片"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">span&#123;</span><br><span class="line">  width:200px;</span><br><span class="line">  height: ;</span><br><span class="line">  border:1px solid gray;</span><br><span class="line">  margin:10px 15px;</span><br><span class="line">  padding:20px 25px;</span><br><span class="line">  display:block;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;span&gt;1&lt;/span&gt;</span><br><span class="line">&lt;span&gt;2&lt;/span&gt;</span><br></pre></td></tr></table></figure>
+<h5 id="span之间会有一个空格"><a href="#span之间会有一个空格" class="headerlink" title="span之间会有一个空格"></a>span之间会有一个空格</h5>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/04/17/css/" data-id="cjh8hpzmd00043zf438s5m5d7" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="n-html续之部分标签" class="article article-type-n" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/03/23/html续之部分标签/" class="article-date">
@@ -101,38 +141,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/23/html续之部分标签/" data-id="cjh4m6qdq00088of4w058qs77" class="article-share-link">Teilen</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-array/test" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/03/11/array/test/" class="article-date">
-  <time datetime="2018-03-11T10:59:51.000Z" itemprop="datePublished">2018-03-11</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>#css布局<br>———<br>css布局由横向布局和纵向布局构成。横向布局中常常有纵向布局。<br><img src="file:///Users/yingzhongbin/Desktop/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-03-16%20%E4%B8%8B%E5%8D%888.44.14.png" alt=""></p>
-<p>#html标签</p>
-<p>###iframe标签（用的很少）<br>’‘’</p>
-<p><style><br>iframe{<br>width: 100%;<br>height: 400px;<br>}<br></style></p>
-<p><iframe src="http://qq.com" frameborder="0"></iframe><br>‘’‘</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/11/array/test/" data-id="cjh4m6qm9000e8of4cdxglu1v" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/03/23/html续之部分标签/" data-id="cjh8hpznu00083zf4ao5j1vkw" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -519,7 +528,38 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/11/如何部署hexo博客/" data-id="cjh4m6qe8000d8of4uk7ym7pe" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/03/11/如何部署hexo博客/" data-id="cjh8hpzoo000e3zf4ptskuuu3" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-array/test" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/03/11/array/test/" class="article-date">
+  <time datetime="2018-03-11T10:59:51.000Z" itemprop="datePublished">2018-03-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#css布局<br>———<br>css布局由横向布局和纵向布局构成。横向布局中常常有纵向布局。<br><img src="file:///Users/yingzhongbin/Desktop/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-03-16%20%E4%B8%8B%E5%8D%888.44.14.png" alt=""></p>
+<p>#html标签</p>
+<p>###iframe标签（用的很少）<br>’‘’</p>
+<p><style><br>iframe{<br>width: 100%;<br>height: 400px;<br>}<br></style></p>
+<p><iframe src="http://qq.com" frameborder="0"></iframe><br>‘’‘</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/03/11/array/test/" data-id="cjh8hpzre000f3zf4utpidjle" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -569,7 +609,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/11/md内容展示/" data-id="cjh4m6qe5000c8of4s22mjtsv" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/03/11/md内容展示/" data-id="cjh8hpzoi000d3zf4zo4uokgf" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -614,7 +654,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/11/hello-world/" data-id="cjh4m6qdm00078of4ds2nj5cn" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/03/11/hello-world/" data-id="cjh8hpzno00073zf4mo91phc4" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -660,6 +700,10 @@
       <ul>
         
           <li>
+            <a href="/2018/05/16/test/">test</a>
+          </li>
+        
+          <li>
             <a href="/2018/05/13/JSONP/">JSONP</a>
           </li>
         
@@ -673,10 +717,6 @@
         
           <li>
             <a href="/2018/05/02/DOM事件模型/">DOM事件模型</a>
-          </li>
-        
-          <li>
-            <a href="/2018/04/27/jQuery入门探秘/">jQuery入门探秘</a>
           </li>
         
       </ul>
