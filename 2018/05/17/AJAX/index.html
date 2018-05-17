@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>AJAX | 应忠彬的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="34 高级：AJAX 是什么鬼如何发请求？用 form 可以发请求，但是会刷新页面或新开页面用 a 可以发 get 请求，但是也会刷新页面或新开页面用 img 可以发 get 请求，但是只能以图片的形式展示用 link 可以发 get 请求，但是只能以 CSS、favicon 的形式展示用 script 可以发 get 请求，但是只能以脚本的形式运行有没有什么方式可以实现 get、post、put">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AJAX">
+<meta property="og:url" content="http://yoursite.com/2018/05/17/AJAX/index.html">
+<meta property="og:site_name" content="应忠彬的博客">
+<meta property="og:description" content="34 高级：AJAX 是什么鬼如何发请求？用 form 可以发请求，但是会刷新页面或新开页面用 a 可以发 get 请求，但是也会刷新页面或新开页面用 img 可以发 get 请求，但是只能以图片的形式展示用 link 可以发 get 请求，但是只能以 CSS、favicon 的形式展示用 script 可以发 get 请求，但是只能以脚本的形式运行有没有什么方式可以实现 get、post、put">
+<meta property="og:image" content="http://yoursite.com/2018/05/17/AJAX/a1.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/17/AJAX/a2.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/17/AJAX/a3.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/17/AJAX/a4.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/17/AJAX/a5.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/17/AJAX/a6.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/17/AJAX/a7.png">
+<meta property="og:updated_time" content="2018-05-17T02:29:05.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AJAX">
+<meta name="twitter:description" content="34 高级：AJAX 是什么鬼如何发请求？用 form 可以发请求，但是会刷新页面或新开页面用 a 可以发 get 请求，但是也会刷新页面或新开页面用 img 可以发 get 请求，但是只能以图片的形式展示用 link 可以发 get 请求，但是只能以 CSS、favicon 的形式展示用 script 可以发 get 请求，但是只能以脚本的形式运行有没有什么方式可以实现 get、post、put">
+<meta name="twitter:image" content="http://yoursite.com/2018/05/17/AJAX/a1.png">
+  
+    <link rel="alternate" href="/atom.xml" title="应忠彬的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">应忠彬的博客</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-AJAX" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/17/AJAX/" class="article-date">
+  <time datetime="2018-05-17T02:28:40.000Z" itemprop="datePublished">2018-05-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      AJAX
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="34-高级：AJAX-是什么鬼"><a href="#34-高级：AJAX-是什么鬼" class="headerlink" title="34 高级：AJAX 是什么鬼"></a>34 高级：AJAX 是什么鬼</h1><h2 id="如何发请求？"><a href="#如何发请求？" class="headerlink" title="如何发请求？"></a>如何发请求？</h2><h6 id="用-form-可以发请求，但是会刷新页面或新开页面"><a href="#用-form-可以发请求，但是会刷新页面或新开页面" class="headerlink" title="用 form 可以发请求，但是会刷新页面或新开页面"></a>用 form 可以发请求，但是会刷新页面或新开页面</h6><h6 id="用-a-可以发-get-请求，但是也会刷新页面或新开页面"><a href="#用-a-可以发-get-请求，但是也会刷新页面或新开页面" class="headerlink" title="用 a 可以发 get 请求，但是也会刷新页面或新开页面"></a>用 a 可以发 get 请求，但是也会刷新页面或新开页面</h6><h6 id="用-img-可以发-get-请求，但是只能以图片的形式展示"><a href="#用-img-可以发-get-请求，但是只能以图片的形式展示" class="headerlink" title="用 img 可以发 get 请求，但是只能以图片的形式展示"></a>用 img 可以发 get 请求，但是只能以图片的形式展示</h6><h6 id="用-link-可以发-get-请求，但是只能以-CSS、favicon-的形式展示"><a href="#用-link-可以发-get-请求，但是只能以-CSS、favicon-的形式展示" class="headerlink" title="用 link 可以发 get 请求，但是只能以 CSS、favicon 的形式展示"></a>用 link 可以发 get 请求，但是只能以 CSS、favicon 的形式展示</h6><h6 id="用-script-可以发-get-请求，但是只能以脚本的形式运行"><a href="#用-script-可以发-get-请求，但是只能以脚本的形式运行" class="headerlink" title="用 script 可以发 get 请求，但是只能以脚本的形式运行"></a>用 script 可以发 get 请求，但是只能以脚本的形式运行</h6><h2 id="有没有什么方式可以实现"><a href="#有没有什么方式可以实现" class="headerlink" title="有没有什么方式可以实现"></a>有没有什么方式可以实现</h2><ol>
+<li>get、post、put、delete 请求都行</li>
+<li>想以什么形式展示就以什么形式展示</li>
+</ol>
+<h2 id="微软的突破"><a href="#微软的突破" class="headerlink" title="微软的突破"></a>微软的突破</h2><h6 id="IE-5-率先在-JS-中引入-ActiveX-对象（API），使得-JS-可以直接发起-HTTP-请求。"><a href="#IE-5-率先在-JS-中引入-ActiveX-对象（API），使得-JS-可以直接发起-HTTP-请求。" class="headerlink" title="IE 5 率先在 JS 中引入 ActiveX 对象（API），使得 JS 可以直接发起 HTTP 请求。"></a>IE 5 率先在 JS 中引入 ActiveX 对象（API），使得 JS 可以直接发起 HTTP 请求。</h6><h6 id="随后-Mozilla、-Safari、-Opera-也跟进（抄袭）了，取名-XMLHttpRequest，并被纳入-W3C-规范"><a href="#随后-Mozilla、-Safari、-Opera-也跟进（抄袭）了，取名-XMLHttpRequest，并被纳入-W3C-规范" class="headerlink" title="随后 Mozilla、 Safari、 Opera 也跟进（抄袭）了，取名 XMLHttpRequest，并被纳入 W3C 规范"></a>随后 Mozilla、 Safari、 Opera 也跟进（抄袭）了，取名 XMLHttpRequest，并被纳入 W3C 规范</h6><h2 id="AJAX"><a href="#AJAX" class="headerlink" title="AJAX"></a>AJAX</h2><h6 id="Jesse-James-Garrett-讲如下技术取名叫做-AJAX：异步的-JavaScript-和-XML"><a href="#Jesse-James-Garrett-讲如下技术取名叫做-AJAX：异步的-JavaScript-和-XML" class="headerlink" title="Jesse James Garrett 讲如下技术取名叫做 AJAX：异步的 JavaScript 和 XML"></a>Jesse James Garrett 讲如下技术取名叫做 AJAX：异步的 JavaScript 和 XML</h6><ol>
+<li>使用 XMLHttpRequest 发请求</li>
+<li>服务器返回 XML 格式的字符串</li>
+<li>JS 解析 XML，并更新局部页面</li>
+</ol>
+<p><img src="/2018/05/17/AJAX/a1.png" alt=""></p>
+<h1 id="35高级：自己实现-AJAX"><a href="#35高级：自己实现-AJAX" class="headerlink" title="35高级：自己实现 AJAX"></a>35高级：自己实现 AJAX</h1><h4 id="添加ajax的内存图"><a href="#添加ajax的内存图" class="headerlink" title="添加ajax的内存图"></a>添加ajax的内存图</h4><p><img src="/2018/05/17/AJAX/a2.png" alt=""></p>
+<h4 id="ES6语法"><a href="#ES6语法" class="headerlink" title="ES6语法"></a>ES6语法</h4><p><img src="/2018/05/17/AJAX/a3.png" alt=""><br><img src="/2018/05/17/AJAX/a4.png" alt=""><br><img src="/2018/05/17/AJAX/a5.png" alt=""><br><img src="/2018/05/17/AJAX/a6.png" alt=""></p>
+<h4 id="响应与请求的设置顺序及方法"><a href="#响应与请求的设置顺序及方法" class="headerlink" title="响应与请求的设置顺序及方法"></a>响应与请求的设置顺序及方法</h4><p><img src="/2018/05/17/AJAX/a7.png" alt=""></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/05/17/AJAX/" data-id="cjh9x2f5z0000i9f4ujvzy2df" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/05/13/JSONP/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">JSONP</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/05/17/AJAX/">AJAX</a>
+          </li>
+        
+          <li>
+            <a href="/2018/05/13/JSONP/">JSONP</a>
+          </li>
+        
+          <li>
+            <a href="/2018/05/09/js杂七杂八/">js杂七杂八</a>
+          </li>
+        
+          <li>
+            <a href="/2018/05/05/jQuery入门探秘-作业/">jQuery入门探秘-作业</a>
+          </li>
+        
+          <li>
+            <a href="/2018/05/02/DOM事件模型/">DOM事件模型</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 应忠彬<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
