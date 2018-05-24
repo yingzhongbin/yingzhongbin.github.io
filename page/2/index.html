@@ -50,7 +50,7 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -60,6 +60,61 @@
 </header>
       <div class="outer">
         <section id="main">
+  
+    <article id="post-BFC学习" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/04/20/BFC学习/" class="article-date">
+  <time datetime="2018-04-20T05:12:50.000Z" itemprop="datePublished">2018-04-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/20/BFC学习/">BFC学习</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p> BFC作为一个时代的产物，有其效用，也有其遗留的问题。现在许多BFC能实现的功能通过flex，clearfix等都能达到BFC的效果，但BFC的效果显示常常带有我们不需要的效果，这就很尴尬了。当然，现在有一个不带有不需要效果的CSS设置，display:flow-root;但不是所有浏览器都支持。<br>那么，了解BFC必要吗？我觉得必要。了解BFC就是了解CSS，对CSS的理解当然就会更深。</p>
+<h4 id="下面来详细了解一下BFC"><a href="#下面来详细了解一下BFC" class="headerlink" title="下面来详细了解一下BFC"></a>下面来详细了解一下BFC</h4><h2 id="CSS规范中对-BFC-的描述"><a href="#CSS规范中对-BFC-的描述" class="headerlink" title="CSS规范中对 BFC 的描述"></a>CSS规范中对 BFC 的描述</h2><h4 id="9-4-1-块格式化上下文"><a href="#9-4-1-块格式化上下文" class="headerlink" title="9.4.1 块格式化上下文"></a>9.4.1 块格式化上下文</h4><p>浮动，绝对定位元素，非块盒的块容器（例如，inline-block，table-cells和table-captions）和’overflow’不为’visible’的块盒会为它们的内容建立一个新的块格式化上下文</p>
+<h5 id="评：使用以上css属性会创建BFC"><a href="#评：使用以上css属性会创建BFC" class="headerlink" title="评：使用以上css属性会创建BFC"></a>评：使用以上css属性会创建BFC</h5><p>在一个块格式化上下文中，盒在竖直方向一个接一个地放置，从包含块的顶部开始。两个兄弟盒之间的<strong>竖直距离</strong>由’margin’属性决定。同一个块格式化上下文中的相邻块级盒之间的竖直margin会合并</p>
+<h5 id="评：上下margin合并现象的由来"><a href="#评：上下margin合并现象的由来" class="headerlink" title="评：上下margin合并现象的由来"></a>评：上下margin合并现象的由来</h5><p>在一个块格式化上下文中，每个盒的left外边（left outer edge）挨着包含块的left边（对于从右向左的格式化，right边挨着）。即使存在浮动（尽管一个盒的行盒可能会因为浮动收缩），这也成立。除非该盒建立了一个新的块格式化上下文（这种情况下，该盒自身可能会因为浮动变窄）</p>
+<h2 id="MDN-对-BFC-的描述"><a href="#MDN-对-BFC-的描述" class="headerlink" title="MDN 对 BFC 的描述"></a>MDN 对 BFC 的描述</h2><p>一个块格式化上下文（block formatting context） 是Web页面的可视化CSS渲染出的一部分。它是块级盒布局出现的区域，也是浮动层元素进行交互的区域。</p>
+<p>一个块格式化上下文由以下之一创建：</p>
+<p> •    根元素或其它包含它的元素</p>
+<p> •    浮动元素 (元素的 float 不是 none)</p>
+<p> •    绝对定位元素 (元素具有 position 为 absolute 或 fixed)</p>
+<p> •    内联块 (元素具有 display: inline-block)</p>
+<p> •    表格单元格 (元素具有 display: table-cell，HTML表格单元格默认属性)</p>
+<p> •    表格标题 (元素具有 display: table-caption, HTML表格标题默认属性)</p>
+<p> •    具有overflow 且值不是 visible 的块元素</p>
+<p> •    display: flow-root</p>
+<p> •    column-span: all 应当总是会创建一个新的格式化上下文，即便具有 column-span: all 的元素并不被包裹在一个多列容器中。</p>
+<h5 id="评：更加详细的触发BFC的方法"><a href="#评：更加详细的触发BFC的方法" class="headerlink" title="评：更加详细的触发BFC的方法"></a>评：更加详细的触发BFC的方法</h5><p>一个块格式化上下文包括创建它的元素内部所有内容，除了被包含于创建新的块级格式化上下文的后代元素内的元素。</p>
+<h5 id="评：通俗讲就是爷爷只管儿子，不管孙子。"><a href="#评：通俗讲就是爷爷只管儿子，不管孙子。" class="headerlink" title="评：通俗讲就是爷爷只管儿子，不管孙子。"></a>评：通俗讲就是爷爷只管儿子，不管孙子。</h5><p>块格式化上下文对于定位 (参见 float) 与清除浮动 (参见 clear) 很重要。定位和清除浮动的样式规则只适用于处于同一块格式化上下文内的元素。浮动不会影响其它块格式化上下文中元素的布局，并且清除浮动只能清除同一块格式化上下文中在它前面的元素的浮动。</p>
+<h2 id="功能1：爸爸管儿子"><a href="#功能1：爸爸管儿子" class="headerlink" title="功能1：爸爸管儿子"></a>功能1：爸爸管儿子</h2><p>用 BFC 包住浮动元素。(这 TM 不是清除浮动，.clearfix 才是清除浮动）<br><a href="http://js.jirengu.com/rozaxufetu/1/edit?html,css,output" target="_blank" rel="noopener">http://js.jirengu.com/rozaxufetu/1/edit?html,css,output</a></p>
+<h2 id="功能2：兄弟之间划清界限"><a href="#功能2：兄弟之间划清界限" class="headerlink" title="功能2：兄弟之间划清界限"></a>功能2：兄弟之间划清界限</h2><p>用 float + div 做左右自适应布局<br><a href="http://js.jirengu.com/felikenuve/1/edit?html,css,output" target="_blank" rel="noopener">http://js.jirengu.com/felikenuve/1/edit?html,css,output</a></p>
+<h4 id="碰见CSS-bug时常常无法理解，为什么父级元素包裹不住子级元素。BFC告诉我们，是可以包裹住的。不了解时常常觉得很奇怪。加了一个属性布局全变了，不知不觉地触发了BFC。常常给小白造成困惑。了解了BFC，了解CSS。"><a href="#碰见CSS-bug时常常无法理解，为什么父级元素包裹不住子级元素。BFC告诉我们，是可以包裹住的。不了解时常常觉得很奇怪。加了一个属性布局全变了，不知不觉地触发了BFC。常常给小白造成困惑。了解了BFC，了解CSS。" class="headerlink" title="碰见CSS bug时常常无法理解，为什么父级元素包裹不住子级元素。BFC告诉我们，是可以包裹住的。不了解时常常觉得很奇怪。加了一个属性布局全变了，不知不觉地触发了BFC。常常给小白造成困惑。了解了BFC，了解CSS。"></a>碰见CSS bug时常常无法理解，为什么父级元素包裹不住子级元素。BFC告诉我们，是可以包裹住的。不了解时常常觉得很奇怪。加了一个属性布局全变了，不知不觉地触发了BFC。常常给小白造成困惑。了解了BFC，了解CSS。</h4>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/04/20/BFC学习/" data-id="cjhjzo59800018of4sfed30eh" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
   
     <article id="post-css" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -91,7 +146,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/17/css/" data-id="cjh9x2f730005i9f4f1epu34g" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/04/17/css/" data-id="cjhjzo59v00058of4e7zi1now" class="article-share-link">Share</a>
       
       
     </footer>
@@ -141,7 +196,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/23/html续之部分标签/" data-id="cjh9x2fbp0009i9f4frezgedu" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/03/23/html续之部分标签/" data-id="cjhjzo5ak00098of4wvvj9jws" class="article-share-link">Share</a>
       
       
     </footer>
@@ -172,7 +227,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/11/array/test/" data-id="cjh9x2ff8000fi9f484sta1ji" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/03/11/array/test/" data-id="cjhjzo5k4000g8of4siq2ke8p" class="article-share-link">Share</a>
       
       
     </footer>
@@ -559,7 +614,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/11/如何部署hexo博客/" data-id="cjh9x2fcs000ei9f4w7ar08vt" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/03/11/如何部署hexo博客/" data-id="cjhjzo5bd000e8of47tlfll3u" class="article-share-link">Share</a>
       
       
     </footer>
@@ -609,7 +664,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/11/md内容展示/" data-id="cjh9x2fcp000di9f4rdrp6pz0" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/03/11/md内容展示/" data-id="cjhjzo5ba000d8of4j3573t0a" class="article-share-link">Share</a>
       
       
     </footer>
@@ -654,7 +709,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/11/hello-world/" data-id="cjh9x2f830008i9f4c3xdz91o" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/03/11/hello-world/" data-id="cjhjzo5ah00088of4wfne4c89" class="article-share-link">Share</a>
       
       
     </footer>
@@ -668,7 +723,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/">&laquo; zurück</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
   </nav>
 
 </section>
@@ -685,7 +740,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archiv</h3>
+    <h3 class="widget-title">Archives</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li></ul>
     </div>
@@ -695,9 +750,13 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">letzter Beitrag</h3>
+    <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2018/05/24/异步与回调/">异步与回调</a>
+          </li>
         
           <li>
             <a href="/2018/05/17/AJAX/">AJAX</a>
@@ -713,10 +772,6 @@
         
           <li>
             <a href="/2018/05/05/jQuery入门探秘-作业/">jQuery入门探秘-作业</a>
-          </li>
-        
-          <li>
-            <a href="/2018/05/02/DOM事件模型/">DOM事件模型</a>
           </li>
         
       </ul>
