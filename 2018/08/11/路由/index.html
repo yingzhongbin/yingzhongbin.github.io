@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>路由· | 应忠彬的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="1.什么是路由简单举例说明，假如我们有一台提供 Web 服务的服务器的网络地址是：10.0.0.1，而该 Web 服务又提供了三个可供用户访问的页面，其页面 URI 分别是： http://10.0.0.1/   http://10.0.0.1/about   http://10.0.0.1/concat   那么其路径就分别是 /，/about，/concat。   当用户使用 http://1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="路由·">
+<meta property="og:url" content="http://yoursite.com/2018/08/11/路由/index.html">
+<meta property="og:site_name" content="应忠彬的博客">
+<meta property="og:description" content="1.什么是路由简单举例说明，假如我们有一台提供 Web 服务的服务器的网络地址是：10.0.0.1，而该 Web 服务又提供了三个可供用户访问的页面，其页面 URI 分别是： http://10.0.0.1/   http://10.0.0.1/about   http://10.0.0.1/concat   那么其路径就分别是 /，/about，/concat。   当用户使用 http://1">
+<meta property="og:updated_time" content="2018-08-11T08:24:32.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="路由·">
+<meta name="twitter:description" content="1.什么是路由简单举例说明，假如我们有一台提供 Web 服务的服务器的网络地址是：10.0.0.1，而该 Web 服务又提供了三个可供用户访问的页面，其页面 URI 分别是： http://10.0.0.1/   http://10.0.0.1/about   http://10.0.0.1/concat   那么其路径就分别是 /，/about，/concat。   当用户使用 http://1">
+  
+    <link rel="alternate" href="/atom.xml" title="应忠彬的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">应忠彬的博客</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-路由" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/08/11/路由/" class="article-date">
+  <time datetime="2018-08-11T08:23:59.000Z" itemprop="datePublished">2018-08-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      路由·
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="1-什么是路由"><a href="#1-什么是路由" class="headerlink" title="1.什么是路由"></a>1.什么是路由</h1><pre><code>简单举例说明，假如我们有一台提供 Web 服务的服务器的网络地址是：10.0.0.1，而该 Web 服务又提供了三个可供用户访问的页面，其页面 URI 分别是：
+http://10.0.0.1/  
+http://10.0.0.1/about  
+http://10.0.0.1/concat  
+那么其路径就分别是 /，/about，/concat。  
+当用户使用 http://10.0.0.1/about 来访问该页面时，Web 服务会接收到这个请求，然后会解析 URL 中的路径 /about。在 Web 服务的程序中，该路径对应着相应的处理逻辑，程序会把请求交给路径所对应的处理逻辑，这样就完成了一次「路由分发」，这个分发就是通过「路由」来完成的。  
+以前路由都是后台做的，通过用户请求的url导航到具体的html页面，前端路由就是通过配置js文件，把这个工作拿到前端来做。  
+简单的说，路由是根据不同的 url 地址展示不同的内容或页面。
+</code></pre><p>#2.    路由的作用<br>    路由的作用就是通过对用户访问的路径进行判断，将其发送到对应的处理请求逻辑上。</p>
+<p>#3.    Vue 如何实现路由及其相关代码<br>     Vue官网已经有关于路由（Router）的详细代码介绍。我将根据官网的代码介绍其实现原理。<br>首先，引入vue.js和vue的vue-router文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=&quot;https://unpkg.com/vue/dist/vue.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script src=&quot;https://unpkg.com/vue-router/dist/vue-router.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
+<p>html代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;app&quot;&gt;</span><br><span class="line">    &lt;h1&gt;Hello App!&lt;/h1&gt;</span><br><span class="line">    &lt;p&gt;</span><br><span class="line">        &lt;router-link to=&quot;/tab1&quot;&gt;Go to tab1&lt;/router-link&gt;</span><br><span class="line">        &lt;router-link to=&quot;/tab2&quot;&gt;Go to tab2&lt;/router-link&gt;</span><br><span class="line">    &lt;/p&gt;</span><br><span class="line">    &lt;router-view&gt;&lt;/router-view&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure></p>
+<p>js代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">const tab1 = &#123; template: &apos;&lt;div&gt;content 1&lt;/div&gt;&apos; &#125;</span><br><span class="line">const tab2 = &#123; template: &apos;&lt;div&gt;content 2&lt;/div&gt;&apos; &#125;</span><br><span class="line"></span><br><span class="line">const routes = [</span><br><span class="line">    &#123; path: &apos;/tab1&apos;, component: tab1 &#125;,</span><br><span class="line">    &#123; path: &apos;/tab2&apos;, component: tab2 &#125;</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">const router = new VueRouter(&#123;</span><br><span class="line">    routes // (缩写) 相当于 routes: routes</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">const app = new Vue(&#123;</span><br><span class="line">    router</span><br><span class="line">&#125;).$mount(&apos;#app&apos;)</span><br></pre></td></tr></table></figure></p>
+<pre><code>总结：在HTML代码中，Vue Router 使用router-link 标签来进行路由导航。通过传入 `to` 属性指定链接。&lt;router-link&gt; 默认会被渲染成一个 `&lt;a&gt;` 标签。路由匹配到的组件将渲染在router-view标签中。
+在JS代码中，需要做如下几件事情：
+1.定义 (路由) 组件
+2.定义路由（将路由组件传入到路由中）
+3. 创建 router 实例
+4. 创建和挂载根实例
+</code></pre><h1 id="4-Vue-Router的优缺点"><a href="#4-Vue-Router的优缺点" class="headerlink" title="4.Vue Router的优缺点"></a>4.Vue Router的优缺点</h1><pre><code>Vue Router并不涉及后端。在前端进行路由分发时，需要后端对相应的路径进行放宽处理。  
+比如：http://127.0.0.1:8081/tab0中，tab0 只是一个标记，在分享时，服务器需要放松对该路径的响应，直接返回index.html。但Vue Router并不需要后端进行任何处理，这为优点。
+举例：Vue Router的链接响应处理为&lt;a href=&quot;#/tab1&quot; class=&quot;router-link-exact-active router-link-active&quot;&gt;Go to tab1&lt;/a&gt;。实际上是根据hash的不同调动页面状态。如果页面中有其他锚点的话，原有页面状态就很容易丢失了。也即为缺点。如果有其他需求需要规避这个缺点，可以通过修改pathname来记录页面状态。
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/08/11/路由/" data-id="cjkp5my9m000iz6f4xjs9rrj8" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/08/08/Vue的三种通信方法/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">Vue的三种通信方法</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/08/11/路由/">路由·</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/08/Vue的三种通信方法/">Vue的三种通信方法</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/09/icon的各种做法/">icon的各种做法</a>
+          </li>
+        
+          <li>
+            <a href="/2018/05/25/登录注册与Cookie/">登录注册与Cookie</a>
+          </li>
+        
+          <li>
+            <a href="/2018/05/24/异步与回调/">异步与回调</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 应忠彬<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

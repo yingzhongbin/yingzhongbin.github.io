@@ -61,6 +61,63 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-路由" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/08/11/路由/" class="article-date">
+  <time datetime="2018-08-11T08:23:59.000Z" itemprop="datePublished">2018-08-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/11/路由/">路由·</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="1-什么是路由"><a href="#1-什么是路由" class="headerlink" title="1.什么是路由"></a>1.什么是路由</h1><pre><code>简单举例说明，假如我们有一台提供 Web 服务的服务器的网络地址是：10.0.0.1，而该 Web 服务又提供了三个可供用户访问的页面，其页面 URI 分别是：
+http://10.0.0.1/  
+http://10.0.0.1/about  
+http://10.0.0.1/concat  
+那么其路径就分别是 /，/about，/concat。  
+当用户使用 http://10.0.0.1/about 来访问该页面时，Web 服务会接收到这个请求，然后会解析 URL 中的路径 /about。在 Web 服务的程序中，该路径对应着相应的处理逻辑，程序会把请求交给路径所对应的处理逻辑，这样就完成了一次「路由分发」，这个分发就是通过「路由」来完成的。  
+以前路由都是后台做的，通过用户请求的url导航到具体的html页面，前端路由就是通过配置js文件，把这个工作拿到前端来做。  
+简单的说，路由是根据不同的 url 地址展示不同的内容或页面。
+</code></pre><p>#2.    路由的作用<br>    路由的作用就是通过对用户访问的路径进行判断，将其发送到对应的处理请求逻辑上。</p>
+<p>#3.    Vue 如何实现路由及其相关代码<br>     Vue官网已经有关于路由（Router）的详细代码介绍。我将根据官网的代码介绍其实现原理。<br>首先，引入vue.js和vue的vue-router文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=&quot;https://unpkg.com/vue/dist/vue.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script src=&quot;https://unpkg.com/vue-router/dist/vue-router.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
+<p>html代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;app&quot;&gt;</span><br><span class="line">    &lt;h1&gt;Hello App!&lt;/h1&gt;</span><br><span class="line">    &lt;p&gt;</span><br><span class="line">        &lt;router-link to=&quot;/tab1&quot;&gt;Go to tab1&lt;/router-link&gt;</span><br><span class="line">        &lt;router-link to=&quot;/tab2&quot;&gt;Go to tab2&lt;/router-link&gt;</span><br><span class="line">    &lt;/p&gt;</span><br><span class="line">    &lt;router-view&gt;&lt;/router-view&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure></p>
+<p>js代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">const tab1 = &#123; template: &apos;&lt;div&gt;content 1&lt;/div&gt;&apos; &#125;</span><br><span class="line">const tab2 = &#123; template: &apos;&lt;div&gt;content 2&lt;/div&gt;&apos; &#125;</span><br><span class="line"></span><br><span class="line">const routes = [</span><br><span class="line">    &#123; path: &apos;/tab1&apos;, component: tab1 &#125;,</span><br><span class="line">    &#123; path: &apos;/tab2&apos;, component: tab2 &#125;</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">const router = new VueRouter(&#123;</span><br><span class="line">    routes // (缩写) 相当于 routes: routes</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">const app = new Vue(&#123;</span><br><span class="line">    router</span><br><span class="line">&#125;).$mount(&apos;#app&apos;)</span><br></pre></td></tr></table></figure></p>
+<pre><code>总结：在HTML代码中，Vue Router 使用router-link 标签来进行路由导航。通过传入 `to` 属性指定链接。&lt;router-link&gt; 默认会被渲染成一个 `&lt;a&gt;` 标签。路由匹配到的组件将渲染在router-view标签中。
+在JS代码中，需要做如下几件事情：
+1.定义 (路由) 组件
+2.定义路由（将路由组件传入到路由中）
+3. 创建 router 实例
+4. 创建和挂载根实例
+</code></pre><h1 id="4-Vue-Router的优缺点"><a href="#4-Vue-Router的优缺点" class="headerlink" title="4.Vue Router的优缺点"></a>4.Vue Router的优缺点</h1><pre><code>Vue Router并不涉及后端。在前端进行路由分发时，需要后端对相应的路径进行放宽处理。  
+比如：http://127.0.0.1:8081/tab0中，tab0 只是一个标记，在分享时，服务器需要放松对该路径的响应，直接返回index.html。但Vue Router并不需要后端进行任何处理，这为优点。
+举例：Vue Router的链接响应处理为&lt;a href=&quot;#/tab1&quot; class=&quot;router-link-exact-active router-link-active&quot;&gt;Go to tab1&lt;/a&gt;。实际上是根据hash的不同调动页面状态。如果页面中有其他锚点的话，原有页面状态就很容易丢失了。也即为缺点。如果有其他需求需要规避这个缺点，可以通过修改pathname来记录页面状态。
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/08/11/路由/" data-id="cjkp5my9m000iz6f4xjs9rrj8" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Vue的三种通信方法" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/08/08/Vue的三种通信方法/" class="article-date">
@@ -104,7 +161,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/08/Vue的三种通信方法/" data-id="cjkkx9pj00003tlf4oh34702z" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/08/08/Vue的三种通信方法/" data-id="cjkp5my750004z6f4pikpjymc" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -214,7 +271,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/06/09/icon的各种做法/" data-id="cjkkx9pk6000btlf4k0welant" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/06/09/icon的各种做法/" data-id="cjkp5my84000bz6f4r7at2r2k" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -265,7 +322,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/05/25/登录注册与Cookie/" data-id="cjkkx9pkd000htlf4etm7dzj8" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/05/25/登录注册与Cookie/" data-id="cjkp5my9l000hz6f4sywujobb" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -314,7 +371,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/05/24/异步与回调/" data-id="cjkkx9pkc000gtlf4mr597ziv" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/05/24/异步与回调/" data-id="cjkp5my9j000gz6f423ad08g1" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -363,7 +420,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/05/17/AJAX/" data-id="cjkkx9pii0000tlf4n376o7yr" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/05/17/AJAX/" data-id="cjkp5my6g0000z6f4gsyl9hj4" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -400,7 +457,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/05/13/JSONP/" data-id="cjkkx9pj50004tlf472419vt1" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/05/13/JSONP/" data-id="cjkp5my6y0003z6f4ugi7akmx" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -436,7 +493,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/05/09/js杂七杂八/" data-id="cjkkx9pka000ftlf407p29iab" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/05/09/js杂七杂八/" data-id="cjkp5my8p000ez6f4sbv8etlq" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -479,7 +536,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/05/05/jQuery入门探秘-作业/" data-id="cjkkx9pk7000ctlf4iyuw236m" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/05/05/jQuery入门探秘-作业/" data-id="cjkp5my8a000cz6f4b5aote9o" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -524,50 +581,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/05/02/DOM事件模型/" data-id="cjkkx9piv0002tlf4ahvyvwco" class="article-share-link">Teilen</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-jQuery入门探秘" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/04/27/jQuery入门探秘/" class="article-date">
-  <time datetime="2018-04-27T13:00:39.000Z" itemprop="datePublished">2018-04-27</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/27/jQuery入门探秘/">jQuery入门探秘</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="以前自学过jQuery，也碰过jQuery和dom的互相转化问题，但是并没有弄清楚。下面，来一步步探究jQuery的内在机制到底是什么？看着-“xxx”-yyy总觉得有许多疑惑。那么，就一步步来解除疑问吧。"><a href="#以前自学过jQuery，也碰过jQuery和dom的互相转化问题，但是并没有弄清楚。下面，来一步步探究jQuery的内在机制到底是什么？看着-“xxx”-yyy总觉得有许多疑惑。那么，就一步步来解除疑问吧。" class="headerlink" title="以前自学过jQuery，也碰过jQuery和dom的互相转化问题，但是并没有弄清楚。下面，来一步步探究jQuery的内在机制到底是什么？看着$(“xxx”).yyy总觉得有许多疑惑。那么，就一步步来解除疑问吧。"></a>以前自学过jQuery，也碰过jQuery和dom的互相转化问题，但是并没有弄清楚。下面，来一步步探究jQuery的内在机制到底是什么？看着<code>$(“xxx”).yyy</code>总觉得有许多疑惑。那么，就一步步来解除疑问吧。</h4><h4 id="首先，先写出一个API"><a href="#首先，先写出一个API" class="headerlink" title="首先，先写出一个API"></a>首先，先写出一个API</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">function getSiblings(node)&#123;</span><br><span class="line">  var allChildren = node.parentNode.children</span><br><span class="line"></span><br><span class="line">  var array = &#123;</span><br><span class="line">    length: 0</span><br><span class="line">  &#125;</span><br><span class="line">  for (let i = 0; i &lt; allChildren.length; i++) &#123;</span><br><span class="line">    if (allChildren[i] !== node) &#123;</span><br><span class="line">      array[array.length] = allChildren[i]</span><br><span class="line">      array.length += 1</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return array</span><br><span class="line">&#125;</span><br><span class="line">console.dir(getSiblings(item3))</span><br></pre></td></tr></table></figure>
-<h4 id="这些简单的代码，只要对js有些了解都能看懂。"><a href="#这些简单的代码，只要对js有些了解都能看懂。" class="headerlink" title="这些简单的代码，只要对js有些了解都能看懂。"></a>这些简单的代码，只要对js有些了解都能看懂。</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//写出一个命名空间</span><br><span class="line">window.dom = &#123;&#125;</span><br><span class="line">dom.getSiblings = getSiblings;</span><br><span class="line">console.log(dom.getSiblings(item3))</span><br></pre></td></tr></table></figure>
-<h4 id="开辟一个命名空间能将所有API绑到一处。但是还是与jQuery不同，怎么办呢。"><a href="#开辟一个命名空间能将所有API绑到一处。但是还是与jQuery不同，怎么办呢。" class="headerlink" title="开辟一个命名空间能将所有API绑到一处。但是还是与jQuery不同，怎么办呢。"></a>开辟一个命名空间能将所有API绑到一处。但是还是与jQuery不同，怎么办呢。</h4><h4 id="而且，getSiblings-item3-看起来更方便。"><a href="#而且，getSiblings-item3-看起来更方便。" class="headerlink" title="而且，getSiblings(item3)看起来更方便。"></a>而且，<code>getSiblings(item3)</code>看起来更方便。</h4><h4 id="那么，我们可以在Node的原型上绑定getSiblings-方法"><a href="#那么，我们可以在Node的原型上绑定getSiblings-方法" class="headerlink" title="那么，我们可以在Node的原型上绑定getSiblings()方法"></a>那么，我们可以在Node的原型上绑定getSiblings()方法</h4><h4 id="如下：（需要使用this）"><a href="#如下：（需要使用this）" class="headerlink" title="如下：（需要使用this）"></a>如下：（需要使用this）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Node.prototype.getSiblings = function()&#123;</span><br><span class="line">  var allChildren = this.parentNode.children</span><br><span class="line">  var array = &#123;</span><br><span class="line">    length: 0</span><br><span class="line">  &#125;</span><br><span class="line">  for (let i = 0; i &lt; allChildren.length; i++) &#123;</span><br><span class="line">    if (allChildren[i] !== this) &#123;</span><br><span class="line">      array[array.length] = allChildren[i]</span><br><span class="line">      array.length += 1</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return array</span><br><span class="line">&#125;</span><br><span class="line">Node.prototype.addClass = function (classes) &#123;</span><br><span class="line">  classes.forEach( (value) =&gt; this.classList.add(value) )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="看起来是不是顺眼很多了"><a href="#看起来是不是顺眼很多了" class="headerlink" title="看起来是不是顺眼很多了"></a>看起来是不是顺眼很多了</h4><h4 id="但是这样随便改变原型链也有潜在的风险"><a href="#但是这样随便改变原型链也有潜在的风险" class="headerlink" title="但是这样随便改变原型链也有潜在的风险"></a>但是这样随便改变原型链也有潜在的风险</h4><h4 id="所以，继续使用命名空间方案-但是改动了一下"><a href="#所以，继续使用命名空间方案-但是改动了一下" class="headerlink" title="所以，继续使用命名空间方案,但是改动了一下"></a>所以，继续使用命名空间方案,但是改动了一下</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">function Node2(node)&#123;</span><br><span class="line">     return &#123;</span><br><span class="line">         element: node,</span><br><span class="line">         getSiblings: function()&#123;</span><br><span class="line"></span><br><span class="line">         &#125;,</span><br><span class="line">         addClass: function()&#123;</span><br><span class="line"></span><br><span class="line">         &#125;</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;</span><br><span class="line"> let node =document.getElementById(&apos;x&apos;)</span><br><span class="line"> let node2 = Node2(node)</span><br><span class="line"> node2.getSiblings()</span><br><span class="line"> node2.addClass()</span><br></pre></td></tr></table></figure>
-<h3 id="把-Node2-改个名字吧"><a href="#把-Node2-改个名字吧" class="headerlink" title="把 Node2 改个名字吧"></a>把 Node2 改个名字吧</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">function jQuery(node)&#123;</span><br><span class="line">    return &#123;</span><br><span class="line">        element: node,</span><br><span class="line">        getSiblings: function()&#123;</span><br><span class="line"></span><br><span class="line">        &#125;,</span><br><span class="line">        addClass: function()&#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">let node =document.getElementById(&apos;x&apos;)</span><br><span class="line">let node2 =jQuery(node)</span><br><span class="line">node2.getSiblings()</span><br><span class="line">node2.addClass()</span><br></pre></td></tr></table></figure>
-<h3 id="添加完整内容"><a href="#添加完整内容" class="headerlink" title="添加完整内容"></a>添加完整内容</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">function jQuery(nodeOrSelector)&#123;</span><br><span class="line">    let node;</span><br><span class="line">    if(typeof nodeOrSelector === &quot;string&quot;)&#123;</span><br><span class="line">        node = document.querySelector(nodeOrSelector);</span><br><span class="line">        </span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        node = nodeOrSelector;</span><br><span class="line">    &#125;</span><br><span class="line">    console.log(node);</span><br><span class="line">    return &#123;</span><br><span class="line">        element: node,</span><br><span class="line">        getSiblings: function()&#123;</span><br><span class="line">            console.log(node.parentNode.children)</span><br><span class="line">            var allChildren = node.parentNode.children</span><br><span class="line">            var array = &#123;</span><br><span class="line">                length: 0</span><br><span class="line">            &#125;</span><br><span class="line">            for (let i = 0; i &lt; allChildren.length; i++) &#123;</span><br><span class="line">                if (allChildren[i] !== this) &#123;</span><br><span class="line">                array[array.length] = allChildren[i]</span><br><span class="line">                array.length += 1</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            return array</span><br><span class="line">        &#125;,</span><br><span class="line">        addClass: function(classes)&#123;</span><br><span class="line">            classes.forEach((value) =&gt; node.classList.add(value)</span><br><span class="line">            );</span><br><span class="line">        &#125;,</span><br><span class="line">        setText:function(text)&#123;</span><br><span class="line">            node.textContent = text;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">let node = jQuery(&quot;ul li:nth-child(3)&quot;)</span><br><span class="line">console.log(node.getSiblings())</span><br><span class="line">node.addClass([&quot;red&quot;,&quot;green&quot;])</span><br><span class="line">node.setText(&quot;hi&quot;)</span><br></pre></td></tr></table></figure>
-<h3 id="再给个缩写吧-alias"><a href="#再给个缩写吧-alias" class="headerlink" title="再给个缩写吧 alias"></a>再给个缩写吧 alias</h3><h4 id="window-jQuery"><a href="#window-jQuery" class="headerlink" title="window.$ = jQuery"></a><code>window.$ = jQuery</code></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">window.$ = jQuery</span><br><span class="line">node = $(&quot;ul li:nth-child(3)&quot;)</span><br><span class="line">console.log(node.getSiblings())</span><br><span class="line">node.addClass([&quot;red&quot;,&quot;green&quot;])</span><br><span class="line">node.setText(&quot;hi&quot;)</span><br></pre></td></tr></table></figure>
-<h4 id="就可以看到jQuery的基本面貌了"><a href="#就可以看到jQuery的基本面貌了" class="headerlink" title="就可以看到jQuery的基本面貌了"></a>就可以看到jQuery的基本面貌了</h4><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><h5 id="使用jQuery库后，会将原来的元素包装一番并返回。返回的对象附带许多API，这就是jQuery的大致面目。"><a href="#使用jQuery库后，会将原来的元素包装一番并返回。返回的对象附带许多API，这就是jQuery的大致面目。" class="headerlink" title="使用jQuery库后，会将原来的元素包装一番并返回。返回的对象附带许多API，这就是jQuery的大致面目。"></a>使用jQuery库后，会将原来的元素包装一番并返回。返回的对象附带许多API，这就是jQuery的大致面目。</h5>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/27/jQuery入门探秘/" data-id="cjkkx9pk8000dtlf4vbe1pn81" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/05/02/DOM事件模型/" data-id="cjkp5my6u0002z6f4ojea9rvm" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -581,7 +595,7 @@
 
   <nav id="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">weiter &raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">weiter &raquo;</a>
   </nav>
 
 </section>
@@ -613,6 +627,10 @@
       <ul>
         
           <li>
+            <a href="/2018/08/11/路由/">路由·</a>
+          </li>
+        
+          <li>
             <a href="/2018/08/08/Vue的三种通信方法/">Vue的三种通信方法</a>
           </li>
         
@@ -626,10 +644,6 @@
         
           <li>
             <a href="/2018/05/24/异步与回调/">异步与回调</a>
-          </li>
-        
-          <li>
-            <a href="/2018/05/17/AJAX/">AJAX</a>
           </li>
         
       </ul>
