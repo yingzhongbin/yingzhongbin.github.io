@@ -50,7 +50,7 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -60,6 +60,51 @@
 </header>
       <div class="outer">
         <section id="main">
+  
+    <article id="post-DOM事件模型" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/02/DOM事件模型/" class="article-date">
+  <time datetime="2018-05-02T01:30:00.000Z" itemprop="datePublished">2018-05-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/02/DOM事件模型/">DOM事件模型</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="全局变量可耻，不能用。"><a href="#全局变量可耻，不能用。" class="headerlink" title="全局变量可耻，不能用。"></a>全局变量可耻，不能用。</h4><h4 id="不用全局对象，用局部变量"><a href="#不用全局对象，用局部变量" class="headerlink" title="不用全局对象，用局部变量"></a>不用全局对象，用局部变量</h4><h4 id="声明函数立即调用，即为局部变量"><a href="#声明函数立即调用，即为局部变量" class="headerlink" title="声明函数立即调用，即为局部变量"></a>声明函数立即调用，即为局部变量</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">function()&#123;</span><br><span class="line">&#125;()</span><br></pre></td></tr></table></figure>
+<h4 id="但是浏览器会报错，有几种改法"><a href="#但是浏览器会报错，有几种改法" class="headerlink" title="但是浏览器会报错，有几种改法"></a>但是浏览器会报错，有几种改法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">1.</span><br><span class="line">(function()&#123;</span><br><span class="line">&#125;())</span><br><span class="line">2.</span><br><span class="line">(function()&#123;</span><br><span class="line">&#125;)()</span><br><span class="line">3.</span><br><span class="line">+function()&#123;</span><br><span class="line">&#125;()</span><br><span class="line">4.</span><br><span class="line">-function()&#123;</span><br><span class="line">&#125;()</span><br><span class="line">5.</span><br><span class="line">!function()&#123;</span><br><span class="line">&#125;()</span><br><span class="line">6. </span><br><span class="line">~function()&#123;</span><br><span class="line">&#125;()</span><br><span class="line">ES6</span><br><span class="line">&#123;</span><br><span class="line">	let parent = </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="let逃不出-的范围，在-之外无法调用let声明的变量"><a href="#let逃不出-的范围，在-之外无法调用let声明的变量" class="headerlink" title="let逃不出{ }的范围，在{}之外无法调用let声明的变量"></a>let逃不出{ }的范围，在{}之外无法调用let声明的变量</h4><h4 id="HTML的onclick里选择B-C写法正确，JS里的onclick里选择A写法正确"><a href="#HTML的onclick里选择B-C写法正确，JS里的onclick里选择A写法正确" class="headerlink" title="HTML的onclick里选择B,C写法正确，JS里的onclick里选择A写法正确"></a>HTML的onclick里选择B,C写法正确，JS里的onclick里选择A写法正确</h4><p><img src="/2018/05/02/DOM事件模型/i1.png" alt=""></p>
+<h2 id="DOM事件"><a href="#DOM事件" class="headerlink" title="DOM事件"></a>DOM事件</h2><h4 id="DOM0是W3C还没有设定标准的民间事件集合-比如："><a href="#DOM0是W3C还没有设定标准的民间事件集合-比如：" class="headerlink" title="DOM0是W3C还没有设定标准的民间事件集合 比如："></a>DOM0是W3C还没有设定标准的民间事件集合 比如：</h4><ul>
+<li>onclick </li>
+<li>onerror</li>
+<li>onload </li>
+<li>onmouseenter<h4 id="但这种属性设定具有唯一性，可被覆盖"><a href="#但这种属性设定具有唯一性，可被覆盖" class="headerlink" title="但这种属性设定具有唯一性，可被覆盖"></a>但这种属性设定具有唯一性，可被覆盖</h4><img src="/2018/05/02/DOM事件模型/i2.png" alt=""><h4 id="到了DOM2-加了addEventListener"><a href="#到了DOM2-加了addEventListener" class="headerlink" title="到了DOM2 加了addEventListener"></a>到了DOM2 加了addEventListener</h4><img src="/2018/05/02/DOM事件模型/i3.png" alt=""><h4 id="addEventListener的添加是队列式的，不会产生覆盖"><a href="#addEventListener的添加是队列式的，不会产生覆盖" class="headerlink" title="addEventListener的添加是队列式的，不会产生覆盖"></a>addEventListener的添加是队列式的，不会产生覆盖</h4><h4 id="jQuery-里的one-的理解可参照下图"><a href="#jQuery-里的one-的理解可参照下图" class="headerlink" title="jQuery 里的one()的理解可参照下图"></a>jQuery 里的one()的理解可参照下图</h4><img src="/2018/05/02/DOM事件模型/i4.png" alt=""><h4 id="事件冒泡和事件捕获"><a href="#事件冒泡和事件捕获" class="headerlink" title="事件冒泡和事件捕获"></a>事件冒泡和事件捕获</h4><img src="/2018/05/02/DOM事件模型/i6.png" alt=""><br><img src="/2018/05/02/DOM事件模型/i5.png" alt=""><h4 id="直接触发到点击元素本身时，触发与代码顺序有关"><a href="#直接触发到点击元素本身时，触发与代码顺序有关" class="headerlink" title="直接触发到点击元素本身时，触发与代码顺序有关"></a>直接触发到点击元素本身时，触发与代码顺序有关</h4><img src="/2018/05/02/DOM事件模型/i6.png" alt=""><br><img src="/2018/05/02/DOM事件模型/i7.png" alt=""></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/05/02/DOM事件模型/" data-id="cjlt660ur00022wf4sdjfle3u" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
   
     <article id="post-jQuery入门探秘" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -94,7 +139,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/27/jQuery入门探秘/" data-id="cjkp5otau000d10f4jsxhzrl9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/04/27/jQuery入门探秘/" data-id="cjlt660wr000f2wf4k8b855dt" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -138,7 +183,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/27/domAPI/" data-id="cjkp5ota7000710f4suabluls" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/04/27/domAPI/" data-id="cjlt660vh00082wf4f9auu9cp" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -179,7 +224,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/25/function/" data-id="cjkp5otaa000810f4695jrzy5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/04/25/function/" data-id="cjlt660ve00072wf4qo23tqcm" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -222,7 +267,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/25/array/" data-id="cjkp5ota3000610f47fce36q5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/04/25/array/" data-id="cjlt660v500052wf45gk91ffs" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -277,7 +322,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/20/BFC学习/" data-id="cjkp5ot9a000110f4bn0ep3ag" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/04/20/BFC学习/" data-id="cjlt660um00012wf4nvszf65t" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -317,7 +362,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/17/css/" data-id="cjkp5ot9t000410f4vlxo1260" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/04/17/css/" data-id="cjlt660va00062wf48sjmmauv" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -367,7 +412,38 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/23/html续之部分标签/" data-id="cjkp5otaj000a10f4k0gqt3nd" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/03/23/html续之部分标签/" data-id="cjlt660vs000a2wf4iz4lgaym" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-array/test" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/03/11/array/test/" class="article-date">
+  <time datetime="2018-03-11T10:59:51.000Z" itemprop="datePublished">2018-03-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#css布局<br>———<br>css布局由横向布局和纵向布局构成。横向布局中常常有纵向布局。<br><img src="file:///Users/yingzhongbin/Desktop/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-03-16%20%E4%B8%8B%E5%8D%888.44.14.png" alt=""></p>
+<p>#html标签</p>
+<p>###iframe标签（用的很少）<br>’‘’</p>
+<p><style><br>iframe{<br>width: 100%;<br>height: 400px;<br>}<br></style></p>
+<p><iframe src="http://qq.com" frameborder="0"></iframe><br>‘’‘</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/03/11/array/test/" data-id="cjlt660z6000l2wf4dcutlpv3" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -754,88 +830,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/11/如何部署hexo博客/" data-id="cjkp5otbu000j10f4tb1d93na" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-array/test" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/03/11/array/test/" class="article-date">
-  <time datetime="2018-03-11T10:59:51.000Z" itemprop="datePublished">2018-03-11</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>#css布局<br>———<br>css布局由横向布局和纵向布局构成。横向布局中常常有纵向布局。<br><img src="file:///Users/yingzhongbin/Desktop/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-03-16%20%E4%B8%8B%E5%8D%888.44.14.png" alt=""></p>
-<p>#html标签</p>
-<p>###iframe标签（用的很少）<br>’‘’</p>
-<p><style><br>iframe{<br>width: 100%;<br>height: 400px;<br>}<br></style></p>
-<p><iframe src="http://qq.com" frameborder="0"></iframe><br>‘’‘</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/11/array/test/" data-id="cjkp5otdh000k10f4ezl8cv04" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-md内容展示" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/03/11/md内容展示/" class="article-date">
-  <time datetime="2018-03-11T10:58:26.000Z" itemprop="datePublished">2018-03-11</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/11/md内容展示/">md内容展示</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Heading-1-有下划线"><a href="#Heading-1-有下划线" class="headerlink" title="Heading 1 (有下划线)"></a>Heading 1 (有下划线)</h1><h2 id="Heading-2"><a href="#Heading-2" class="headerlink" title="Heading 2"></a>Heading 2</h2><h3 id="Heading-3"><a href="#Heading-3" class="headerlink" title="Heading 3"></a>Heading 3</h3><h4 id="Heading-4"><a href="#Heading-4" class="headerlink" title="Heading 4"></a>Heading 4</h4><h5 id="Heading-5"><a href="#Heading-5" class="headerlink" title="Heading 5"></a>Heading 5</h5><h6 id="Heading-6"><a href="#Heading-6" class="headerlink" title="Heading 6"></a>Heading 6</h6><p><em>Italic text</em><br><strong>Bold text</strong></p>
-<ul>
-<li>List Item 1</li>
-<li>List Item 2</li>
-<li>List Item 3</li>
-</ul>
-<p><a href="http://www.baidu.com&quot;To the site&quot;" target="_blank" rel="noopener">baidu链接</a></p>
-<h1 id="this-is-the-title"><a href="#this-is-the-title" class="headerlink" title="this is the title"></a>this is the title</h1><p>Before you do this you need to review these three thing:</p>
-<ol>
-<li>this thing(有空格)</li>
-<li>that thing</li>
-<li>the other thing</li>
-</ol>
-<p>the other thing you need to know</p>
-<h2 id=""><a href="#" class="headerlink" title=""></a><img src="/2018/03/11/md内容展示/xdml.png" alt="我是图片"></h2>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/11/md内容展示/" data-id="cjkp5otb6000f10f456c77m4e" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/03/11/如何部署hexo博客/" data-id="cjlt660xo000k2wf4146s484j" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -849,7 +844,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
+    <a class="extend prev" rel="prev" href="/">&laquo; zurück</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">weiter &raquo;</a>
   </nav>
 
 </section>
@@ -866,9 +861,9 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
+    <h3 class="widget-title">Archiv</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li></ul>
     </div>
   </div>
 
@@ -876,9 +871,13 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">letzter Beitrag</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2018/09/08/http之Cookie、Session、LocalStorage、Cache-Control、ETag、Last-Modified/">http之Cookie、Session、LocalStorage、Cache-Control、ETag、Last-Modified</a>
+          </li>
         
           <li>
             <a href="/2018/08/11/路由/">路由</a>
@@ -894,10 +893,6 @@
         
           <li>
             <a href="/2018/05/25/登录注册与Cookie/">登录注册与Cookie</a>
-          </li>
-        
-          <li>
-            <a href="/2018/05/24/异步与回调/">异步与回调</a>
           </li>
         
       </ul>

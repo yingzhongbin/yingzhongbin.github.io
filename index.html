@@ -50,7 +50,7 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -60,6 +60,217 @@
 </header>
       <div class="outer">
         <section id="main">
+  
+    <article id="post-http之Cookie、Session、LocalStorage、Cache-Control、ETag、Last-Modified" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/09/08/http之Cookie、Session、LocalStorage、Cache-Control、ETag、Last-Modified/" class="article-date">
+  <time datetime="2018-09-08T07:54:04.000Z" itemprop="datePublished">2018-09-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/08/http之Cookie、Session、LocalStorage、Cache-Control、ETag、Last-Modified/">http之Cookie、Session、LocalStorage、Cache-Control、ETag、Last-Modified</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="笔记摘要"><a href="#笔记摘要" class="headerlink" title="笔记摘要"></a>笔记摘要</h3><p>cookie session cache-control都是响应头</p>
+<h5 id="请求体"><a href="#请求体" class="headerlink" title="请求体"></a>请求体</h5><p>GET /xxx HTTP/1.1<br>Host:xxx.com</p>
+<h5 id="响应体"><a href="#响应体" class="headerlink" title="响应体"></a>响应体</h5><p>HTTP/1.1 200 ok<br>Content-Type:text/html;charset=utf8<br>Content-Length:100b  </p>
+<h6 id="js发送请求代码"><a href="#js发送请求代码" class="headerlink" title="js发送请求代码"></a>js发送请求代码</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var request = new XMLHttpRequest()</span><br><span class="line">request.open(“POST”,’/xxx’)</span><br><span class="line">request.onreadystatechange = function()&#123;</span><br><span class="line">	if(request.readyState === 4 &amp;&amp; request.status ===200)&#123;</span><br><span class="line">		响应成功</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">// 发送请求</span><br><span class="line"> request.send(“a=1&amp;b=2”)</span><br></pre></td></tr></table></figure>
+<p>cookie就是入门票  每来一次都要出示一次</p>
+<h3 id="Cookie特点"><a href="#Cookie特点" class="headerlink" title="Cookie特点"></a>Cookie特点</h3><p>1.服务器通过Set-Cookie 响应头设置Cookie<br>2.浏览器得到Cookie之后，每次请求都要带上Cookie<br>3.服务器读取Cookie就知道登录用户的信息  </p>
+<h6 id="Cookie相关问题"><a href="#Cookie相关问题" class="headerlink" title="Cookie相关问题"></a>Cookie相关问题</h6><p>1.我在Chrome登录了得到Cookie，用Safar访问，Safari会带上Cookie吗<br>NO  </p>
+<p>2.Cookie存在哪？<br>存在系统的一个文件里 </p>
+<p>3.Cookie能作假吗？<br>可以    </p>
+<p>4.Cookie有有效期吗？<br>默认有效期20分钟左右,后端可以强制设置有效期  </p>
+<h4 id="登录注册的Cookie设定过程"><a href="#登录注册的Cookie设定过程" class="headerlink" title="登录注册的Cookie设定过程"></a>登录注册的Cookie设定过程</h4><table>
+<thead>
+<tr>
+<th>服务器</th>
+<th>过程</th>
+<th>用户</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td>开始注册</td>
+</tr>
+<tr>
+<td></td>
+<td>&lt;==发送POST请求，数据为email,passpword,password_confirm</td>
+<td></td>
+</tr>
+<tr>
+<td>将数据email，passpword写入数据库</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>注册成功 ==&gt;</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>开始登录</td>
+</tr>
+<tr>
+<td></td>
+<td>&lt;==发送POST请求，数据为email,passpword</td>
+<td></td>
+</tr>
+<tr>
+<td>验证成功</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>SetCookie 数据为email ==&gt;</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>打开首页</td>
+</tr>
+<tr>
+<td></td>
+<td>&lt;==发送GET请求，会带上Cookie里的数据email</td>
+<td></td>
+</tr>
+<tr>
+<td>读取Cookie里的数据email，找到数据库里的用户信息，返回index.html,并将index.html里需要的用户信息替换掉</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>使用Cookie过程<br>1.Set-Cookie<br>2.每次请求相同域名时带上Cookie  </p>
+<p>用途：<br>登录成功</p>
+<p>电脑上设置了Cookie，每次访问首页时，会带上Cookie发送请求。<br>服务器读取Cookie。如果有信息，去数据库寻找用户信息返回。</p>
+<p>Cookie有一个缺点，可以被篡改。所以就引入了session</p>
+<p>什么是Session?<br>服务器通过Cookie给用户一个sessionId，sessionId对应服务器里的一小块内存。每次用户访问服务器时，服务器就通过sessionId读取对应的Session，得到用户的隐私信息。</p>
+<p>Cookie  </p>
+<ol>
+<li>服务器通过 Set-Cookie 头给客户端一串字符串  </li>
+<li>客户端每次访问相同域名的网页时，必须带上这段字符串  </li>
+<li>客户端要在一段时间内保存这个Cookie  </li>
+<li>Cookie 默认在用户关闭页面后就失效，后台代码可以任意设置 Cookie 的过期时间  </li>
+<li>大小大概在 4kb 以内 </li>
+</ol>
+<p>Session（不翻译）  </p>
+<ol>
+<li>将 SessionID（随机数）通过 Cookie 发给客户端  </li>
+<li>客户端访问服务器时，服务器读取 SessionID  </li>
+<li>服务器有一块内存（哈希表）保存了所有 session  </li>
+<li>通过 SessionID 我们可以得到对应用户的隐私信息，如 id、email  </li>
+<li>这块内存（哈希表）就是服务器上的所有 session </li>
+</ol>
+<p>LocalStorage    </p>
+<ol>
+<li>LocalStorage 跟 HTTP 无关  </li>
+<li>HTTP 不会带上 LocalStorage 的值  </li>
+<li>只有相同域名的页面才能互相读取 LocalStorage（没有同源那么严格）  </li>
+<li>每个域名 localStorage 最大存储量为 5Mb 左右（每个浏览器不一样）  </li>
+<li>常用场景：记录有没有提示过用户（没有用的信息，不能记录密码）  </li>
+<li>LocalStorage 永久有效，除非用户清理缓存  </li>
+</ol>
+<p>SessionStorage（会话存储）  </p>
+<ol>
+<li>1、2、3、4 同上    </li>
+<li>5：SessionStorage 在用户关闭页面（会话结束）后就失效。</li>
+</ol>
+<p>localStorage是持久化存储，用户不清空，不会过期<br>localStorage是html5里的API</p>
+<h6 id="localStorage-API"><a href="#localStorage-API" class="headerlink" title="localStorage API"></a>localStorage API</h6><p>localStorage.setItem(key,value)<br>localStorage.getItem(key)<br>localStorage.clear()  </p>
+<h6 id="sessionStorage-API"><a href="#sessionStorage-API" class="headerlink" title="sessionStorage API"></a>sessionStorage API</h6><p>sessionStorage.setItem(key,value)<br>sessionStorage.getItem(key)<br>sessionStorage.removeItem(key)  </p>
+<h6 id="Cookie-Session什么关系？"><a href="#Cookie-Session什么关系？" class="headerlink" title="Cookie Session什么关系？"></a>Cookie Session什么关系？</h6><p>Session是基于Cookie实现的<br>Cookie localStorage有什么区别？<br>Cookie会被发送给服务器，localStorage不会。<br>localStorage SessionStorage什么区别  </p>
+<p>session 也可以通过查询参数和localStorage来设置</p>
+<p>前端永远不要读、写Cookie</p>
+<h6 id="缓存控制-Cache-Control，设置后用户可以直接从缓存中读取文件，不发起请求"><a href="#缓存控制-Cache-Control，设置后用户可以直接从缓存中读取文件，不发起请求" class="headerlink" title="缓存控制 Cache-Control，设置后用户可以直接从缓存中读取文件，不发起请求"></a>缓存控制 Cache-Control，设置后用户可以直接从缓存中读取文件，<em>不发起请求</em></h6><table>
+<thead>
+<tr>
+<th>服务器</th>
+<th>过程</th>
+<th>用户</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td>&lt;==发送请求，请求文件main.js</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>返回main.js文件 以及响应头max-age:30 ==&gt;</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>&lt;==同样的url请求（没有发送请求）</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>==&gt;从内存里读取上一次的main.js</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>&lt;==过了30秒，发送请求，请求文件main.js</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>返回main.js文件 以及响应头max-age:30 ==&gt;</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><code>response.setHeader(“Cache-Control”,”max-age=30”)//30秒内不需要再次请求，内容直接从缓存里读取</code></p>
+<p>首页不允许设置缓存。<br>只有相同的url才会利用上次的缓存，所以，如果文件更新了，设置一个查询参数就可以了。<br>href=“default.css?v=2”  </p>
+<h3 id="Expires"><a href="#Expires" class="headerlink" title="Expires"></a>Expires</h3><p>从前使用 Expires<br>现在使用 Cache-Control<br><code>response.setHeader(“Expires”,”未来的格林威治时间点”)</code><br>它是与用户的本地时间进行对比的，如果用户本地时间错乱，那就有问题了。  </p>
+<h3 id="ETag-直接不下载（有请求）"><a href="#ETag-直接不下载（有请求）" class="headerlink" title="ETag  直接不下载（有请求）"></a>ETag  直接不下载（有请求）</h3><p>MD5消息摘要算法（英语：MD5 Message-Digest Algorithm），一种被广泛使用的密码散列函数，可以产生出一个128位（16字节）的散列值（hash value），用于确保信息传输完整一致。<br>http  304 Not Modified</p>
+<p>node.js代码<br><code>`
+let fileMd5 = md5(file)
+response.setHeader(“ETag”,fileMd5)
+if(request.headers[‘if-none-match’] === fileMd5){
+    //没有响应体
+    response.statusCode = 304
+}else{
+    response.write(file)
+}
+response.end()</code></p>
+<h3 id="Last-Modified"><a href="#Last-Modified" class="headerlink" title="Last-Modified"></a>Last-Modified</h3><p>在浏览器第一次请求某一个URL时，服务器端的返回状态会是200，内容是客户端请求的资源，同时有一个Last-Modified的属性标记此文件在服务器端最后被修改的时间。</p>
+<h6 id="Last-Modified格式类似这样："><a href="#Last-Modified格式类似这样：" class="headerlink" title="Last-Modified格式类似这样："></a>Last-Modified格式类似这样：</h6><p>Last-Modified : Fri , 12 May 2006 18:53:33 GMT<br>客户端第二次请求此URL时，根据HTTP协议的规定，浏览器会向服务器传送If-Modified-Since报头，询问该时间之后文件是否有被修改过：<br>If-Modified-Since : Fri , 12 May 2006 18:53:33 GMT<br>如果服务器端的资源没有变化，则自动返回 HTTP 304（Not Changed.）状态码，内容为空，这样就节省了传输数据量。  </p>
+<p>从资源更新原理来看Last-Modified和Etag基本是类似的，那为什么http协议中要搞2个标识呢？<br>Last-Modified存在的问题：<br>1、在集群服务器上各个服务器上的文件时间可能不同。<br>2、如果用旧文件覆盖新文件，因为时间更前，浏览器不会请求这个更旧的文件。<br>3、时间精度为s级，对文件修改精度有严格要求的场景不能满足  </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/09/08/http之Cookie、Session、LocalStorage、Cache-Control、ETag、Last-Modified/" data-id="cjlt660vy000b2wf4qoxglv8c" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
   
     <article id="post-路由" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -108,7 +319,7 @@ http://10.0.0.1/concat
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/11/路由/" data-id="cjkp5otbc000g10f440ogkuxx" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/11/路由/" data-id="cjlt660wx000i2wf4i4sbtg63" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -161,7 +372,7 @@ http://10.0.0.1/concat
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/08/Vue的三种通信方法/" data-id="cjkp5ot9x000510f44t3479ho" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/08/Vue的三种通信方法/" data-id="cjlt660ux00042wf4ypdxtdp0" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -271,7 +482,7 @@ http://10.0.0.1/concat
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/06/09/icon的各种做法/" data-id="cjkp5otam000b10f49i9pfsyo" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/06/09/icon的各种做法/" data-id="cjlt660w3000c2wf48peadn6u" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -322,7 +533,7 @@ http://10.0.0.1/concat
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/05/25/登录注册与Cookie/" data-id="cjkp5otbe000i10f4s3p4irvr" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/05/25/登录注册与Cookie/" data-id="cjlt660wy000j2wf4lbvuwdb5" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -371,7 +582,7 @@ http://10.0.0.1/concat
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/05/24/异步与回调/" data-id="cjkp5otbd000h10f4ioqgtc3b" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/05/24/异步与回调/" data-id="cjlt660wx000h2wf4us6wx2o6" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -420,7 +631,7 @@ http://10.0.0.1/concat
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/05/17/AJAX/" data-id="cjkp5ot93000010f4lq6c70vh" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/05/17/AJAX/" data-id="cjlt660ud00002wf4ujx5ozbl" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -457,7 +668,7 @@ http://10.0.0.1/concat
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/05/13/JSONP/" data-id="cjkp5ot9p000310f4snx0jqi1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/05/13/JSONP/" data-id="cjlt660uu00032wf4mqq7c167" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -493,7 +704,7 @@ http://10.0.0.1/concat
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/05/09/js杂七杂八/" data-id="cjkp5otaz000e10f4jagv7c3l" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/05/09/js杂七杂八/" data-id="cjlt660ww000g2wf4utz40qje" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -536,52 +747,7 @@ http://10.0.0.1/concat
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/05/05/jQuery入门探秘-作业/" data-id="cjkp5otaq000c10f44pg66rip" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-DOM事件模型" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/05/02/DOM事件模型/" class="article-date">
-  <time datetime="2018-05-02T01:30:00.000Z" itemprop="datePublished">2018-05-02</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/02/DOM事件模型/">DOM事件模型</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="全局变量可耻，不能用。"><a href="#全局变量可耻，不能用。" class="headerlink" title="全局变量可耻，不能用。"></a>全局变量可耻，不能用。</h4><h4 id="不用全局对象，用局部变量"><a href="#不用全局对象，用局部变量" class="headerlink" title="不用全局对象，用局部变量"></a>不用全局对象，用局部变量</h4><h4 id="声明函数立即调用，即为局部变量"><a href="#声明函数立即调用，即为局部变量" class="headerlink" title="声明函数立即调用，即为局部变量"></a>声明函数立即调用，即为局部变量</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">function()&#123;</span><br><span class="line">&#125;()</span><br></pre></td></tr></table></figure>
-<h4 id="但是浏览器会报错，有几种改法"><a href="#但是浏览器会报错，有几种改法" class="headerlink" title="但是浏览器会报错，有几种改法"></a>但是浏览器会报错，有几种改法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">1.</span><br><span class="line">(function()&#123;</span><br><span class="line">&#125;())</span><br><span class="line">2.</span><br><span class="line">(function()&#123;</span><br><span class="line">&#125;)()</span><br><span class="line">3.</span><br><span class="line">+function()&#123;</span><br><span class="line">&#125;()</span><br><span class="line">4.</span><br><span class="line">-function()&#123;</span><br><span class="line">&#125;()</span><br><span class="line">5.</span><br><span class="line">!function()&#123;</span><br><span class="line">&#125;()</span><br><span class="line">6. </span><br><span class="line">~function()&#123;</span><br><span class="line">&#125;()</span><br><span class="line">ES6</span><br><span class="line">&#123;</span><br><span class="line">	let parent = </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="let逃不出-的范围，在-之外无法调用let声明的变量"><a href="#let逃不出-的范围，在-之外无法调用let声明的变量" class="headerlink" title="let逃不出{ }的范围，在{}之外无法调用let声明的变量"></a>let逃不出{ }的范围，在{}之外无法调用let声明的变量</h4><h4 id="HTML的onclick里选择B-C写法正确，JS里的onclick里选择A写法正确"><a href="#HTML的onclick里选择B-C写法正确，JS里的onclick里选择A写法正确" class="headerlink" title="HTML的onclick里选择B,C写法正确，JS里的onclick里选择A写法正确"></a>HTML的onclick里选择B,C写法正确，JS里的onclick里选择A写法正确</h4><p><img src="/2018/05/02/DOM事件模型/i1.png" alt=""></p>
-<h2 id="DOM事件"><a href="#DOM事件" class="headerlink" title="DOM事件"></a>DOM事件</h2><h4 id="DOM0是W3C还没有设定标准的民间事件集合-比如："><a href="#DOM0是W3C还没有设定标准的民间事件集合-比如：" class="headerlink" title="DOM0是W3C还没有设定标准的民间事件集合 比如："></a>DOM0是W3C还没有设定标准的民间事件集合 比如：</h4><ul>
-<li>onclick </li>
-<li>onerror</li>
-<li>onload </li>
-<li>onmouseenter<h4 id="但这种属性设定具有唯一性，可被覆盖"><a href="#但这种属性设定具有唯一性，可被覆盖" class="headerlink" title="但这种属性设定具有唯一性，可被覆盖"></a>但这种属性设定具有唯一性，可被覆盖</h4><img src="/2018/05/02/DOM事件模型/i2.png" alt=""><h4 id="到了DOM2-加了addEventListener"><a href="#到了DOM2-加了addEventListener" class="headerlink" title="到了DOM2 加了addEventListener"></a>到了DOM2 加了addEventListener</h4><img src="/2018/05/02/DOM事件模型/i3.png" alt=""><h4 id="addEventListener的添加是队列式的，不会产生覆盖"><a href="#addEventListener的添加是队列式的，不会产生覆盖" class="headerlink" title="addEventListener的添加是队列式的，不会产生覆盖"></a>addEventListener的添加是队列式的，不会产生覆盖</h4><h4 id="jQuery-里的one-的理解可参照下图"><a href="#jQuery-里的one-的理解可参照下图" class="headerlink" title="jQuery 里的one()的理解可参照下图"></a>jQuery 里的one()的理解可参照下图</h4><img src="/2018/05/02/DOM事件模型/i4.png" alt=""><h4 id="事件冒泡和事件捕获"><a href="#事件冒泡和事件捕获" class="headerlink" title="事件冒泡和事件捕获"></a>事件冒泡和事件捕获</h4><img src="/2018/05/02/DOM事件模型/i6.png" alt=""><br><img src="/2018/05/02/DOM事件模型/i5.png" alt=""><h4 id="直接触发到点击元素本身时，触发与代码顺序有关"><a href="#直接触发到点击元素本身时，触发与代码顺序有关" class="headerlink" title="直接触发到点击元素本身时，触发与代码顺序有关"></a>直接触发到点击元素本身时，触发与代码顺序有关</h4><img src="/2018/05/02/DOM事件模型/i6.png" alt=""><br><img src="/2018/05/02/DOM事件模型/i7.png" alt=""></li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/05/02/DOM事件模型/" data-id="cjkp5ot9l000210f4xuzsck3e" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/05/05/jQuery入门探秘-作业/" data-id="cjlt660w8000d2wf4o5uhc6fh" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -595,7 +761,7 @@ http://10.0.0.1/concat
 
   <nav id="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">weiter &raquo;</a>
   </nav>
 
 </section>
@@ -612,9 +778,9 @@ http://10.0.0.1/concat
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
+    <h3 class="widget-title">Archiv</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li></ul>
     </div>
   </div>
 
@@ -622,9 +788,13 @@ http://10.0.0.1/concat
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">letzter Beitrag</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2018/09/08/http之Cookie、Session、LocalStorage、Cache-Control、ETag、Last-Modified/">http之Cookie、Session、LocalStorage、Cache-Control、ETag、Last-Modified</a>
+          </li>
         
           <li>
             <a href="/2018/08/11/路由/">路由</a>
@@ -640,10 +810,6 @@ http://10.0.0.1/concat
         
           <li>
             <a href="/2018/05/25/登录注册与Cookie/">登录注册与Cookie</a>
-          </li>
-        
-          <li>
-            <a href="/2018/05/24/异步与回调/">异步与回调</a>
           </li>
         
       </ul>
