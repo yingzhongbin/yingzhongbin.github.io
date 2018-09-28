@@ -61,6 +61,46 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-flex布局下flex-grow部分的文字超过部分显示为省略号的方法和解释" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/09/28/flex布局下flex-grow部分的文字超过部分显示为省略号的方法和解释/" class="article-date">
+  <time datetime="2018-09-28T12:17:42.000Z" itemprop="datePublished">2018-09-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/28/flex布局下flex-grow部分的文字超过部分显示为省略号的方法和解释/">flex布局下flex-grow部分的文字超过部分显示为省略号的方法和解释</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="文字超过部分显示为省略号的css写法很简单"><a href="#文字超过部分显示为省略号的css写法很简单" class="headerlink" title="文字超过部分显示为省略号的css写法很简单"></a>文字超过部分显示为省略号的css写法很简单</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	text-overflow: ellipsis;</span><br><span class="line">  	overflow: hidden;</span><br><span class="line"> 	white-space: nowrap;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>重点是：可以不加宽度<code>width:xxx;</code>，也不用加min-width。这时， 文字超过部分会乖乖地显示为省略号。</p>
+<p>在flex布局下，当flex-grow设置为1（即自由伸缩）的情况下，是不需要设置宽度，内容就会自动生长。没有宽度设定，在flex布局下flex-grow部分中，上述三行代码无法生效。它就像脱缰的野马一样，说：“你没有给我设定宽度啊，我grow了，不需要显示为省略号，略略略~~~。”</p>
+<h6 id="那如何解决呢？"><a href="#那如何解决呢？" class="headerlink" title="那如何解决呢？"></a>那如何解决呢？</h6><p>只要设定一下<code>width:xxx;</code>，甚至可以设置为<code>width:0px;</code>。设置min-width不生效。<br>总之，flew-grow控制伸缩。而上述代码加宽度管超出省略。而flex-grow的优先级高于width，仍然可以伸缩。宽度设置只是做个样子，告诉内容你给我丫的显示为省略号！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/09/28/flex布局下flex-grow部分的文字超过部分显示为省略号的方法和解释/" data-id="cjmlz5m2o0008ruf4c75etujo" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-http之Cookie、Session、LocalStorage、Cache-Control、ETag、Last-Modified" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/09/08/http之Cookie、Session、LocalStorage、Cache-Control、ETag、Last-Modified/" class="article-date">
@@ -262,7 +302,7 @@ response.end()</code></p>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/08/http之Cookie、Session、LocalStorage、Cache-Control、ETag、Last-Modified/" data-id="cjlt660vy000b2wf4qoxglv8c" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/09/08/http之Cookie、Session、LocalStorage、Cache-Control、ETag、Last-Modified/" data-id="cjmlz5m3j000druf4ez23no9f" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -319,7 +359,7 @@ http://10.0.0.1/concat
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/11/路由/" data-id="cjlt660wx000i2wf4i4sbtg63" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/08/11/路由/" data-id="cjmlz5m4v000kruf4alg3ir8q" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -372,7 +412,7 @@ http://10.0.0.1/concat
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/08/Vue的三种通信方法/" data-id="cjlt660ux00042wf4ypdxtdp0" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/08/08/Vue的三种通信方法/" data-id="cjmlz5m1x0004ruf4wrkbr5oa" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -482,7 +522,7 @@ http://10.0.0.1/concat
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/06/09/icon的各种做法/" data-id="cjlt660w3000c2wf48peadn6u" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/06/09/icon的各种做法/" data-id="cjmlz5m39000cruf4u6ebu9nm" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -533,7 +573,7 @@ http://10.0.0.1/concat
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/05/25/登录注册与Cookie/" data-id="cjlt660wy000j2wf4lbvuwdb5" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/05/25/登录注册与Cookie/" data-id="cjmlz5m4u000jruf4rfdpi76z" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -582,7 +622,7 @@ http://10.0.0.1/concat
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/05/24/异步与回调/" data-id="cjlt660wx000h2wf4us6wx2o6" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/05/24/异步与回调/" data-id="cjmlz5m4t000iruf4nqippit0" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -631,7 +671,7 @@ http://10.0.0.1/concat
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/05/17/AJAX/" data-id="cjlt660ud00002wf4ujx5ozbl" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/05/17/AJAX/" data-id="cjmlz5m1g0000ruf419s1bhsl" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -668,7 +708,7 @@ http://10.0.0.1/concat
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/05/13/JSONP/" data-id="cjlt660uu00032wf4mqq7c167" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/05/13/JSONP/" data-id="cjmlz5m1t0003ruf4d83e64ke" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -704,50 +744,7 @@ http://10.0.0.1/concat
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/05/09/js杂七杂八/" data-id="cjlt660ww000g2wf4utz40qje" class="article-share-link">Teilen</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-jQuery入门探秘-作业" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/05/05/jQuery入门探秘-作业/" class="article-date">
-  <time datetime="2018-05-05T02:47:53.000Z" itemprop="datePublished">2018-05-05</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/05/jQuery入门探秘-作业/">jQuery入门探秘-作业</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="以前自学过jQuery，也碰过jQuery和dom的互相转化问题，但是并没有弄清楚。下面，来一步步探究jQuery的内在机制到底是什么？看着-“xxx”-yyy总觉得有许多疑惑。那么，就一步步来解除疑问吧。"><a href="#以前自学过jQuery，也碰过jQuery和dom的互相转化问题，但是并没有弄清楚。下面，来一步步探究jQuery的内在机制到底是什么？看着-“xxx”-yyy总觉得有许多疑惑。那么，就一步步来解除疑问吧。" class="headerlink" title="以前自学过jQuery，也碰过jQuery和dom的互相转化问题，但是并没有弄清楚。下面，来一步步探究jQuery的内在机制到底是什么？看着$(“xxx”).yyy总觉得有许多疑惑。那么，就一步步来解除疑问吧。"></a>以前自学过jQuery，也碰过jQuery和dom的互相转化问题，但是并没有弄清楚。下面，来一步步探究jQuery的内在机制到底是什么？看着<code>$(“xxx”).yyy</code>总觉得有许多疑惑。那么，就一步步来解除疑问吧。</h4><h4 id="首先，先写出一个API"><a href="#首先，先写出一个API" class="headerlink" title="首先，先写出一个API"></a>首先，先写出一个API</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function addClass(nodes,value)&#123;</span><br><span class="line">    for(let i = 0;i&lt;nodes.length;i++)&#123;</span><br><span class="line">        nodes[i].classList.add(value);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;,</span><br><span class="line">function setText(nodes,text)&#123;</span><br><span class="line">    for(let i = 0;i&lt;nodes.length;i++)&#123;</span><br><span class="line">        nodes[i].textContent = text;</span><br><span class="line">    &#125;     </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="这些简单的代码，只要对js有些了解都能看懂。"><a href="#这些简单的代码，只要对js有些了解都能看懂。" class="headerlink" title="这些简单的代码，只要对js有些了解都能看懂。"></a>这些简单的代码，只要对js有些了解都能看懂。</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//写出一个命名空间</span><br><span class="line">window.dom = &#123;&#125;</span><br><span class="line">dom.addClass = addClass;</span><br><span class="line">dom.setText = setText;</span><br></pre></td></tr></table></figure>
-<h4 id="开辟一个命名空间能将所有API绑到一处。但是还是与jQuery不同，怎么办呢。"><a href="#开辟一个命名空间能将所有API绑到一处。但是还是与jQuery不同，怎么办呢。" class="headerlink" title="开辟一个命名空间能将所有API绑到一处。但是还是与jQuery不同，怎么办呢。"></a>开辟一个命名空间能将所有API绑到一处。但是还是与jQuery不同，怎么办呢。</h4><h4 id="而且，addClass-value-setText-text-看起来更方便。"><a href="#而且，addClass-value-setText-text-看起来更方便。" class="headerlink" title="而且，addClass(value)  setText(text)看起来更方便。"></a>而且，<code>addClass(value)  setText(text)</code>看起来更方便。</h4><h4 id="那么，我们可以在Node的原型上绑定addClass-和setText-方法"><a href="#那么，我们可以在Node的原型上绑定addClass-和setText-方法" class="headerlink" title="那么，我们可以在Node的原型上绑定addClass()和setText()方法"></a>那么，我们可以在Node的原型上绑定addClass()和setText()方法</h4><h4 id="如下："><a href="#如下：" class="headerlink" title="如下："></a>如下：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Node.prototype.addClass = function(value)&#123;</span><br><span class="line">    for(let i = 0;i&lt;nodes.length;i++)&#123;</span><br><span class="line">        nodes[i].classList.add(value);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">Node.prototype.setText = function(text)&#123;</span><br><span class="line">     for(let i = 0;i&lt;nodes.length;i++)&#123;</span><br><span class="line">         nodes[i].textContent = text;</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="看起来是不是顺眼很多了"><a href="#看起来是不是顺眼很多了" class="headerlink" title="看起来是不是顺眼很多了"></a>看起来是不是顺眼很多了</h4><h4 id="但是这样随便改变原型链也有潜在的风险"><a href="#但是这样随便改变原型链也有潜在的风险" class="headerlink" title="但是这样随便改变原型链也有潜在的风险"></a>但是这样随便改变原型链也有潜在的风险</h4><h4 id="所以，继续使用命名空间方案-但是改动了一下"><a href="#所以，继续使用命名空间方案-但是改动了一下" class="headerlink" title="所以，继续使用命名空间方案,但是改动了一下"></a>所以，继续使用命名空间方案,但是改动了一下</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">function Node2(node)&#123;</span><br><span class="line">     return &#123;</span><br><span class="line">         element: node,</span><br><span class="line">         addClass: function()&#123;</span><br><span class="line"></span><br><span class="line">         &#125;,</span><br><span class="line">         setText: function()&#123;</span><br><span class="line"></span><br><span class="line">         &#125;</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;</span><br><span class="line"> let node =document.getElementById(&apos;x&apos;)</span><br><span class="line"> let node2 = Node2(node)</span><br><span class="line"> </span><br><span class="line"> node2.addClass()</span><br><span class="line"> node2.setText()</span><br></pre></td></tr></table></figure>
-<h3 id="把-Node2-改个名字吧"><a href="#把-Node2-改个名字吧" class="headerlink" title="把 Node2 改个名字吧"></a>把 Node2 改个名字吧</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">function jQuery(node)&#123;</span><br><span class="line">    return &#123;</span><br><span class="line">        element: node,</span><br><span class="line">        setText: function()&#123;</span><br><span class="line"></span><br><span class="line">        &#125;,</span><br><span class="line">        addClass: function()&#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">let node =document.getElementById(&apos;x&apos;)</span><br><span class="line">let node2 =jQuery(node)</span><br><span class="line">node2.setText()</span><br><span class="line">node2.addClass()</span><br></pre></td></tr></table></figure>
-<h3 id="添加完整内容"><a href="#添加完整内容" class="headerlink" title="添加完整内容"></a>添加完整内容</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">function jQuery(nodeOrSelector)&#123;</span><br><span class="line">    let nodes;</span><br><span class="line">    if(typeof nodeOrSelector === &quot;string&quot;)&#123;</span><br><span class="line">        nodes = document.querySelectorAll(nodeOrSelector);</span><br><span class="line">        </span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        nodes = nodeOrSelector;</span><br><span class="line">    &#125;</span><br><span class="line">    // console.log(nodes);</span><br><span class="line">    return &#123;</span><br><span class="line">        element: nodes,</span><br><span class="line">        addClass: function(value)&#123;</span><br><span class="line">              for(let i = 0;i&lt;nodes.length;i++)&#123;</span><br><span class="line">                nodes[i].classList.add(value);</span><br><span class="line">              &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        setText:function(text)&#123;</span><br><span class="line">            for(let i = 0;i&lt;nodes.length;i++)&#123;</span><br><span class="line">                nodes[i].textContent = text;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">var $div = jQuery(&apos;div&apos;)</span><br><span class="line">$div.addClass(&quot;red&quot;) // 可将所有 div 的 class 添加一个 red</span><br><span class="line">$div.setText(&apos;hi&apos;)</span><br></pre></td></tr></table></figure>
-<h3 id="再给个缩写吧-alias"><a href="#再给个缩写吧-alias" class="headerlink" title="再给个缩写吧 alias"></a>再给个缩写吧 alias</h3><h4 id="window-jQuery"><a href="#window-jQuery" class="headerlink" title="window.$ = jQuery"></a><code>window.$ = jQuery</code></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">window.$ = jQuery</span><br><span class="line">var $div = $(&apos;div&apos;)</span><br><span class="line">$div.addClass(&quot;red&quot;) // 可将所有 div 的 class 添加一个 red</span><br><span class="line">$div.setText(&apos;hi&apos;) // 可将所有 div 的 textContent 变为 hi</span><br></pre></td></tr></table></figure>
-<h4 id="就可以看到jQuery的基本面貌了"><a href="#就可以看到jQuery的基本面貌了" class="headerlink" title="就可以看到jQuery的基本面貌了"></a>就可以看到jQuery的基本面貌了</h4><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><h5 id="使用jQuery库后，会将原来的元素包装一番并返回。返回的对象附带许多API，这就是jQuery的大致面目。"><a href="#使用jQuery库后，会将原来的元素包装一番并返回。返回的对象附带许多API，这就是jQuery的大致面目。" class="headerlink" title="使用jQuery库后，会将原来的元素包装一番并返回。返回的对象附带许多API，这就是jQuery的大致面目。"></a>使用jQuery库后，会将原来的元素包装一番并返回。返回的对象附带许多API，这就是jQuery的大致面目。</h5>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/05/05/jQuery入门探秘-作业/" data-id="cjlt660w8000d2wf4o5uhc6fh" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/05/09/js杂七杂八/" data-id="cjmlz5m40000fruf4zwvlb8v2" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -793,6 +790,10 @@ http://10.0.0.1/concat
       <ul>
         
           <li>
+            <a href="/2018/09/28/flex布局下flex-grow部分的文字超过部分显示为省略号的方法和解释/">flex布局下flex-grow部分的文字超过部分显示为省略号的方法和解释</a>
+          </li>
+        
+          <li>
             <a href="/2018/09/08/http之Cookie、Session、LocalStorage、Cache-Control、ETag、Last-Modified/">http之Cookie、Session、LocalStorage、Cache-Control、ETag、Last-Modified</a>
           </li>
         
@@ -806,10 +807,6 @@ http://10.0.0.1/concat
         
           <li>
             <a href="/2018/06/09/icon的各种做法/">icon的各种做法</a>
-          </li>
-        
-          <li>
-            <a href="/2018/05/25/登录注册与Cookie/">登录注册与Cookie</a>
           </li>
         
       </ul>
