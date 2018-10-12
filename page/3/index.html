@@ -61,6 +61,151 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-BFC学习" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/04/20/BFC学习/" class="article-date">
+  <time datetime="2018-04-20T05:12:50.000Z" itemprop="datePublished">2018-04-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/20/BFC学习/">BFC学习</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p> BFC作为一个时代的产物，有其效用，也有其遗留的问题。现在许多BFC能实现的功能通过flex，clearfix等都能达到BFC的效果，但BFC的效果显示常常带有我们不需要的效果，这就很尴尬了。当然，现在有一个不带有不需要效果的CSS设置，display:flow-root;但不是所有浏览器都支持。<br>那么，了解BFC必要吗？我觉得必要。了解BFC就是了解CSS，对CSS的理解当然就会更深。</p>
+<h4 id="下面来详细了解一下BFC"><a href="#下面来详细了解一下BFC" class="headerlink" title="下面来详细了解一下BFC"></a>下面来详细了解一下BFC</h4><h2 id="CSS规范中对-BFC-的描述"><a href="#CSS规范中对-BFC-的描述" class="headerlink" title="CSS规范中对 BFC 的描述"></a>CSS规范中对 BFC 的描述</h2><h4 id="9-4-1-块格式化上下文"><a href="#9-4-1-块格式化上下文" class="headerlink" title="9.4.1 块格式化上下文"></a>9.4.1 块格式化上下文</h4><p>浮动，绝对定位元素，非块盒的块容器（例如，inline-block，table-cells和table-captions）和’overflow’不为’visible’的块盒会为它们的内容建立一个新的块格式化上下文</p>
+<h5 id="评：使用以上css属性会创建BFC"><a href="#评：使用以上css属性会创建BFC" class="headerlink" title="评：使用以上css属性会创建BFC"></a>评：使用以上css属性会创建BFC</h5><p>在一个块格式化上下文中，盒在竖直方向一个接一个地放置，从包含块的顶部开始。两个兄弟盒之间的<strong>竖直距离</strong>由’margin’属性决定。同一个块格式化上下文中的相邻块级盒之间的竖直margin会合并</p>
+<h5 id="评：上下margin合并现象的由来"><a href="#评：上下margin合并现象的由来" class="headerlink" title="评：上下margin合并现象的由来"></a>评：上下margin合并现象的由来</h5><p>在一个块格式化上下文中，每个盒的left外边（left outer edge）挨着包含块的left边（对于从右向左的格式化，right边挨着）。即使存在浮动（尽管一个盒的行盒可能会因为浮动收缩），这也成立。除非该盒建立了一个新的块格式化上下文（这种情况下，该盒自身可能会因为浮动变窄）</p>
+<h2 id="MDN-对-BFC-的描述"><a href="#MDN-对-BFC-的描述" class="headerlink" title="MDN 对 BFC 的描述"></a>MDN 对 BFC 的描述</h2><p>一个块格式化上下文（block formatting context） 是Web页面的可视化CSS渲染出的一部分。它是块级盒布局出现的区域，也是浮动层元素进行交互的区域。</p>
+<p>一个块格式化上下文由以下之一创建：</p>
+<p> •    根元素或其它包含它的元素</p>
+<p> •    浮动元素 (元素的 float 不是 none)</p>
+<p> •    绝对定位元素 (元素具有 position 为 absolute 或 fixed)</p>
+<p> •    内联块 (元素具有 display: inline-block)</p>
+<p> •    表格单元格 (元素具有 display: table-cell，HTML表格单元格默认属性)</p>
+<p> •    表格标题 (元素具有 display: table-caption, HTML表格标题默认属性)</p>
+<p> •    具有overflow 且值不是 visible 的块元素</p>
+<p> •    display: flow-root</p>
+<p> •    column-span: all 应当总是会创建一个新的格式化上下文，即便具有 column-span: all 的元素并不被包裹在一个多列容器中。</p>
+<h5 id="评：更加详细的触发BFC的方法"><a href="#评：更加详细的触发BFC的方法" class="headerlink" title="评：更加详细的触发BFC的方法"></a>评：更加详细的触发BFC的方法</h5><p>一个块格式化上下文包括创建它的元素内部所有内容，除了被包含于创建新的块级格式化上下文的后代元素内的元素。</p>
+<h5 id="评：通俗讲就是爷爷只管儿子，不管孙子。"><a href="#评：通俗讲就是爷爷只管儿子，不管孙子。" class="headerlink" title="评：通俗讲就是爷爷只管儿子，不管孙子。"></a>评：通俗讲就是爷爷只管儿子，不管孙子。</h5><p>块格式化上下文对于定位 (参见 float) 与清除浮动 (参见 clear) 很重要。定位和清除浮动的样式规则只适用于处于同一块格式化上下文内的元素。浮动不会影响其它块格式化上下文中元素的布局，并且清除浮动只能清除同一块格式化上下文中在它前面的元素的浮动。</p>
+<h2 id="功能1：爸爸管儿子"><a href="#功能1：爸爸管儿子" class="headerlink" title="功能1：爸爸管儿子"></a>功能1：爸爸管儿子</h2><p>用 BFC 包住浮动元素。(这 TM 不是清除浮动，.clearfix 才是清除浮动）<br><a href="http://js.jirengu.com/rozaxufetu/1/edit?html,css,output" target="_blank" rel="noopener">http://js.jirengu.com/rozaxufetu/1/edit?html,css,output</a></p>
+<h2 id="功能2：兄弟之间划清界限"><a href="#功能2：兄弟之间划清界限" class="headerlink" title="功能2：兄弟之间划清界限"></a>功能2：兄弟之间划清界限</h2><p>用 float + div 做左右自适应布局<br><a href="http://js.jirengu.com/felikenuve/1/edit?html,css,output" target="_blank" rel="noopener">http://js.jirengu.com/felikenuve/1/edit?html,css,output</a></p>
+<h4 id="碰见CSS-bug时常常无法理解，为什么父级元素包裹不住子级元素。BFC告诉我们，是可以包裹住的。不了解时常常觉得很奇怪。加了一个属性布局全变了，不知不觉地触发了BFC。常常给小白造成困惑。了解了BFC，了解CSS。"><a href="#碰见CSS-bug时常常无法理解，为什么父级元素包裹不住子级元素。BFC告诉我们，是可以包裹住的。不了解时常常觉得很奇怪。加了一个属性布局全变了，不知不觉地触发了BFC。常常给小白造成困惑。了解了BFC，了解CSS。" class="headerlink" title="碰见CSS bug时常常无法理解，为什么父级元素包裹不住子级元素。BFC告诉我们，是可以包裹住的。不了解时常常觉得很奇怪。加了一个属性布局全变了，不知不觉地触发了BFC。常常给小白造成困惑。了解了BFC，了解CSS。"></a>碰见CSS bug时常常无法理解，为什么父级元素包裹不住子级元素。BFC告诉我们，是可以包裹住的。不了解时常常觉得很奇怪。加了一个属性布局全变了，不知不觉地触发了BFC。常常给小白造成困惑。了解了BFC，了解CSS。</h4>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/04/20/BFC学习/" data-id="cjn1nw3pw00018hf4g80clrdl" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-css" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/04/17/css/" class="article-date">
+  <time datetime="2018-04-17T06:26:07.000Z" itemprop="datePublished">2018-04-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/17/css/">css</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="引用css的四种方法"><a href="#引用css的四种方法" class="headerlink" title="引用css的四种方法"></a>引用css的四种方法</h3><h5 id="1-使用标签上的style属性"><a href="#1-使用标签上的style属性" class="headerlink" title="1.使用标签上的style属性"></a>1.使用标签上的style属性</h5><h5 id="2-使用-lt-style-gt-标签"><a href="#2-使用-lt-style-gt-标签" class="headerlink" title="2.使用&lt;style&gt;标签"></a>2.<code>使用&lt;style&gt;标签</code></h5><h5 id="3-lt-link-rel-quot-stylesheet-quot-href-quot-style-css-quot-gt"><a href="#3-lt-link-rel-quot-stylesheet-quot-href-quot-style-css-quot-gt" class="headerlink" title="3. &lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt;"></a>3. <code>&lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt;</code></h5><h5 id="4-import-url-a-css"><a href="#4-import-url-a-css" class="headerlink" title="4.@import url (./a.css);"></a>4.@import url (./a.css);</h5><h3 id="浮动并去除bug"><a href="#浮动并去除bug" class="headerlink" title="浮动并去除bug"></a>浮动并去除bug</h3><h5 id="1-将子元素float"><a href="#1-将子元素float" class="headerlink" title="1.将子元素float"></a>1.将子元素float</h5><h5 id="2-将父元素加上clearfix类"><a href="#2-将父元素加上clearfix类" class="headerlink" title="2.将父元素加上clearfix类"></a>2.将父元素加上clearfix类</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">.clearfix::after&#123;</span><br><span class="line">    content:&apos;&apos;;</span><br><span class="line">    display: block;</span><br><span class="line">    clear:both;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="重要内容"><a href="#重要内容" class="headerlink" title="重要内容"></a>重要内容</h2><h4 id="字体默认的-line-height-由字体设计师决定"><a href="#字体默认的-line-height-由字体设计师决定" class="headerlink" title="字体默认的 line height 由字体设计师决定"></a>字体默认的 line height 由字体设计师决定</h4><h4 id="设置的行高可能会变动"><a href="#设置的行高可能会变动" class="headerlink" title="设置的行高可能会变动"></a>设置的行高可能会变动</h4><h4 id="CSS-中-width-的默认值auto"><a href="#CSS-中-width-的默认值auto" class="headerlink" title="CSS 中 width 的默认值auto"></a>CSS 中 width 的默认值auto</h4><h4 id="div的高度有其内部文档流元素的高度总和决定"><a href="#div的高度有其内部文档流元素的高度总和决定" class="headerlink" title="div的高度有其内部文档流元素的高度总和决定"></a>div的高度有其内部文档流元素的高度总和决定</h4><h4 id="文档流：文档内元素的流动方向。inline从左往右流动，block从上往下流动"><a href="#文档流：文档内元素的流动方向。inline从左往右流动，block从上往下流动" class="headerlink" title="文档流：文档内元素的流动方向。inline从左往右流动，block从上往下流动"></a>文档流：文档内元素的流动方向。inline从左往右流动，block从上往下流动</h4><h4 id="font-size的大小指的是字体中的字从最上方到最下方的高度。而包含字的span的高度与字体的建议行高有关，当设置line-height行高小于字体的建议行高，会有bug。大于时可垂直居中。"><a href="#font-size的大小指的是字体中的字从最上方到最下方的高度。而包含字的span的高度与字体的建议行高有关，当设置line-height行高小于字体的建议行高，会有bug。大于时可垂直居中。" class="headerlink" title="font-size的大小指的是字体中的字从最上方到最下方的高度。而包含字的span的高度与字体的建议行高有关，当设置line-height行高小于字体的建议行高，会有bug。大于时可垂直居中。"></a>font-size的大小指的是字体中的字从最上方到最下方的高度。而包含字的span的高度与字体的建议行高有关，当设置line-height行高小于字体的建议行高，会有bug。大于时可垂直居中。</h4><h4 id="不同字体放在一起将进行基线对齐"><a href="#不同字体放在一起将进行基线对齐" class="headerlink" title="不同字体放在一起将进行基线对齐"></a>不同字体放在一起将进行基线对齐</h4><h4 id="一个元素被fixed定位后，-它的宽度不会往外扩展，而是往内缩。解决问题的方法为宽度设为width-100-但如果有padding的话，这样设置会出bug，解决方法是设置一个子元素，在子元素里设置padding。"><a href="#一个元素被fixed定位后，-它的宽度不会往外扩展，而是往内缩。解决问题的方法为宽度设为width-100-但如果有padding的话，这样设置会出bug，解决方法是设置一个子元素，在子元素里设置padding。" class="headerlink" title="一个元素被fixed定位后， 它的宽度不会往外扩展，而是往内缩。解决问题的方法为宽度设为width:100%;但如果有padding的话，这样设置会出bug，解决方法是设置一个子元素，在子元素里设置padding。"></a>一个元素被fixed定位后， 它的宽度不会往外扩展，而是往内缩。解决问题的方法为宽度设为width:100%;但如果有padding的话，这样设置会出bug，解决方法是设置一个子元素，在子元素里设置padding。</h4><h4 id="使用svg进行垂直居中时，设置vertical-align-top"><a href="#使用svg进行垂直居中时，设置vertical-align-top" class="headerlink" title="使用svg进行垂直居中时，设置vertical-align: top;"></a>使用svg进行垂直居中时，设置vertical-align: top;</h4><h4 id="给display-inline元素设置宽高是无效的，设置margin-left-margin-right有效，margin-top，margin-bottom无效"><a href="#给display-inline元素设置宽高是无效的，设置margin-left-margin-right有效，margin-top，margin-bottom无效" class="headerlink" title="给display:inline元素设置宽高是无效的，设置margin-left,margin-right有效，margin-top，margin-bottom无效"></a>给display:inline元素设置宽高是无效的，设置margin-left,margin-right有效，margin-top，margin-bottom无效</h4><h4 id="设置了display-inline-block-内容下方会有一个空隙，设置vertical-align-top-可以去除空隙"><a href="#设置了display-inline-block-内容下方会有一个空隙，设置vertical-align-top-可以去除空隙" class="headerlink" title="设置了display:inline-block;内容下方会有一个空隙，设置vertical-align:top;可以去除空隙"></a>设置了display:inline-block;内容下方会有一个空隙，设置vertical-align:top;可以去除空隙</h4><h4 id="盒模型展示"><a href="#盒模型展示" class="headerlink" title="盒模型展示"></a>盒模型展示</h4><p><img src="/2018/04/17/css/case.png" alt="我是图片"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">span&#123;</span><br><span class="line">  width:200px;</span><br><span class="line">  height: ;</span><br><span class="line">  border:1px solid gray;</span><br><span class="line">  margin:10px 15px;</span><br><span class="line">  padding:20px 25px;</span><br><span class="line">  display:block;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;span&gt;1&lt;/span&gt;</span><br><span class="line">&lt;span&gt;2&lt;/span&gt;</span><br></pre></td></tr></table></figure>
+<h5 id="span之间会有一个空格"><a href="#span之间会有一个空格" class="headerlink" title="span之间会有一个空格"></a>span之间会有一个空格</h5>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/04/17/css/" data-id="cjn1nw3sp00098hf4x8glo3kf" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="n-html续之部分标签" class="article article-type-n" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/03/23/html续之部分标签/" class="article-date">
+  <time datetime="2018-03-23T07:34:52.000Z" itemprop="datePublished">2018-03-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/23/html续之部分标签/">html续之部分标签</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="css布局"><a href="#css布局" class="headerlink" title="css布局"></a>css布局</h1><p>———<br>css布局由横向布局和纵向布局构成。横向布局中常常有纵向布局。<br><img src="/2018/03/23/html续之部分标签/1.png" alt="我是图片"></p>
+<h1 id="html标签"><a href="#html标签" class="headerlink" title="html标签"></a>html标签</h1><h3 id="iframe标签（用的很少）"><a href="#iframe标签（用的很少）" class="headerlink" title="iframe标签（用的很少）"></a>iframe标签（用的很少）</h3><h5 id="iframe可以使用css控制外观"><a href="#iframe可以使用css控制外观" class="headerlink" title="iframe可以使用css控制外观"></a>iframe可以使用css控制外观</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">	iframe&#123;</span><br><span class="line">	width: 100%;</span><br><span class="line">	height: 400px;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">&lt;iframe src=&quot;http://qq.com&quot; frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="a标签（get请求）"><a href="#a标签（get请求）" class="headerlink" title="a标签（get请求）"></a>a标签（get请求）</h3><h5 id="点击a标签后显示在iframe中"><a href="#点击a标签后显示在iframe中" class="headerlink" title="点击a标签后显示在iframe中"></a>点击a标签后显示在iframe中</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;iframe src=&quot;&quot; name=&quot;xxx&quot; frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;</span><br><span class="line">&lt;a href=&quot;http://qq.com&quot; target=&quot;xxx&quot;&gt;qqq&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+<h5 id="设置iframe的边框，一般设为0"><a href="#设置iframe的边框，一般设为0" class="headerlink" title="设置iframe的边框，一般设为0"></a>设置iframe的边框，一般设为0</h5><p><code>frameborder=“0”</code></p>
+<h5 id="blank在新开页面打开-self在自身页面打开-parent在父级窗口打开-top在最顶级页面打开"><a href="#blank在新开页面打开-self在自身页面打开-parent在父级窗口打开-top在最顶级页面打开" class="headerlink" title="_blank在新开页面打开 _self在自身页面打开 _parent在父级窗口打开   _top在最顶级页面打开"></a>_blank在新开页面打开 _self在自身页面打开 _parent在父级窗口打开   _top在最顶级页面打开</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&quot;http://qq.com&quot; target=&quot;_blank&quot;&gt;&lt;/a&gt;</span><br><span class="line">&lt;a href=&quot;http://qq.com&quot; target=&quot;_self&quot;&gt;&lt;/a&gt;</span><br><span class="line">&lt;a href=&quot;http://qq.com&quot; target=&quot;_parent&quot;&gt;&lt;/a&gt;</span><br><span class="line">&lt;a href=&quot;http://qq.com&quot; target=&quot;_top&quot;&gt;&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+<h5 id="a标签的下载属性"><a href="#a标签的下载属性" class="headerlink" title="a标签的下载属性"></a>a标签的下载属性</h5><p><code>&lt;a href=&quot;http://qq.com&quot; download&gt;下载&lt;/a&gt;</code></p>
+<h5 id="a标签添加参数"><a href="#a标签添加参数" class="headerlink" title="a标签添加参数"></a>a标签添加参数</h5><p><code>&lt;a href=&quot;?name=yzb&quot; &gt;qqq&lt;/a&gt;</code></p>
+<h5 id="a标签添加javascript伪代码"><a href="#a标签添加javascript伪代码" class="headerlink" title="a标签添加javascript伪代码"></a>a标签添加javascript伪代码</h5><h5 id="a标签点击不跳转"><a href="#a标签点击不跳转" class="headerlink" title="a标签点击不跳转"></a>a标签点击不跳转</h5><p><code>&lt;a href=&quot;javascript:;&quot; &gt;qqq&lt;/a&gt;</code></p>
+<h5 id="a标签点击后跳转到页面上部"><a href="#a标签点击后跳转到页面上部" class="headerlink" title="a标签点击后跳转到页面上部"></a>a标签点击后跳转到页面上部</h5><p><code>&lt;a href=“#” &gt;qqq&lt;/a&gt;</code></p>
+<h5 id="a标签跳转到自身，刷新页面"><a href="#a标签跳转到自身，刷新页面" class="headerlink" title="a标签跳转到自身，刷新页面"></a>a标签跳转到自身，刷新页面</h5><p><code>&lt;a href=&quot;&quot; &gt;qqq&lt;/a&gt;</code></p>
+<h3 id="form标签-post请求"><a href="#form标签-post请求" class="headerlink" title="form标签(post请求)"></a>form标签(post请求)</h3><h5 id="失去submit提交将无法传输数据"><a href="#失去submit提交将无法传输数据" class="headerlink" title="失去submit提交将无法传输数据"></a>失去submit提交将无法传输数据</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action=&quot;users&quot; method=&quot;post&quot;&gt;</span><br><span class="line">	&lt;input type=&quot;text&quot; name=&quot;username&quot;&gt;</span><br><span class="line">	&lt;input type=&quot;password&quot; name=&quot;password&quot;&gt;</span><br><span class="line">	&lt;input type=&quot;submit&quot; value=&quot;提交&quot;&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
+<h5 id="file协议不支持post"><a href="#file协议不支持post" class="headerlink" title="file协议不支持post"></a>file协议不支持post</h5><h5 id="get默认将提交内容放到查询参数里，也即地址栏里。不会放入到第四部分"><a href="#get默认将提交内容放到查询参数里，也即地址栏里。不会放入到第四部分" class="headerlink" title="get默认将提交内容放到查询参数里，也即地址栏里。不会放入到第四部分"></a>get默认将提交内容放到查询参数里，也即地址栏里。不会放入到第四部分</h5><h5 id="post也可以将内容放入到查询参数里"><a href="#post也可以将内容放入到查询参数里" class="headerlink" title="post也可以将内容放入到查询参数里"></a>post也可以将内容放入到查询参数里</h5><pre><code>&lt;form action=&quot;users?xxx=1” method=&quot;post&quot;&gt;即可
+</code></pre><h5 id="form-与a标签一样使用target，也可target到iframe中"><a href="#form-与a标签一样使用target，也可target到iframe中" class="headerlink" title="form 与a标签一样使用target，也可target到iframe中"></a>form 与a标签一样使用target，也可target到iframe中</h5><h3 id="input标签"><a href="#input标签" class="headerlink" title="input标签"></a>input标签</h3><h5 id="如果一个form里只有一个按钮，-lt-button-gt-button-lt-button-gt-，执行submit功能。如果写了type-button，则失去这种功能"><a href="#如果一个form里只有一个按钮，-lt-button-gt-button-lt-button-gt-，执行submit功能。如果写了type-button，则失去这种功能" class="headerlink" title="如果一个form里只有一个按钮，&lt;button&gt;button&lt;/button&gt;，执行submit功能。如果写了type=button，则失去这种功能"></a>如果一个form里只有一个按钮，<code>&lt;button&gt;button&lt;/button&gt;</code>，执行submit功能。如果写了type=button，则失去这种功能</h5><h5 id="lt-input-type-quot-button-quot-value-quot-button-quot-gt-没有提交功能"><a href="#lt-input-type-quot-button-quot-value-quot-button-quot-gt-没有提交功能" class="headerlink" title="&lt;input type=&quot;button&quot; value=&quot;button&quot;&gt;没有提交功能"></a><code>&lt;input type=&quot;button&quot; value=&quot;button&quot;&gt;</code>没有提交功能</h5><h5 id="lt-input-type-“submit”-value-quot-button-quot-gt-可以提交"><a href="#lt-input-type-“submit”-value-quot-button-quot-gt-可以提交" class="headerlink" title="&lt;input type=“submit” value=&quot;button&quot;&gt;可以提交"></a><code>&lt;input type=“submit” value=&quot;button&quot;&gt;</code>可以提交</h5><h5 id="lt-input-type-quot-checkbox-quot-name-quot-yyy-quot-gt-lt-label-for-quot-yyy-quot-gt-loveme-lt-label-gt"><a href="#lt-input-type-quot-checkbox-quot-name-quot-yyy-quot-gt-lt-label-for-quot-yyy-quot-gt-loveme-lt-label-gt" class="headerlink" title="&lt;input type=&quot;checkbox&quot; name=&quot;yyy&quot;&gt;&lt;label for=&quot;yyy&quot;&gt;loveme&lt;/label&gt;"></a><code>&lt;input type=&quot;checkbox&quot; name=&quot;yyy&quot;&gt;&lt;label for=&quot;yyy&quot;&gt;loveme&lt;/label&gt;</code></h5><p>与下面代码功能一样，但下面代码更简洁，所以，用下面的代码了</p>
+<h5 id="lt-label-gt-lt-input-type-quot-checkbox-quot-name-quot-zzz-quot-gt-hateme-lt-label-gt"><a href="#lt-label-gt-lt-input-type-quot-checkbox-quot-name-quot-zzz-quot-gt-hateme-lt-label-gt" class="headerlink" title="&lt;label&gt;&lt;input type=&quot;checkbox&quot; name=&quot;zzz&quot;&gt;hateme&lt;/label&gt;"></a><code>&lt;label&gt;&lt;input type=&quot;checkbox&quot; name=&quot;zzz&quot;&gt;hateme&lt;/label&gt;</code></h5><p>input里的name还是要写的，传送数据时需要</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/03/23/html续之部分标签/" data-id="cjn1nw3td000b8hf47is6x62q" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-如何部署hexo博客" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/03/11/如何部署hexo博客/" class="article-date">
@@ -438,7 +583,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/11/如何部署hexo博客/" data-id="cjmqbc2u3000m3hf46q4qbynb" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/03/11/如何部署hexo博客/" data-id="cjn1nw3wd000p8hf471mfazj9" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -469,7 +614,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/11/array/test/" data-id="cjmqbc2w8000n3hf4bizt5txh" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/03/11/array/test/" data-id="cjn1nw3ym000q8hf4vrssylhz" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -519,7 +664,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/11/md内容展示/" data-id="cjmqbc2td000i3hf4mhb6cv55" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/03/11/md内容展示/" data-id="cjn1nw3vi000k8hf4an7qemb6" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -564,7 +709,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/11/hello-world/" data-id="cjmqbc2rz000b3hf4l9cwd8pw" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/03/11/hello-world/" data-id="cjn1nw3u1000e8hf4m8i8k18o" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -610,23 +755,23 @@
       <ul>
         
           <li>
+            <a href="/2018/10/09/TypeScript学习笔记/">TypeScript学习笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/06/ES6/">ES6</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/06/vue学习笔记/">vue学习笔记</a>
+          </li>
+        
+          <li>
             <a href="/2018/10/01/CSS笔记-长期更新/">CSS笔记(长期更新)</a>
           </li>
         
           <li>
             <a href="/2018/09/28/flex布局下flex-grow部分的文字超过部分显示为省略号的方法和解释/">flex布局下flex-grow部分的文字超过部分显示为省略号的方法和解释</a>
-          </li>
-        
-          <li>
-            <a href="/2018/09/08/http之Cookie、Session、LocalStorage、Cache-Control、ETag、Last-Modified/">http之Cookie、Session、LocalStorage、Cache-Control、ETag、Last-Modified</a>
-          </li>
-        
-          <li>
-            <a href="/2018/08/11/路由/">路由</a>
-          </li>
-        
-          <li>
-            <a href="/2018/08/08/Vue的三种通信方法/">Vue的三种通信方法</a>
           </li>
         
       </ul>
