@@ -89,11 +89,12 @@
 <p>数据结构如下：<br><img src="https://i.loli.net/2018/10/16/5bc5adad1320f.png" alt=""></p>
 <h4 id="ES-6的继承写法"><a href="#ES-6的继承写法" class="headerlink" title="ES 6的继承写法"></a>ES 6的继承写法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">class Human&#123;</span><br><span class="line">    constructor(name)&#123;</span><br><span class="line">        this.name = name</span><br><span class="line">        this.属性 = &apos;attrs&apos;</span><br><span class="line">    &#125;</span><br><span class="line">    // 设定属性</span><br><span class="line">    get species()&#123;</span><br><span class="line">        return &apos;human&apos;</span><br><span class="line">    &#125;</span><br><span class="line">    run()&#123;</span><br><span class="line">        console.log(this.name+&apos; is running&apos;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">class Man extends Human&#123;</span><br><span class="line">    constructor(name)&#123;</span><br><span class="line">        super(name)</span><br><span class="line">        this.gender = &apos;man&apos;</span><br><span class="line">    &#125;</span><br><span class="line">    fight()&#123;</span><br><span class="line">        console.log(this.name+&apos; is fighting&apos;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">var man = new Man(&apos;ff&apos;)</span><br><span class="line">man</span><br></pre></td></tr></table></figure>
 <p>数据结构如下：<br><img src="https://i.loli.net/2018/10/16/5bc5adad39ceb.png" alt=""></p>
+<p>ES 5 和 ES 6的继承方法比较：<br>ES5的写法比较繁琐，如果没有对原型链的深刻理解，难以自己写出继承。ES6的继承写法已经被加上了语法糖，不懂原型链也能轻松写出继承。ES5对原型的操作会让浏览器开销较大，是它的缺点。 建议ES 5的继承作为练习为佳，ES 6的继承更适合实际编程。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/15/JS模拟继承/" data-id="cjnbiv3k20005dcf4b1pmtvof" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/10/15/JS模拟继承/" data-id="cjnbj9ojx0006gbf47mabt0nf" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -166,7 +167,7 @@ fn.bind.call(fn,{},1,2,3)</code></p>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/13/你真的懂函数吗？/" data-id="cjnbivpbi0000e4f4uml69iw8" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/10/13/你真的懂函数吗？/" data-id="cjnbj9onv000ngbf430lgujh9" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -216,7 +217,7 @@ fn.bind.call(fn,{},1,2,3)</code></p>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/09/TypeScript学习笔记/" data-id="cjnbiv3kb0006dcf4gq6fslkl" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/10/09/TypeScript学习笔记/" data-id="cjnbj9ok70007gbf40ngnxrwp" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -256,7 +257,7 @@ fn.bind.call(fn,{},1,2,3)</code></p>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/06/ES6/" data-id="cjnbiv3jr0004dcf4vuxxqrvs" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/10/06/ES6/" data-id="cjnbj9ojh0004gbf4ti35fkcg" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -293,7 +294,7 @@ fn.bind.call(fn,{},1,2,3)</code></p>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/06/vue学习笔记/" data-id="cjnbiv3or000mdcf4qp8ga4yu" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/10/06/vue学习笔记/" data-id="cjnbj9ont000mgbf4a8ghn9te" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -367,7 +368,7 @@ fn.bind.call(fn,{},1,2,3)</code></p>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/01/CSS笔记-长期更新/" data-id="cjnbiv3jg0003dcf4u61lpu11" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/10/01/CSS笔记-长期更新/" data-id="cjnbj9oik0002gbf4p4tcy30n" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -407,7 +408,7 @@ fn.bind.call(fn,{},1,2,3)</code></p>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/28/flex布局下flex-grow部分的文字超过部分显示为省略号的方法和解释/" data-id="cjnbiv3m7000cdcf4rew7h65l" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/09/28/flex布局下flex-grow部分的文字超过部分显示为省略号的方法和解释/" data-id="cjnbj9olr000cgbf4ja42a8sb" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -618,7 +619,7 @@ response.end()</code></p>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/08/http之Cookie、Session、LocalStorage、Cache-Control、ETag、Last-Modified/" data-id="cjnbiv3nh000fdcf4kxdjbsy4" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/09/08/http之Cookie、Session、LocalStorage、Cache-Control、ETag、Last-Modified/" data-id="cjnbj9on9000ggbf4z2fg5gyj" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -675,7 +676,7 @@ http://10.0.0.1/concat
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/11/路由/" data-id="cjnbiv3pl000qdcf4p91rc4au" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/08/11/路由/" data-id="cjnbj9oo0000qgbf4691xfc74" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -728,7 +729,7 @@ http://10.0.0.1/concat
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/08/Vue的三种通信方法/" data-id="cjnbiv3kr0008dcf44grjgwa7" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/08/08/Vue的三种通信方法/" data-id="cjnbj9okh0008gbf4ul73tjz0" class="article-share-link">Teilen</a>
       
       
     </footer>

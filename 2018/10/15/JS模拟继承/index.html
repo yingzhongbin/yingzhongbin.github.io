@@ -15,7 +15,7 @@
 <meta property="og:description" content="js中并没有真正的class概念，它有的概念就是原型链。通过原型链实现类的继承。构造函数（即类）的prototype属性只有一个功能，存储共有属性对象的地址。通过子类与父类的prpto的链接，实现所谓的继承。 对象和构造函数是如何实现求取共同数据的呢？构造函数使用protpotype，对象使用proto。JS设定它们相等，实现共同数据的绑定。123function Man()&amp;#123;&amp;#">
 <meta property="og:image" content="https://i.loli.net/2018/10/16/5bc5adad1320f.png">
 <meta property="og:image" content="https://i.loli.net/2018/10/16/5bc5adad39ceb.png">
-<meta property="og:updated_time" content="2018-10-16T09:24:27.000Z">
+<meta property="og:updated_time" content="2018-10-16T09:36:37.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS模拟继承">
 <meta name="twitter:description" content="js中并没有真正的class概念，它有的概念就是原型链。通过原型链实现类的继承。构造函数（即类）的prototype属性只有一个功能，存储共有属性对象的地址。通过子类与父类的prpto的链接，实现所谓的继承。 对象和构造函数是如何实现求取共同数据的呢？构造函数使用protpotype，对象使用proto。JS设定它们相等，实现共同数据的绑定。123function Man()&amp;#123;&amp;#">
@@ -94,11 +94,12 @@
 <p>数据结构如下：<br><img src="https://i.loli.net/2018/10/16/5bc5adad1320f.png" alt=""></p>
 <h4 id="ES-6的继承写法"><a href="#ES-6的继承写法" class="headerlink" title="ES 6的继承写法"></a>ES 6的继承写法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">class Human&#123;</span><br><span class="line">    constructor(name)&#123;</span><br><span class="line">        this.name = name</span><br><span class="line">        this.属性 = &apos;attrs&apos;</span><br><span class="line">    &#125;</span><br><span class="line">    // 设定属性</span><br><span class="line">    get species()&#123;</span><br><span class="line">        return &apos;human&apos;</span><br><span class="line">    &#125;</span><br><span class="line">    run()&#123;</span><br><span class="line">        console.log(this.name+&apos; is running&apos;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">class Man extends Human&#123;</span><br><span class="line">    constructor(name)&#123;</span><br><span class="line">        super(name)</span><br><span class="line">        this.gender = &apos;man&apos;</span><br><span class="line">    &#125;</span><br><span class="line">    fight()&#123;</span><br><span class="line">        console.log(this.name+&apos; is fighting&apos;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">var man = new Man(&apos;ff&apos;)</span><br><span class="line">man</span><br></pre></td></tr></table></figure>
 <p>数据结构如下：<br><img src="https://i.loli.net/2018/10/16/5bc5adad39ceb.png" alt=""></p>
+<p>ES 5 和 ES 6的继承方法比较：<br>ES5的写法比较繁琐，如果没有对原型链的深刻理解，难以自己写出继承。ES6的继承写法已经被加上了语法糖，不懂原型链也能轻松写出继承。ES5对原型的操作会让浏览器开销较大，是它的缺点。 建议ES 5的继承作为练习为佳，ES 6的继承更适合实际编程。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/15/JS模拟继承/" data-id="cjnbiv3k20005dcf4b1pmtvof" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/10/15/JS模拟继承/" data-id="cjnbj9ojx0006gbf47mabt0nf" class="article-share-link">Teilen</a>
       
       
     </footer>
