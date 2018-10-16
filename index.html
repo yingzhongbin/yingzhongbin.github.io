@@ -61,6 +61,121 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-JS模拟继承" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/10/15/JS模拟继承/" class="article-date">
+  <time datetime="2018-10-15T08:46:02.000Z" itemprop="datePublished">2018-10-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/15/JS模拟继承/">JS模拟继承</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>js中并没有真正的class概念，它有的概念就是原型链。通过原型链实现类的继承。构造函数（即类）的prototype属性只有一个功能，存储共有属性对象的地址。通过子类与父类的<strong>prpto</strong>的链接，实现所谓的继承。</p>
+<h4 id="对象和构造函数是如何实现求取共同数据的呢？"><a href="#对象和构造函数是如何实现求取共同数据的呢？" class="headerlink" title="对象和构造函数是如何实现求取共同数据的呢？"></a>对象和构造函数是如何实现求取共同数据的呢？</h4><p>构造函数使用protpotype，对象使用<strong>proto</strong>。JS设定它们相等，实现共同数据的绑定。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function Man()&#123;&#125;</span><br><span class="line">var a = new Man()</span><br><span class="line">a.__proto__ === Man.prototype // true</span><br></pre></td></tr></table></figure></p>
+<h4 id="ES-5是如何实现继承的呢？"><a href="#ES-5是如何实现继承的呢？" class="headerlink" title="ES 5是如何实现继承的呢？"></a>ES 5是如何实现继承的呢？</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">function Human(name)&#123;</span><br><span class="line">    this.name = name</span><br><span class="line">&#125;</span><br><span class="line">// 通过在父类的prototype上绑定数据实现父类共同属性的设定</span><br><span class="line">Human.prototype.run = function()&#123;</span><br><span class="line">    console.log(this.name+&apos; is running&apos;)</span><br><span class="line">&#125;</span><br><span class="line">function Man(name)&#123;</span><br><span class="line">    Human.call(this,name) //通过call将父类的赋值移到子类上</span><br><span class="line">    this.gender = &apos;man&apos;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 链接父类和子类</span><br><span class="line">//Man.prototype.__proto__ = Human.prototype</span><br><span class="line">// =</span><br><span class="line">//链接父类和子类的另一种写法，兼容IE。这种写法需要后设定子类的prototype</span><br><span class="line">var f = function()&#123;&#125;</span><br><span class="line">f.prototype = Human.prototype</span><br><span class="line">Man.prototype = new f()</span><br><span class="line"></span><br><span class="line">// 通过在子类的prototype上绑定数据实现子类共同属性的设定</span><br><span class="line">Man.prototype.fight = function()&#123;</span><br><span class="line">    console.log(this.name+&apos; is fighting&apos;)</span><br><span class="line">&#125;</span><br><span class="line">var man = new Man(&apos;ff&apos;)</span><br><span class="line">man</span><br></pre></td></tr></table></figure>
+<p>数据结构如下：<br><img src="https://i.loli.net/2018/10/16/5bc5adad1320f.png" alt=""></p>
+<h4 id="ES-6的继承写法"><a href="#ES-6的继承写法" class="headerlink" title="ES 6的继承写法"></a>ES 6的继承写法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">class Human&#123;</span><br><span class="line">    constructor(name)&#123;</span><br><span class="line">        this.name = name</span><br><span class="line">        this.属性 = &apos;attrs&apos;</span><br><span class="line">    &#125;</span><br><span class="line">    // 设定属性</span><br><span class="line">    get species()&#123;</span><br><span class="line">        return &apos;human&apos;</span><br><span class="line">    &#125;</span><br><span class="line">    run()&#123;</span><br><span class="line">        console.log(this.name+&apos; is running&apos;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">class Man extends Human&#123;</span><br><span class="line">    constructor(name)&#123;</span><br><span class="line">        super(name)</span><br><span class="line">        this.gender = &apos;man&apos;</span><br><span class="line">    &#125;</span><br><span class="line">    fight()&#123;</span><br><span class="line">        console.log(this.name+&apos; is fighting&apos;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">var man = new Man(&apos;ff&apos;)</span><br><span class="line">man</span><br></pre></td></tr></table></figure>
+<p>数据结构如下：<br><img src="https://i.loli.net/2018/10/16/5bc5adad39ceb.png" alt=""></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/10/15/JS模拟继承/" data-id="cjnbiv3k20005dcf4b1pmtvof" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-你真的懂函数吗？" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/10/13/你真的懂函数吗？/" class="article-date">
+  <time datetime="2018-10-13T03:14:52.000Z" itemprop="datePublished">2018-10-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/13/你真的懂函数吗？/">你真的懂函数吗？</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="函数声明"><a href="#函数声明" class="headerlink" title="函数声明"></a>函数声明</h1><h2 id="匿名函数"><a href="#匿名函数" class="headerlink" title="匿名函数"></a>匿名函数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var fn = function()&#123;</span><br><span class="line">    return 1</span><br><span class="line">&#125;</span><br><span class="line">var fn2 = fn</span><br><span class="line">fn.name // fn</span><br><span class="line">fn2.name // fn</span><br></pre></td></tr></table></figure>
+<p>点评：fn和fn2存的都是这个匿名函数的地址！</p>
+<h2 id="具名函数"><a href="#具名函数" class="headerlink" title="具名函数"></a>具名函数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function fn3()&#123;</span><br><span class="line">    return 3</span><br><span class="line">&#125;</span><br><span class="line">var fn5 = function fn4()&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">console.log(fn3)</span><br><span class="line">console.log(fn4)//报错</span><br></pre></td></tr></table></figure>
+<p>点评：fn4只能在function内使用，在全局作用域中不可使用</p>
+<h2 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var fn6 = e=&gt;e+1</span><br><span class="line">fn6(6)</span><br><span class="line">var fn7 = (i,j)=&gt;i+j</span><br><span class="line">fn7(1,2)</span><br><span class="line">var fn8 = (i,j)=&gt;&#123;</span><br><span class="line">    console.log(1);</span><br><span class="line">    return i+j</span><br><span class="line">&#125;</span><br><span class="line">fn8(5,6)</span><br></pre></td></tr></table></figure>
+<h1 id="词法作用域"><a href="#词法作用域" class="headerlink" title="词法作用域"></a>词法作用域</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">var global1 = 1</span><br><span class="line">function fn1(param1)&#123;</span><br><span class="line">    var local1 = &apos;local1&apos;</span><br><span class="line">    var local2 = &apos;local2&apos;)</span><br><span class="line">    function fn2(param2)&#123;</span><br><span class="line">        var local2 = &apos;inner local2&apos;</span><br><span class="line">        console.log(local1)</span><br><span class="line">        console.log(local2)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function fn3()&#123;</span><br><span class="line">        var local2 = &apos;fn3 local2&apos;</span><br><span class="line">        fn2(local2)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.loli.net/2018/10/13/5bc19ccfde068.jpg" alt="test_1.jpg"><br>总结：函数只有在自身作用域中无法找到变量时，才会在上级作用域中去寻找。</p>
+<p>拓展阅读：<br><a href="https://js8.in/2011/08/15/javascript%E7%9A%84%E8%AF%8D%E6%B3%95%E4%BD%9C%E7%94%A8%E5%9F%9F/" target="_blank" rel="noopener">javascript的词法作用域</a></p>
+<h3 id="call-stack（堆栈调用-已会）"><a href="#call-stack（堆栈调用-已会）" class="headerlink" title="call stack（堆栈调用,已会）"></a>call stack（堆栈调用,已会）</h3><h2 id="this-amp-arguments"><a href="#this-amp-arguments" class="headerlink" title="this &amp; arguments"></a>this &amp; arguments</h2><p>重要：this 就是 call 的第一个参数！call 的其他参数统称为 arguments<br>this 是隐藏的第一个参数，且必须是对象<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function f()&#123;</span><br><span class="line">    console.log(this)</span><br><span class="line">    console.log(arguments)</span><br><span class="line">&#125;</span><br><span class="line">f.call() // window</span><br><span class="line">f.call(&#123;name:&apos;frank&apos;&#125;) // &#123;name: &apos;frank&apos;&#125;, []</span><br><span class="line">f.call(&#123;name:&apos;frank&apos;&#125;,1) // &#123;name: &apos;frank&apos;&#125;, [1]</span><br><span class="line">f.call(&#123;name:&apos;frank&apos;&#125;,1,2) // &#123;name: &apos;frank&apos;&#125;, [1,2]</span><br></pre></td></tr></table></figure></p>
+<p>this 为什么必须是对象<br>因为 this 就是函数与对象之间的羁绊<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">var person = &#123;</span><br><span class="line">    name: &apos;frank&apos;,</span><br><span class="line">    sayHi: function(person)&#123;</span><br><span class="line">        console.log(&apos;Hi, I am&apos; + person.name)</span><br><span class="line">    &#125;,</span><br><span class="line">    sayBye: function(person)&#123;</span><br><span class="line">        console.log(&apos;Bye, I am&apos; + person.name)</span><br><span class="line">    &#125;,</span><br><span class="line">    say: function(person, word)&#123;</span><br><span class="line">        console.log(word + &apos;, I am&apos; + person.name)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">person.sayHi(person)</span><br><span class="line">person.sayBye(person)</span><br><span class="line">person.say(person, &apos;How are you&apos;)</span><br><span class="line"></span><br><span class="line">// 能不能变成 </span><br><span class="line">person.sayHi()</span><br><span class="line">person.sayBye()</span><br><span class="line">person.say(&apos;How are you&apos;)</span><br><span class="line"></span><br><span class="line">// 那么源代码就要改了</span><br><span class="line">var person = &#123;</span><br><span class="line">    name: &apos;frank&apos;,</span><br><span class="line">    sayHi: function()&#123;</span><br><span class="line">        console.log(&apos;Hi, I am&apos; + this.name)</span><br><span class="line">    &#125;,</span><br><span class="line">    sayBye: function()&#123;</span><br><span class="line">        console.log(&apos;Bye, I am&apos; + this.name)</span><br><span class="line">    &#125;,</span><br><span class="line">    say: function(word)&#123;</span><br><span class="line">        console.log(word + &apos;, I am&apos; + this.name)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">// 如果你不想吃语法糖</span><br><span class="line">person.sayHi.call(person)</span><br><span class="line">person.sayBye.call(person)</span><br><span class="line">person.say.call(person, &apos;How are you&apos;)</span><br><span class="line"></span><br><span class="line">// 还是回到那句话：this 是 call 的第一个参数</span><br><span class="line">// this 是参数，所以，只有在调用的时候才能确定</span><br><span class="line">person.sayHi.call(&#123;name:&apos;haha&apos;&#125;)  // 这时 sayHi 里面的 this 就不是 person 了</span><br><span class="line">// this 真的很不靠谱</span><br><span class="line"></span><br><span class="line">// 新手疑惑的两种写法</span><br><span class="line">var fn = person.sayHi</span><br><span class="line">person.sayHi() // this === person</span><br><span class="line">fn()  // this === window</span><br></pre></td></tr></table></figure></p>
+<p>call / apply<br>fn.call(asThis, p1,p2) 是函数的正常调用方式<br>当你不确定参数的个数时，就使用 apply<br>fn.apply(asThis, params)  </p>
+<h2 id="bind"><a href="#bind" class="headerlink" title="bind  "></a>bind  </h2><p>call 和 apply 是直接调用函数，而 bind 则是返回一个新函数（并没有调用原来的函数），这个新函数会 call 原来的函数，call 的参数由你指定。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">var person = &#123;</span><br><span class="line">  name:&apos;yzb&apos;,</span><br><span class="line">  sayName()&#123;</span><br><span class="line">    console.log(this)</span><br><span class="line">    console.log(this.name)</span><br><span class="line">    function sayAgain()&#123;</span><br><span class="line">       console.log(1)</span><br><span class="line">       console.log(this)</span><br><span class="line">       console.log(2)</span><br><span class="line">    &#125;</span><br><span class="line">    sayAgain()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">结果：</span><br><span class="line">person.sayName()</span><br><span class="line">&#123;name: &quot;yzb&quot;, sayName: ƒ&#125;</span><br><span class="line">yzb</span><br><span class="line">1</span><br><span class="line">window</span><br><span class="line">2</span><br></pre></td></tr></table></figure>
+<h2 id="bind-1"><a href="#bind-1" class="headerlink" title="bind"></a>bind</h2><p>call 和 apply 是直接调用函数，而 bind 则是返回一个新函数（并没有调用原来的函数），这个新函数会 call 原来的函数，call 的参数由你指定。</p>
+<h2 id="柯里化"><a href="#柯里化" class="headerlink" title="柯里化"></a>柯里化</h2><p>柯里化：将 f(x,y) 变成 f(x=1)(y) 或 f(y=1)x<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function sum(x,y)&#123;</span><br><span class="line">	return x+y</span><br><span class="line">&#125;</span><br><span class="line">function addOne(y)&#123;</span><br><span class="line">    return sum (1,y)</span><br><span class="line">&#125;</span><br><span class="line">addOne(4)</span><br><span class="line">function addTwo(y)&#123;</span><br><span class="line">    return sum(2,y)</span><br><span class="line">&#125;</span><br><span class="line">addTwo(4)</span><br></pre></td></tr></table></figure></p>
+<p>应用于模板引擎，用来进行惰性求值<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function templateHandler(template,data)&#123;</span><br><span class="line">    return template.replace(&apos;&#123;&#123;name&#125;&#125;&apos;,data.name)</span><br><span class="line">&#125;</span><br><span class="line">templateHandler(&apos;&lt;h1&gt;I am &#123;&#123;name&#125;&#125;!&lt;/h1&gt;&apos;,&#123;name:&apos;tom&apos;&#125;)</span><br><span class="line">function templatehandler2(template)&#123;</span><br><span class="line">    return function(data)&#123;</span><br><span class="line">        return template.replace(&apos;&#123;&#123;name&#125;&#125;&apos;,data.name)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">var f = templatehandler2(&apos;&lt;h1&gt;I am &#123;&#123;name&#125;&#125;!&lt;/h1&gt;&apos;)</span><br><span class="line">f(&#123;name:&apos;fuck&apos;&#125;)</span><br></pre></td></tr></table></figure></p>
+<h2 id="高阶函数："><a href="#高阶函数：" class="headerlink" title="高阶函数："></a>高阶函数：</h2><p>在数学和计算机科学中，高阶函数是至少满足下列一个条件的函数：</p>
+<ul>
+<li><p>1.接受一个或多个函数作为输入：<br>array.forEach.call(array,fn)<br>array.sort.call(array,fn)<br>array.map.call(array,fn)<br>array.filter.call(array,fn)<br>array.reduce.call(array,fn)</p>
+</li>
+<li><p>2.输出一个函数：</p>
+</li>
+<li><p>3.不过它也可以同时满足两个条件：<br><code>Function.prototype.bind
+fn.bind.call(fn,{},1,2,3)</code></p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">let array = [1,2,3,4,5,6,7,8]</span><br><span class="line">let arr = array.filter(function(n)&#123;</span><br><span class="line">    return n%2 === 0</span><br><span class="line">&#125;)</span><br><span class="line">console.log(arr)</span><br><span class="line">//[2, 4, 6, 8]</span><br><span class="line">array.reduce(function(s,c)&#123;</span><br><span class="line">	return s+c</span><br><span class="line">&#125;)</span><br><span class="line">//36</span><br><span class="line"></span><br><span class="line">// 计算数组中的偶数的总和</span><br><span class="line">array.filter(function(n)&#123;</span><br><span class="line">    return n%2 === 0</span><br><span class="line">&#125;).reduce(function(s,c)&#123;</span><br><span class="line">	return s+c</span><br><span class="line">&#125;)</span><br><span class="line">等价于</span><br><span class="line">[].reduce.call(array.filter.call(array,function(n)&#123;</span><br><span class="line">    return n%2 === 0</span><br><span class="line">&#125;),function(s,c)&#123;</span><br><span class="line">	return s+c</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">//奇数求和</span><br><span class="line">let array1 = [11,2,13,4,5,6,7]</span><br><span class="line">array1.filter(function(n)&#123;</span><br><span class="line">    return n%2 === 1</span><br><span class="line">&#125;).sort(function(a,b)&#123;</span><br><span class="line">    return a-b</span><br><span class="line">&#125;)</span><br><span class="line">[].sort.call(array1.filter.call(array1,function(n)&#123;</span><br><span class="line">    return n%2 === 1</span><br><span class="line">&#125;),function(a,b)&#123;</span><br><span class="line">    return a-b</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="回调"><a href="#回调" class="headerlink" title="回调"></a>回调</h2><p>名词形式：被当做参数的函数就是回调<br>动词形式：调用这个回调<br>注意回调跟异步没有任何关系  </p>
+<p>有关系的举例如下：<br>setTimeout(fn,1000)<br>function fn(){<br>    console.log(this.name)<br>}<br>let obj = {<br>    name:’jack’<br>}<br>setTimeout(fn.bind(obj),1000)</p>
+<h2 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h2><p>返回对象的函数就是构造函数<br>一般首字母大写<br><a href="https://zhuanlan.zhihu.com/p/23987456" target="_blank" rel="noopener">JS 的 new 到底是干什么的？</a></p>
+<h2 id="箭头函数-1"><a href="#箭头函数-1" class="headerlink" title="箭头函数"></a>箭头函数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var fn = ()=&gt;&#123;console.log(this)&#125;</span><br><span class="line">fn.bind(&#123;name:&apos;jack&apos;&#125;)</span><br><span class="line">fn()</span><br><span class="line">// window</span><br></pre></td></tr></table></figure>
+<p>箭头函数就不接收this</p>
+<p>function curry(func,argu){<br>    console.log(argu)<br>    return function(){<br>    }<br>}<br>var abc = function(a, b, c) {<br>  return [a, b, c];<br>};</p>
+<p>var curried = curry(abc);</p>
+<p>curried(1)(2)(3);<br>// =&gt; [1, 2, 3]</p>
+<p>curried(1, 2)(3);<br>// =&gt; [1, 2, 3]</p>
+<p>curried(1, 2, 3);<br>// =&gt; [1, 2, 3]</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/10/13/你真的懂函数吗？/" data-id="cjnbivpbi0000e4f4uml69iw8" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-TypeScript学习笔记" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/10/09/TypeScript学习笔记/" class="article-date">
@@ -101,7 +216,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/09/TypeScript学习笔记/" data-id="cjn5jae0j0004s3f4koiof2hp" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/10/09/TypeScript学习笔记/" data-id="cjnbiv3kb0006dcf4gq6fslkl" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -141,7 +256,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/06/ES6/" data-id="cjn5jae0o0005s3f4nu97pzv3" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/10/06/ES6/" data-id="cjnbiv3jr0004dcf4vuxxqrvs" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -178,7 +293,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/06/vue学习笔记/" data-id="cjn5jae2r000ls3f43qai5nu9" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/10/06/vue学习笔记/" data-id="cjnbiv3or000mdcf4qp8ga4yu" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -252,7 +367,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/01/CSS笔记-长期更新/" data-id="cjn5jae090002s3f4x90m1qay" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/10/01/CSS笔记-长期更新/" data-id="cjnbiv3jg0003dcf4u61lpu11" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -292,7 +407,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/28/flex布局下flex-grow部分的文字超过部分显示为省略号的方法和解释/" data-id="cjn5jae1k000bs3f434yfz5pu" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/09/28/flex布局下flex-grow部分的文字超过部分显示为省略号的方法和解释/" data-id="cjnbiv3m7000cdcf4rew7h65l" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -503,7 +618,7 @@ response.end()</code></p>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/08/http之Cookie、Session、LocalStorage、Cache-Control、ETag、Last-Modified/" data-id="cjn5jae2g000fs3f4zi63jxy9" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/09/08/http之Cookie、Session、LocalStorage、Cache-Control、ETag、Last-Modified/" data-id="cjnbiv3nh000fdcf4kxdjbsy4" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -560,7 +675,7 @@ http://10.0.0.1/concat
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/11/路由/" data-id="cjn5jae2v000os3f42vkp7qoh" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/08/11/路由/" data-id="cjnbiv3pl000qdcf4p91rc4au" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -613,168 +728,7 @@ http://10.0.0.1/concat
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/08/Vue的三种通信方法/" data-id="cjn5jae0w0007s3f4a4crjrxe" class="article-share-link">Teilen</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-icon的各种做法" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/06/09/icon的各种做法/" class="article-date">
-  <time datetime="2018-06-09T02:34:21.000Z" itemprop="datePublished">2018-06-09</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/09/icon的各种做法/">icon的各种做法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ol>
-<li><p>img 法</p>
-   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=&quot;xxx.png&quot; alt=&quot;微博&quot;&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>background 法</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.icon.weibo&#123;</span><br><span class="line">   	background-image:url(./weibo.png);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>background 合一法</p>
-<p> 什么是<a href="https://baike.baidu.com/item/CSS%20Sprite" target="_blank" rel="noopener">css sprites 雪碧图</a>?</p>
-<p> 使用<a href="http://css.spritegen.com/" target="_blank" rel="noopener">css sprites generator 雪碧图生成器</a></p>
-<p> 复制粘贴YOUR CSS，YOUR HTML里的代码，并下载对应的雪碧图，即可使用雪碧图。</p>
-</li>
-<li><p>unicode引用</p>
-<p>点击<a href="http://www.iconfont.cn/" target="_blank" rel="noopener">阿里巴巴矢量图标库</a>，选择对应的图标放入仓库。</p>
-<blockquote>
-<p>unicode是字体在网页端最原始的应用方式，特点是：</p>
-<ul>
-<li>兼容性最好，支持ie6+，及所有现代浏览器。</li>
-<li>支持按字体的方式去动态调整图标大小，颜色等等。</li>
-<li>但是因为是字体，所以不支持多色。只能使用平台里单色的图标，就算项目里有多色图标也会自动去色。</li>
-</ul>
-</blockquote>
-<blockquote>
-<p>unicode使用步骤如下：</p>
-<ul>
-<li>第一步：拷贝项目下面生成的font-face</li>
-<li>第二步：定义使用iconfont的样式</li>
-<li>第三步：挑选相应图标并获取字体编码，应用于页面<br><code>&lt;i class=&quot;iconfont&quot;&gt;&amp;#x33;&lt;/i&gt;</code></li>
-</ul>
-</blockquote>
-</li>
-<li><p>font-class引用 </p>
-<p>font-class是unicode使用方式的一种变种，主要是解决unicode书写不直观，语意不明确的问题。与unicode使用方式相比，具有如下特点：</p>
-<ul>
-<li>兼容性良好，支持ie8+，及所有现代浏览器。</li>
-<li>相比于unicode语意明确，书写更直观。可以很容易分辨这个icon是什么。</li>
-<li>因为使用class来定义图标，所以当要替换图标时，只需要修改class里面的unicode引用。</li>
-<li>不过因为本质上还是使用的字体，所以多色图标还是不支持的。<blockquote>
-<p>使用步骤如下：</p>
-<ul>
-<li>第一步：拷贝项目下面生成的fontclass代码：<br><code>//at.alicdn.com/t/font_8d5l8fzk5b87iudi.css</code></li>
-<li>第二步：挑选相应图标并获取类名，应用于页面：<br><code>&lt;i class=&quot;iconfont icon-xxx&quot;&gt;&lt;/i&gt;</code></li>
-</ul>
-</blockquote>
-</li>
-</ul>
-</li>
-<li><p>SVG 法（symbol引用）</p>
-<blockquote>
-<p>这是一种全新的使用方式，应该说这才是未来的主流，也是平台目前推荐的用法。相关介绍可以参考这篇文章 这种用法其实是做了一个svg的集合，与上面两种相比具有如下特点：</p>
-</blockquote>
-<blockquote>
-<ul>
-<li>支持多色图标了，不再受单色限制。</li>
-<li>通过一些技巧，支持像字体那样，通过font-size,color来调整样式。</li>
-<li>兼容性较差，支持 ie9+,及现代浏览器。</li>
-<li>浏览器渲染svg的性能一般，还不如png。<br>使用步骤如下：</li>
-</ul>
-</blockquote>
-<blockquote>
-<p>第一步：拷贝项目下面生成的symbol代码：<br> <code>//at.alicdn.com/t/font_8d5l8fzk5b87iudi.js</code></p>
-</blockquote>
-<blockquote>
-<p>第二步：加入通用css代码（引入一次就行）：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;style type=&quot;text/css&quot;&gt;</span><br><span class="line">    .icon &#123;</span><br><span class="line">       width: 1em; height: 1em;</span><br><span class="line">       vertical-align: -0.15em;</span><br><span class="line">       fill: currentColor;</span><br><span class="line">       overflow: hidden;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<blockquote>
-<p> 第三步：挑选相应图标并获取类名，应用于页面：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;svg class=&quot;icon&quot; aria-hidden=&quot;true&quot;&gt;</span><br><span class="line">    &lt;use xlink:href=&quot;#icon-xxx&quot;&gt;&lt;/use&gt;</span><br><span class="line">&lt;/svg&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-</li>
-<li><p>新手慎用：「CSS 就是干」法<br>使用css手绘icon，可见<a href="http://cssicon.space/#/" target="_blank" rel="noopener">达人网站</a></p>
-</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/06/09/icon的各种做法/" data-id="cjn5jae2m000gs3f4ozdivlxp" class="article-share-link">Teilen</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="js-登录注册与Cookie" class="article article-type-js" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/05/25/登录注册与Cookie/" class="article-date">
-  <time datetime="2018-05-25T02:51:42.000Z" itemprop="datePublished">2018-05-25</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/25/登录注册与Cookie/">登录注册与Cookie</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="JS-登录注册与Cookie"><a href="#JS-登录注册与Cookie" class="headerlink" title="JS 登录注册与Cookie"></a>JS 登录注册与Cookie</h1><p>前端往往对后端的操作感到迷惑和神秘。虽然以前编辑过耍票性质的网站，对后端有一定了解，但对HTTP和状态码等内容还是不熟悉。但那段经历还是让我能更好的理解后端操作。</p>
-<p>接下来，我将详细讲述JS的登录注册与Cookie内容。<br>登录注册容易理解，Cookie有什么用呢？Cookie能始终为浏览者提供稳定的信息，Cookie存储了数据，不需要持续与服务器交互GET相同的信息。</p>
-<p>首先，需要验证是否已有Cookie存在，若无，则调到登录/注册界面。第三步会发送Cookie。</p>
-<p>第一步：注册页面发送POST请求<br>响应成功，打印响应内容，反之，提示邮箱格式错误</p>
-<p>代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$.post(&apos;/sign_up&apos;, hash)</span><br><span class="line">    .then((response) =&gt; &#123;</span><br><span class="line">        console.log(response)</span><br><span class="line">    &#125;, (request) =&gt; &#123;</span><br><span class="line">        let &#123; errors &#125; = request.responseJSON</span><br><span class="line">        if (errors.email &amp;&amp; errors.email === &apos;invalid&apos;) &#123;</span><br><span class="line">            $form.find(&apos;[name=&quot;email&quot;]&apos;).siblings(&apos;.error&apos;)</span><br><span class="line">                .text(&apos;邮箱格式错误&apos;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure></p>
-<p>server服务器响应</p>
-<ul>
-<li>1.将得到信息拼接到一起，readBody()</li>
-<li>2.将得到的信息拆分到hash中。检查，如果邮箱无@符号，返回错误信息：”email”: “invalid”。</li>
-<li>3.如果信息无误，写入数据库中</li>
-</ul>
-<p>代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">if(path === &apos;/sign_up&apos; &amp;&amp; method === &apos;POST&apos;)&#123;</span><br><span class="line">    readBody(request).then((body)=&gt;&#123;</span><br><span class="line">      let strings = body.split(&apos;&amp;&apos;) // [&apos;email=1&apos;, &apos;password=2&apos;, &apos;password_confirmation=3&apos;]</span><br><span class="line">      let hash = &#123;&#125;</span><br><span class="line">      strings.forEach((string)=&gt;&#123;</span><br><span class="line">        // string == &apos;email=1&apos;</span><br><span class="line">        let parts = string.split(&apos;=&apos;) // [&apos;email&apos;, &apos;1&apos;]</span><br><span class="line">        let key = parts[0]</span><br><span class="line">        let value = parts[1]</span><br><span class="line">        hash[key] = decodeURIComponent(value) // hash[&apos;email&apos;] = &apos;1&apos;</span><br><span class="line">      &#125;)</span><br><span class="line">      let &#123;email, password, password_confirmation&#125; = hash</span><br><span class="line">      if(email.indexOf(&apos;@&apos;) === -1)&#123;</span><br><span class="line">        response.statusCode = 400</span><br><span class="line">        response.setHeader(&apos;Content-Type&apos;, &apos;application/json;charset=utf-8&apos;)</span><br><span class="line">        response.write(`&#123;</span><br><span class="line">          &quot;errors&quot;: &#123;</span><br><span class="line">            &quot;email&quot;: &quot;invalid&quot;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;`)</span><br><span class="line">      &#125;else if(password !== password_confirmation)&#123;</span><br><span class="line">        response.statusCode = 400</span><br><span class="line">        response.write(&apos;password not match&apos;)</span><br><span class="line">      &#125;else&#123;</span><br><span class="line">        var users = fs.readFileSync(&apos;./db/users&apos;, &apos;utf8&apos;)</span><br><span class="line">        try&#123;</span><br><span class="line">          users = JSON.parse(users) // []</span><br><span class="line">        &#125;catch(exception)&#123;</span><br><span class="line">          users = []</span><br><span class="line">        &#125;</span><br><span class="line">        let inUse = false</span><br><span class="line">        for(let i=0; i&lt;users.length; i++)&#123;</span><br><span class="line">          let user = users[i]</span><br><span class="line">          if(user.email === email)&#123;</span><br><span class="line">            inUse = true</span><br><span class="line">            break;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if(inUse)&#123;</span><br><span class="line">          response.statusCode = 400</span><br><span class="line">          response.write(&apos;email in use&apos;)</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">          users.push(&#123;email: email, password: password&#125;)</span><br><span class="line">          var usersString = JSON.stringify(users)</span><br><span class="line">          fs.writeFileSync(&apos;./db/users&apos;, usersString)</span><br><span class="line">          response.statusCode = 200</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      response.end()</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  //因为服务器发送内容是分段的，所以，需要将接收到的信息拼接到一起</span><br><span class="line">  function readBody(request)&#123;</span><br><span class="line">  return new Promise((resolve, reject)=&gt;&#123;</span><br><span class="line">    let body = []</span><br><span class="line">    request.on(&apos;data&apos;, (chunk) =&gt; &#123;</span><br><span class="line">      body.push(chunk);</span><br><span class="line">    &#125;).on(&apos;end&apos;, () =&gt; &#123;</span><br><span class="line">      body = Buffer.concat(body).toString();</span><br><span class="line">      resolve(body)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>第二步：登录发送POST请求<br>代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$.post(&apos;/sign_in&apos;, hash)  </span><br><span class="line">  .then((response)=&gt;&#123;</span><br><span class="line">    window.location.href = &apos;/&apos;</span><br><span class="line">  &#125;, (request)=&gt;&#123;</span><br><span class="line">    alert(&apos;邮箱与密码不匹配&apos;)</span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure></p>
-<p>服务器校对用户名和密码后，如果正确，使用Cookie发送用户信息<code>response.setHeader(&#39;Set-Cookie&#39;, `sign_in_email=${email}</code><br>使网页得到用户信息，并显示出来<br>完整代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">if (path === &apos;/sign_in&apos; &amp;&amp; method === &apos;POST&apos;) &#123;</span><br><span class="line">    readBody(request).then((body) =&gt; &#123;</span><br><span class="line">        let strings = body.split(&apos;&amp;&apos;) // [&apos;email=1&apos;, &apos;password=2&apos;, &apos;password_confirmation=3&apos;]</span><br><span class="line">        let hash = &#123;&#125;</span><br><span class="line">        strings.forEach((string) =&gt; &#123;</span><br><span class="line">            // string == &apos;email=1&apos;</span><br><span class="line">            let parts = string.split(&apos;=&apos;) // [&apos;email&apos;, &apos;1&apos;]</span><br><span class="line">            let key = parts[0]</span><br><span class="line">            let value = parts[1]</span><br><span class="line">            hash[key] = decodeURIComponent(value) // hash[&apos;email&apos;] = &apos;1&apos;</span><br><span class="line">        &#125;)</span><br><span class="line">        let &#123; email, password &#125; = hash</span><br><span class="line">        var users = fs.readFileSync(&apos;./db/users&apos;, &apos;utf8&apos;)</span><br><span class="line">        try &#123;</span><br><span class="line">            users = JSON.parse(users) // []</span><br><span class="line">        &#125; catch (exception) &#123;</span><br><span class="line">            users = []</span><br><span class="line">        &#125;</span><br><span class="line">        let found</span><br><span class="line">        for (let i = 0; i &lt; users.length; i++) &#123;</span><br><span class="line">            if (users[i].email === email &amp;&amp; users[i].password === password) &#123;</span><br><span class="line">                found = true</span><br><span class="line">                break</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if (found) &#123;</span><br><span class="line">            response.setHeader(&apos;Set-Cookie&apos;, `sign_in_email=$&#123;email&#125;`)</span><br><span class="line">            response.statusCode = 200</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            response.statusCode = 401</span><br><span class="line">        &#125;</span><br><span class="line">        response.end()</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>以上即为登录注册及Cookie的基本使用细节。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/05/25/登录注册与Cookie/" data-id="cjn5jae2t000ns3f482q5xdyb" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/08/08/Vue的三种通信方法/" data-id="cjnbiv3kr0008dcf44grjgwa7" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -820,6 +774,14 @@ http://10.0.0.1/concat
       <ul>
         
           <li>
+            <a href="/2018/10/15/JS模拟继承/">JS模拟继承</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/13/你真的懂函数吗？/">你真的懂函数吗？</a>
+          </li>
+        
+          <li>
             <a href="/2018/10/09/TypeScript学习笔记/">(no title)</a>
           </li>
         
@@ -829,14 +791,6 @@ http://10.0.0.1/concat
         
           <li>
             <a href="/2018/10/06/vue学习笔记/">vue学习笔记</a>
-          </li>
-        
-          <li>
-            <a href="/2018/10/01/CSS笔记-长期更新/">CSS笔记(长期更新)</a>
-          </li>
-        
-          <li>
-            <a href="/2018/09/28/flex布局下flex-grow部分的文字超过部分显示为省略号的方法和解释/">flex布局下flex-grow部分的文字超过部分显示为省略号的方法和解释</a>
           </li>
         
       </ul>

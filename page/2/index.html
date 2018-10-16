@@ -61,6 +61,167 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-icon的各种做法" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/06/09/icon的各种做法/" class="article-date">
+  <time datetime="2018-06-09T02:34:21.000Z" itemprop="datePublished">2018-06-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/09/icon的各种做法/">icon的各种做法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><p>img 法</p>
+   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=&quot;xxx.png&quot; alt=&quot;微博&quot;&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>background 法</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.icon.weibo&#123;</span><br><span class="line">   	background-image:url(./weibo.png);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>background 合一法</p>
+<p> 什么是<a href="https://baike.baidu.com/item/CSS%20Sprite" target="_blank" rel="noopener">css sprites 雪碧图</a>?</p>
+<p> 使用<a href="http://css.spritegen.com/" target="_blank" rel="noopener">css sprites generator 雪碧图生成器</a></p>
+<p> 复制粘贴YOUR CSS，YOUR HTML里的代码，并下载对应的雪碧图，即可使用雪碧图。</p>
+</li>
+<li><p>unicode引用</p>
+<p>点击<a href="http://www.iconfont.cn/" target="_blank" rel="noopener">阿里巴巴矢量图标库</a>，选择对应的图标放入仓库。</p>
+<blockquote>
+<p>unicode是字体在网页端最原始的应用方式，特点是：</p>
+<ul>
+<li>兼容性最好，支持ie6+，及所有现代浏览器。</li>
+<li>支持按字体的方式去动态调整图标大小，颜色等等。</li>
+<li>但是因为是字体，所以不支持多色。只能使用平台里单色的图标，就算项目里有多色图标也会自动去色。</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>unicode使用步骤如下：</p>
+<ul>
+<li>第一步：拷贝项目下面生成的font-face</li>
+<li>第二步：定义使用iconfont的样式</li>
+<li>第三步：挑选相应图标并获取字体编码，应用于页面<br><code>&lt;i class=&quot;iconfont&quot;&gt;&amp;#x33;&lt;/i&gt;</code></li>
+</ul>
+</blockquote>
+</li>
+<li><p>font-class引用 </p>
+<p>font-class是unicode使用方式的一种变种，主要是解决unicode书写不直观，语意不明确的问题。与unicode使用方式相比，具有如下特点：</p>
+<ul>
+<li>兼容性良好，支持ie8+，及所有现代浏览器。</li>
+<li>相比于unicode语意明确，书写更直观。可以很容易分辨这个icon是什么。</li>
+<li>因为使用class来定义图标，所以当要替换图标时，只需要修改class里面的unicode引用。</li>
+<li>不过因为本质上还是使用的字体，所以多色图标还是不支持的。<blockquote>
+<p>使用步骤如下：</p>
+<ul>
+<li>第一步：拷贝项目下面生成的fontclass代码：<br><code>//at.alicdn.com/t/font_8d5l8fzk5b87iudi.css</code></li>
+<li>第二步：挑选相应图标并获取类名，应用于页面：<br><code>&lt;i class=&quot;iconfont icon-xxx&quot;&gt;&lt;/i&gt;</code></li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>SVG 法（symbol引用）</p>
+<blockquote>
+<p>这是一种全新的使用方式，应该说这才是未来的主流，也是平台目前推荐的用法。相关介绍可以参考这篇文章 这种用法其实是做了一个svg的集合，与上面两种相比具有如下特点：</p>
+</blockquote>
+<blockquote>
+<ul>
+<li>支持多色图标了，不再受单色限制。</li>
+<li>通过一些技巧，支持像字体那样，通过font-size,color来调整样式。</li>
+<li>兼容性较差，支持 ie9+,及现代浏览器。</li>
+<li>浏览器渲染svg的性能一般，还不如png。<br>使用步骤如下：</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>第一步：拷贝项目下面生成的symbol代码：<br> <code>//at.alicdn.com/t/font_8d5l8fzk5b87iudi.js</code></p>
+</blockquote>
+<blockquote>
+<p>第二步：加入通用css代码（引入一次就行）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;style type=&quot;text/css&quot;&gt;</span><br><span class="line">    .icon &#123;</span><br><span class="line">       width: 1em; height: 1em;</span><br><span class="line">       vertical-align: -0.15em;</span><br><span class="line">       fill: currentColor;</span><br><span class="line">       overflow: hidden;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p> 第三步：挑选相应图标并获取类名，应用于页面：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;svg class=&quot;icon&quot; aria-hidden=&quot;true&quot;&gt;</span><br><span class="line">    &lt;use xlink:href=&quot;#icon-xxx&quot;&gt;&lt;/use&gt;</span><br><span class="line">&lt;/svg&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+<li><p>新手慎用：「CSS 就是干」法<br>使用css手绘icon，可见<a href="http://cssicon.space/#/" target="_blank" rel="noopener">达人网站</a></p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/06/09/icon的各种做法/" data-id="cjnbiv3nw000gdcf4exp78oro" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="js-登录注册与Cookie" class="article article-type-js" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/25/登录注册与Cookie/" class="article-date">
+  <time datetime="2018-05-25T02:51:42.000Z" itemprop="datePublished">2018-05-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/25/登录注册与Cookie/">登录注册与Cookie</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="JS-登录注册与Cookie"><a href="#JS-登录注册与Cookie" class="headerlink" title="JS 登录注册与Cookie"></a>JS 登录注册与Cookie</h1><p>前端往往对后端的操作感到迷惑和神秘。虽然以前编辑过耍票性质的网站，对后端有一定了解，但对HTTP和状态码等内容还是不熟悉。但那段经历还是让我能更好的理解后端操作。</p>
+<p>接下来，我将详细讲述JS的登录注册与Cookie内容。<br>登录注册容易理解，Cookie有什么用呢？Cookie能始终为浏览者提供稳定的信息，Cookie存储了数据，不需要持续与服务器交互GET相同的信息。</p>
+<p>首先，需要验证是否已有Cookie存在，若无，则调到登录/注册界面。第三步会发送Cookie。</p>
+<p>第一步：注册页面发送POST请求<br>响应成功，打印响应内容，反之，提示邮箱格式错误</p>
+<p>代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$.post(&apos;/sign_up&apos;, hash)</span><br><span class="line">    .then((response) =&gt; &#123;</span><br><span class="line">        console.log(response)</span><br><span class="line">    &#125;, (request) =&gt; &#123;</span><br><span class="line">        let &#123; errors &#125; = request.responseJSON</span><br><span class="line">        if (errors.email &amp;&amp; errors.email === &apos;invalid&apos;) &#123;</span><br><span class="line">            $form.find(&apos;[name=&quot;email&quot;]&apos;).siblings(&apos;.error&apos;)</span><br><span class="line">                .text(&apos;邮箱格式错误&apos;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure></p>
+<p>server服务器响应</p>
+<ul>
+<li>1.将得到信息拼接到一起，readBody()</li>
+<li>2.将得到的信息拆分到hash中。检查，如果邮箱无@符号，返回错误信息：”email”: “invalid”。</li>
+<li>3.如果信息无误，写入数据库中</li>
+</ul>
+<p>代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">if(path === &apos;/sign_up&apos; &amp;&amp; method === &apos;POST&apos;)&#123;</span><br><span class="line">    readBody(request).then((body)=&gt;&#123;</span><br><span class="line">      let strings = body.split(&apos;&amp;&apos;) // [&apos;email=1&apos;, &apos;password=2&apos;, &apos;password_confirmation=3&apos;]</span><br><span class="line">      let hash = &#123;&#125;</span><br><span class="line">      strings.forEach((string)=&gt;&#123;</span><br><span class="line">        // string == &apos;email=1&apos;</span><br><span class="line">        let parts = string.split(&apos;=&apos;) // [&apos;email&apos;, &apos;1&apos;]</span><br><span class="line">        let key = parts[0]</span><br><span class="line">        let value = parts[1]</span><br><span class="line">        hash[key] = decodeURIComponent(value) // hash[&apos;email&apos;] = &apos;1&apos;</span><br><span class="line">      &#125;)</span><br><span class="line">      let &#123;email, password, password_confirmation&#125; = hash</span><br><span class="line">      if(email.indexOf(&apos;@&apos;) === -1)&#123;</span><br><span class="line">        response.statusCode = 400</span><br><span class="line">        response.setHeader(&apos;Content-Type&apos;, &apos;application/json;charset=utf-8&apos;)</span><br><span class="line">        response.write(`&#123;</span><br><span class="line">          &quot;errors&quot;: &#123;</span><br><span class="line">            &quot;email&quot;: &quot;invalid&quot;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;`)</span><br><span class="line">      &#125;else if(password !== password_confirmation)&#123;</span><br><span class="line">        response.statusCode = 400</span><br><span class="line">        response.write(&apos;password not match&apos;)</span><br><span class="line">      &#125;else&#123;</span><br><span class="line">        var users = fs.readFileSync(&apos;./db/users&apos;, &apos;utf8&apos;)</span><br><span class="line">        try&#123;</span><br><span class="line">          users = JSON.parse(users) // []</span><br><span class="line">        &#125;catch(exception)&#123;</span><br><span class="line">          users = []</span><br><span class="line">        &#125;</span><br><span class="line">        let inUse = false</span><br><span class="line">        for(let i=0; i&lt;users.length; i++)&#123;</span><br><span class="line">          let user = users[i]</span><br><span class="line">          if(user.email === email)&#123;</span><br><span class="line">            inUse = true</span><br><span class="line">            break;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if(inUse)&#123;</span><br><span class="line">          response.statusCode = 400</span><br><span class="line">          response.write(&apos;email in use&apos;)</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">          users.push(&#123;email: email, password: password&#125;)</span><br><span class="line">          var usersString = JSON.stringify(users)</span><br><span class="line">          fs.writeFileSync(&apos;./db/users&apos;, usersString)</span><br><span class="line">          response.statusCode = 200</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      response.end()</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  //因为服务器发送内容是分段的，所以，需要将接收到的信息拼接到一起</span><br><span class="line">  function readBody(request)&#123;</span><br><span class="line">  return new Promise((resolve, reject)=&gt;&#123;</span><br><span class="line">    let body = []</span><br><span class="line">    request.on(&apos;data&apos;, (chunk) =&gt; &#123;</span><br><span class="line">      body.push(chunk);</span><br><span class="line">    &#125;).on(&apos;end&apos;, () =&gt; &#123;</span><br><span class="line">      body = Buffer.concat(body).toString();</span><br><span class="line">      resolve(body)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>第二步：登录发送POST请求<br>代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$.post(&apos;/sign_in&apos;, hash)  </span><br><span class="line">  .then((response)=&gt;&#123;</span><br><span class="line">    window.location.href = &apos;/&apos;</span><br><span class="line">  &#125;, (request)=&gt;&#123;</span><br><span class="line">    alert(&apos;邮箱与密码不匹配&apos;)</span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure></p>
+<p>服务器校对用户名和密码后，如果正确，使用Cookie发送用户信息<code>response.setHeader(&#39;Set-Cookie&#39;, `sign_in_email=${email}</code><br>使网页得到用户信息，并显示出来<br>完整代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">if (path === &apos;/sign_in&apos; &amp;&amp; method === &apos;POST&apos;) &#123;</span><br><span class="line">    readBody(request).then((body) =&gt; &#123;</span><br><span class="line">        let strings = body.split(&apos;&amp;&apos;) // [&apos;email=1&apos;, &apos;password=2&apos;, &apos;password_confirmation=3&apos;]</span><br><span class="line">        let hash = &#123;&#125;</span><br><span class="line">        strings.forEach((string) =&gt; &#123;</span><br><span class="line">            // string == &apos;email=1&apos;</span><br><span class="line">            let parts = string.split(&apos;=&apos;) // [&apos;email&apos;, &apos;1&apos;]</span><br><span class="line">            let key = parts[0]</span><br><span class="line">            let value = parts[1]</span><br><span class="line">            hash[key] = decodeURIComponent(value) // hash[&apos;email&apos;] = &apos;1&apos;</span><br><span class="line">        &#125;)</span><br><span class="line">        let &#123; email, password &#125; = hash</span><br><span class="line">        var users = fs.readFileSync(&apos;./db/users&apos;, &apos;utf8&apos;)</span><br><span class="line">        try &#123;</span><br><span class="line">            users = JSON.parse(users) // []</span><br><span class="line">        &#125; catch (exception) &#123;</span><br><span class="line">            users = []</span><br><span class="line">        &#125;</span><br><span class="line">        let found</span><br><span class="line">        for (let i = 0; i &lt; users.length; i++) &#123;</span><br><span class="line">            if (users[i].email === email &amp;&amp; users[i].password === password) &#123;</span><br><span class="line">                found = true</span><br><span class="line">                break</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if (found) &#123;</span><br><span class="line">            response.setHeader(&apos;Set-Cookie&apos;, `sign_in_email=$&#123;email&#125;`)</span><br><span class="line">            response.statusCode = 200</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            response.statusCode = 401</span><br><span class="line">        &#125;</span><br><span class="line">        response.end()</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>以上即为登录注册及Cookie的基本使用细节。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/05/25/登录注册与Cookie/" data-id="cjnbiv3pf000odcf4n7hakvj0" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-异步与回调" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/05/24/异步与回调/" class="article-date">
@@ -100,7 +261,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/05/24/异步与回调/" data-id="cjn5jae2s000ms3f4jk9hbk8u" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/05/24/异步与回调/" data-id="cjnbiv3pi000pdcf4lia5uc0w" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -149,7 +310,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/05/17/AJAX/" data-id="cjn5jadzx0000s3f4zbibjw7m" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/05/17/AJAX/" data-id="cjnbiv3im0000dcf45n3krgfl" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -186,7 +347,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/05/13/JSONP/" data-id="cjn5jae0s0006s3f4m9l6u8ac" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/05/13/JSONP/" data-id="cjnbiv3kl0007dcf432p15xwb" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -222,7 +383,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/05/09/js杂七杂八/" data-id="cjn5jae2p000js3f40hja0bdo" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/05/09/js杂七杂八/" data-id="cjnbiv3ol000kdcf4ifioiidj" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -265,7 +426,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/05/05/jQuery入门探秘-作业/" data-id="cjn5jae2n000hs3f48i61kvng" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/05/05/jQuery入门探秘-作业/" data-id="cjnbiv3oh000idcf4vj56o3hy" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -310,7 +471,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/05/02/DOM事件模型/" data-id="cjn5jae0e0003s3f4odbd4ekw" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/05/02/DOM事件模型/" data-id="cjnbiv3j90002dcf4zu66o4u1" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -353,7 +514,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/27/jQuery入门探秘/" data-id="cjn5jae2o000is3f459r4rd5h" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/04/27/jQuery入门探秘/" data-id="cjnbiv3oj000jdcf4fw4folag" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -397,91 +558,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/27/domAPI/" data-id="cjn5jae1e000as3f4eykggdyq" class="article-share-link">Teilen</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-function" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/04/25/function/" class="article-date">
-  <time datetime="2018-04-25T12:05:41.000Z" itemprop="datePublished">2018-04-25</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/25/function/">function</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="function函数"><a href="#function函数" class="headerlink" title="function函数"></a>function函数</h2><h4 id="函数的-5-种声明"><a href="#函数的-5-种声明" class="headerlink" title="函数的 5 种声明"></a>函数的 5 种声明</h4><p><img src="/2018/04/25/function/f7.png" alt=""></p>
-<h4 id="function-name属性"><a href="#function-name属性" class="headerlink" title="function name属性"></a>function name属性</h4><p><img src="/2018/04/25/function/f8.png" alt=""><br><img src="/2018/04/25/function/f9.png" alt=""><br><img src="/2018/04/25/function/f10.png" alt=""><br><img src="/2018/04/25/function/f12.png" alt=""></p>
-<h4 id="使用function-的call方法来理解this和arguments"><a href="#使用function-的call方法来理解this和arguments" class="headerlink" title="使用function 的call方法来理解this和arguments"></a>使用function 的call方法来理解this和arguments</h4><p><img src="/2018/04/25/function/f13.png" alt=""><br><img src="/2018/04/25/function/f14.png" alt=""></p>
-<h4 id="作用域的理解，就近原则"><a href="#作用域的理解，就近原则" class="headerlink" title="作用域的理解，就近原则"></a>作用域的理解，就近原则</h4><p><img src="/2018/04/25/function/f15.png" alt=""><br><img src="/2018/04/25/function/f16.png" alt=""><br><img src="/2018/04/25/function/f17.png" alt=""></p>
-<h4 id="闭包的概念"><a href="#闭包的概念" class="headerlink" title="闭包的概念"></a>闭包的概念</h4><p><img src="/2018/04/25/function/f18.png" alt=""></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/25/function/" data-id="cjn5jae1p000cs3f4itkn3t2u" class="article-share-link">Teilen</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-array" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/04/25/array/" class="article-date">
-  <time datetime="2018-04-25T06:23:56.000Z" itemprop="datePublished">2018-04-25</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/25/array/">array</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="JS数组"><a href="#JS数组" class="headerlink" title="JS数组"></a>JS数组</h2><p><img src="/2018/04/25/array/array.png" alt="image"></p>
-<p><img src="/2018/04/25/array/function1.png" alt="image"></p>
-<p><img src="/2018/04/25/array/function2.png" alt="image"></p>
-<p><img src="/2018/04/25/array/array2.png" alt="image"></p>
-<h4 id="匿名函数"><a href="#匿名函数" class="headerlink" title="匿名函数"></a>匿名函数</h4><p><img src="/2018/04/25/array/fun1.png" alt=""></p>
-<p><img src="/2018/04/25/array/fun2.png" alt=""></p>
-<p><img src="/2018/04/25/array/f1.png" alt=""><br><img src="/2018/04/25/array/f2.png" alt=""><br><img src="/2018/04/25/array/f4.png" alt=""><br><img src="/2018/04/25/array/f5.png" alt=""><br><img src="/2018/04/25/array/f6.png" alt=""><br><img src="/2018/04/25/array/f7.png" alt=""><br><img src="/2018/04/25/array/f8.png" alt=""><br><img src="/2018/04/25/array/f9.png" alt=""><br><img src="/2018/04/25/array/f10.png" alt=""><br><img src="/2018/04/25/array/f11.png" alt=""><br><img src="/2018/04/25/array/f12.png" alt=""><br><img src="/2018/04/25/array/f13.png" alt=""><br><img src="/2018/04/25/array/f14.png" alt=""><br><img src="/2018/04/25/array/f15.png" alt=""><br><img src="/2018/04/25/array/f16.png" alt=""><br><img src="/2018/04/25/array/f17.png" alt=""><br><img src="/2018/04/25/array/f18.png" alt=""><br><img src="/2018/04/25/array/f19.png" alt=""><br><img src="/2018/04/25/array/f21.png" alt=""><br><img src="/2018/04/25/array/f22.png" alt=""><br><img src="/2018/04/25/array/f23.png" alt=""><br><img src="/2018/04/25/array/f24.png" alt=""><br><img src="/2018/04/25/array/f26.png" alt=""><br><img src="/2018/04/25/array/f27.png" alt=""><br><img src="/2018/04/25/array/f28.png" alt=""><br><img src="/2018/04/25/array/f29.png" alt=""><br><img src="/2018/04/25/array/f30.png" alt=""><br><img src="/2018/04/25/array/f31.png" alt=""><br><img src="/2018/04/25/array/f32.png" alt=""><br><img src="/2018/04/25/array/f33.png" alt=""><br><img src="/2018/04/25/array/f34.png" alt=""></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/25/array/" data-id="cjn5jae120008s3f4x1vhxe5h" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/04/27/domAPI/" data-id="cjnbiv3ly000bdcf40cfv45mg" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -527,6 +604,14 @@
       <ul>
         
           <li>
+            <a href="/2018/10/15/JS模拟继承/">JS模拟继承</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/13/你真的懂函数吗？/">你真的懂函数吗？</a>
+          </li>
+        
+          <li>
             <a href="/2018/10/09/TypeScript学习笔记/">(no title)</a>
           </li>
         
@@ -536,14 +621,6 @@
         
           <li>
             <a href="/2018/10/06/vue学习笔记/">vue学习笔记</a>
-          </li>
-        
-          <li>
-            <a href="/2018/10/01/CSS笔记-长期更新/">CSS笔记(长期更新)</a>
-          </li>
-        
-          <li>
-            <a href="/2018/09/28/flex布局下flex-grow部分的文字超过部分显示为省略号的方法和解释/">flex布局下flex-grow部分的文字超过部分显示为省略号的方法和解释</a>
           </li>
         
       </ul>
