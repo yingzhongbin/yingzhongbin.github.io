@@ -61,6 +61,66 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Web性能优化" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/10/16/Web性能优化/" class="article-date">
+  <time datetime="2018-10-16T09:37:41.000Z" itemprop="datePublished">2018-10-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/16/Web性能优化/">Web性能优化</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Web性能优化的目的：让网站加载更快。所以如何优化Web性能可以从请求网页过程来进行思考。<br>以下列举格式为：请求网页过程[优化措施]<br>1.缓存[有缓存，直接从缓存读取]<br>2.DNS查询 [减少DNS查询，即减少域名，把文件放在一个网站上]<br>3.建立TCP链接  [使用连接复用，请求头上添加keep-alive。 使用hTTP/2.0的多路复用]<br>4.发送HTTP请求  [1.ETag，通过后台处理。2.请求头第二部分减少cookie体积。3.使用cache-control，不发送请求。4.同时发多个请求，请求CSS和JS，提高效率。需要增加域名，提高下载速度。做到测试和权衡。(如果文件少，放一个域名，文件多，放多个域名里，接近下载限制以加快速度。5.CDN没有Cookie)]<br>5.接收响应[1.使用ETag接收消息304，使用上次的文件2.使用gzip压缩]<br>6.接收完成–&gt;HTML[回车注释删掉]<br>7.检查DOCTYPE类型进行解析[不要写错，不能不写]<br>8.逐行解析[  </p>
+<ul>
+<li>看到标签\&lt;h1>[减少标签]<ul>
+<li>在页面显示标题</li>
+<li>不在页面显示标题（chrome不渲染）</li>
+</ul>
+</li>
+<li>看到CSS<ul>
+<li>下载CSS</li>
+<li>继续往下看还有没有CSS</li>
+<li>下载CSS2<br> 同时下载CSS。都下载完毕后再解析CSS（下载并行，解析串行）<br>（chrome中CSS会阻塞HTML渲染）<br>]  </li>
+</ul>
+</li>
+</ul>
+<p>9.看到JS，也是下载并行，解析串行。CSS一定会阻塞HTML渲染。JS没下载完，后面的标签不会渲染。</p>
+<h2 id="其他优化思考"><a href="#其他优化思考" class="headerlink" title="其他优化思考"></a>其他优化思考</h2><p>CSS、JS的优化：  </p>
+<ul>
+<li>1.放到CDN上（不同域名的文件能同时下载）<br>CDN：使用CDN(内容分发网络)</li>
+<li><p>2.css放到head，js放body最后（提早下载CSS，没有js用户也能看到页面，js放后面能获取到节点）</p>
+<p>其他优化（总结自<a href="https://github.com/creeperyang/blog/issues/1" target="_blank" rel="noopener">雅虎前端优化35条规则</a>)</p>
+</li>
+</ul>
+<hr>
+<p> 1.减少请求数[合并文件]<br> 2.延迟加载[所有不必须的文件都进行懒加载，设置定时器(大公司用，淘宝)，可加loading动画]<br> 3.预加载<br> 4.避免空src的图片[src=’about:blank’]<br> 5.单独将CSS、JS放置在一个文件里。便于缓存<br> 6.压缩JS和CSS<br> 7.优化图片<br> 8.使用事件委托  </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/10/16/Web性能优化/" data-id="cjncnyjvz0006e5f4cww0mntp" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-JS模拟继承" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/10/15/JS模拟继承/" class="article-date">
@@ -94,7 +154,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/15/JS模拟继承/" data-id="cjnbj9ojx0006gbf47mabt0nf" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/10/15/JS模拟继承/" data-id="cjncnyjw60007e5f4ktu714nw" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -167,7 +227,7 @@ fn.bind.call(fn,{},1,2,3)</code></p>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/13/你真的懂函数吗？/" data-id="cjnbj9onv000ngbf430lgujh9" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/10/13/你真的懂函数吗？/" data-id="cjncnyjyl000oe5f4yeuuyfhp" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -217,7 +277,7 @@ fn.bind.call(fn,{},1,2,3)</code></p>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/09/TypeScript学习笔记/" data-id="cjnbj9ok70007gbf40ngnxrwp" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/10/09/TypeScript学习笔记/" data-id="cjncnyjwg0009e5f4i8l78aj8" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -257,7 +317,7 @@ fn.bind.call(fn,{},1,2,3)</code></p>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/06/ES6/" data-id="cjnbj9ojh0004gbf4ti35fkcg" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/10/06/ES6/" data-id="cjncnyjvn0004e5f41f6dg0b8" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -294,7 +354,7 @@ fn.bind.call(fn,{},1,2,3)</code></p>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/06/vue学习笔记/" data-id="cjnbj9ont000mgbf4a8ghn9te" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/10/06/vue学习笔记/" data-id="cjncnyjyj000ne5f4ew3xanc3" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -368,7 +428,7 @@ fn.bind.call(fn,{},1,2,3)</code></p>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/01/CSS笔记-长期更新/" data-id="cjnbj9oik0002gbf4p4tcy30n" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/10/01/CSS笔记-长期更新/" data-id="cjncnyjvj0003e5f4h81r6q82" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -408,7 +468,7 @@ fn.bind.call(fn,{},1,2,3)</code></p>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/28/flex布局下flex-grow部分的文字超过部分显示为省略号的方法和解释/" data-id="cjnbj9olr000cgbf4ja42a8sb" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/09/28/flex布局下flex-grow部分的文字超过部分显示为省略号的方法和解释/" data-id="cjncnyjx7000ce5f47lerojjs" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -619,7 +679,7 @@ response.end()</code></p>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/08/http之Cookie、Session、LocalStorage、Cache-Control、ETag、Last-Modified/" data-id="cjnbj9on9000ggbf4z2fg5gyj" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/09/08/http之Cookie、Session、LocalStorage、Cache-Control、ETag、Last-Modified/" data-id="cjncnyjyb000ie5f4eiu854kj" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -676,60 +736,7 @@ http://10.0.0.1/concat
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/11/路由/" data-id="cjnbj9oo0000qgbf4691xfc74" class="article-share-link">Teilen</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Vue的三种通信方法" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/08/08/Vue的三种通信方法/" class="article-date">
-  <time datetime="2018-08-08T09:18:56.000Z" itemprop="datePublished">2018-08-08</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/08/Vue的三种通信方法/">Vue的三种通信方法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="父子通信"><a href="#父子通信" class="headerlink" title="父子通信"></a>父子通信</h1><p>vue的父子通信是有层级关系的，所以互相通信的方式也不一样。总结起来就是：prop向下传递，事件向上传递。父级组件通过prop向子级组件发送数据，子级组件通过事件给父级组件发送消息。下面贴出代码。</p>
-<p>子级组件代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(&quot;child&quot;,&#123;</span><br><span class="line">    props:[&quot;visible&quot;],</span><br><span class="line">    template:`</span><br><span class="line">        &lt;div v-show=&quot;visible&quot;&gt;</span><br><span class="line">            我是子级组件</span><br><span class="line">            &lt;button @click=&quot;$emit(&apos;close&apos;)&quot;&gt;关闭&lt;/button&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    `</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
-<p>父级组件代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var app = new Vue(&#123;</span><br><span class="line">    el: &apos;#app&apos;,</span><br><span class="line">    data: &#123;</span><br><span class="line">        visible:false</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
-<p>HTML代码:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;app&quot;&gt;</span><br><span class="line">  &lt;p&gt;&#123;&#123; message &#125;&#125;&lt;/p&gt;</span><br><span class="line">  &lt;button @click=&quot;visible=true&quot;&gt;打开&lt;/button&gt;</span><br><span class="line">  &lt;child @close=&quot;visible=false&quot; :visible=&quot;visible&quot;&gt;&lt;/child&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure></p>
-<p>父级组件通过props向子级组件传递visible变量，从而控制子级组件child是否显示。子级组件通过向父级组件发送事件<code>$emit(&#39;close’)</code>，通知父级组件修改visible变量，从而控制自己隐藏。</p>
-<h1 id="爷孙通信"><a href="#爷孙通信" class="headerlink" title="爷孙通信"></a>爷孙通信</h1><p>有了父子组件通信的基础，爷孙组件通信就易于理解了。代码如下。</p>
-<p>孙级组件代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(&quot;grandchild&quot;,&#123;</span><br><span class="line">    template:`</span><br><span class="line">        &lt;div&gt;</span><br><span class="line">            我是孙级组件</span><br><span class="line">            &lt;button @click=&quot;$emit(&apos;close&apos;)&quot;&gt;关闭&lt;/button&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    `</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
-<p>父级组件代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(&quot;child&quot;,&#123;</span><br><span class="line">    props:[&quot;visible&quot;],</span><br><span class="line">    template:`</span><br><span class="line">        &lt;div&gt;</span><br><span class="line">            我是父级组件</span><br><span class="line">            &lt;grandchild v-show=&quot;visible&quot; @close=&quot;$emit(&apos;close&apos;)&quot;&gt;&lt;/grandchild&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    `</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
-<p>爷级组件代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var app = new Vue(&#123;</span><br><span class="line">    el: &apos;#app&apos;,</span><br><span class="line">    data: &#123;</span><br><span class="line">        message: &apos;爷级组件&apos;,</span><br><span class="line">        visible:false</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
-<p>HTML代码:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;app&quot;&gt;</span><br><span class="line">  &lt;p&gt;&#123;&#123; message &#125;&#125;&lt;/p&gt;</span><br><span class="line">  &lt;button @click=&quot;visible=true&quot;&gt;打开&lt;/button&gt;</span><br><span class="line">  &lt;child :visible=&quot;visible&quot; @close=&quot;visible=false&quot;&gt;&lt;/child&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure></p>
-<p>总结起来还是那句话：prop向下传递，事件向上传递。但爷级组件无法直接控制孙级组件。只能通过<code>props:[&quot;visible&quot;]</code>向子级组件发送数据，子级组件再将数据传给孙级组件，通过<code>v-show=&quot;visible&quot;</code>实现控制孙级组件的目的。孙级组件通过事件<code>@click=&quot;$emit(&#39;close&#39;)&quot;</code>给父级组件发送消息，父级组件再通过事件<code>@click=&quot;$emit(&#39;close&#39;)&quot;</code>给爷级组件发送消息，爷级组件响应事件<code>@close=&quot;visible=false”</code>，从而修改数据。</p>
-<h1 id="兄弟通信"><a href="#兄弟通信" class="headerlink" title="兄弟通信"></a>兄弟通信</h1><p>兄弟通信的原理与上所述不同。是通过事件发布、订阅模式来进行通信的。</p>
-<p>首先需要一个Vue实例<br><code>var bus = new Vue()</code>作为兄弟组件的通信渠道。</p>
-<p>兄组件代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(&quot;brotherelder&quot;,&#123;</span><br><span class="line">    template:`</span><br><span class="line">        &lt;div&gt;</span><br><span class="line">            我是大哥</span><br><span class="line">            &lt;button @click=&quot;callYoung&quot;&gt;通知二弟&lt;/button&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    `,</span><br><span class="line">    methods:&#123;</span><br><span class="line">        callYoung()&#123;</span><br><span class="line">            alert(&quot;通知弟弟&quot;);</span><br><span class="line">            bus.$emit(&quot;callYoung&quot;,&quot;弟，妈喊你吃饭了&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    mounted()&#123;</span><br><span class="line">        bus.$on(&quot;callElder&quot;,()=&gt;&#123;</span><br><span class="line">            alert(&quot;哥知道了，我去吃饭了&quot;)</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
-<p>弟组件代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(&quot;brotheryounger&quot;,&#123;</span><br><span class="line">    template:`</span><br><span class="line">        &lt;div&gt;</span><br><span class="line">            我是二弟</span><br><span class="line">            &lt;button @click=&quot;callElder&quot;&gt;通知哥哥&lt;/button&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    `,</span><br><span class="line">    methods:&#123;</span><br><span class="line">        callElder()&#123;</span><br><span class="line">            alert(&quot;通知哥哥&quot;);</span><br><span class="line">            bus.$emit(&quot;callElder&quot;,&quot;哥，妈喊你吃饭了&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    mounted()&#123;</span><br><span class="line">        bus.$on(&quot;callYoung&quot;,()=&gt;&#123;</span><br><span class="line">            alert(&quot;知道了，我去吃饭了&quot;)</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
-<p>再实例化挂载点，就可以实现通信了。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var app = new Vue(&#123;</span><br><span class="line">    el: &apos;#app&apos;,</span><br><span class="line">    data: &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
-<p>总结：兄弟组件通过vue的实例bus来发布事件<code>·bus.$emit(&quot;callElder&quot;,&quot;哥，妈喊你吃饭了”)</code>、再通过订阅事件<code>bus.$on(&quot;callYoung&quot;,()=&gt;{alert(&quot;知道了，我去吃饭了&quot;)})</code>，来实现兄弟组件的通信。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/08/Vue的三种通信方法/" data-id="cjnbj9okh0008gbf4ul73tjz0" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/08/11/路由/" data-id="cjncnyjyp000re5f4klth23az" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -775,6 +782,10 @@ http://10.0.0.1/concat
       <ul>
         
           <li>
+            <a href="/2018/10/16/Web性能优化/">Web性能优化</a>
+          </li>
+        
+          <li>
             <a href="/2018/10/15/JS模拟继承/">JS模拟继承</a>
           </li>
         
@@ -788,10 +799,6 @@ http://10.0.0.1/concat
         
           <li>
             <a href="/2018/10/06/ES6/">ES6</a>
-          </li>
-        
-          <li>
-            <a href="/2018/10/06/vue学习笔记/">vue学习笔记</a>
           </li>
         
       </ul>
