@@ -83,7 +83,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Web性能优化的目的：让网站加载更快。所以如何优化Web性能可以从请求网页过程来进行思考。<br>以下列举格式为：请求网页过程[优化措施]<br>1.缓存[有缓存，直接从缓存读取]<br>2.DNS查询 [减少DNS查询，即减少域名，把文件放在一个网站上]<br>3.建立TCP链接  [使用连接复用，请求头上添加keep-alive。 使用hTTP/2.0的多路复用]<br>4.发送HTTP请求  [1.ETag，通过后台处理。2.请求头第二部分减少cookie体积。3.使用cache-control，不发送请求。4.同时发多个请求，请求CSS和JS，提高效率。需要增加域名，提高下载速度。做到测试和权衡。(如果文件少，放一个域名，文件多，放多个域名里，接近下载限制以加快速度。5.CDN没有Cookie)]<br>5.接收响应[1.使用ETag接收消息304，使用上次的文件2.使用gzip压缩]<br>6.接收完成–&gt;HTML[回车注释删掉]<br>7.检查DOCTYPE类型进行解析[不要写错，不能不写]<br>8.逐行解析[  </p>
+        <h4 id="Web性能优化的目的：让网站加载更快。所以如何优化Web性能可以从请求网页过程来进行思考。"><a href="#Web性能优化的目的：让网站加载更快。所以如何优化Web性能可以从请求网页过程来进行思考。" class="headerlink" title="Web性能优化的目的：让网站加载更快。所以如何优化Web性能可以从请求网页过程来进行思考。"></a>Web性能优化的目的：让网站加载更快。所以如何优化Web性能可以从请求网页过程来进行思考。</h4><p>以下列举格式为：请求网页过程[优化措施]<br>1.缓存[有缓存，直接从缓存读取]<br>2.DNS查询 [减少DNS查询，即减少域名，把文件放在一个网站上]<br>3.建立TCP链接  [使用连接复用，请求头上添加keep-alive。 使用hTTP/2.0的多路复用]<br>4.发送HTTP请求  [1.ETag，通过后台处理。2.请求头第二部分减少cookie体积。3.使用cache-control，不发送请求。4.同时发多个请求，请求CSS和JS，提高效率。需要增加域名，提高下载速度。做到测试和权衡。(如果文件少，放一个域名，文件多，放多个域名里，接近下载限制以加快速度。5.CDN没有Cookie)]<br>5.接收响应[1.使用ETag接收消息304，使用上次的文件2.使用gzip压缩]<br>6.接收完成–&gt;HTML[回车注释删掉]<br>7.检查DOCTYPE类型进行解析[不要写错，不能不写]<br>8.逐行解析[  </p>
 <ul>
 <li>看到标签\&lt;h1>[减少标签]<ul>
 <li>在页面显示标题</li>
@@ -98,20 +98,19 @@
 </li>
 </ul>
 <p>9.看到JS，也是下载并行，解析串行。CSS一定会阻塞HTML渲染。JS没下载完，后面的标签不会渲染。</p>
-<h2 id="其他优化思考"><a href="#其他优化思考" class="headerlink" title="其他优化思考"></a>其他优化思考</h2><p>CSS、JS的优化：  </p>
+<h2 id="其他优化思考"><a href="#其他优化思考" class="headerlink" title="其他优化思考"></a>其他优化思考</h2><hr>
+<p>CSS、JS的优化：  </p>
 <ul>
 <li>1.放到CDN上（不同域名的文件能同时下载）<br>CDN：使用CDN(内容分发网络)</li>
 <li><p>2.css放到head，js放body最后（提早下载CSS，没有js用户也能看到页面，js放后面能获取到节点）</p>
-<p>其他优化（总结自<a href="https://github.com/creeperyang/blog/issues/1" target="_blank" rel="noopener">雅虎前端优化35条规则</a>)</p>
+<h2 id="其他优化-总结自雅虎前端优化35条规则"><a href="#其他优化-总结自雅虎前端优化35条规则" class="headerlink" title="其他优化(总结自雅虎前端优化35条规则)"></a>其他优化(总结自<a href="https://github.com/creeperyang/blog/issues/1" target="_blank" rel="noopener">雅虎前端优化35条规则</a>)</h2><p>1.减少请求数[合并文件]<br>2.延迟加载[所有不必须的文件都进行懒加载，设置定时器(大公司用，淘宝)，可加loading动画]<br>3.预加载<br>4.避免空src的图片[src=’about:blank’]<br>5.单独将CSS、JS放置在一个文件里。便于缓存<br>6.压缩JS和CSS<br>7.优化图片<br>8.使用事件委托  </p>
 </li>
 </ul>
-<hr>
-<p> 1.减少请求数[合并文件]<br> 2.延迟加载[所有不必须的文件都进行懒加载，设置定时器(大公司用，淘宝)，可加loading动画]<br> 3.预加载<br> 4.避免空src的图片[src=’about:blank’]<br> 5.单独将CSS、JS放置在一个文件里。便于缓存<br> 6.压缩JS和CSS<br> 7.优化图片<br> 8.使用事件委托  </p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/16/Web性能优化/" data-id="cjncnyjvz0006e5f4cww0mntp" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/10/16/Web性能优化/" data-id="cjnco4o140006gjf4ge0dypmi" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -154,7 +153,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/15/JS模拟继承/" data-id="cjncnyjw60007e5f4ktu714nw" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/10/15/JS模拟继承/" data-id="cjnco4o1a0007gjf46urjakak" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -227,7 +226,7 @@ fn.bind.call(fn,{},1,2,3)</code></p>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/13/你真的懂函数吗？/" data-id="cjncnyjyl000oe5f4yeuuyfhp" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/10/13/你真的懂函数吗？/" data-id="cjnco4o3q000ngjf4chzzkv69" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -277,7 +276,7 @@ fn.bind.call(fn,{},1,2,3)</code></p>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/09/TypeScript学习笔记/" data-id="cjncnyjwg0009e5f4i8l78aj8" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/10/09/TypeScript学习笔记/" data-id="cjnco4o1m0009gjf477dyuyvb" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -317,7 +316,7 @@ fn.bind.call(fn,{},1,2,3)</code></p>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/06/ES6/" data-id="cjncnyjvn0004e5f41f6dg0b8" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/10/06/ES6/" data-id="cjnco4o0t0004gjf46hm3iv7d" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -354,7 +353,7 @@ fn.bind.call(fn,{},1,2,3)</code></p>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/06/vue学习笔记/" data-id="cjncnyjyj000ne5f4ew3xanc3" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/10/06/vue学习笔记/" data-id="cjnco4o3r000ogjf4r5vxruy5" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -428,7 +427,7 @@ fn.bind.call(fn,{},1,2,3)</code></p>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/01/CSS笔记-长期更新/" data-id="cjncnyjvj0003e5f4h81r6q82" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/10/01/CSS笔记-长期更新/" data-id="cjnco4o0i0002gjf4k7949w6n" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -468,7 +467,7 @@ fn.bind.call(fn,{},1,2,3)</code></p>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/28/flex布局下flex-grow部分的文字超过部分显示为省略号的方法和解释/" data-id="cjncnyjx7000ce5f47lerojjs" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/09/28/flex布局下flex-grow部分的文字超过部分显示为省略号的方法和解释/" data-id="cjnco4o2l000dgjf4ixhji5z5" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -679,7 +678,7 @@ response.end()</code></p>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/08/http之Cookie、Session、LocalStorage、Cache-Control、ETag、Last-Modified/" data-id="cjncnyjyb000ie5f4eiu854kj" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/09/08/http之Cookie、Session、LocalStorage、Cache-Control、ETag、Last-Modified/" data-id="cjnco4o3g000hgjf4nlmzirnr" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -736,7 +735,7 @@ http://10.0.0.1/concat
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/11/路由/" data-id="cjncnyjyp000re5f4klth23az" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/08/11/路由/" data-id="cjnco4o3w000sgjf4ckkv57lp" class="article-share-link">Teilen</a>
       
       
     </footer>
