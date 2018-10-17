@@ -1,13 +1,44 @@
-<!DOCTYPE html>
-<html>
+
+<!doctype html>
+<html class="theme-next use-motion theme-next-mala">
 <head>
-  <meta charset="utf-8">
   
 
-  
-  <title>http之Cookie、Session、LocalStorage、Cache-Control、ETag、Last-Modified | 应忠彬的博客</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="笔记摘要cookie session cache-control都是响应头 请求体GET /xxx HTTP/1.1Host:xxx.com 响应体HTTP/1.1 200 okContent-Type:text/html;charset=utf8Content-Length:100b   js发送请求代码123456789var request = new XMLHttpRequest()req">
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+  <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
+
+
+
+
+  <meta name="keywords" content="Hexo,Mala" />
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
+
+
+<meta name="description" content="笔记摘要cookie session cache-control都是响应头 请求体GET /xxx HTTP/1.1Host:xxx.com 响应体HTTP/1.1 200 okContent-Type:text/html;charset=utf8Content-Length:100b   js发送请求代码123456789var request = new XMLHttpRequest()req">
 <meta property="og:type" content="article">
 <meta property="og:title" content="http之Cookie、Session、LocalStorage、Cache-Control、ETag、Last-Modified">
 <meta property="og:url" content="http://yoursite.com/2018/09/08/http之Cookie、Session、LocalStorage、Cache-Control、ETag、Last-Modified/index.html">
@@ -17,75 +48,166 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="http之Cookie、Session、LocalStorage、Cache-Control、ETag、Last-Modified">
 <meta name="twitter:description" content="笔记摘要cookie session cache-control都是响应头 请求体GET /xxx HTTP/1.1Host:xxx.com 响应体HTTP/1.1 200 okContent-Type:text/html;charset=utf8Content-Length:100b   js发送请求代码123456789var request = new XMLHttpRequest()req">
-  
-    <link rel="alternate" href="/atom.xml" title="应忠彬的博客" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  <link rel="stylesheet" href="/css/style.css">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mala',
+    sidebar: 'post'
+  };
+</script>
+
+  <title> http之Cookie、Session、LocalStorage、Cache-Control、ETag、Last-Modified | 应忠彬的博客 </title>
 </head>
 
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">应忠彬的博客</a>
-      </h1>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
-      </div>
-    </div>
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
   </div>
-</header>
-      <div class="outer">
-        <section id="main"><article id="post-http之Cookie、Session、LocalStorage、Cache-Control、ETag、Last-Modified" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/09/08/http之Cookie、Session、LocalStorage、Cache-Control、ETag、Last-Modified/" class="article-date">
-  <time datetime="2018-09-08T07:54:04.000Z" itemprop="datePublished">2018-09-08</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      http之Cookie、Session、LocalStorage、Cache-Control、ETag、Last-Modified
-    </h1>
+<![endif]-->
   
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-next-logo"></i>
+      </span>
+      <span class="site-title"></span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
       
-        <h3 id="笔记摘要"><a href="#笔记摘要" class="headerlink" title="笔记摘要"></a>笔记摘要</h3><p>cookie session cache-control都是响应头</p>
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            <i class="menu-item-icon icon-next-categories"></i> <br />
+            Kategorien
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            <i class="menu-item-icon icon-next-about"></i> <br />
+            Über
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    
+      
+
+      
+
+    
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              http之Cookie、Session、LocalStorage、Cache-Control、ETag、Last-Modified
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Veröffentlicht am
+          <time itemprop="dateCreated" datetime="2018-09-08T15:54:04+08:00" content="2018-09-08">
+            2018-09-08
+          </time>
+        </span>
+
+        
+
+        
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><h3 id="笔记摘要"><a href="#笔记摘要" class="headerlink" title="笔记摘要"></a>笔记摘要</h3><p>cookie session cache-control都是响应头</p>
 <h5 id="请求体"><a href="#请求体" class="headerlink" title="请求体"></a>请求体</h5><p>GET /xxx HTTP/1.1<br>Host:xxx.com</p>
 <h5 id="响应体"><a href="#响应体" class="headerlink" title="响应体"></a>响应体</h5><p>HTTP/1.1 200 ok<br>Content-Type:text/html;charset=utf8<br>Content-Length:100b  </p>
 <h6 id="js发送请求代码"><a href="#js发送请求代码" class="headerlink" title="js发送请求代码"></a>js发送请求代码</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var request = new XMLHttpRequest()</span><br><span class="line">request.open(“POST”,’/xxx’)</span><br><span class="line">request.onreadystatechange = function()&#123;</span><br><span class="line">	if(request.readyState === 4 &amp;&amp; request.status ===200)&#123;</span><br><span class="line">		响应成功</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">// 发送请求</span><br><span class="line"> request.send(“a=1&amp;b=2”)</span><br></pre></td></tr></table></figure>
@@ -260,125 +382,385 @@ response.end()</code></p>
 <h3 id="Last-Modified"><a href="#Last-Modified" class="headerlink" title="Last-Modified"></a>Last-Modified</h3><p>在浏览器第一次请求某一个URL时，服务器端的返回状态会是200，内容是客户端请求的资源，同时有一个Last-Modified的属性标记此文件在服务器端最后被修改的时间。</p>
 <h6 id="Last-Modified格式类似这样："><a href="#Last-Modified格式类似这样：" class="headerlink" title="Last-Modified格式类似这样："></a>Last-Modified格式类似这样：</h6><p>Last-Modified : Fri , 12 May 2006 18:53:33 GMT<br>客户端第二次请求此URL时，根据HTTP协议的规定，浏览器会向服务器传送If-Modified-Since报头，询问该时间之后文件是否有被修改过：<br>If-Modified-Since : Fri , 12 May 2006 18:53:33 GMT<br>如果服务器端的资源没有变化，则自动返回 HTTP 304（Not Changed.）状态码，内容为空，这样就节省了传输数据量。  </p>
 <p>从资源更新原理来看Last-Modified和Etag基本是类似的，那为什么http协议中要搞2个标识呢？<br>Last-Modified存在的问题：<br>1、在集群服务器上各个服务器上的文件时间可能不同。<br>2、如果用旧文件覆盖新文件，因为时间更前，浏览器不会请求这个更旧的文件。<br>3、时间精度为s级，对文件修改精度有严格要求的场景不能满足  </p>
-
+</span>
       
     </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/08/http之Cookie、Session、LocalStorage、Cache-Control、ETag、Last-Modified/" data-id="cjnco4o3g000hgjf4nlmzirnr" class="article-share-link">Teilen</a>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/09/28/flex布局下flex-grow部分的文字超过部分显示为省略号的方法和解释/" rel="prev">flex布局下flex-grow部分的文字超过部分显示为省略号的方法和解释</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/11/路由/" rel="next">路由</a>
+            
+          </div>
+        </div>
+      
+
       
       
     </footer>
+  </article>
+
+
+
+    <div>
+      
+    </div>
+
+    <div class="post-spread">
+      
+    </div>
   </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2018/09/28/flex布局下flex-grow部分的文字超过部分显示为省略号的方法和解释/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Neuer</strong>
-      <div class="article-nav-title">
+
+ </div>
+
         
-          flex布局下flex-grow部分的文字超过部分显示为省略号的方法和解释
+          <div class="comments" id="comments">
+            
+            -->
         
       </div>
-    </a>
-  
-  
-    <a href="/2018/08/11/路由/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Älter</strong>
-      <div class="article-nav-title">路由</div>
-    </a>
-  
-</nav>
 
+      
   
-</article>
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-
-  
-    
-
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archiv</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li></ul>
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
     </div>
   </div>
 
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
 
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="应忠彬" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">应忠彬</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description"></p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">30</span>
+              <span class="site-state-item-name">Artikel</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">0</span>
+              <span class="site-state-item-name">Kategorien</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">0</span>
+              <span class="site-state-item-name">Tags</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        <div class="links-of-friendly motion-element">
+          
+        </div>
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#笔记摘要"><span class="nav-number">1.</span> <span class="nav-text">笔记摘要</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#请求体"><span class="nav-number">1.0.1.</span> <span class="nav-text">请求体</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#响应体"><span class="nav-number">1.0.2.</span> <span class="nav-text">响应体</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#js发送请求代码"><span class="nav-number">1.0.2.1.</span> <span class="nav-text">js发送请求代码</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Cookie特点"><span class="nav-number">2.</span> <span class="nav-text">Cookie特点</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#Cookie相关问题"><span class="nav-number">2.0.0.1.</span> <span class="nav-text">Cookie相关问题</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#登录注册的Cookie设定过程"><span class="nav-number">2.1.</span> <span class="nav-text">登录注册的Cookie设定过程</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#localStorage-API"><span class="nav-number">2.1.0.1.</span> <span class="nav-text">localStorage API</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#sessionStorage-API"><span class="nav-number">2.1.0.2.</span> <span class="nav-text">sessionStorage API</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Cookie-Session什么关系？"><span class="nav-number">2.1.0.3.</span> <span class="nav-text">Cookie Session什么关系？</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#缓存控制-Cache-Control，设置后用户可以直接从缓存中读取文件，不发起请求"><span class="nav-number">2.1.0.4.</span> <span class="nav-text">缓存控制 Cache-Control，设置后用户可以直接从缓存中读取文件，不发起请求</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Expires"><span class="nav-number">3.</span> <span class="nav-text">Expires</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ETag-直接不下载（有请求）"><span class="nav-number">4.</span> <span class="nav-text">ETag  直接不下载（有请求）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Last-Modified"><span class="nav-number">5.</span> <span class="nav-text">Last-Modified</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#Last-Modified格式类似这样："><span class="nav-number">5.0.0.1.</span> <span class="nav-text">Last-Modified格式类似这样：</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
+  
+  &copy; &nbsp; 
+  <span itemprop="copyrightYear">2018
+  </span>
+  <span class="with-love">
+    <i class="icon-next-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">应忠彬
+  </span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme by <a class="theme-link" href="http://blog.idhyt.com">idhyt</a>.<a class="theme-link" href="https://github.com/idhyt/hexo-theme-next/tree/magiclamp">Mala</a>
+</div>
+
+<!-- busuanzi -->
+
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
   
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">letzter Beitrag</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2018/10/16/Web性能优化/">Web性能优化</a>
-          </li>
-        
-          <li>
-            <a href="/2018/10/15/JS模拟继承/">JS模拟继承</a>
-          </li>
-        
-          <li>
-            <a href="/2018/10/13/你真的懂函数吗？/">你真的懂函数吗？</a>
-          </li>
-        
-          <li>
-            <a href="/2018/10/09/TypeScript学习笔记/">(no title)</a>
-          </li>
-        
-          <li>
-            <a href="/2018/10/06/ES6/">ES6</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
 
   
-</aside>
-        
-      </div>
-      <footer id="footer">
   
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2018 应忠彬<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-    </div>
-    <nav id="mobile-nav">
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+    });
+  </script>
+
   
-    <a href="/" class="mobile-nav-link">Home</a>
+
   
-    <a href="/archives" class="mobile-nav-link">Archives</a>
   
-</nav>
-    
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-<script src="/js/script.js"></script>
-
-
-
-  </div>
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
 </body>
 </html>

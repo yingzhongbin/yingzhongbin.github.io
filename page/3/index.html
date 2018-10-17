@@ -1,945 +1,1096 @@
-<!DOCTYPE html>
-<html>
+
+<!doctype html>
+<html class="theme-next use-motion theme-next-mala">
 <head>
-  <meta charset="utf-8">
   
 
-  
-  <title>应忠彬的博客</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+  <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
+
+
+
+
+  <meta name="keywords" content="Hexo,Mala" />
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
+
+
+<meta property="og:type" content="website">
 <meta property="og:title" content="应忠彬的博客">
 <meta property="og:url" content="http://yoursite.com/page/3/index.html">
 <meta property="og:site_name" content="应忠彬的博客">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="应忠彬的博客">
-  
-    <link rel="alternate" href="/atom.xml" title="应忠彬的博客" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  <link rel="stylesheet" href="/css/style.css">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mala',
+    sidebar: 'post'
+  };
+</script>
+
+  <title> 应忠彬的博客 </title>
 </head>
 
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">应忠彬的博客</a>
-      </h1>
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+  <div class="container one-column 
+   page-home 
+">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-next-logo"></i>
+      </span>
+      <span class="site-title"></span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
       
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
         
-          <a class="main-nav-link" href="/">Home</a>
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
+            Startseite
+          </a>
+        </li>
+      
         
-          <a class="main-nav-link" href="/archives">Archives</a>
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            <i class="menu-item-icon icon-next-categories"></i> <br />
+            Kategorien
+          </a>
+        </li>
+      
         
-      </nav>
-      <nav id="sub-nav">
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
+            Archiv
+          </a>
+        </li>
+      
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
+            Tags
+          </a>
+        </li>
+      
         
-        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
-      </div>
-    </div>
-  </div>
-</header>
-      <div class="outer">
-        <section id="main">
-  
-    <article id="post-domAPI" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/04/27/domAPI/" class="article-date">
-  <time datetime="2018-04-27T12:43:10.000Z" itemprop="datePublished">2018-04-27</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/27/domAPI/">domAPI</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            <i class="menu-item-icon icon-next-about"></i> <br />
+            Über
+          </a>
+        </li>
       
-        <h2 id="DOM-API"><a href="#DOM-API" class="headerlink" title="DOM API"></a>DOM API</h2><h4 id="DOM-是一棵树（tree）"><a href="#DOM-是一棵树（tree）" class="headerlink" title="DOM 是一棵树（tree）"></a>DOM 是一棵树（tree）</h4><h4 id="树上有-Node"><a href="#树上有-Node" class="headerlink" title="树上有 Node"></a>树上有 Node</h4><h4 id="Node-分为-Document（html）、Element（元素）和-Text（文本），以及其他不重要的。"><a href="#Node-分为-Document（html）、Element（元素）和-Text（文本），以及其他不重要的。" class="headerlink" title="Node 分为 Document（html）、Element（元素）和 Text（文本），以及其他不重要的。"></a>Node 分为 Document（html）、Element（元素）和 Text（文本），以及其他不重要的。</h4><p><img src="/2018/04/27/domAPI/d1.png" alt=""><br><img src="/2018/04/27/domAPI/d2.png" alt=""><br><img src="/2018/04/27/domAPI/d3.png" alt=""></p>
-<h4 id="nextSibling和prevousSilbling可能会获取文字节点"><a href="#nextSibling和prevousSilbling可能会获取文字节点" class="headerlink" title="nextSibling和prevousSilbling可能会获取文字节点"></a>nextSibling和prevousSilbling可能会获取文字节点</h4><h4 id="innerText和textContent有细微的差别，面试可能会问"><a href="#innerText和textContent有细微的差别，面试可能会问" class="headerlink" title="innerText和textContent有细微的差别，面试可能会问"></a>innerText和textContent有细微的差别，面试可能会问</h4><ul>
-<li>textContent 会获取所有元素的内容，包括<code>&lt;script&gt;</code> 和 <code>&lt;style&gt;</code>元素，然而 innerText 不会。</li>
-<li>innerText意识到样式，并且不会返回隐藏元素的文本，而textContent会。</li>
-<li>由于 innerText 受 CSS 样式的影响，它会触发重排（reflow），但textContent 不会。</li>
-<li>与 textContent 不同的是, 在 Internet Explorer (对于小于等于 IE11 的版本) 中对 innerText 进行修改， 不仅会移除当前元素的子节点，而且还会永久性地破坏所有后代文本节点（所以不可能再次将节点再次插入到任何其他元素或同一元素中）。</li>
-</ul>
-<h4 id="nodeType-1表示元素-3表示文本"><a href="#nodeType-1表示元素-3表示文本" class="headerlink" title="nodeType    1表示元素    3表示文本"></a>nodeType    1表示元素    3表示文本</h4><h4 id="cloneNode-分深拷贝和浅拷贝-参数为true是深拷贝，深拷贝是复制所有的子孙节点，浅拷贝只复制本身"><a href="#cloneNode-分深拷贝和浅拷贝-参数为true是深拷贝，深拷贝是复制所有的子孙节点，浅拷贝只复制本身" class="headerlink" title="cloneNode()分深拷贝和浅拷贝  参数为true是深拷贝，深拷贝是复制所有的子孙节点，浅拷贝只复制本身"></a>cloneNode()分深拷贝和浅拷贝  参数为true是深拷贝，深拷贝是复制所有的子孙节点，浅拷贝只复制本身</h4><h4 id="isEqualNode-和-isSameNode-区别-前者是返回-是否相等，后者返回的是-是否相等"><a href="#isEqualNode-和-isSameNode-区别-前者是返回-是否相等，后者返回的是-是否相等" class="headerlink" title="isEqualNode() 和 isSameNode()区别  前者是返回 == 是否相等，后者返回的是===是否相等"></a>isEqualNode() 和 isSameNode()区别  前者是返回 == 是否相等，后者返回的是===是否相等</h4><h4 id="document-write"><a href="#document-write" class="headerlink" title="document.write()"></a>document.write()</h4><p><img src="/2018/04/27/domAPI/d4.png" alt=""></p>
 
       
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/27/domAPI/" data-id="cjnco4o2e000cgjf4uicds8ny" class="article-share-link">Teilen</a>
       
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-function" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/04/25/function/" class="article-date">
-  <time datetime="2018-04-25T12:05:41.000Z" itemprop="datePublished">2018-04-25</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/25/function/">function</a>
-    </h1>
+    </ul>
   
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="function函数"><a href="#function函数" class="headerlink" title="function函数"></a>function函数</h2><h4 id="函数的-5-种声明"><a href="#函数的-5-种声明" class="headerlink" title="函数的 5 种声明"></a>函数的 5 种声明</h4><p><img src="/2018/04/25/function/f7.png" alt=""></p>
-<h4 id="function-name属性"><a href="#function-name属性" class="headerlink" title="function name属性"></a>function name属性</h4><p><img src="/2018/04/25/function/f8.png" alt=""><br><img src="/2018/04/25/function/f9.png" alt=""><br><img src="/2018/04/25/function/f10.png" alt=""><br><img src="/2018/04/25/function/f12.png" alt=""></p>
-<h4 id="使用function-的call方法来理解this和arguments"><a href="#使用function-的call方法来理解this和arguments" class="headerlink" title="使用function 的call方法来理解this和arguments"></a>使用function 的call方法来理解this和arguments</h4><p><img src="/2018/04/25/function/f13.png" alt=""><br><img src="/2018/04/25/function/f14.png" alt=""></p>
-<h4 id="作用域的理解，就近原则"><a href="#作用域的理解，就近原则" class="headerlink" title="作用域的理解，就近原则"></a>作用域的理解，就近原则</h4><p><img src="/2018/04/25/function/f15.png" alt=""><br><img src="/2018/04/25/function/f16.png" alt=""><br><img src="/2018/04/25/function/f17.png" alt=""></p>
-<h4 id="闭包的概念"><a href="#闭包的概念" class="headerlink" title="闭包的概念"></a>闭包的概念</h4><p><img src="/2018/04/25/function/f18.png" alt=""></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/25/function/" data-id="cjnco4o2u000egjf4rkzqrpp7" class="article-share-link">Teilen</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-array" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/04/25/array/" class="article-date">
-  <time datetime="2018-04-25T06:23:56.000Z" itemprop="datePublished">2018-04-25</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/25/array/">array</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="JS数组"><a href="#JS数组" class="headerlink" title="JS数组"></a>JS数组</h2><p><img src="/2018/04/25/array/array.png" alt="image"></p>
-<p><img src="/2018/04/25/array/function1.png" alt="image"></p>
-<p><img src="/2018/04/25/array/function2.png" alt="image"></p>
-<p><img src="/2018/04/25/array/array2.png" alt="image"></p>
-<h4 id="匿名函数"><a href="#匿名函数" class="headerlink" title="匿名函数"></a>匿名函数</h4><p><img src="/2018/04/25/array/fun1.png" alt=""></p>
-<p><img src="/2018/04/25/array/fun2.png" alt=""></p>
-<p><img src="/2018/04/25/array/f1.png" alt=""><br><img src="/2018/04/25/array/f2.png" alt=""><br><img src="/2018/04/25/array/f4.png" alt=""><br><img src="/2018/04/25/array/f5.png" alt=""><br><img src="/2018/04/25/array/f6.png" alt=""><br><img src="/2018/04/25/array/f7.png" alt=""><br><img src="/2018/04/25/array/f8.png" alt=""><br><img src="/2018/04/25/array/f9.png" alt=""><br><img src="/2018/04/25/array/f10.png" alt=""><br><img src="/2018/04/25/array/f11.png" alt=""><br><img src="/2018/04/25/array/f12.png" alt=""><br><img src="/2018/04/25/array/f13.png" alt=""><br><img src="/2018/04/25/array/f14.png" alt=""><br><img src="/2018/04/25/array/f15.png" alt=""><br><img src="/2018/04/25/array/f16.png" alt=""><br><img src="/2018/04/25/array/f17.png" alt=""><br><img src="/2018/04/25/array/f18.png" alt=""><br><img src="/2018/04/25/array/f19.png" alt=""><br><img src="/2018/04/25/array/f21.png" alt=""><br><img src="/2018/04/25/array/f22.png" alt=""><br><img src="/2018/04/25/array/f23.png" alt=""><br><img src="/2018/04/25/array/f24.png" alt=""><br><img src="/2018/04/25/array/f26.png" alt=""><br><img src="/2018/04/25/array/f27.png" alt=""><br><img src="/2018/04/25/array/f28.png" alt=""><br><img src="/2018/04/25/array/f29.png" alt=""><br><img src="/2018/04/25/array/f30.png" alt=""><br><img src="/2018/04/25/array/f31.png" alt=""><br><img src="/2018/04/25/array/f32.png" alt=""><br><img src="/2018/04/25/array/f33.png" alt=""><br><img src="/2018/04/25/array/f34.png" alt=""></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/25/array/" data-id="cjnco4o1x000agjf44d8dbsqq" class="article-share-link">Teilen</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-BFC学习" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/04/20/BFC学习/" class="article-date">
-  <time datetime="2018-04-20T05:12:50.000Z" itemprop="datePublished">2018-04-20</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/20/BFC学习/">BFC学习</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p> BFC作为一个时代的产物，有其效用，也有其遗留的问题。现在许多BFC能实现的功能通过flex，clearfix等都能达到BFC的效果，但BFC的效果显示常常带有我们不需要的效果，这就很尴尬了。当然，现在有一个不带有不需要效果的CSS设置，display:flow-root;但不是所有浏览器都支持。<br>那么，了解BFC必要吗？我觉得必要。了解BFC就是了解CSS，对CSS的理解当然就会更深。</p>
-<h4 id="下面来详细了解一下BFC"><a href="#下面来详细了解一下BFC" class="headerlink" title="下面来详细了解一下BFC"></a>下面来详细了解一下BFC</h4><h2 id="CSS规范中对-BFC-的描述"><a href="#CSS规范中对-BFC-的描述" class="headerlink" title="CSS规范中对 BFC 的描述"></a>CSS规范中对 BFC 的描述</h2><h4 id="9-4-1-块格式化上下文"><a href="#9-4-1-块格式化上下文" class="headerlink" title="9.4.1 块格式化上下文"></a>9.4.1 块格式化上下文</h4><p>浮动，绝对定位元素，非块盒的块容器（例如，inline-block，table-cells和table-captions）和’overflow’不为’visible’的块盒会为它们的内容建立一个新的块格式化上下文</p>
-<h5 id="评：使用以上css属性会创建BFC"><a href="#评：使用以上css属性会创建BFC" class="headerlink" title="评：使用以上css属性会创建BFC"></a>评：使用以上css属性会创建BFC</h5><p>在一个块格式化上下文中，盒在竖直方向一个接一个地放置，从包含块的顶部开始。两个兄弟盒之间的<strong>竖直距离</strong>由’margin’属性决定。同一个块格式化上下文中的相邻块级盒之间的竖直margin会合并</p>
-<h5 id="评：上下margin合并现象的由来"><a href="#评：上下margin合并现象的由来" class="headerlink" title="评：上下margin合并现象的由来"></a>评：上下margin合并现象的由来</h5><p>在一个块格式化上下文中，每个盒的left外边（left outer edge）挨着包含块的left边（对于从右向左的格式化，right边挨着）。即使存在浮动（尽管一个盒的行盒可能会因为浮动收缩），这也成立。除非该盒建立了一个新的块格式化上下文（这种情况下，该盒自身可能会因为浮动变窄）</p>
-<h2 id="MDN-对-BFC-的描述"><a href="#MDN-对-BFC-的描述" class="headerlink" title="MDN 对 BFC 的描述"></a>MDN 对 BFC 的描述</h2><p>一个块格式化上下文（block formatting context） 是Web页面的可视化CSS渲染出的一部分。它是块级盒布局出现的区域，也是浮动层元素进行交互的区域。</p>
-<p>一个块格式化上下文由以下之一创建：</p>
-<p> •    根元素或其它包含它的元素</p>
-<p> •    浮动元素 (元素的 float 不是 none)</p>
-<p> •    绝对定位元素 (元素具有 position 为 absolute 或 fixed)</p>
-<p> •    内联块 (元素具有 display: inline-block)</p>
-<p> •    表格单元格 (元素具有 display: table-cell，HTML表格单元格默认属性)</p>
-<p> •    表格标题 (元素具有 display: table-caption, HTML表格标题默认属性)</p>
-<p> •    具有overflow 且值不是 visible 的块元素</p>
-<p> •    display: flow-root</p>
-<p> •    column-span: all 应当总是会创建一个新的格式化上下文，即便具有 column-span: all 的元素并不被包裹在一个多列容器中。</p>
-<h5 id="评：更加详细的触发BFC的方法"><a href="#评：更加详细的触发BFC的方法" class="headerlink" title="评：更加详细的触发BFC的方法"></a>评：更加详细的触发BFC的方法</h5><p>一个块格式化上下文包括创建它的元素内部所有内容，除了被包含于创建新的块级格式化上下文的后代元素内的元素。</p>
-<h5 id="评：通俗讲就是爷爷只管儿子，不管孙子。"><a href="#评：通俗讲就是爷爷只管儿子，不管孙子。" class="headerlink" title="评：通俗讲就是爷爷只管儿子，不管孙子。"></a>评：通俗讲就是爷爷只管儿子，不管孙子。</h5><p>块格式化上下文对于定位 (参见 float) 与清除浮动 (参见 clear) 很重要。定位和清除浮动的样式规则只适用于处于同一块格式化上下文内的元素。浮动不会影响其它块格式化上下文中元素的布局，并且清除浮动只能清除同一块格式化上下文中在它前面的元素的浮动。</p>
-<h2 id="功能1：爸爸管儿子"><a href="#功能1：爸爸管儿子" class="headerlink" title="功能1：爸爸管儿子"></a>功能1：爸爸管儿子</h2><p>用 BFC 包住浮动元素。(这 TM 不是清除浮动，.clearfix 才是清除浮动）<br><a href="http://js.jirengu.com/rozaxufetu/1/edit?html,css,output" target="_blank" rel="noopener">http://js.jirengu.com/rozaxufetu/1/edit?html,css,output</a></p>
-<h2 id="功能2：兄弟之间划清界限"><a href="#功能2：兄弟之间划清界限" class="headerlink" title="功能2：兄弟之间划清界限"></a>功能2：兄弟之间划清界限</h2><p>用 float + div 做左右自适应布局<br><a href="http://js.jirengu.com/felikenuve/1/edit?html,css,output" target="_blank" rel="noopener">http://js.jirengu.com/felikenuve/1/edit?html,css,output</a></p>
-<h4 id="碰见CSS-bug时常常无法理解，为什么父级元素包裹不住子级元素。BFC告诉我们，是可以包裹住的。不了解时常常觉得很奇怪。加了一个属性布局全变了，不知不觉地触发了BFC。常常给小白造成困惑。了解了BFC，了解CSS。"><a href="#碰见CSS-bug时常常无法理解，为什么父级元素包裹不住子级元素。BFC告诉我们，是可以包裹住的。不了解时常常觉得很奇怪。加了一个属性布局全变了，不知不觉地触发了BFC。常常给小白造成困惑。了解了BFC，了解CSS。" class="headerlink" title="碰见CSS bug时常常无法理解，为什么父级元素包裹不住子级元素。BFC告诉我们，是可以包裹住的。不了解时常常觉得很奇怪。加了一个属性布局全变了，不知不觉地触发了BFC。常常给小白造成困惑。了解了BFC，了解CSS。"></a>碰见CSS bug时常常无法理解，为什么父级元素包裹不住子级元素。BFC告诉我们，是可以包裹住的。不了解时常常觉得很奇怪。加了一个属性布局全变了，不知不觉地触发了BFC。常常给小白造成困惑。了解了BFC，了解CSS。</h4>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/20/BFC学习/" data-id="cjnco4o010001gjf4c7vwejk3" class="article-share-link">Teilen</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-css" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/04/17/css/" class="article-date">
-  <time datetime="2018-04-17T06:26:07.000Z" itemprop="datePublished">2018-04-17</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/17/css/">css</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="引用css的四种方法"><a href="#引用css的四种方法" class="headerlink" title="引用css的四种方法"></a>引用css的四种方法</h3><h5 id="1-使用标签上的style属性"><a href="#1-使用标签上的style属性" class="headerlink" title="1.使用标签上的style属性"></a>1.使用标签上的style属性</h5><h5 id="2-使用-lt-style-gt-标签"><a href="#2-使用-lt-style-gt-标签" class="headerlink" title="2.使用&lt;style&gt;标签"></a>2.<code>使用&lt;style&gt;标签</code></h5><h5 id="3-lt-link-rel-quot-stylesheet-quot-href-quot-style-css-quot-gt"><a href="#3-lt-link-rel-quot-stylesheet-quot-href-quot-style-css-quot-gt" class="headerlink" title="3. &lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt;"></a>3. <code>&lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt;</code></h5><h5 id="4-import-url-a-css"><a href="#4-import-url-a-css" class="headerlink" title="4.@import url (./a.css);"></a>4.@import url (./a.css);</h5><h3 id="浮动并去除bug"><a href="#浮动并去除bug" class="headerlink" title="浮动并去除bug"></a>浮动并去除bug</h3><h5 id="1-将子元素float"><a href="#1-将子元素float" class="headerlink" title="1.将子元素float"></a>1.将子元素float</h5><h5 id="2-将父元素加上clearfix类"><a href="#2-将父元素加上clearfix类" class="headerlink" title="2.将父元素加上clearfix类"></a>2.将父元素加上clearfix类</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">.clearfix::after&#123;</span><br><span class="line">    content:&apos;&apos;;</span><br><span class="line">    display: block;</span><br><span class="line">    clear:both;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="重要内容"><a href="#重要内容" class="headerlink" title="重要内容"></a>重要内容</h2><h4 id="字体默认的-line-height-由字体设计师决定"><a href="#字体默认的-line-height-由字体设计师决定" class="headerlink" title="字体默认的 line height 由字体设计师决定"></a>字体默认的 line height 由字体设计师决定</h4><h4 id="设置的行高可能会变动"><a href="#设置的行高可能会变动" class="headerlink" title="设置的行高可能会变动"></a>设置的行高可能会变动</h4><h4 id="CSS-中-width-的默认值auto"><a href="#CSS-中-width-的默认值auto" class="headerlink" title="CSS 中 width 的默认值auto"></a>CSS 中 width 的默认值auto</h4><h4 id="div的高度有其内部文档流元素的高度总和决定"><a href="#div的高度有其内部文档流元素的高度总和决定" class="headerlink" title="div的高度有其内部文档流元素的高度总和决定"></a>div的高度有其内部文档流元素的高度总和决定</h4><h4 id="文档流：文档内元素的流动方向。inline从左往右流动，block从上往下流动"><a href="#文档流：文档内元素的流动方向。inline从左往右流动，block从上往下流动" class="headerlink" title="文档流：文档内元素的流动方向。inline从左往右流动，block从上往下流动"></a>文档流：文档内元素的流动方向。inline从左往右流动，block从上往下流动</h4><h4 id="font-size的大小指的是字体中的字从最上方到最下方的高度。而包含字的span的高度与字体的建议行高有关，当设置line-height行高小于字体的建议行高，会有bug。大于时可垂直居中。"><a href="#font-size的大小指的是字体中的字从最上方到最下方的高度。而包含字的span的高度与字体的建议行高有关，当设置line-height行高小于字体的建议行高，会有bug。大于时可垂直居中。" class="headerlink" title="font-size的大小指的是字体中的字从最上方到最下方的高度。而包含字的span的高度与字体的建议行高有关，当设置line-height行高小于字体的建议行高，会有bug。大于时可垂直居中。"></a>font-size的大小指的是字体中的字从最上方到最下方的高度。而包含字的span的高度与字体的建议行高有关，当设置line-height行高小于字体的建议行高，会有bug。大于时可垂直居中。</h4><h4 id="不同字体放在一起将进行基线对齐"><a href="#不同字体放在一起将进行基线对齐" class="headerlink" title="不同字体放在一起将进行基线对齐"></a>不同字体放在一起将进行基线对齐</h4><h4 id="一个元素被fixed定位后，-它的宽度不会往外扩展，而是往内缩。解决问题的方法为宽度设为width-100-但如果有padding的话，这样设置会出bug，解决方法是设置一个子元素，在子元素里设置padding。"><a href="#一个元素被fixed定位后，-它的宽度不会往外扩展，而是往内缩。解决问题的方法为宽度设为width-100-但如果有padding的话，这样设置会出bug，解决方法是设置一个子元素，在子元素里设置padding。" class="headerlink" title="一个元素被fixed定位后， 它的宽度不会往外扩展，而是往内缩。解决问题的方法为宽度设为width:100%;但如果有padding的话，这样设置会出bug，解决方法是设置一个子元素，在子元素里设置padding。"></a>一个元素被fixed定位后， 它的宽度不会往外扩展，而是往内缩。解决问题的方法为宽度设为width:100%;但如果有padding的话，这样设置会出bug，解决方法是设置一个子元素，在子元素里设置padding。</h4><h4 id="使用svg进行垂直居中时，设置vertical-align-top"><a href="#使用svg进行垂直居中时，设置vertical-align-top" class="headerlink" title="使用svg进行垂直居中时，设置vertical-align: top;"></a>使用svg进行垂直居中时，设置vertical-align: top;</h4><h4 id="给display-inline元素设置宽高是无效的，设置margin-left-margin-right有效，margin-top，margin-bottom无效"><a href="#给display-inline元素设置宽高是无效的，设置margin-left-margin-right有效，margin-top，margin-bottom无效" class="headerlink" title="给display:inline元素设置宽高是无效的，设置margin-left,margin-right有效，margin-top，margin-bottom无效"></a>给display:inline元素设置宽高是无效的，设置margin-left,margin-right有效，margin-top，margin-bottom无效</h4><h4 id="设置了display-inline-block-内容下方会有一个空隙，设置vertical-align-top-可以去除空隙"><a href="#设置了display-inline-block-内容下方会有一个空隙，设置vertical-align-top-可以去除空隙" class="headerlink" title="设置了display:inline-block;内容下方会有一个空隙，设置vertical-align:top;可以去除空隙"></a>设置了display:inline-block;内容下方会有一个空隙，设置vertical-align:top;可以去除空隙</h4><h4 id="盒模型展示"><a href="#盒模型展示" class="headerlink" title="盒模型展示"></a>盒模型展示</h4><p><img src="/2018/04/17/css/case.png" alt="我是图片"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">span&#123;</span><br><span class="line">  width:200px;</span><br><span class="line">  height: ;</span><br><span class="line">  border:1px solid gray;</span><br><span class="line">  margin:10px 15px;</span><br><span class="line">  padding:20px 25px;</span><br><span class="line">  display:block;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;span&gt;1&lt;/span&gt;</span><br><span class="line">&lt;span&gt;2&lt;/span&gt;</span><br></pre></td></tr></table></figure>
-<h5 id="span之间会有一个空格"><a href="#span之间会有一个空格" class="headerlink" title="span之间会有一个空格"></a>span之间会有一个空格</h5>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/17/css/" data-id="cjnco4o26000bgjf4805fzvod" class="article-share-link">Teilen</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="n-html续之部分标签" class="article article-type-n" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/03/23/html续之部分标签/" class="article-date">
-  <time datetime="2018-03-23T07:34:52.000Z" itemprop="datePublished">2018-03-23</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/23/html续之部分标签/">html续之部分标签</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="css布局"><a href="#css布局" class="headerlink" title="css布局"></a>css布局</h1><p>———<br>css布局由横向布局和纵向布局构成。横向布局中常常有纵向布局。<br><img src="/2018/03/23/html续之部分标签/1.png" alt="我是图片"></p>
-<h1 id="html标签"><a href="#html标签" class="headerlink" title="html标签"></a>html标签</h1><h3 id="iframe标签（用的很少）"><a href="#iframe标签（用的很少）" class="headerlink" title="iframe标签（用的很少）"></a>iframe标签（用的很少）</h3><h5 id="iframe可以使用css控制外观"><a href="#iframe可以使用css控制外观" class="headerlink" title="iframe可以使用css控制外观"></a>iframe可以使用css控制外观</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">	iframe&#123;</span><br><span class="line">	width: 100%;</span><br><span class="line">	height: 400px;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">&lt;iframe src=&quot;http://qq.com&quot; frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="a标签（get请求）"><a href="#a标签（get请求）" class="headerlink" title="a标签（get请求）"></a>a标签（get请求）</h3><h5 id="点击a标签后显示在iframe中"><a href="#点击a标签后显示在iframe中" class="headerlink" title="点击a标签后显示在iframe中"></a>点击a标签后显示在iframe中</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;iframe src=&quot;&quot; name=&quot;xxx&quot; frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;</span><br><span class="line">&lt;a href=&quot;http://qq.com&quot; target=&quot;xxx&quot;&gt;qqq&lt;/a&gt;</span><br></pre></td></tr></table></figure>
-<h5 id="设置iframe的边框，一般设为0"><a href="#设置iframe的边框，一般设为0" class="headerlink" title="设置iframe的边框，一般设为0"></a>设置iframe的边框，一般设为0</h5><p><code>frameborder=“0”</code></p>
-<h5 id="blank在新开页面打开-self在自身页面打开-parent在父级窗口打开-top在最顶级页面打开"><a href="#blank在新开页面打开-self在自身页面打开-parent在父级窗口打开-top在最顶级页面打开" class="headerlink" title="_blank在新开页面打开 _self在自身页面打开 _parent在父级窗口打开   _top在最顶级页面打开"></a>_blank在新开页面打开 _self在自身页面打开 _parent在父级窗口打开   _top在最顶级页面打开</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&quot;http://qq.com&quot; target=&quot;_blank&quot;&gt;&lt;/a&gt;</span><br><span class="line">&lt;a href=&quot;http://qq.com&quot; target=&quot;_self&quot;&gt;&lt;/a&gt;</span><br><span class="line">&lt;a href=&quot;http://qq.com&quot; target=&quot;_parent&quot;&gt;&lt;/a&gt;</span><br><span class="line">&lt;a href=&quot;http://qq.com&quot; target=&quot;_top&quot;&gt;&lt;/a&gt;</span><br></pre></td></tr></table></figure>
-<h5 id="a标签的下载属性"><a href="#a标签的下载属性" class="headerlink" title="a标签的下载属性"></a>a标签的下载属性</h5><p><code>&lt;a href=&quot;http://qq.com&quot; download&gt;下载&lt;/a&gt;</code></p>
-<h5 id="a标签添加参数"><a href="#a标签添加参数" class="headerlink" title="a标签添加参数"></a>a标签添加参数</h5><p><code>&lt;a href=&quot;?name=yzb&quot; &gt;qqq&lt;/a&gt;</code></p>
-<h5 id="a标签添加javascript伪代码"><a href="#a标签添加javascript伪代码" class="headerlink" title="a标签添加javascript伪代码"></a>a标签添加javascript伪代码</h5><h5 id="a标签点击不跳转"><a href="#a标签点击不跳转" class="headerlink" title="a标签点击不跳转"></a>a标签点击不跳转</h5><p><code>&lt;a href=&quot;javascript:;&quot; &gt;qqq&lt;/a&gt;</code></p>
-<h5 id="a标签点击后跳转到页面上部"><a href="#a标签点击后跳转到页面上部" class="headerlink" title="a标签点击后跳转到页面上部"></a>a标签点击后跳转到页面上部</h5><p><code>&lt;a href=“#” &gt;qqq&lt;/a&gt;</code></p>
-<h5 id="a标签跳转到自身，刷新页面"><a href="#a标签跳转到自身，刷新页面" class="headerlink" title="a标签跳转到自身，刷新页面"></a>a标签跳转到自身，刷新页面</h5><p><code>&lt;a href=&quot;&quot; &gt;qqq&lt;/a&gt;</code></p>
-<h3 id="form标签-post请求"><a href="#form标签-post请求" class="headerlink" title="form标签(post请求)"></a>form标签(post请求)</h3><h5 id="失去submit提交将无法传输数据"><a href="#失去submit提交将无法传输数据" class="headerlink" title="失去submit提交将无法传输数据"></a>失去submit提交将无法传输数据</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action=&quot;users&quot; method=&quot;post&quot;&gt;</span><br><span class="line">	&lt;input type=&quot;text&quot; name=&quot;username&quot;&gt;</span><br><span class="line">	&lt;input type=&quot;password&quot; name=&quot;password&quot;&gt;</span><br><span class="line">	&lt;input type=&quot;submit&quot; value=&quot;提交&quot;&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
-<h5 id="file协议不支持post"><a href="#file协议不支持post" class="headerlink" title="file协议不支持post"></a>file协议不支持post</h5><h5 id="get默认将提交内容放到查询参数里，也即地址栏里。不会放入到第四部分"><a href="#get默认将提交内容放到查询参数里，也即地址栏里。不会放入到第四部分" class="headerlink" title="get默认将提交内容放到查询参数里，也即地址栏里。不会放入到第四部分"></a>get默认将提交内容放到查询参数里，也即地址栏里。不会放入到第四部分</h5><h5 id="post也可以将内容放入到查询参数里"><a href="#post也可以将内容放入到查询参数里" class="headerlink" title="post也可以将内容放入到查询参数里"></a>post也可以将内容放入到查询参数里</h5><pre><code>&lt;form action=&quot;users?xxx=1” method=&quot;post&quot;&gt;即可
-</code></pre><h5 id="form-与a标签一样使用target，也可target到iframe中"><a href="#form-与a标签一样使用target，也可target到iframe中" class="headerlink" title="form 与a标签一样使用target，也可target到iframe中"></a>form 与a标签一样使用target，也可target到iframe中</h5><h3 id="input标签"><a href="#input标签" class="headerlink" title="input标签"></a>input标签</h3><h5 id="如果一个form里只有一个按钮，-lt-button-gt-button-lt-button-gt-，执行submit功能。如果写了type-button，则失去这种功能"><a href="#如果一个form里只有一个按钮，-lt-button-gt-button-lt-button-gt-，执行submit功能。如果写了type-button，则失去这种功能" class="headerlink" title="如果一个form里只有一个按钮，&lt;button&gt;button&lt;/button&gt;，执行submit功能。如果写了type=button，则失去这种功能"></a>如果一个form里只有一个按钮，<code>&lt;button&gt;button&lt;/button&gt;</code>，执行submit功能。如果写了type=button，则失去这种功能</h5><h5 id="lt-input-type-quot-button-quot-value-quot-button-quot-gt-没有提交功能"><a href="#lt-input-type-quot-button-quot-value-quot-button-quot-gt-没有提交功能" class="headerlink" title="&lt;input type=&quot;button&quot; value=&quot;button&quot;&gt;没有提交功能"></a><code>&lt;input type=&quot;button&quot; value=&quot;button&quot;&gt;</code>没有提交功能</h5><h5 id="lt-input-type-“submit”-value-quot-button-quot-gt-可以提交"><a href="#lt-input-type-“submit”-value-quot-button-quot-gt-可以提交" class="headerlink" title="&lt;input type=“submit” value=&quot;button&quot;&gt;可以提交"></a><code>&lt;input type=“submit” value=&quot;button&quot;&gt;</code>可以提交</h5><h5 id="lt-input-type-quot-checkbox-quot-name-quot-yyy-quot-gt-lt-label-for-quot-yyy-quot-gt-loveme-lt-label-gt"><a href="#lt-input-type-quot-checkbox-quot-name-quot-yyy-quot-gt-lt-label-for-quot-yyy-quot-gt-loveme-lt-label-gt" class="headerlink" title="&lt;input type=&quot;checkbox&quot; name=&quot;yyy&quot;&gt;&lt;label for=&quot;yyy&quot;&gt;loveme&lt;/label&gt;"></a><code>&lt;input type=&quot;checkbox&quot; name=&quot;yyy&quot;&gt;&lt;label for=&quot;yyy&quot;&gt;loveme&lt;/label&gt;</code></h5><p>与下面代码功能一样，但下面代码更简洁，所以，用下面的代码了</p>
-<h5 id="lt-label-gt-lt-input-type-quot-checkbox-quot-name-quot-zzz-quot-gt-hateme-lt-label-gt"><a href="#lt-label-gt-lt-input-type-quot-checkbox-quot-name-quot-zzz-quot-gt-hateme-lt-label-gt" class="headerlink" title="&lt;label&gt;&lt;input type=&quot;checkbox&quot; name=&quot;zzz&quot;&gt;hateme&lt;/label&gt;"></a><code>&lt;label&gt;&lt;input type=&quot;checkbox&quot; name=&quot;zzz&quot;&gt;hateme&lt;/label&gt;</code></h5><p>input里的name还是要写的，传送数据时需要</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/23/html续之部分标签/" data-id="cjnco4o3e000ggjf43zh5saob" class="article-share-link">Teilen</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-array/test" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/03/11/array/test/" class="article-date">
-  <time datetime="2018-03-11T10:59:51.000Z" itemprop="datePublished">2018-03-11</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>#css布局<br>———<br>css布局由横向布局和纵向布局构成。横向布局中常常有纵向布局。<br><img src="file:///Users/yingzhongbin/Desktop/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-03-16%20%E4%B8%8B%E5%8D%888.44.14.png" alt=""></p>
-<p>#html标签</p>
-<p>###iframe标签（用的很少）<br>’‘’</p>
-<p><style><br>iframe{<br>width: 100%;<br>height: 400px;<br>}<br></style></p>
-<p><iframe src="http://qq.com" frameborder="0"></iframe><br>‘’‘</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/11/array/test/" data-id="cjnco4o7f000tgjf4iyba5bh4" class="article-share-link">Teilen</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-如何部署hexo博客" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/03/11/如何部署hexo博客/" class="article-date">
-  <time datetime="2018-03-11T10:59:51.000Z" itemprop="datePublished">2018-03-11</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/11/如何部署hexo博客/">如何部署hexo博客</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Hexo 博客搭建经历了一个不算平顺的过程。在这个过程中，需要学习命令行，github，Hexo和md编辑。</p>
-<h2 id="命令行学习过程"><a href="#命令行学习过程" class="headerlink" title="命令行学习过程"></a>命令行学习过程</h2><h4 id="命令行基本符号意义"><a href="#命令行基本符号意义" class="headerlink" title="命令行基本符号意义"></a>命令行基本符号意义</h4><table>
-<thead>
-<tr>
-<th>符号</th>
-<th>意义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>~</td>
-<td>用户目录</td>
-</tr>
-<tr>
-<td>/</td>
-<td>整个硬盘</td>
-</tr>
-<tr>
-<td>.</td>
-<td>当前目录</td>
-</tr>
-<tr>
-<td>..</td>
-<td>父目录</td>
-</tr>
-<tr>
-<td>$</td>
-<td>可以输入命令了</td>
-</tr>
-</tbody>
-</table>
-<h4 id="命令行英语必备单词"><a href="#命令行英语必备单词" class="headerlink" title="命令行英语必备单词"></a>命令行英语必备单词</h4><table>
-<thead>
-<tr>
-<th>英文</th>
-<th>翻译   </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>directory</td>
-<td>目录、文件夹   </td>
-</tr>
-<tr>
-<td>file</td>
-<td>文件   </td>
-</tr>
-<tr>
-<td>make</td>
-<td>新建   </td>
-</tr>
-<tr>
-<td>remove</td>
-<td>删除   </td>
-</tr>
-<tr>
-<td>move</td>
-<td>移动   </td>
-</tr>
-<tr>
-<td>copy</td>
-<td>复制</td>
-</tr>
-<tr>
-<td>list</td>
-<td>罗列</td>
-</tr>
-<tr>
-<td>link</td>
-<td>链接</td>
-</tr>
-<tr>
-<td>find</td>
-<td>查找</td>
-</tr>
-<tr>
-<td>echo</td>
-<td>发出回音、重复</td>
-</tr>
-<tr>
-<td>touch</td>
-<td>触摸</td>
-</tr>
-<tr>
-<td>change</td>
-<td>改变</td>
-</tr>
-</tbody>
-</table>
-<h4 id="命令行单词缩写"><a href="#命令行单词缩写" class="headerlink" title="命令行单词缩写"></a>命令行单词缩写</h4><table>
-<thead>
-<tr>
-<th>命令</th>
-<th>全写</th>
-<th>缩写</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>创建目录</td>
-<td>make directory</td>
-<td>mkdir</td>
-</tr>
-<tr>
-<td>删除</td>
-<td>remove</td>
-<td>rm</td>
-</tr>
-<tr>
-<td>移动 / 重命名</td>
-<td>move</td>
-<td>mv</td>
-</tr>
-<tr>
-<td>复制</td>
-<td>copy</td>
-<td>cp</td>
-</tr>
-<tr>
-<td>罗列</td>
-<td>list</td>
-<td>ls</td>
-</tr>
-<tr>
-<td>改变目录</td>
-<td>change directory</td>
-<td>cd</td>
-</tr>
-</tbody>
-</table>
-<h4 id="基本命令行及意义"><a href="#基本命令行及意义" class="headerlink" title="基本命令行及意义"></a>基本命令行及意义</h4><table>
-<thead>
-<tr>
-<th>命令行</th>
-<th>意义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>cd ~</td>
-<td>进入用户目录  </td>
-</tr>
-<tr>
-<td>pwd</td>
-<td>显示当前目录  </td>
-</tr>
-<tr>
-<td>mkdir demo-1</td>
-<td>建立文件夹  </td>
-</tr>
-<tr>
-<td>mkdir -p “demo1/demo2/demo3”</td>
-<td>建立嵌套文件夹 可以不加引号  </td>
-</tr>
-<tr>
-<td>mkdir demo 2</td>
-<td>创建demo 2 两个文件夹  </td>
-</tr>
-<tr>
-<td>mkdir “demo 2”</td>
-<td>创建demo 2 这个文件夹  </td>
-</tr>
-<tr>
-<td>whoami</td>
-<td>显示用户名  </td>
-</tr>
-<tr>
-<td>ls</td>
-<td>显示当前目录  </td>
-</tr>
-<tr>
-<td>ls  demo-2</td>
-<td>显示demo-2目录  </td>
-</tr>
-<tr>
-<td>ls  -a</td>
-<td>显示当前目录  并显示隐藏文件   .文件   </td>
-</tr>
-<tr>
-<td>touch  .frank</td>
-<td>创建隐藏文件.frank   </td>
-</tr>
-<tr>
-<td>touch frank</td>
-<td>创建文件frank   </td>
-</tr>
-<tr>
-<td>ls -l</td>
-<td>显示当前目录文件的详细信息   </td>
-</tr>
-<tr>
-<td>ls -al</td>
-<td>是 ls - a 和  ls -l 的合并版   </td>
-</tr>
-<tr>
-<td>echo “hello”&gt;1.txt</td>
-<td>将hello写入1.txt中   </td>
-</tr>
-<tr>
-<td>echo “ring”&gt;&gt;1.txt</td>
-<td>将ring追加到1.txt中   </td>
-</tr>
-<tr>
-<td>touch 1.txt</td>
-<td>创建文件1.txt   会改变更新时间  </td>
-</tr>
-<tr>
-<td> cp 1.txt 99.txt</td>
-<td>将1.txt 复制到99.txt   </td>
-</tr>
-<tr>
-<td>cp -r demo-1 demo-9</td>
-<td>递归地将demo-1复制到demo-9   </td>
-</tr>
-<tr>
-<td>mv 99.txt 44.txt</td>
-<td>将99.txt重命名为44.txt  </td>
-</tr>
-<tr>
-<td>rm 1.txt</td>
-<td>删除文件  </td>
-</tr>
-<tr>
-<td>rm -r demo-9</td>
-<td>递归删除文件夹     </td>
-</tr>
-<tr>
-<td>ln -s 444.txt 444-copy.txt</td>
-<td>建立软链接  替身  </td>
-</tr>
-<tr>
-<td>curl -L <a href="https://www.baidu.com&gt;baidu.html" target="_blank" rel="noopener">https://www.baidu.com&gt;baidu.html</a></td>
-<td>下载文件保存到baidu.html  </td>
-</tr>
-</tbody>
-</table>
-<h2 id="github学习"><a href="#github学习" class="headerlink" title="github学习"></a>github学习</h2><h3 id="github命令行学习"><a href="#github命令行学习" class="headerlink" title="github命令行学习"></a>github命令行学习</h3><h4 id="使用-git-有三种方式"><a href="#使用-git-有三种方式" class="headerlink" title="使用 git 有三种方式"></a>使用 git 有三种方式</h4><ol>
-<li>只在本地使用    </li>
-<li>将本地仓库上传到 GitHub    </li>
-<li>下载 GitHub 上的仓库   <h3 id="1-只在本地使用"><a href="#1-只在本地使用" class="headerlink" title="1.只在本地使用"></a>1.只在本地使用</h3><h5 id="1-1-初始化"><a href="#1-1-初始化" class="headerlink" title="1.1 初始化"></a>1.1 初始化</h5></li>
-<li>创建目录作为项目目录：mkdir git-demo-1</li>
-<li>进入目录 cd git-demo-1</li>
-<li>git init，这句命令会在 git-demo-1 里创建一个 .git 目录</li>
-<li>ls -la 就会看到 .git 目录，它就是一个「仓库」</li>
-<li>在 git-demo-1 目录里面添加任意文件，假设添加了两个文件，分别是 index.html 和 css/style.css<br>i.    touch index.html<br>ii.    mkdir css<br>iii.    touch css/style.css</li>
-<li>运行 git status -sb 可以看到文件前面有 ?? 号 ## Initial commit on master</li>
-<li>?? css/</li>
-<li>?? index.html</li>
-<li>这个 ?? 表示 git 一脸懵逼，不知道要怎么对待这些变动。</li>
-<li>使用 git add 将文件添加到「暂存区」<br>i.    你可以一个一个地 add<br> a.    git add index.html<br> b.    git add css/style.css<br>ii.    你也可以一次性 add .<br> a.    git add . 意思是把当前目录（.表示当前目录）里面的变动都加到「暂存区」</li>
-<li>再次运行 git status -sb，可以看到 ?? 变成了 A ## Initial commit on master</li>
-<li>A  css/style.css</li>
-<li>A  index.html</li>
-<li>A 的意思就是添加，也就是说告诉 git，这些文件我要加到仓库里</li>
-<li>使用 git commit -m “信息” 将你 add 过的内容「正式提交」到本地仓库（.git就是本地仓库），并添加一些注释信息，方便日后查阅<br>i.    你可以一个一个地 commit<br> a.    git commit index.html -m ‘添加index.html’<br> b.    git commit css/style.css -m “添加 css/style.css”<br>ii.    你也可以一次性 commit<br> a.    git commit . -m “添加了几个文件”</li>
-<li>再再次运行 git status -sb，发现没有文件变动了，这是因为文件的变动已经记录在仓库里了。</li>
-<li>这时你使用 git log 就可以看到历史上的变动：<br>以上就是 git add / git commit 的一次完整过程。</li>
-</ol>
-<h5 id="1-2-文件变动"><a href="#1-2-文件变动" class="headerlink" title="1.2 文件变动"></a>1.2 文件变动</h5><p>如果想继续改文件，应该怎么做呢？     </p>
-<ol>
-<li>start css/style.css 会使用默认的编辑器打开 css/style.css（macOS 上对应的命令是 open css/style.css）   </li>
-<li>然后在 css/style.css 里写入 body {background: red}，保存退出   </li>
-<li>运行 git status -sb 发现提示中有一个 M ## master   </li>
-<li>M css/style.css  </li>
-<li>这个 M 的意思就是 Modified，表示这个文件被修改了   </li>
-<li>此时如果想让改动保存到仓库里，需要先 git add css/style.css 或者也可以 git add 。<br>注意，由于这个 css/style.css 以前被 add 过，往文章上面看，是 add 过 css/style.css 的，所以此处的 git add 操作可以省略。<br>换句话说，每一次改动，都要经过 git add 和 git commit 两个命令，才能被添加到 .git 本地仓库里。    </li>
-<li>再次运行 git status -sb 发现 M 有红色变成了绿色。  </li>
-<li>运行 git commit -m “更新 css/style.css”，这个改动就被提交到 .git 本地仓库了。   </li>
-<li>再再次运行 git status -sb，会发现没有变更了，这说明所有变动都被本地仓库记录在案了。<br>git status 是用来显示当前的文件状态的，哪个文件变动了，方便进行 git add 操作。-sb 选项的意思：-s 的意思是显示总结（summary），-b 的意思是显示分支（branch），所以 -sb 的意思是显示总结和分支。 </li>
-</ol>
-<h3 id="1-3总结"><a href="#1-3总结" class="headerlink" title="1.3总结"></a>1.3总结</h3><p>至此，来总结一下用到的命令    </p>
-<ol>
-<li>git init，初始化本地仓库 .git   </li>
-<li>git status -sb，显示当前所有文件的状态   </li>
-<li>git add 文件路径，用来将变动加到暂存区   </li>
-<li>git commit -m “信息”，用来正式提交变动，提交至 .git 仓库    </li>
-<li>如果有新的变动，我们只需要依次执行 git add xxx 和 git commit -m ‘xxx’ 两个命令即可。先 add 再 commit。     </li>
-<li>git log 查看变更历史  </li>
-</ol>
-<h3 id="2将本地仓库上传到-GitHub"><a href="#2将本地仓库上传到-GitHub" class="headerlink" title="2将本地仓库上传到 GitHub"></a>2将本地仓库上传到 GitHub</h3><p>如何将这个 git-demo-1 上传到 GitHub 呢？<br> 1.在 GitHub 上新建一个空仓库，名称随意，一般可以跟本地目录名一致，也叫做 git-demo-1<br> <img src="/2018/03/11/如何部署hexo博客/cre-repo.png" alt="我是图片"><br>按照截图所示，除了仓库名，其他的什么都别改，这样你才能创建一个空仓库<br> 2.点击创建按钮之后，GitHub 就会把后续的操作全告诉你<br><img src="/2018/03/11/如何部署hexo博客/ssh.png" alt="我是图片"><br> 1.点击 SSH 按钮。千万不要使用 HTTPS 地址，因为 HTTPS 地址使用起来特别麻烦，每次都要输入密码，而 SSH 不用输入用户名密码。<br>为什么 SSH 不用密码呢，因为已经上传了 SSH public key。<br> 2.由于已经有本地仓库了，所以看图，图中下面半部分就是需要的命令，一行一行拷贝过来执行<br>i.    找到图中的「…or push an existing repository from the command line」这一行，你会看到 git remote add origin <a href="https://github.com/xxxxxxxxxx/git-demo-1.git，" target="_blank" rel="noopener">https://github.com/xxxxxxxxxx/git-demo-1.git，</a> 要使用 SSH 地址，GitHub 的 SSH 地址是以 <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a> 开头的。<br>ii.    再次点击 SSH 按钮，整个世界就会变得美好起来。<br>iii.    得到新的命令 git remote add origin <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/git-demo.git，复制并运行它<br>     iv.    复制第二行 git push -u origin master，运行它<br>     v.    刷新当前页面，仓库就上传到 GitHub 了！      </p>
-<h3 id="3-直接在-GitHub-创建一个仓库，然后下载到本地"><a href="#3-直接在-GitHub-创建一个仓库，然后下载到本地" class="headerlink" title="3 直接在 GitHub 创建一个仓库，然后下载到本地"></a>3 直接在 GitHub 创建一个仓库，然后下载到本地</h3><p>上面两步讲了     </p>
-<ol>
-<li>在本地创建仓库</li>
-<li>将本地仓库上传到 GitHub<br>这里讲第三种用法，那就是直接在 GitHub 创建一个仓库，然后下载到本地。     </li>
-<li>在GitHub 上新建一个仓库 git-demo-3，这次就不创建空仓库了，而是自带 README 和 Lisence 的仓库，创建截图如下：<br><img src="/2018/03/11/如何部署hexo博客/gt3.png" alt="我是图片"><br>请按图中所示，填写一模一样的内容，然后点击创建按钮。     </li>
-<li>这样一来，这个仓库就会自动拥有三个文件：<br><img src="/2018/03/11/如何部署hexo博客/3files.png" alt="我是图片">     </li>
-<li>这三个文件的作用请自行了解：.gitignore 的作用、README.md 的作用 以及 LISENCE 的作用     </li>
-<li>好了，现在远程仓库已经创建好了，怎么下载到本地（也就是我们的电脑上）呢？答案是使用 git clone 命令     </li>
-<li>点击页面中唯一的绿色按钮「clone or download」，会看到一个弹出层<br><img src="/2018/03/11/如何部署hexo博客/clone.png" alt="我是图片">     </li>
-<li>请确保弹出层里的地址是 SSH 地址，也就是 <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a> 开头的地址，如果不是，就点击 Use SSH 按钮。然后复制这个地址。     </li>
-<li>打开 Git Bash，找一个安全的目录，比如 ~/Desktop 桌面目录就很安全：cd ~/Desktop。运行。     </li>
-<li>运行 git clone 你刚才得到的以<a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>开头的地址，运行完就会发现，桌面上多出一个 git-demo-3目录。       </li>
-<li>进入这个多出来的目录，对的，你肯定会忽略这一步。    </li>
-<li>运行 ls -la 会看到，远程目录的所有文件都在这里出现了，另外还看到了 .git 本地仓库。就可以添加文件，git add，然后 git commit 了。     </li>
-</ol>
-<p>三种方式都说完了，它们分别是：     </p>
-<ol>
-<li>在本地创建仓库     </li>
-<li>将本地仓库上传到 GitHub     </li>
-<li>下载 GitHub 上的仓库到本地<br>再回顾一遍已经学到的命令：（这次只多了一个 git clone 命令）     </li>
-<li>git clone <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>:xxxx，下载仓库     </li>
-<li>git init，初始化本地仓库 .git     </li>
-<li>git status -sb，显示当前所有文件的状态     </li>
-<li>git add 文件路径，用来将变动加到暂存区     </li>
-<li>git commit -m “信息”，用来正式提交变动，提交至 .git 仓库     </li>
-<li>如果有新的变动，只需要依次执行 git add xxx 和 git commit -m ‘xxx’ 两个命令即可。先 add 再 commit，行了，学会 git 了。     </li>
-<li>git log 查看变更历史     </li>
-</ol>
-<h3 id="如何上传更新"><a href="#如何上传更新" class="headerlink" title="如何上传更新"></a>如何上传更新</h3><p>在本地目录有任何变动，只需按照以下顺序就能上传：     </p>
-<ol>
-<li>git add 文件路径     </li>
-<li>git commit -m “信息”     </li>
-<li>git pull （相信我，你一定会忘记这一个命令）     </li>
-<li>git push     </li>
-<li><h4 id="下面是例子"><a href="#下面是例子" class="headerlink" title="下面是例子"></a>下面是例子</h4></li>
-<li>cd git-demo-1     </li>
-<li>touch index2.html     </li>
-<li>git add index2.html     </li>
-<li>git commit -m “新建 index2.html”     </li>
-<li>git pull     </li>
-<li>git push<br>然后去 git-demo-1 的 GitHub 页面，就能看到 index2.html 出现在里面了。</li>
-</ol>
-<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><h4 id="还有一些有用的命令"><a href="#还有一些有用的命令" class="headerlink" title="还有一些有用的命令"></a>还有一些有用的命令</h4><p> •    git remote add origin <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>:xxxxxxx.git 将本地仓库与远程仓库关联<br> •    git remote set-url origin <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>:xxxxx.git 上一步手抖了，可以用这个命令来挽回<br> •    git branch 新建分支<br> •    git merge 合并分支<br> •    git stash 通灵术<br> •    git stash pop 反转通灵术<br> •    git revert 后悔了<br> •    git reset 另一种后悔了<br> •    git diff 查看详细变化     </p>
-<h2 id="学习Hexo"><a href="#学习Hexo" class="headerlink" title="学习Hexo"></a>学习Hexo</h2><h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><ol>
-<li>进入一个安全的目录，比如 cd ~/Desktop 或者 cd ~/Documents。   </li>
-<li>在 GitHub 上新建一个空 repo，repo 名称是「你的用户名.github.io」（请将你的用户名替换成真正的用户名）     </li>
-<li>npm install -g hexo-cli，安装 Hexo     </li>
-<li>hexo init myBlog     </li>
-<li>cd myBlog     </li>
-<li>npm i     </li>
-<li>hexo new 开博大吉，会看到一个 md 文件的路径     </li>
-<li>open xxxxxxxxxxxxxxxxxxx.md，编辑这个 md 文件（Ubuntu 系统用 xdg-open xxxxxxxxxxxxxxxxxxx.md 命令）     </li>
-<li>open _config.yml，编辑网站配置<br>i.    把第 6 行的 title 改成想要的名字<br>ii.    把第 9 行的 author 改成大名<br>iii.    把最后一行的 type 改成 type: git<br>iv.    在最后一行后面新增一行，左边与 type 平齐，加上一行 repo: 仓库地址 （将仓库地址改为「用户名.github.io」对应的仓库地址，仓库地址以 <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>: 开头）<br>v.    第 4 步的 repo: 后面有个空格，不要眼瞎。     </li>
-<li>npm install hexo-deployer-git –save，安装 git 部署插件     </li>
-<li>hexo deploy     </li>
-<li>进入「用户名.github.io」对应的 repo，打开 GitHub Pages 功能，如果已经打开了，就直接点击预览链接     </li>
-<li>看到博客！     </li>
-</ol>
-<h4 id="第二篇博客"><a href="#第二篇博客" class="headerlink" title="第二篇博客"></a>第二篇博客</h4><ol>
-<li>hexo new 第二篇博客     </li>
-<li>复制显示的路径，使用 start 路径 来编辑它     </li>
-<li>hexo generate     </li>
-<li>hexo deploy     </li>
-<li>去看你的博客，应该能看到第二篇博客了     </li>
-</ol>
-<h4 id="上传源代码"><a href="#上传源代码" class="headerlink" title="上传源代码"></a>上传源代码</h4><p>注意「你的用户名.github.io」上保存的只是博客，并没有保存「生成博客的程序代码」，需要再创建一个名为 blog-generator 的空仓库，用来保存 myBlog 里面的「生成博客的程序代码」。     </p>
-<ol>
-<li>在 GitHub 创建 blog-generator 空仓库     </li>
-<li>按照截图中的命令执行即可，记住，别 用 HTTPS 地址。<br>这样一来，博客就发布在「用户名.github.io」，而「生成博客的程序代码」发布在了 blog-generator。所有数据万无一失，就不会因为误删 myBlog 目录而痛哭了。<br>以后每次 hexo deploy 完之后，博客就会更新；然后还要 add / commit /push 一下「生成博客的程序代码」，以防万一。<br>这个 blog-generator 就是用来生成博客的程序，而「用户名.github.io」仓库就是博客页面。     </li>
-</ol>
-<h2 id="md编辑学习"><a href="#md编辑学习" class="headerlink" title="md编辑学习"></a>md编辑学习</h2><p>md编辑学习找到一篇比较好的他人<a href="https://www.cnblogs.com/liugang-vip/p/6337580.html" target="_blank" rel="noopener">博客</a> 。以此学习编辑md文件。</p>
-<h2 id="提交文件后发现图片显示不出来了！这就很难受了，于是又找到一个方法"><a href="#提交文件后发现图片显示不出来了！这就很难受了，于是又找到一个方法" class="headerlink" title="提交文件后发现图片显示不出来了！这就很难受了，于是又找到一个方法!"></a>提交文件后发现图片显示不出来了！这就很难受了，于是又找到一个<a href="http://blog.csdn.net/sugar_rainbow/article/details/57415705" target="_blank" rel="noopener">方法</a>!</h2><h2 id="至此，搭建好hexo博客！"><a href="#至此，搭建好hexo博客！" class="headerlink" title="至此，搭建好hexo博客！"></a>至此，搭建好hexo博客！</h2>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/11/如何部署hexo博客/" data-id="cjnco4o3t000pgjf4dbnnywtl" class="article-share-link">Teilen</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-md内容展示" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/03/11/md内容展示/" class="article-date">
-  <time datetime="2018-03-11T10:58:26.000Z" itemprop="datePublished">2018-03-11</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/11/md内容展示/">md内容展示</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Heading-1-有下划线"><a href="#Heading-1-有下划线" class="headerlink" title="Heading 1 (有下划线)"></a>Heading 1 (有下划线)</h1><h2 id="Heading-2"><a href="#Heading-2" class="headerlink" title="Heading 2"></a>Heading 2</h2><h3 id="Heading-3"><a href="#Heading-3" class="headerlink" title="Heading 3"></a>Heading 3</h3><h4 id="Heading-4"><a href="#Heading-4" class="headerlink" title="Heading 4"></a>Heading 4</h4><h5 id="Heading-5"><a href="#Heading-5" class="headerlink" title="Heading 5"></a>Heading 5</h5><h6 id="Heading-6"><a href="#Heading-6" class="headerlink" title="Heading 6"></a>Heading 6</h6><p><em>Italic text</em><br><strong>Bold text</strong></p>
-<ul>
-<li>List Item 1</li>
-<li>List Item 2</li>
-<li>List Item 3</li>
-</ul>
-<p><a href="http://www.baidu.com&quot;To the site&quot;" target="_blank" rel="noopener">baidu链接</a></p>
-<h1 id="this-is-the-title"><a href="#this-is-the-title" class="headerlink" title="this is the title"></a>this is the title</h1><p>Before you do this you need to review these three thing:</p>
-<ol>
-<li>this thing(有空格)</li>
-<li>that thing</li>
-<li>the other thing</li>
-</ol>
-<p>the other thing you need to know</p>
-<h2 id=""><a href="#" class="headerlink" title=""></a><img src="/2018/03/11/md内容展示/xdml.png" alt="我是图片"></h2>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/11/md内容展示/" data-id="cjnco4o3p000mgjf49c4298cq" class="article-share-link">Teilen</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/03/11/hello-world/" class="article-date">
-  <time datetime="2018-03-11T10:38:01.000Z" itemprop="datePublished">2018-03-11</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/11/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/11/hello-world/" data-id="cjnco4o33000fgjf4odg336mp" class="article-share-link">Teilen</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-
-
-  <nav id="page-nav">
-    
-    <a class="extend prev" rel="prev" href="/page/2/">&laquo; zurück</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
-  </nav>
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-
-  
-    
-
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archiv</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">letzter Beitrag</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2018/10/16/Web性能优化/">Web性能优化</a>
-          </li>
-        
-          <li>
-            <a href="/2018/10/15/JS模拟继承/">JS模拟继承</a>
-          </li>
-        
-          <li>
-            <a href="/2018/10/13/你真的懂函数吗？/">你真的懂函数吗？</a>
-          </li>
-        
-          <li>
-            <a href="/2018/10/09/TypeScript学习笔记/">(no title)</a>
-          </li>
-        
-          <li>
-            <a href="/2018/10/06/ES6/">ES6</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2018 应忠彬<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
   
 </nav>
+
+ </div>
+    </header>
+
+    
+      
+
+      
+
     
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+  <section id="posts" class="posts-expand">
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2018/04/27/domAPI/" itemprop="url">
+                domAPI
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Veröffentlicht am
+          <time itemprop="dateCreated" datetime="2018-04-27T20:43:10+08:00" content="2018-04-27">
+            2018-04-27
+          </time>
+        </span>
+
+        
+
+        
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+            DOM APIDOM 是一棵树（tree）树上有 NodeNode 分为 Document（html）、Element（元素）和 Text（文本），以及其他不重要的。
+nextSibling和prevousSilbling可能会获取文字节点innerText和textContent有细微的差别，面试
+            ...
+          </span>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2018/04/27/domAPI/#more" rel="contents">
+              Weiterlesen &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
 
 
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2018/04/25/function/" itemprop="url">
+                function
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Veröffentlicht am
+          <time itemprop="dateCreated" datetime="2018-04-25T20:05:41+08:00" content="2018-04-25">
+            2018-04-25
+          </time>
+        </span>
+
+        
+
+        
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+            function函数函数的 5 种声明
+function name属性
+使用function 的call方法来理解this和arguments
+作用域的理解，就近原则
+闭包的概念
+
+            
+          </span>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2018/04/25/function/#more" rel="contents">
+              Weiterlesen &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
 
 
-<script src="/js/script.js"></script>
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2018/04/25/array/" itemprop="url">
+                array
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Veröffentlicht am
+          <time itemprop="dateCreated" datetime="2018-04-25T14:23:56+08:00" content="2018-04-25">
+            2018-04-25
+          </time>
+        </span>
+
+        
+
+        
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+            JS数组
 
 
 
+匿名函数
+
+
+
+            
+          </span>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2018/04/25/array/#more" rel="contents">
+              Weiterlesen &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2018/04/20/BFC学习/" itemprop="url">
+                BFC学习
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Veröffentlicht am
+          <time itemprop="dateCreated" datetime="2018-04-20T13:12:50+08:00" content="2018-04-20">
+            2018-04-20
+          </time>
+        </span>
+
+        
+
+        
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+             BFC作为一个时代的产物，有其效用，也有其遗留的问题。现在许多BFC能实现的功能通过flex，clearfix等都能达到BFC的效果，但BFC的效果显示常常带有我们不需要的效果，这就很尴尬了。当然，现在有一个不带有不需要效果的CSS设置，display:flow-root;但不是所有浏览器都支持。
+            ...
+          </span>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2018/04/20/BFC学习/#more" rel="contents">
+              Weiterlesen &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2018/04/17/css/" itemprop="url">
+                css
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Veröffentlicht am
+          <time itemprop="dateCreated" datetime="2018-04-17T14:26:07+08:00" content="2018-04-17">
+            2018-04-17
+          </time>
+        </span>
+
+        
+
+        
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+            引用css的四种方法1.使用标签上的style属性2.使用&lt;style&gt;标签3. &lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt;4.@import url (./a.css);浮动并去除bug1.将子元
+            ...
+          </span>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2018/04/17/css/#more" rel="contents">
+              Weiterlesen &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2018/03/23/html续之部分标签/" itemprop="url">
+                html续之部分标签
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Veröffentlicht am
+          <time itemprop="dateCreated" datetime="2018-03-23T15:34:52+08:00" content="2018-03-23">
+            2018-03-23
+          </time>
+        </span>
+
+        
+
+        
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+            css布局———css布局由横向布局和纵向布局构成。横向布局中常常有纵向布局。
+html标签iframe标签（用的很少）iframe可以使用css控制外观1234567&lt;style&gt;	iframe&#123;	width: 100%;	height: 400px;&#125;&lt;/s
+            ...
+          </span>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2018/03/23/html续之部分标签/#more" rel="contents">
+              Weiterlesen &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2018/03/11/array/test/" itemprop="url">
+                Unbenannt
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Veröffentlicht am
+          <time itemprop="dateCreated" datetime="2018-03-11T18:59:51+08:00" content="2018-03-11">
+            2018-03-11
+          </time>
+        </span>
+
+        
+
+        
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+            #css布局———css布局由横向布局和纵向布局构成。横向布局中常常有纵向布局。
+#html标签
+###iframe标签（用的很少）’‘’
+iframe{width: 100%;height: 400px;}
+‘’‘
+
+            
+          </span>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2018/03/11/array/test/#more" rel="contents">
+              Weiterlesen &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2018/03/11/如何部署hexo博客/" itemprop="url">
+                如何部署hexo博客
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Veröffentlicht am
+          <time itemprop="dateCreated" datetime="2018-03-11T18:59:51+08:00" content="2018-03-11">
+            2018-03-11
+          </time>
+        </span>
+
+        
+
+        
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+            Hexo 博客搭建经历了一个不算平顺的过程。在这个过程中，需要学习命令行，github，Hexo和md编辑。
+命令行学习过程命令行基本符号意义
+
+
+符号
+意义
+
+
+
+
+~
+用户目录
+
+
+/
+整个硬盘
+
+
+.
+当前目录
+
+
+..
+父目录
+
+
+$
+可以输入命令了
+
+
+
+命令行英语必备单词
+
+
+英文
+翻译
+            ...
+          </span>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2018/03/11/如何部署hexo博客/#more" rel="contents">
+              Weiterlesen &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2018/03/11/md内容展示/" itemprop="url">
+                md内容展示
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Veröffentlicht am
+          <time itemprop="dateCreated" datetime="2018-03-11T18:58:26+08:00" content="2018-03-11">
+            2018-03-11
+          </time>
+        </span>
+
+        
+
+        
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+            Heading 1 (有下划线)Heading 2Heading 3Heading 4Heading 5Heading 6Italic textBold text
+
+List Item 1
+List Item 2
+List Item 3
+
+baidu链接
+this is the titleBefor
+            ...
+          </span>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2018/03/11/md内容展示/#more" rel="contents">
+              Weiterlesen &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2018/03/11/hello-world/" itemprop="url">
+                Hello World
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Veröffentlicht am
+          <time itemprop="dateCreated" datetime="2018-03-11T18:38:01+08:00" content="2018-03-11">
+            2018-03-11
+          </time>
+        </span>
+
+        
+
+        
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+            Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in 
+            ...
+          </span>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2018/03/11/hello-world/#more" rel="contents">
+              Weiterlesen &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/2/">&laquo;</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+  </nav>
+
+ </div>
+
+        
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
   </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="应忠彬" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">应忠彬</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description"></p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">30</span>
+              <span class="site-state-item-name">Artikel</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">0</span>
+              <span class="site-state-item-name">Kategorien</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">0</span>
+              <span class="site-state-item-name">Tags</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        <div class="links-of-friendly motion-element">
+          
+        </div>
+
+        
+        
+
+      </section>
+
+      
+
+    </div>
+  </aside>
+
+
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
+  
+  &copy; &nbsp; 
+  <span itemprop="copyrightYear">2018
+  </span>
+  <span class="with-love">
+    <i class="icon-next-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">应忠彬
+  </span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme by <a class="theme-link" href="http://blog.idhyt.com">idhyt</a>.<a class="theme-link" href="https://github.com/idhyt/hexo-theme-next/tree/magiclamp">Mala</a>
+</div>
+
+<!-- busuanzi -->
+
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+    });
+  </script>
+
+  
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
 </body>
 </html>
