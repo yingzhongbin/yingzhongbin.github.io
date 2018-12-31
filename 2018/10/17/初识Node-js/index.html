@@ -44,22 +44,17 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="DOM APIDOM 是一棵树（tree）树上有 NodeNode 分为 Document（html）、Element（元素）和 Text（文本），以及其他不重要的。 nextSibling和prevousSilbling可能会获取文字节点innerText和textContent有细微的差别，面试可能会问 textContent 会获取所有元素的内容，包括&amp;lt;script&amp;gt; 和 &amp;lt">
+<meta name="description" content="水中月.镜中花.浮华一片苍凉..">
 <meta property="og:type" content="article">
-<meta property="og:title" content="domAPI">
-<meta property="og:url" content="http://yoursite.com/2018/04/27/domAPI/index.html">
+<meta property="og:title" content="初识Node.js">
+<meta property="og:url" content="http://yoursite.com/2018/10/17/初识Node-js/index.html">
 <meta property="og:site_name" content="zhongbin ying&#39;s blog">
-<meta property="og:description" content="DOM APIDOM 是一棵树（tree）树上有 NodeNode 分为 Document（html）、Element（元素）和 Text（文本），以及其他不重要的。 nextSibling和prevousSilbling可能会获取文字节点innerText和textContent有细微的差别，面试可能会问 textContent 会获取所有元素的内容，包括&amp;lt;script&amp;gt; 和 &amp;lt">
+<meta property="og:description" content="水中月.镜中花.浮华一片苍凉..">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://yoursite.com/2018/04/27/domAPI/d1.png">
-<meta property="og:image" content="http://yoursite.com/2018/04/27/domAPI/d2.png">
-<meta property="og:image" content="http://yoursite.com/2018/04/27/domAPI/d3.png">
-<meta property="og:image" content="http://yoursite.com/2018/04/27/domAPI/d4.png">
-<meta property="og:updated_time" content="2018-04-27T12:55:04.000Z">
+<meta property="og:updated_time" content="2018-10-17T06:27:41.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="domAPI">
-<meta name="twitter:description" content="DOM APIDOM 是一棵树（tree）树上有 NodeNode 分为 Document（html）、Element（元素）和 Text（文本），以及其他不重要的。 nextSibling和prevousSilbling可能会获取文字节点innerText和textContent有细微的差别，面试可能会问 textContent 会获取所有元素的内容，包括&amp;lt;script&amp;gt; 和 &amp;lt">
-<meta name="twitter:image" content="http://yoursite.com/2018/04/27/domAPI/d1.png">
+<meta name="twitter:title" content="初识Node.js">
+<meta name="twitter:description" content="水中月.镜中花.浮华一片苍凉..">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -69,7 +64,7 @@
   };
 </script>
 
-  <title> domAPI | zhongbin ying's blog </title>
+  <title> 初识Node.js | zhongbin ying's blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -359,7 +354,7 @@
           
           
             
-              domAPI
+              初识Node.js
             
           
         </h1>
@@ -368,8 +363,8 @@
       <div class="post-meta">
         <span class="post-time">
           Posted on
-          <time itemprop="dateCreated" datetime="2018-04-27T20:43:10+08:00" content="2018-04-27">
-            2018-04-27
+          <time itemprop="dateCreated" datetime="2018-10-17T14:26:25+08:00" content="2018-10-17">
+            2018-10-17
           </time>
         </span>
 
@@ -379,8 +374,8 @@
           
             <span class="post-comments-count">
             &nbsp; | &nbsp;
-            <a href="/2018/04/27/domAPI/#comments" itemprop="discussionUrl">
-              <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/04/27/domAPI/" itemprop="commentsCount"></span>
+            <a href="/2018/10/17/初识Node-js/#comments" itemprop="discussionUrl">
+              <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/10/17/初识Node-js/" itemprop="commentsCount"></span>
             </a>
           </span>
           
@@ -394,15 +389,7 @@
       
 
       
-        <span itemprop="articleBody"><h2 id="DOM-API"><a href="#DOM-API" class="headerlink" title="DOM API"></a>DOM API</h2><h4 id="DOM-是一棵树（tree）"><a href="#DOM-是一棵树（tree）" class="headerlink" title="DOM 是一棵树（tree）"></a>DOM 是一棵树（tree）</h4><h4 id="树上有-Node"><a href="#树上有-Node" class="headerlink" title="树上有 Node"></a>树上有 Node</h4><h4 id="Node-分为-Document（html）、Element（元素）和-Text（文本），以及其他不重要的。"><a href="#Node-分为-Document（html）、Element（元素）和-Text（文本），以及其他不重要的。" class="headerlink" title="Node 分为 Document（html）、Element（元素）和 Text（文本），以及其他不重要的。"></a>Node 分为 Document（html）、Element（元素）和 Text（文本），以及其他不重要的。</h4><p><img src="/2018/04/27/domAPI/d1.png" alt=""><br><img src="/2018/04/27/domAPI/d2.png" alt=""><br><img src="/2018/04/27/domAPI/d3.png" alt=""></p>
-<h4 id="nextSibling和prevousSilbling可能会获取文字节点"><a href="#nextSibling和prevousSilbling可能会获取文字节点" class="headerlink" title="nextSibling和prevousSilbling可能会获取文字节点"></a>nextSibling和prevousSilbling可能会获取文字节点</h4><h4 id="innerText和textContent有细微的差别，面试可能会问"><a href="#innerText和textContent有细微的差别，面试可能会问" class="headerlink" title="innerText和textContent有细微的差别，面试可能会问"></a>innerText和textContent有细微的差别，面试可能会问</h4><ul>
-<li>textContent 会获取所有元素的内容，包括<code>&lt;script&gt;</code> 和 <code>&lt;style&gt;</code>元素，然而 innerText 不会。</li>
-<li>innerText意识到样式，并且不会返回隐藏元素的文本，而textContent会。</li>
-<li>由于 innerText 受 CSS 样式的影响，它会触发重排（reflow），但textContent 不会。</li>
-<li>与 textContent 不同的是, 在 Internet Explorer (对于小于等于 IE11 的版本) 中对 innerText 进行修改， 不仅会移除当前元素的子节点，而且还会永久性地破坏所有后代文本节点（所以不可能再次将节点再次插入到任何其他元素或同一元素中）。</li>
-</ul>
-<h4 id="nodeType-1表示元素-3表示文本"><a href="#nodeType-1表示元素-3表示文本" class="headerlink" title="nodeType    1表示元素    3表示文本"></a>nodeType    1表示元素    3表示文本</h4><h4 id="cloneNode-分深拷贝和浅拷贝-参数为true是深拷贝，深拷贝是复制所有的子孙节点，浅拷贝只复制本身"><a href="#cloneNode-分深拷贝和浅拷贝-参数为true是深拷贝，深拷贝是复制所有的子孙节点，浅拷贝只复制本身" class="headerlink" title="cloneNode()分深拷贝和浅拷贝  参数为true是深拷贝，深拷贝是复制所有的子孙节点，浅拷贝只复制本身"></a>cloneNode()分深拷贝和浅拷贝  参数为true是深拷贝，深拷贝是复制所有的子孙节点，浅拷贝只复制本身</h4><h4 id="isEqualNode-和-isSameNode-区别-前者是返回-是否相等，后者返回的是-是否相等"><a href="#isEqualNode-和-isSameNode-区别-前者是返回-是否相等，后者返回的是-是否相等" class="headerlink" title="isEqualNode() 和 isSameNode()区别  前者是返回 == 是否相等，后者返回的是===是否相等"></a>isEqualNode() 和 isSameNode()区别  前者是返回 == 是否相等，后者返回的是===是否相等</h4><h4 id="document-write"><a href="#document-write" class="headerlink" title="document.write()"></a>document.write()</h4><p><img src="/2018/04/27/domAPI/d4.png" alt=""></p>
-</span>
+        <span itemprop="articleBody"></span>
       
     </div>
 
@@ -413,13 +400,13 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/04/27/jQuery入门探秘/" rel="prev">jQuery入门探秘</a>
+              <a href="/2018/11/20/vue的生命周期/" rel="prev">vue的生命周期</a>
             
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/25/function/" rel="next">function</a>
+              <a href="/2018/10/16/Web性能优化/" rel="next">Web性能优化</a>
             
           </div>
         </div>
@@ -710,7 +697,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#DOM-API"><span class="nav-number">1.</span> <span class="nav-text">DOM API</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#DOM-是一棵树（tree）"><span class="nav-number">1.0.1.</span> <span class="nav-text">DOM 是一棵树（tree）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#树上有-Node"><span class="nav-number">1.0.2.</span> <span class="nav-text">树上有 Node</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Node-分为-Document（html）、Element（元素）和-Text（文本），以及其他不重要的。"><span class="nav-number">1.0.3.</span> <span class="nav-text">Node 分为 Document（html）、Element（元素）和 Text（文本），以及其他不重要的。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#nextSibling和prevousSilbling可能会获取文字节点"><span class="nav-number">1.0.4.</span> <span class="nav-text">nextSibling和prevousSilbling可能会获取文字节点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#innerText和textContent有细微的差别，面试可能会问"><span class="nav-number">1.0.5.</span> <span class="nav-text">innerText和textContent有细微的差别，面试可能会问</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#nodeType-1表示元素-3表示文本"><span class="nav-number">1.0.6.</span> <span class="nav-text">nodeType    1表示元素    3表示文本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cloneNode-分深拷贝和浅拷贝-参数为true是深拷贝，深拷贝是复制所有的子孙节点，浅拷贝只复制本身"><span class="nav-number">1.0.7.</span> <span class="nav-text">cloneNode()分深拷贝和浅拷贝  参数为true是深拷贝，深拷贝是复制所有的子孙节点，浅拷贝只复制本身</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#isEqualNode-和-isSameNode-区别-前者是返回-是否相等，后者返回的是-是否相等"><span class="nav-number">1.0.8.</span> <span class="nav-text">isEqualNode() 和 isSameNode()区别  前者是返回 == 是否相等，后者返回的是===是否相等</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#document-write"><span class="nav-number">1.0.9.</span> <span class="nav-text">document.write()</span></a></li></ol></li></ol></li></ol></div>
+              <p class="post-toc-empty">This post does not have a Table Of Contents</p>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
@@ -763,9 +750,9 @@
 
   <script type="text/javascript">
     var disqus_shortname = 'xxx';
-    var disqus_identifier = '2018/04/27/domAPI/';
-    var disqus_title = 'domAPI';
-    var disqus_url = 'http://yoursite.com/2018/04/27/domAPI/';
+    var disqus_identifier = '2018/10/17/初识Node-js/';
+    var disqus_title = '初识Node.js';
+    var disqus_url = 'http://yoursite.com/2018/10/17/初识Node-js/';
 
     function run_disqus_script(disqus_script){
       var dsq = document.createElement('script');

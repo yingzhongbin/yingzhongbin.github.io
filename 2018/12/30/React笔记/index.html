@@ -1,0 +1,1004 @@
+
+<!doctype html>
+<html class="theme-next use-motion theme-next-mala">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+  <meta name="google-site-verification" content="xxx" />
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+  <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
+
+
+    <meta name="description" content="水中月.镜中花.浮华一片苍凉.." />
+
+
+
+  <meta name="keywords" content="Hexo,Mala" />
+
+
+
+  <link rel="alternate" href="/atom.xml" title="zhongbin ying's blog" type="application/atom+xml" />
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
+
+
+<meta name="description" content="组件 &amp;amp; Props函数定义/类定义组件函数定义123function Welcome(props) &amp;#123;  return &amp;lt;h1&amp;gt;Hello, &amp;#123;props.name&amp;#125;&amp;lt;/h1&amp;gt;;&amp;#125; 类定义组件12345class Welcome extends React.Component &amp;#123;  render() &amp;#123;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React笔记">
+<meta property="og:url" content="http://yoursite.com/2018/12/30/React笔记/index.html">
+<meta property="og:site_name" content="zhongbin ying&#39;s blog">
+<meta property="og:description" content="组件 &amp;amp; Props函数定义/类定义组件函数定义123function Welcome(props) &amp;#123;  return &amp;lt;h1&amp;gt;Hello, &amp;#123;props.name&amp;#125;&amp;lt;/h1&amp;gt;;&amp;#125; 类定义组件12345class Welcome extends React.Component &amp;#123;  render() &amp;#123;">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2018-12-31T08:10:44.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="React笔记">
+<meta name="twitter:description" content="组件 &amp;amp; Props函数定义/类定义组件函数定义123function Welcome(props) &amp;#123;  return &amp;lt;h1&amp;gt;Hello, &amp;#123;props.name&amp;#125;&amp;lt;/h1&amp;gt;;&amp;#125; 类定义组件12345class Welcome extends React.Component &amp;#123;  render() &amp;#123;">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mala',
+    sidebar: 'post'
+  };
+</script>
+
+  <title> React笔记 | zhongbin ying's blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'xxx', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?xxx";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-next-logo"></i>
+      </span>
+      <span class="site-title">云淡风轻</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu menu-left">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            <i class="menu-item-icon icon-next-categories"></i> <br />
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            <i class="menu-item-icon icon-next-about"></i> <br />
+            About
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <form class="site-search-form">
+    <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+  </form>
+
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'xxx','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    
+      
+
+      
+        <style type="text/css">
+
+    .circle {
+        width: 40px;
+        height: 40px;
+        background: #555 no-repeat;
+        cursor: move;
+    }
+
+    .assist-btn {
+        position: fixed;
+        top: 50％;
+        left: 10px;
+        -moz-border-radius: 50px;
+        -webkit-border-radius: 50px;
+        border-radius: 50px;
+        outline: none;
+        border: none;
+        color: #87daff;
+    }
+
+</style>
+
+<script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+<script type="text/javascript">
+    // 浮动圆点展开与收缩
+    /*
+    $(function () {
+        var assist_box = $('.assist-box');
+        $('#assist_btn').hover(function () {
+            assist_box.stop().show(300);
+        }, function () {
+            assist_box.stop().hide(150);
+        })
+    });
+    */  
+    //浮动圆点拖动
+    $(function () {
+        var box = document.getElementById('assist_btn');
+        box.onmousedown = function (event) {
+            var e = event || window.event,
+                t = e.target || e.srcElement,
+                // 鼠标按下时的坐标x1,y1
+                x1 = e.clientX,
+                y1 = e.clientY,
+                //鼠标按下时的左右偏移量
+                dragLeft = this.offsetLeft,
+                dragTop = this.offsetTop;
+
+            document.onmousemove = function (event) {
+                var e = event || window.event,
+                    t = e.target || e.srcElement,
+                    // 鼠标移动时的动态坐标
+                    x2 = e.clientX,
+                    y2 = e.clientY,
+                    // 鼠标移动时的坐标的变化量
+                    x = x2 - x1,
+                    y = y2 - y1;
+                box.style.left = (dragLeft + x) + 'px';
+                box.style.top = (dragTop + y) + 'px';
+            }
+
+            document.onmouseup = function () {
+                this.onmousemove = null;
+            }
+        }
+    });
+
+/*
+    $whitesmoke   = #f5f5f5
+    $gainsboro    = #eee
+    $gray-lighter = #ddd
+    $grey-light   = #ccc
+    $grey         = #bbb
+    $grey-dark    = #999
+    $grey-dim     = #666
+    $black-light  = #555
+    $black-deep   = #222
+    $red          = #ff2a2a
+    $blue-bright  = #87daff
+    $blue         = #0684bd
+    $blue-deep    = #262a30
+*/
+    // white theme
+    var body = {color: "#555", background: "white"};
+    var a_tag = {color: "#222"};
+    var header = { background: "#f5f5f5"};
+    var logo_line_i = {background: "#222"};
+    // var post_code = {background: "#eee", color: "#222"};
+
+    function switch_theme() {
+        $("body").css(body);
+        $("a:not('.links-of-author-item a, .site-state-item a, .site-state-posts a, .feed-link a, .motion-element a, .post-tags a, .show-commit-cls a, #donate_board a')").css(a_tag);
+        $(".header, .footer").css(header);
+        $(".logo-line-before i, .logo-line-after i").css(logo_line_i);
+        //$(".post code").css(post_code);
+        $("#idhyt-surprise-ball #idhyt-surprise-ball-animation .drag").css(a_tag);
+        $(".post-title-link, .posts-expand .post-meta, .post-comments-count, .disqus-comment-count, .post-category a, .post-nav-next a, .post-nav-item a").css(a_tag);
+        
+        // $("code").css({color: '#c5c8c6', background: '#1d1f21'});
+        $("#assist_btn").hide(1500);
+    }
+
+    $(function () {
+        $("#assist_btn").dblclick(function() {
+            switch_theme();
+        });
+    });
+
+</script>
+
+<div>
+
+    <button class="assist-btn circle" id="assist_btn" title="双击切换">
+        亮
+    </button>
+
+</div>
+
+
+
+
+
+
+
+
+
+      
+
+    
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              React笔记
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posted on
+          <time itemprop="dateCreated" datetime="2018-12-30T08:59:13+08:00" content="2018-12-30">
+            2018-12-30
+          </time>
+        </span>
+
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2018/12/30/React笔记/#comments" itemprop="discussionUrl">
+              <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/12/30/React笔记/" itemprop="commentsCount"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><h2 id="组件-amp-Props"><a href="#组件-amp-Props" class="headerlink" title="组件 &amp; Props"></a>组件 &amp; Props</h2><h3 id="函数定义-类定义组件"><a href="#函数定义-类定义组件" class="headerlink" title="函数定义/类定义组件"></a>函数定义/类定义组件</h3><p>函数定义<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function Welcome(props) &#123;</span><br><span class="line">  return &lt;h1&gt;Hello, &#123;props.name&#125;&lt;/h1&gt;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>类定义组件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">class Welcome extends React.Component &#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    return &amp;lt;h1&amp;gt;Hello, &#123;this.props.name&#125;&amp;lt;/h1&amp;gt;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="组件名称必须以大写字母开头"><a href="#组件名称必须以大写字母开头" class="headerlink" title="组件名称必须以大写字母开头"></a>组件名称必须以大写字母开头</h3><h2 id="State-amp-生命周期"><a href="#State-amp-生命周期" class="headerlink" title="State &amp; 生命周期"></a>State &amp; 生命周期</h2><h3 id="状态更新可能是异步的"><a href="#状态更新可能是异步的" class="headerlink" title="状态更新可能是异步的"></a>状态更新可能是异步的</h3><p>this.props 和 this.state 可能是异步更新的，你不应该依靠它们的值来计算下一个状态。<br>使用第二种形式的 setState() 来接受一个函数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">this.setState((prevState, props) =&gt; (&#123;</span><br><span class="line">  counter: prevState.counter + props.increment</span><br><span class="line">&#125;));</span><br></pre></td></tr></table></figure></p>
+<h2 id="事件处理"><a href="#事件处理" class="headerlink" title="事件处理"></a>事件处理</h2><h3 id="在-React-中另一个不同是你不能使用返回-false-的方式阻止默认行为。你必须明确的使用-preventDefault。"><a href="#在-React-中另一个不同是你不能使用返回-false-的方式阻止默认行为。你必须明确的使用-preventDefault。" class="headerlink" title="在 React 中另一个不同是你不能使用返回 false 的方式阻止默认行为。你必须明确的使用 preventDefault。"></a>在 React 中另一个不同是你不能使用返回 false 的方式阻止默认行为。你必须明确的使用 preventDefault。</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function ActionLink() &#123;</span><br><span class="line">  function handleClick(e) &#123;</span><br><span class="line">    e.preventDefault();</span><br><span class="line">    console.log(&apos;The link was clicked.&apos;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  return (</span><br><span class="line">    &amp;lt;a href=&quot;#&quot; onClick=&#123;handleClick&#125;&amp;gt;</span><br><span class="line">      Click me</span><br><span class="line">    &amp;lt;/a&amp;gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="谨慎对待-JSX-回调函数中的-this，类的方法默认是不会绑定-this-的。"><a href="#谨慎对待-JSX-回调函数中的-this，类的方法默认是不会绑定-this-的。" class="headerlink" title="谨慎对待 JSX 回调函数中的 this，类的方法默认是不会绑定 this 的。"></a>谨慎对待 JSX 回调函数中的 this，类的方法默认是不会绑定 this 的。</h4><p>需要这样<code>this.handleClick.bind(this)</code></p>
+<h3 id="向事件处理程序传递参数"><a href="#向事件处理程序传递参数" class="headerlink" title="向事件处理程序传递参数"></a>向事件处理程序传递参数</h3><p>若是 id 是你要删除那一行的 id<br><code>&lt;button onClick={this.deleteRow.bind(this, id)}&gt;Delete Row&lt;/button&gt;</code><br>通过 bind 方式向监听函数传参，在类组件中定义的监听函数，事件对象 e 要排在所传递参数的后面<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">preventPop(name, e)&#123;    //事件对象e要放在最后</span><br><span class="line">    e.preventDefault();</span><br><span class="line">    alert(name);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&amp;lt;a href=&quot;https://reactjs.org&quot; onClick=&#123;this.preventPop.bind(this,this.state.name)&#125;&amp;gt;Click&amp;lt;/a&amp;gt;</span><br></pre></td></tr></table></figure></p>
+<h2 id="条件渲染"><a href="#条件渲染" class="headerlink" title="条件渲染"></a>条件渲染</h2><h3 id="三目运算符"><a href="#三目运算符" class="headerlink" title="三目运算符"></a>三目运算符</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">return (</span><br><span class="line">    &amp;lt;div&amp;gt;</span><br><span class="line">      &#123;isLoggedIn ? (</span><br><span class="line">        &amp;lt;LogoutButton onClick=&#123;this.handleLogoutClick&#125; /&amp;gt;</span><br><span class="line">      ) : (</span><br><span class="line">        &amp;lt;LoginButton onClick=&#123;this.handleLoginClick&#125; /&amp;gt;</span><br><span class="line">      )&#125;</span><br><span class="line">    &amp;lt;/div&amp;gt;</span><br><span class="line">  );</span><br></pre></td></tr></table></figure>
+<h2 id="列表-amp-Keys"><a href="#列表-amp-Keys" class="headerlink" title="列表 &amp; Keys"></a>列表 &amp; Keys</h2><p>元素的key只有在它和它的兄弟节点对比时才有意义。<br>比方说，如果你提取出一个ListItem组件，你应该把key保存在数组中的这个<listitem>元素上，而不是放在ListItem组件中的<li>元素上。</li></listitem></p>
+<p>key会作为给React的提示，但不会传递给你的组件。如果您的组件中需要使用和key相同的值，请将其作为属性传递：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">const content = posts.map((post) =&amp;gt;</span><br><span class="line">  &amp;lt;Post</span><br><span class="line">    key=&#123;post.id&#125;</span><br><span class="line">    id=&#123;post.id&#125;</span><br><span class="line">    title=&#123;post.title&#125; /&amp;gt;</span><br><span class="line">);</span><br></pre></td></tr></table></figure></p>
+<p>Post组件可以读出props.id，但是不能读出props.key</p>
+<h2 id="表单"><a href="#表单" class="headerlink" title="表单"></a>表单</h2><h3 id="受控组件"><a href="#受控组件" class="headerlink" title="受控组件"></a>受控组件</h3><h4 id="textarea-标签"><a href="#textarea-标签" class="headerlink" title="textarea 标签"></a>textarea 标签</h4><p><code>&lt;textarea value={this.state.value} onChange={this.handleChange} /&gt;</code></p>
+<h4 id="select-标签"><a href="#select-标签" class="headerlink" title="select 标签"></a>select 标签</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">this.state = &#123;value: &apos;coconut&apos;&#125;;</span><br><span class="line"></span><br><span class="line">handleChange(event) &#123;</span><br><span class="line">    this.setState(&#123;value: event.target.value&#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&amp;lt;select value=&#123;this.state.value&#125; onChange=&#123;this.handleChange&#125;&amp;gt;</span><br><span class="line">    &amp;lt;option value=&amp;quot;grapefruit&amp;quot;&amp;gt;Grapefruit&amp;lt;/option&amp;gt;</span><br><span class="line">    &amp;lt;option value=&amp;quot;lime&amp;quot;&amp;gt;Lime&amp;lt;/option&amp;gt;</span><br><span class="line">    &amp;lt;option value=&amp;quot;coconut&amp;quot;&amp;gt;Coconut&amp;lt;/option&amp;gt;</span><br><span class="line">    &amp;lt;option value=&amp;quot;mango&amp;quot;&amp;gt;Mango&amp;lt;/option&amp;gt;</span><br><span class="line">&amp;lt;/select&amp;gt;</span><br></pre></td></tr></table></figure>
+<p>多个输入的解决方法<br>当你有处理多个受控的input元素时，你可以通过给每个元素添加一个name属性，来让处理函数根据 event.target.name的值来选择做什么。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">this.state = &#123;</span><br><span class="line">  isGoing: true,</span><br><span class="line">  numberOfGuests: 2</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">handleInputChange(event) &#123;</span><br><span class="line">    const target = event.target;</span><br><span class="line">    const value = target.type === &apos;checkbox&apos; ? target.checked : target.value;</span><br><span class="line">    const name = target.name;</span><br><span class="line">    </span><br><span class="line">    this.setState(&#123;</span><br><span class="line">      [name]: value</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&amp;lt;form&amp;gt;</span><br><span class="line">    &amp;lt;label&amp;gt;</span><br><span class="line">      Is going:</span><br><span class="line">      &amp;lt;input</span><br><span class="line">        name=&amp;quot;isGoing&amp;quot;</span><br><span class="line">        type=&amp;quot;checkbox&amp;quot;</span><br><span class="line">        checked=&#123;this.state.isGoing&#125;</span><br><span class="line">        onChange=&#123;this.handleInputChange&#125; /&amp;gt;</span><br><span class="line">    &amp;lt;/label&amp;gt;</span><br><span class="line">    &amp;lt;br /&amp;gt;</span><br><span class="line">    &amp;lt;label&amp;gt;</span><br><span class="line">      Number of guests:</span><br><span class="line">      &amp;lt;input</span><br><span class="line">        name=&amp;quot;numberOfGuests&amp;quot;</span><br><span class="line">        type=&amp;quot;number&amp;quot;</span><br><span class="line">        value=&#123;this.state.numberOfGuests&#125;</span><br><span class="line">        onChange=&#123;this.handleInputChange&#125; /&amp;gt;</span><br><span class="line">    &amp;lt;/label&amp;gt;</span><br><span class="line">&amp;lt;/form&amp;gt;</span><br></pre></td></tr></table></figure>
+<h2 id="组合-vs-继承"><a href="#组合-vs-继承" class="headerlink" title="组合 vs 继承"></a>组合 vs 继承</h2><h3 id="包含关系"><a href="#包含关系" class="headerlink" title="包含关系"></a>包含关系</h3><p>一些组件不能提前知道它们的子组件是什么。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">function FancyBorder(props) &#123;</span><br><span class="line">  return (</span><br><span class="line">    &amp;lt;div className=&#123;&amp;#x27;FancyBorder FancyBorder-&amp;#x27; + props.color&#125;&amp;gt;</span><br><span class="line">      &#123;props.children&#125;</span><br><span class="line">    &amp;lt;/div&amp;gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function WelcomeDialog() &#123;</span><br><span class="line">  return (</span><br><span class="line">    &amp;lt;FancyBorder color=&amp;quot;blue&amp;quot;&amp;gt;</span><br><span class="line">      &amp;lt;h1 className=&amp;quot;Dialog-title&amp;quot;&amp;gt;</span><br><span class="line">        Welcome</span><br><span class="line">      &amp;lt;/h1&amp;gt;</span><br><span class="line">      &amp;lt;p className=&amp;quot;Dialog-message&amp;quot;&amp;gt;</span><br><span class="line">        Thank you for visiting our spacecraft!</span><br><span class="line">      &amp;lt;/p&amp;gt;</span><br><span class="line">    &amp;lt;/FancyBorder&amp;gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><fancyborder> JSX 标签内的任何内容都将通过 children 属性传入 FancyBorder。由于 FancyBorder 在一个 <div> 内渲染了 {props.children}，所以被传递的所有元素都会出现在最终输出中。</div></fancyborder></p>
+<p>有时你可能需要在组件中有多个入口，这种情况下你可以使用自己约定的属性而不是 children：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">function SplitPane(props) &#123;</span><br><span class="line">  return (</span><br><span class="line">    &amp;lt;div className=&amp;quot;SplitPane&amp;quot;&amp;gt;</span><br><span class="line">      &amp;lt;div className=&amp;quot;SplitPane-left&amp;quot;&amp;gt;</span><br><span class="line">        &#123;props.left&#125;</span><br><span class="line">      &amp;lt;/div&amp;gt;</span><br><span class="line">      &amp;lt;div className=&amp;quot;SplitPane-right&amp;quot;&amp;gt;</span><br><span class="line">        &#123;props.right&#125;</span><br><span class="line">      &amp;lt;/div&amp;gt;</span><br><span class="line">    &amp;lt;/div&amp;gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function App() &#123;</span><br><span class="line">  return (</span><br><span class="line">    &amp;lt;SplitPane</span><br><span class="line">      left=&#123;</span><br><span class="line">        &amp;lt;Contacts /&amp;gt;</span><br><span class="line">      &#125;</span><br><span class="line">      right=&#123;</span><br><span class="line">        &amp;lt;Chat /&amp;gt;</span><br><span class="line">      &#125; /&amp;gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="高级指引"><a href="#高级指引" class="headerlink" title="高级指引"></a>高级指引</h2><h3 id="深入-JSX"><a href="#深入-JSX" class="headerlink" title="深入 JSX"></a>深入 JSX</h3><h4 id="点表示法"><a href="#点表示法" class="headerlink" title="点表示法"></a>点表示法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">const MyComponents = &#123;</span><br><span class="line">  DatePicker: function DatePicker(props) &#123;</span><br><span class="line">    return &amp;lt;div&amp;gt;Imagine a &#123;props.color&#125; datepicker here.&amp;lt;/div&amp;gt;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function BlueDatePicker() &#123;</span><br><span class="line">  return &amp;lt;MyComponents.DatePicker color=&amp;quot;blue&amp;quot; /&amp;gt;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="扩展属性"><a href="#扩展属性" class="headerlink" title="扩展属性"></a>扩展属性</h4><p>如果你已经有了个 props 对象，并且想在 JSX 中传递它，你可以使用 … 作为扩展操作符来传递整个属性对象。下面两个组件是等效的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function App1() &#123;</span><br><span class="line">  return &amp;lt;Greeting firstName=&amp;quot;Ben&amp;quot; lastName=&amp;quot;Hector&amp;quot; /&amp;gt;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function App2() &#123;</span><br><span class="line">  const props = &#123;firstName: &amp;#x27;Ben&amp;#x27;, lastName: &amp;#x27;Hector&amp;#x27;&#125;;</span><br><span class="line">  return &amp;lt;Greeting &#123;...props&#125; /&amp;gt;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="访问-Refs"><a href="#访问-Refs" class="headerlink" title="访问 Refs"></a>访问 Refs</h4><p>创建 ref 存储 Input DOM 元素<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">constructor(props)&#123;</span><br><span class="line">    super(props)</span><br><span class="line">    this.myRef = React.createRef()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>把<code>&lt;input&gt; ref</code>关联到构造器里创建的 <code>textInput</code> 上</p>
+<input type="text" ref="{this.myRef}/">
+
+<p>在其它代码中，通过 this.refs 获取支撑实例:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">componentDidMount()&#123;</span><br><span class="line">    this.myRef.current.focus()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="为类组件添加-Ref"><a href="#为类组件添加-Ref" class="headerlink" title="为类组件添加 Ref"></a>为类组件添加 Ref</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">class AutoFocusTextInput extends React.Component &#123;</span><br><span class="line">  constructor(props) &#123;</span><br><span class="line">    super(props);</span><br><span class="line">    this.textInput = React.createRef();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  componentDidMount() &#123;</span><br><span class="line">    this.textInput.current.focusTextInput();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  render() &#123;</span><br><span class="line">    return (</span><br><span class="line">       &amp;lt;CustomTextInput ref=&#123;this.textInput&#125; /&amp;gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class CustomTextInput extends React.Component &#123;</span><br><span class="line">  </span><br><span class="line">  focusTextInput() &#123;</span><br><span class="line">    // 直接使用原生 API 使 text 输入框获得焦点</span><br><span class="line">    // 注意：通过 &quot;current&quot; 取得 DOM 节点</span><br><span class="line">    this.textInput.current.focus();</span><br><span class="line">  &#125;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>你不能在函数式组件上使用 ref 属性，因为它们没有实例</p>
+<p>但是，你可以在函数式组件内部使用 ref，只要它指向一个 DOM 元素或者 class 组件</p>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/20/vue的生命周期/" rel="next">vue的生命周期</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div>
+      
+        <style type="text/css">
+
+    .donate_bar {
+        text-align: center;
+        margin-top : 5%;
+    }
+
+    .donate_bar.hidden {
+        display:none;
+    }
+/*
+    .donate_bar a.btn_donate {
+        display: inline-block;
+        width: 82px;
+        height: 82px;
+        margin-left:auto;
+        margin-right:auto;
+
+        background: url("http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif") no-repeat;
+        _background: url("http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif") no-repeat; 
+
+        -webkit-transition: background 0s;
+        -moz-transition: background 0s;
+        -o-transition: background 0s;
+        -ms-transition: background 0s;
+        transition: background 0s;
+    }
+*/
+    .donate_bar a.btn_donate:hover { 
+        // background-position: 0px -82px;
+        color: #87daff
+    }
+
+    .donate_bar .donate_txt {
+        display: block;
+        color: #9d9d9d;
+        font: 14px/2 "Microsoft Yahei";
+    }
+
+    .bold { 
+        font-weight: bold; 
+    }
+
+    .post-donate a {
+        border-bottom: 0px;
+    }
+
+    #donate_guide table {
+        border: none;
+    }
+
+    #donate_guide td {
+        border-bottom: none;
+        border-right: none;
+        background: #333333;
+        valign: top;
+    }
+
+</style>
+
+
+
+    
+
+    <div class ="post-donate">
+        <div id="donate_board" class="donate_bar center">
+              <a id="btn_donate" class="btn_donate" href="javascript:;" title="打赏">赏</a>
+              <span id="donate_txt" class="donate_txt">
+                   
+                        仅仅是一个功能
+                   
+              </span>
+            <br>
+        </div>  
+  
+        <div id="donate_guide" class="donate_bar center hidden">
+            <!--
+            
+                <a href="http://o7keinrz4.bkt.clouddn.com/alipay.jpg" title="支付宝打赏" class="fancybox" rel="article0" 
+                    style="float:left;margin-left:25%;margin-right:10px;">
+                    <img src="http://o7keinrz4.bkt.clouddn.com/alipay.jpg" title="" height="164px" width="164px">
+                </a> 
+              
+
+            
+                <a href="http://o7keinrz4.bkt.clouddn.com/wechat.jpg" title="微信打赏" class="fancybox" rel="article0"
+                    style="margin-right:30%">
+                    <img src="http://o7keinrz4.bkt.clouddn.com/wechat.jpg" title="" height="164px" width="164px">
+                </a>
+            
+            -->
+            <table>
+                <tr>
+                    <td>
+                        
+                            <a href="http://o7keinrz4.bkt.clouddn.com/alipay.jpg" title="支付宝打赏" class="fancybox" rel="article0" 
+                                style="float:left;margin-left:25%;margin-right:10px;">
+                                <img src="http://o7keinrz4.bkt.clouddn.com/alipay.jpg" title="" height="164px" width="164px">
+                            </a> 
+                         
+                    </td>
+                    <td>
+                        
+                            <a href="http://o7keinrz4.bkt.clouddn.com/wechat.jpg" title="微信打赏" class="fancybox" rel="article0"
+                                style="margin-right:30%">
+                                <img src="http://o7keinrz4.bkt.clouddn.com/wechat.jpg" title="" height="164px" width="164px">
+                            </a>
+                        
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+
+        <script type="text/javascript">
+            document.getElementById('btn_donate').onclick = function() {
+                $('#donate_board').addClass('hidden');
+                // $('#donate_guide').removeClass('hidden');
+                $('#donate_guide').show(2000);
+            }
+
+        </script>
+    </div>
+
+    
+
+
+      
+    </div>
+
+    <div class="post-spread">
+      
+        <div class="bdsharebuttonbox">
+	<a href="#" class="bds_more" data-cmd="more"></a>
+	<a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+	<a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
+	<a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+</div>
+<script>
+    window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+          <div class="comments" id="comments">
+            
+              <div id="disqus_thread">
+                <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+              </div>
+            <!--
+            
+            -->
+        
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table Of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="应忠彬" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">应忠彬</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">水中月.镜中花.浮华一片苍凉..</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">33</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">0</span>
+              <span class="site-state-item-name">categories</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">0</span>
+              <span class="site-state-item-name">tags</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="menu-item-icon icon-next-feed"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="http://github.com/xxx" target="_blank">GitHub</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/xxx" target="_blank">Twitter</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/xxx" target="_blank">Weibo</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/xxx" target="_blank">ZhiHu</a>
+              </span>
+            
+          
+        </div>
+
+        <div class="links-of-friendly motion-element">
+          
+            <p class="site-author-name">Links</p>
+            
+              <span class="links-of-author-item">
+              <a href="http://blog.idhyt.com/about/" target="_blank">About</a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#组件-amp-Props"><span class="nav-number">1.</span> <span class="nav-text">组件 &amp; Props</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#函数定义-类定义组件"><span class="nav-number">1.1.</span> <span class="nav-text">函数定义/类定义组件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#组件名称必须以大写字母开头"><span class="nav-number">1.2.</span> <span class="nav-text">组件名称必须以大写字母开头</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#State-amp-生命周期"><span class="nav-number">2.</span> <span class="nav-text">State &amp; 生命周期</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#状态更新可能是异步的"><span class="nav-number">2.1.</span> <span class="nav-text">状态更新可能是异步的</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事件处理"><span class="nav-number">3.</span> <span class="nav-text">事件处理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#在-React-中另一个不同是你不能使用返回-false-的方式阻止默认行为。你必须明确的使用-preventDefault。"><span class="nav-number">3.1.</span> <span class="nav-text">在 React 中另一个不同是你不能使用返回 false 的方式阻止默认行为。你必须明确的使用 preventDefault。</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#谨慎对待-JSX-回调函数中的-this，类的方法默认是不会绑定-this-的。"><span class="nav-number">3.1.1.</span> <span class="nav-text">谨慎对待 JSX 回调函数中的 this，类的方法默认是不会绑定 this 的。</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#向事件处理程序传递参数"><span class="nav-number">3.2.</span> <span class="nav-text">向事件处理程序传递参数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#条件渲染"><span class="nav-number">4.</span> <span class="nav-text">条件渲染</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#三目运算符"><span class="nav-number">4.1.</span> <span class="nav-text">三目运算符</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#列表-amp-Keys"><span class="nav-number">5.</span> <span class="nav-text">列表 &amp; Keys</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#表单"><span class="nav-number">6.</span> <span class="nav-text">表单</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#受控组件"><span class="nav-number">6.1.</span> <span class="nav-text">受控组件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#textarea-标签"><span class="nav-number">6.1.1.</span> <span class="nav-text">textarea 标签</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#select-标签"><span class="nav-number">6.1.2.</span> <span class="nav-text">select 标签</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#组合-vs-继承"><span class="nav-number">7.</span> <span class="nav-text">组合 vs 继承</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#包含关系"><span class="nav-number">7.1.</span> <span class="nav-text">包含关系</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高级指引"><span class="nav-number">8.</span> <span class="nav-text">高级指引</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#深入-JSX"><span class="nav-number">8.1.</span> <span class="nav-text">深入 JSX</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#点表示法"><span class="nav-number">8.1.1.</span> <span class="nav-text">点表示法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#扩展属性"><span class="nav-number">8.1.2.</span> <span class="nav-text">扩展属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#访问-Refs"><span class="nav-number">8.1.3.</span> <span class="nav-text">访问 Refs</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为类组件添加-Ref"><span class="nav-number">8.1.4.</span> <span class="nav-text">为类组件添加 Ref</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
+  
+  &copy; &nbsp;  2011 - 
+  <span itemprop="copyrightYear">2018
+  </span>
+  <span class="with-love">
+    <i class="icon-next-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">应忠彬
+  </span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme by <a class="theme-link" href="http://blog.idhyt.com">idhyt</a>.<a class="theme-link" href="https://github.com/idhyt/hexo-theme-next/tree/magiclamp">Mala</a>
+</div>
+
+<!-- busuanzi -->
+
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+
+  <script type="text/javascript">
+    var disqus_shortname = 'xxx';
+    var disqus_identifier = '2018/12/30/React笔记/';
+    var disqus_title = 'React笔记';
+    var disqus_url = 'http://yoursite.com/2018/12/30/React笔记/';
+
+    function run_disqus_script(disqus_script){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }
+
+    run_disqus_script('count.js');
+    
+      run_disqus_script('embed.js');
+    
+  </script>
+
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+    });
+  </script>
+
+  
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+</body>
+</html>
