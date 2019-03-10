@@ -1,0 +1,1013 @@
+
+<!doctype html>
+<html class="theme-next use-motion theme-next-mala">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+  <meta name="google-site-verification" content="xxx" />
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+  <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
+
+
+    <meta name="description" content="水中月.镜中花.浮华一片苍凉.." />
+
+
+
+  <meta name="keywords" content="Hexo,Mala" />
+
+
+
+  <link rel="alternate" href="/atom.xml" title="zhongbin ying's blog" type="application/atom+xml" />
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
+
+
+<meta name="description" content="01Koa框架介绍以及Koa环境搭建npm init -y安装koanpm i koa --save 04koa 路由  get传值  动态路由安装 koa-routernpm i --save koa-router 动态传值1234// http://localhost:3000/dongtai?aaa=111router.get(&amp;apos;/dongtai&amp;apos;, async (ctx">
+<meta property="og:type" content="article">
+<meta property="og:title" content="koa2学习笔记">
+<meta property="og:url" content="http://yoursite.com/2019/03/10/koa2学习笔记/index.html">
+<meta property="og:site_name" content="zhongbin ying&#39;s blog">
+<meta property="og:description" content="01Koa框架介绍以及Koa环境搭建npm init -y安装koanpm i koa --save 04koa 路由  get传值  动态路由安装 koa-routernpm i --save koa-router 动态传值1234// http://localhost:3000/dongtai?aaa=111router.get(&amp;apos;/dongtai&amp;apos;, async (ctx">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-03-10T08:34:03.311Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="koa2学习笔记">
+<meta name="twitter:description" content="01Koa框架介绍以及Koa环境搭建npm init -y安装koanpm i koa --save 04koa 路由  get传值  动态路由安装 koa-routernpm i --save koa-router 动态传值1234// http://localhost:3000/dongtai?aaa=111router.get(&amp;apos;/dongtai&amp;apos;, async (ctx">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mala',
+    sidebar: 'post'
+  };
+</script>
+
+  <title> koa2学习笔记 | zhongbin ying's blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'xxx', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?xxx";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-next-logo"></i>
+      </span>
+      <span class="site-title">云淡风轻</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu menu-left">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            <i class="menu-item-icon icon-next-categories"></i> <br />
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            <i class="menu-item-icon icon-next-about"></i> <br />
+            About
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <form class="site-search-form">
+    <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+  </form>
+
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'xxx','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    
+      
+
+      
+        <style type="text/css">
+
+    .circle {
+        width: 40px;
+        height: 40px;
+        background: #555 no-repeat;
+        cursor: move;
+    }
+
+    .assist-btn {
+        position: fixed;
+        top: 50％;
+        left: 10px;
+        -moz-border-radius: 50px;
+        -webkit-border-radius: 50px;
+        border-radius: 50px;
+        outline: none;
+        border: none;
+        color: #87daff;
+    }
+
+</style>
+
+<script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+<script type="text/javascript">
+    // 浮动圆点展开与收缩
+    /*
+    $(function () {
+        var assist_box = $('.assist-box');
+        $('#assist_btn').hover(function () {
+            assist_box.stop().show(300);
+        }, function () {
+            assist_box.stop().hide(150);
+        })
+    });
+    */  
+    //浮动圆点拖动
+    $(function () {
+        var box = document.getElementById('assist_btn');
+        box.onmousedown = function (event) {
+            var e = event || window.event,
+                t = e.target || e.srcElement,
+                // 鼠标按下时的坐标x1,y1
+                x1 = e.clientX,
+                y1 = e.clientY,
+                //鼠标按下时的左右偏移量
+                dragLeft = this.offsetLeft,
+                dragTop = this.offsetTop;
+
+            document.onmousemove = function (event) {
+                var e = event || window.event,
+                    t = e.target || e.srcElement,
+                    // 鼠标移动时的动态坐标
+                    x2 = e.clientX,
+                    y2 = e.clientY,
+                    // 鼠标移动时的坐标的变化量
+                    x = x2 - x1,
+                    y = y2 - y1;
+                box.style.left = (dragLeft + x) + 'px';
+                box.style.top = (dragTop + y) + 'px';
+            }
+
+            document.onmouseup = function () {
+                this.onmousemove = null;
+            }
+        }
+    });
+
+/*
+    $whitesmoke   = #f5f5f5
+    $gainsboro    = #eee
+    $gray-lighter = #ddd
+    $grey-light   = #ccc
+    $grey         = #bbb
+    $grey-dark    = #999
+    $grey-dim     = #666
+    $black-light  = #555
+    $black-deep   = #222
+    $red          = #ff2a2a
+    $blue-bright  = #87daff
+    $blue         = #0684bd
+    $blue-deep    = #262a30
+*/
+    // white theme
+    var body = {color: "#555", background: "white"};
+    var a_tag = {color: "#222"};
+    var header = { background: "#f5f5f5"};
+    var logo_line_i = {background: "#222"};
+    // var post_code = {background: "#eee", color: "#222"};
+
+    function switch_theme() {
+        $("body").css(body);
+        $("a:not('.links-of-author-item a, .site-state-item a, .site-state-posts a, .feed-link a, .motion-element a, .post-tags a, .show-commit-cls a, #donate_board a')").css(a_tag);
+        $(".header, .footer").css(header);
+        $(".logo-line-before i, .logo-line-after i").css(logo_line_i);
+        //$(".post code").css(post_code);
+        $("#idhyt-surprise-ball #idhyt-surprise-ball-animation .drag").css(a_tag);
+        $(".post-title-link, .posts-expand .post-meta, .post-comments-count, .disqus-comment-count, .post-category a, .post-nav-next a, .post-nav-item a").css(a_tag);
+        
+        // $("code").css({color: '#c5c8c6', background: '#1d1f21'});
+        $("#assist_btn").hide(1500);
+    }
+
+    $(function () {
+        $("#assist_btn").dblclick(function() {
+            switch_theme();
+        });
+    });
+
+</script>
+
+<div>
+
+    <button class="assist-btn circle" id="assist_btn" title="双击切换">
+        亮
+    </button>
+
+</div>
+
+
+
+
+
+
+
+
+
+      
+
+    
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              koa2学习笔记
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posted on
+          <time itemprop="dateCreated" datetime="2019-03-10T16:25:53+08:00" content="2019-03-10">
+            2019-03-10
+          </time>
+        </span>
+
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2019/03/10/koa2学习笔记/#comments" itemprop="discussionUrl">
+              <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/03/10/koa2学习笔记/" itemprop="commentsCount"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><h3 id="01Koa框架介绍以及Koa环境搭建"><a href="#01Koa框架介绍以及Koa环境搭建" class="headerlink" title="01Koa框架介绍以及Koa环境搭建"></a>01Koa框架介绍以及Koa环境搭建</h3><p><code>npm init -y</code><br>安装koa<br><code>npm i koa --save</code></p>
+<h3 id="04koa-路由-get传值-动态路由"><a href="#04koa-路由-get传值-动态路由" class="headerlink" title="04koa 路由  get传值  动态路由"></a>04koa 路由  get传值  动态路由</h3><p>安装 koa-router<br><code>npm i --save koa-router</code></p>
+<h4 id="动态传值"><a href="#动态传值" class="headerlink" title="动态传值"></a>动态传值</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// http://localhost:3000/dongtai?aaa=111</span><br><span class="line">router.get(&apos;/dongtai&apos;, async (ctx) =&amp;gt; &#123;</span><br><span class="line">  ctx.body = ctx.query //&#123;&quot;aaa&quot;:&quot;111&quot;&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="动态路由"><a href="#动态路由" class="headerlink" title="动态路由"></a>动态路由</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// http://localhost:3000/router/xxx</span><br><span class="line">router.get(&apos;/router/:aid&apos;, async (ctx) =&amp;gt; &#123;</span><br><span class="line">  ctx.body = ctx.params  // &#123;&quot;aid&quot;:&quot;xxx&quot;&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="动态路由可以传入多个值"><a href="#动态路由可以传入多个值" class="headerlink" title="动态路由可以传入多个值"></a>动态路由可以传入多个值</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// http://localhost:3000/router/xxx/yyy</span><br><span class="line">router.get(&apos;/router/:aid/:cid&apos;, async (ctx) =&amp;gt; &#123;</span><br><span class="line">  ctx.body = ctx.params  // &#123;&quot;aid&quot;:&quot;xxx&quot;,&quot;cid&quot;:&quot;yyy&quot;&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="应用级中间件，匹配任何路由-next-继续向下匹配"><a href="#应用级中间件，匹配任何路由-next-继续向下匹配" class="headerlink" title="应用级中间件，匹配任何路由  next() 继续向下匹配"></a>应用级中间件，匹配任何路由  next() 继续向下匹配</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">app.use(async (ctx, next) =&amp;gt; &#123;</span><br><span class="line">  console.log(new Date());</span><br><span class="line">  await next()</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="路由级中间件"><a href="#路由级中间件" class="headerlink" title="路由级中间件"></a>路由级中间件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">router.get(&apos;/news&apos;, async (ctx, next) =&amp;gt; &#123;</span><br><span class="line">  console.log(&apos;新闻页面&apos;)</span><br><span class="line">  await next() // 继续向下匹配</span><br><span class="line">&#125;)</span><br><span class="line">router.get(&apos;/news&apos;, async (ctx) =&amp;gt; &#123;</span><br><span class="line">  ctx.body = &apos;新闻页面&apos;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="Koa中无论位置关系如何，都先执行应用级中间级，再执行路由级中间件"><a href="#Koa中无论位置关系如何，都先执行应用级中间级，再执行路由级中间件" class="headerlink" title="Koa中无论位置关系如何，都先执行应用级中间级，再执行路由级中间件"></a>Koa中无论位置关系如何，都先执行应用级中间级，再执行路由级中间件</h4><h4 id="错误级中间件"><a href="#错误级中间件" class="headerlink" title="错误级中间件"></a>错误级中间件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">app.use(async (ctx, next) =&amp;gt; &#123;</span><br><span class="line">  console.log(new Date());</span><br><span class="line">  await next()</span><br><span class="line">  if(ctx.status === 404)&#123;</span><br><span class="line">    ctx.body = &apos;找不到页面&apos;</span><br><span class="line">  &#125;else&#123;</span><br><span class="line">    console.log(ctx.url);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="koa中间件的执行流程"><a href="#koa中间件的执行流程" class="headerlink" title="koa中间件的执行流程"></a>koa中间件的执行流程</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">//www.域名.com/news</span><br><span class="line">app.use(async (ctx,next)=&amp;gt;&#123;</span><br><span class="line">  console.log(&apos;1、这是第一个中间件01&apos;);</span><br><span class="line">  await next();</span><br><span class="line"></span><br><span class="line">  console.log(&apos;5、匹配路由完成以后又会返回来执行中间件&apos;);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.use(async (ctx,next)=&amp;gt;&#123;</span><br><span class="line">  console.log(&apos;2、这是第二个中间件02&apos;);</span><br><span class="line">  await next();</span><br><span class="line"></span><br><span class="line">  console.log(&apos;4、匹配路由完成以后又会返回来执行中间件&apos;);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">router.get(&apos;/&apos;,async (ctx)=&amp;gt;&#123;</span><br><span class="line"></span><br><span class="line">  ctx.body=&quot;首页&quot;;</span><br><span class="line"></span><br><span class="line">&#125;)</span><br><span class="line">router.get(&apos;/news&apos;,async (ctx)=&amp;gt;&#123;</span><br><span class="line"></span><br><span class="line">  console.log(&apos;3、匹配到了news这个路由&apos;);</span><br><span class="line">  ctx.body=&apos;这是一个新闻&apos;;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>结果：<br>1、这是第一个中间件01<br>2、这是第二个中间件02<br>3、匹配到了news这个路由<br>4、匹配路由完成以后又会返回来执行中间件<br>5、匹配路由完成以后又会返回来执行中间件  </p>
+<h4 id="使用ejs模版引擎"><a href="#使用ejs模版引擎" class="headerlink" title="使用ejs模版引擎"></a>使用ejs模版引擎</h4><p>1.安装<br><code>cnpm install --save koa-views</code><br><code>cnpm install ejs --save</code><br>2.引入<br><code>var views = require(&#39;koa-views&#39;)</code><br>3.配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">app.use(views(__dirname + &apos;/views&apos;, &#123;</span><br><span class="line">  map: &#123;</span><br><span class="line">    html: &apos;ejs&apos;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;));</span><br><span class="line">OR:</span><br><span class="line">app.use(views(__dirname + &apos;/views&apos;, &#123; extension: &apos;ejs&apos; &#125;))</span><br></pre></td></tr></table></figure></p>
+<p>4.渲染<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">router.get(&apos;/&apos;, async (ctx) =&amp;gt; &#123;</span><br><span class="line">  await ctx.render(&apos;index.html&apos;,&#123;</span><br><span class="line">    title:&apos;title&apos;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<h4 id="需要在每一个模版里都渲染一个公共的数据-写一个中间件配置公共数据"><a href="#需要在每一个模版里都渲染一个公共的数据-写一个中间件配置公共数据" class="headerlink" title="需要在每一个模版里都渲染一个公共的数据  写一个中间件配置公共数据"></a>需要在每一个模版里都渲染一个公共的数据  写一个中间件配置公共数据</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">app.use(async (ctx, next) =&amp;gt; &#123;</span><br><span class="line">  ctx.state = &#123;</span><br><span class="line">    username: &apos;张三&apos;</span><br><span class="line">  &#125;</span><br><span class="line">  await next()</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>在index.html中直接使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&amp;lt;%= username %&amp;gt;</span><br></pre></td></tr></table></figure></p>
+<h3 id="koa-post-提交数据-koa-bodyparser-中间件的使用"><a href="#koa-post-提交数据-koa-bodyparser-中间件的使用" class="headerlink" title="koa post 提交数据 koa-bodyparser 中间件的使用"></a>koa post 提交数据 koa-bodyparser 中间件的使用</h3><p>1.安装 koa-bodyparser<br><code>cnpm install --save koa-bodyparser</code><br>2.引入配置中间件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var bodyParser = require(&apos;koa-bodyparser&apos;);</span><br><span class="line">app.use(bodyParser());</span><br></pre></td></tr></table></figure></p>
+<p>3.使用ctx.request.body获取数据<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">router.post(&apos;/doAdd&apos;, async (ctx) =&amp;gt; &#123;</span><br><span class="line">  ctx.body = ctx.request.body</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>index.html<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&amp;lt;form action=&quot;/doAdd&quot; method=&quot;post&quot;&amp;gt;</span><br><span class="line">      姓名：&amp;lt;input type=&quot;text&quot; name=&quot;username&quot;&amp;gt;&amp;lt;br&amp;gt;</span><br><span class="line">      密码：&amp;lt;input type=&quot;password&quot; name=&quot;password&quot;&amp;gt;&amp;lt;br&amp;gt;</span><br><span class="line">      &amp;lt;button type=&quot;submit&quot;&amp;gt;提交/button&amp;gt;</span><br><span class="line">  &amp;lt;/form&amp;gt;</span><br></pre></td></tr></table></figure></p>
+<h3 id="koa-static静态资源中间件"><a href="#koa-static静态资源中间件" class="headerlink" title="koa-static静态资源中间件"></a>koa-static静态资源中间件</h3><p>1、安装 koa-static<br><code>cnpm install --save koa-static</code><br>2.引入<br><code>const static = require(&#39;koa-static&#39;)</code><br>3.配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">app.use(static(</span><br><span class="line">    path.join( __dirname, &apos;public&apos;)</span><br><span class="line">))</span><br><span class="line">app.use(static(</span><br><span class="line">    path.join( __dirname, &apos;static&apos;)</span><br><span class="line">))</span><br></pre></td></tr></table></figure></p>
+<p>4.使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&amp;lt;link rel=&quot;stylesheet&quot; href=&quot;css/basic.css&quot;&amp;gt;</span><br><span class="line">&amp;lt;img src=&quot;img/bbb.png&quot; alt=&quot;&quot;&amp;gt;</span><br></pre></td></tr></table></figure></p>
+<h3 id="在-Koa-中使用-art-template-模板引擎"><a href="#在-Koa-中使用-art-template-模板引擎" class="headerlink" title="在 Koa 中使用 art-template 模板引擎"></a>在 Koa 中使用 art-template 模板引擎</h3><ol>
+<li>安装<br><code>cnpm install --save art-template</code><br><code>cnpm install --save koa-art-template</code></li>
+</ol>
+<p>2.配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">const render = require(&apos;koa-art-template&apos;)</span><br><span class="line">render(app, &#123;</span><br><span class="line">  root: path.join(__dirname, &apos;views&apos;),</span><br><span class="line">  extname: &apos;.html&apos;,</span><br><span class="line">  debug: process.env.NODE_ENV !== &apos;production&apos;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>3.使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">router.get(&apos;/&apos;, async (ctx) =&amp;gt; &#123;</span><br><span class="line">  await ctx.render(&apos;index&apos;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<h3 id="Koa-Cookie-的使用"><a href="#Koa-Cookie-的使用" class="headerlink" title="Koa Cookie 的使用"></a>Koa Cookie 的使用</h3><p>set<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ctx.cookies.set(&apos;username&apos;,&apos;zhangsan&apos;, &#123;</span><br><span class="line">    maxAge: 1000*10</span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure></p>
+<p>在另一个页面get<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let username = ctx.cookies.get(&apos;username&apos;)</span><br></pre></td></tr></table></figure></p>
+<p>设置cookie的中文值<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let usernameCH = new Buffer(&apos;张三&apos;).toString(&apos;base64&apos;)</span><br><span class="line">  ctx.cookies.set(&apos;usernameCH&apos;,usernameCH, &#123;</span><br><span class="line">    maxAge: 1000*10</span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure></p>
+<p>get cookie的中文值<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let data = ctx.cookies.get(&apos;usernameCH&apos;)</span><br><span class="line">let usernameCH = new Buffer(data, &apos;base64&apos;).toString()</span><br></pre></td></tr></table></figure></p>
+<h3 id="Koa-Session-的使用"><a href="#Koa-Session-的使用" class="headerlink" title="Koa Session 的使用"></a>Koa Session 的使用</h3><p>1.安装 express-session<br><code>npm install koa-session --save</code><br>2.引入 express-session<br><code>const session = require(&#39;koa-session&#39;);</code><br>3.设置官方文档提供的中间件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">app.keys = [&apos;some secret hurr&apos;]; </span><br><span class="line">const CONFIG = &#123;</span><br><span class="line">    key: &apos;koa:sess&apos;, //cookie key (default is koa:sess)</span><br><span class="line">    maxAge: 86400000, // cookie 的过期时间 maxAge in ms (default is 1 days) </span><br><span class="line">    overwrite: true, //是否可以 overwrite (默认 default true)</span><br><span class="line">    httpOnly: true, //cookie 是否只有服务器端可以访问 httpOnly or not (default true) </span><br><span class="line">    signed: true, //签名默认 true</span><br><span class="line">    rolling: true, //在每次请求时强行设置 cookie，这将重置 cookie 过期时间(默认:false) </span><br><span class="line">    renew: false, //(boolean) renew session when session is nearly expired,</span><br><span class="line">&#125;;</span><br><span class="line">app.use(session(CONFIG, app));</span><br></pre></td></tr></table></figure></p>
+<p> 4.使用<br>设置值 ctx.session.username = “张三”;<br>获取值 ctx.session.username</p>
+<h3 id="操作mongodb数据库"><a href="#操作mongodb数据库" class="headerlink" title="操作mongodb数据库"></a>操作mongodb数据库</h3><p><code>cnpm i mongodb --save</code></p>
+<h3 id="封装mongoDB库"><a href="#封装mongoDB库" class="headerlink" title="封装mongoDB库"></a>封装mongoDB库</h3><h4 id="config-js"><a href="#config-js" class="headerlink" title="config.js"></a>config.js</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var app = &#123;</span><br><span class="line">  dbUrl: &apos;mongodb://127.0.0.1:27017/&apos;,</span><br><span class="line">  dbName: &apos;user&apos;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">module.exports = app</span><br></pre></td></tr></table></figure>
+<h4 id="db-js"><a href="#db-js" class="headerlink" title="db.js"></a>db.js</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br></pre></td><td class="code"><pre><span class="line">const MongoDB = require(&apos;mongodb&apos;)</span><br><span class="line">const MongoClient = require(&apos;mongodb&apos;).MongoClient;</span><br><span class="line">const Config = require(&apos;./config.js&apos;)</span><br><span class="line">const ObjectID = MongoDB.ObjectID;</span><br><span class="line">class DB &#123;</span><br><span class="line">  static getInstance() &#123;</span><br><span class="line">    if (!DB.instance) &#123;</span><br><span class="line">      DB.instance = new DB()</span><br><span class="line">    &#125;</span><br><span class="line">    return DB.instance</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  constructor() &#123;</span><br><span class="line">    this.dbClient = null</span><br><span class="line">    this.connect()</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  connect() &#123;</span><br><span class="line">    return new Promise((resolve, reject) =&amp;gt; &#123;</span><br><span class="line">      if (!this.dbClient) &#123;</span><br><span class="line">        MongoClient.connect(Config.dbUrl, (err, client) =&amp;gt; &#123;</span><br><span class="line">          if (err) &#123;</span><br><span class="line">            reject(err)</span><br><span class="line">          &#125; else &#123;</span><br><span class="line">            this.dbClient = client.db(Config.dbName);</span><br><span class="line">            resolve(this.dbClient)</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125; else &#123;</span><br><span class="line">        resolve(this.dbClient)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  add(collectionName, JSON) &#123;</span><br><span class="line">    return new Promise((resolve, reject) =&amp;gt; &#123;</span><br><span class="line">      this.connect().then((dbClient) =&amp;gt; &#123;</span><br><span class="line">        const collection = dbClient.collection(collectionName);</span><br><span class="line">        collection.insertOne(JSON, function(err, result) &#123;</span><br><span class="line">          resolve(result);</span><br><span class="line">        &#125;);</span><br><span class="line">      &#125;, (err) =&amp;gt; &#123;</span><br><span class="line">        reject(err)</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  delete(collectionName, JSON) &#123;</span><br><span class="line">    return new Promise((resolve, reject) =&amp;gt; &#123;</span><br><span class="line">      this.connect().then((dbClient) =&amp;gt; &#123;</span><br><span class="line">        const collection = dbClient.collection(collectionName);</span><br><span class="line">        collection.deleteOne(JSON, function(err, result) &#123;</span><br><span class="line">          resolve(result);</span><br><span class="line">        &#125;);</span><br><span class="line">      &#125;, (err) =&amp;gt; &#123;</span><br><span class="line">        reject(err)</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  update(collectionName, originJSON, updateJSON) &#123;</span><br><span class="line">    return new Promise((resolve, reject) =&amp;gt; &#123;</span><br><span class="line">      this.connect().then((dbClient) =&amp;gt; &#123;</span><br><span class="line">        const collection = dbClient.collection(collectionName);</span><br><span class="line">        collection.updateOne(originJSON</span><br><span class="line">            , &#123;$set: updateJSON&#125;,  (err, result) =&amp;gt; &#123;</span><br><span class="line">              console.log(&quot;Updated the document with the field a equal to 2&quot;);</span><br><span class="line">              resolve(result);</span><br><span class="line">            &#125;);</span><br><span class="line">      &#125;, (err) =&amp;gt; &#123;</span><br><span class="line">        reject(err)</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  find(collectionName, JSON) &#123;</span><br><span class="line">    return new Promise((resolve, reject) =&amp;gt; &#123;</span><br><span class="line">      this.connect().then((dbClient) =&amp;gt; &#123;</span><br><span class="line">        const collection = dbClient.collection(collectionName);</span><br><span class="line">        collection.find(JSON).toArray((err, docs) =&amp;gt; &#123;</span><br><span class="line">          resolve(docs)</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;, (err) =&amp;gt; &#123;</span><br><span class="line">        reject(err)</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  getObjectId(id)&#123;</span><br><span class="line">    return new ObjectID(id)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">module.exports = DB.getInstance()</span><br></pre></td></tr></table></figure>
+<h4 id="app-js"><a href="#app-js" class="headerlink" title="app.js"></a>app.js</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">const DB = require(&apos;./module/db.js&apos;)</span><br><span class="line"></span><br><span class="line">router.get(&apos;/&apos;, async (ctx) =&amp;gt; &#123;</span><br><span class="line">  let result = await DB.find(&apos;normalUser&apos;, &#123;&#125;)</span><br><span class="line">  console.log(result);</span><br><span class="line">  await ctx.render(&apos;index&apos;)</span><br><span class="line">&#125;)</span><br><span class="line">router.get(&apos;/delete&apos;, async (ctx) =&amp;gt; &#123;</span><br><span class="line">  let result = await DB.delete(&apos;normalUser&apos;, &#123;&quot;username&quot;: &quot;fuc&quot;&#125;)</span><br><span class="line">  console.log(result);</span><br><span class="line">  await ctx.render(&apos;index&apos;)</span><br><span class="line">&#125;)</span><br><span class="line">router.get(&apos;/update&apos;, async (ctx) =&amp;gt; &#123;</span><br><span class="line">  let result = await DB.update(&apos;normalUser&apos;,</span><br><span class="line">      &#123;&quot;_id&quot;: DB.getObjectId(&apos;5c71030a197fbd31edfdd453&apos;)&#125;,</span><br><span class="line">      &#123;&quot;age&quot;: 122&#125;</span><br><span class="line">      )</span><br><span class="line">  console.log(result);</span><br><span class="line">  await ctx.render(&apos;index&apos;)</span><br><span class="line">&#125;)</span><br><span class="line">router.get(&apos;/add&apos;, async (ctx) =&amp;gt; &#123;</span><br><span class="line">  let addOne = &#123;</span><br><span class="line">    &quot;username&quot;: &quot;fuc&quot;,</span><br><span class="line">    &quot;age&quot;: 23,</span><br><span class="line">    &quot;sex&quot;: &quot;女&quot;</span><br><span class="line">  &#125;</span><br><span class="line">  let result = await DB.add(&apos;normalUser&apos;, addOne)</span><br><span class="line">  console.log(result);</span><br><span class="line">  await ctx.render(&apos;index&apos;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="路由模块化"><a href="#路由模块化" class="headerlink" title="路由模块化"></a>路由模块化</h3><h4 id="routes-admin-js"><a href="#routes-admin-js" class="headerlink" title="routes/admin.js"></a>routes/admin.js</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">var Router = require(&apos;koa-router&apos;)</span><br><span class="line">var router = new Router()</span><br><span class="line"></span><br><span class="line">router.get(&apos;/&apos;, async (ctx) =&amp;gt; &#123;</span><br><span class="line">  ctx.body = &apos;admin/&apos;</span><br><span class="line">&#125;)</span><br><span class="line">router.get(&apos;/test&apos;, async (ctx) =&amp;gt; &#123;</span><br><span class="line">  ctx.body = &apos;admin/test&apos;</span><br><span class="line">&#125;)</span><br><span class="line">module.exports = router.routes()</span><br></pre></td></tr></table></figure>
+<h4 id="app-js-1"><a href="#app-js-1" class="headerlink" title="app.js"></a>app.js</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const admin = require(&apos;./routes/admin.js&apos;)</span><br><span class="line">router.use(&apos;/admin&apos;, admin)</span><br></pre></td></tr></table></figure>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/02/15/webpack4测试笔记/" rel="next">webpack4测试笔记</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div>
+      
+        <style type="text/css">
+
+    .donate_bar {
+        text-align: center;
+        margin-top : 5%;
+    }
+
+    .donate_bar.hidden {
+        display:none;
+    }
+/*
+    .donate_bar a.btn_donate {
+        display: inline-block;
+        width: 82px;
+        height: 82px;
+        margin-left:auto;
+        margin-right:auto;
+
+        background: url("http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif") no-repeat;
+        _background: url("http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif") no-repeat; 
+
+        -webkit-transition: background 0s;
+        -moz-transition: background 0s;
+        -o-transition: background 0s;
+        -ms-transition: background 0s;
+        transition: background 0s;
+    }
+*/
+    .donate_bar a.btn_donate:hover { 
+        // background-position: 0px -82px;
+        color: #87daff
+    }
+
+    .donate_bar .donate_txt {
+        display: block;
+        color: #9d9d9d;
+        font: 14px/2 "Microsoft Yahei";
+    }
+
+    .bold { 
+        font-weight: bold; 
+    }
+
+    .post-donate a {
+        border-bottom: 0px;
+    }
+
+    #donate_guide table {
+        border: none;
+    }
+
+    #donate_guide td {
+        border-bottom: none;
+        border-right: none;
+        background: #333333;
+        valign: top;
+    }
+
+</style>
+
+
+
+    
+
+    <div class ="post-donate">
+        <div id="donate_board" class="donate_bar center">
+              <a id="btn_donate" class="btn_donate" href="javascript:;" title="打赏">赏</a>
+              <span id="donate_txt" class="donate_txt">
+                   
+                        仅仅是一个功能
+                   
+              </span>
+            <br>
+        </div>  
+  
+        <div id="donate_guide" class="donate_bar center hidden">
+            <!--
+            
+                <a href="http://o7keinrz4.bkt.clouddn.com/alipay.jpg" title="支付宝打赏" class="fancybox" rel="article0" 
+                    style="float:left;margin-left:25%;margin-right:10px;">
+                    <img src="http://o7keinrz4.bkt.clouddn.com/alipay.jpg" title="" height="164px" width="164px">
+                </a> 
+              
+
+            
+                <a href="http://o7keinrz4.bkt.clouddn.com/wechat.jpg" title="微信打赏" class="fancybox" rel="article0"
+                    style="margin-right:30%">
+                    <img src="http://o7keinrz4.bkt.clouddn.com/wechat.jpg" title="" height="164px" width="164px">
+                </a>
+            
+            -->
+            <table>
+                <tr>
+                    <td>
+                        
+                            <a href="http://o7keinrz4.bkt.clouddn.com/alipay.jpg" title="支付宝打赏" class="fancybox" rel="article0" 
+                                style="float:left;margin-left:25%;margin-right:10px;">
+                                <img src="http://o7keinrz4.bkt.clouddn.com/alipay.jpg" title="" height="164px" width="164px">
+                            </a> 
+                         
+                    </td>
+                    <td>
+                        
+                            <a href="http://o7keinrz4.bkt.clouddn.com/wechat.jpg" title="微信打赏" class="fancybox" rel="article0"
+                                style="margin-right:30%">
+                                <img src="http://o7keinrz4.bkt.clouddn.com/wechat.jpg" title="" height="164px" width="164px">
+                            </a>
+                        
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+
+        <script type="text/javascript">
+            document.getElementById('btn_donate').onclick = function() {
+                $('#donate_board').addClass('hidden');
+                // $('#donate_guide').removeClass('hidden');
+                $('#donate_guide').show(2000);
+            }
+
+        </script>
+    </div>
+
+    
+
+
+      
+    </div>
+
+    <div class="post-spread">
+      
+        <div class="bdsharebuttonbox">
+	<a href="#" class="bds_more" data-cmd="more"></a>
+	<a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+	<a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
+	<a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+</div>
+<script>
+    window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+          <div class="comments" id="comments">
+            
+              <div id="disqus_thread">
+                <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+              </div>
+            <!--
+            
+            -->
+        
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table Of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="应忠彬" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">应忠彬</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">水中月.镜中花.浮华一片苍凉..</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">36</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">0</span>
+              <span class="site-state-item-name">categories</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">0</span>
+              <span class="site-state-item-name">tags</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="menu-item-icon icon-next-feed"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="http://github.com/xxx" target="_blank">GitHub</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/xxx" target="_blank">Twitter</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/xxx" target="_blank">Weibo</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/xxx" target="_blank">ZhiHu</a>
+              </span>
+            
+          
+        </div>
+
+        <div class="links-of-friendly motion-element">
+          
+            <p class="site-author-name">Links</p>
+            
+              <span class="links-of-author-item">
+              <a href="http://blog.idhyt.com/about/" target="_blank">About</a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#01Koa框架介绍以及Koa环境搭建"><span class="nav-number">1.</span> <span class="nav-text">01Koa框架介绍以及Koa环境搭建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#04koa-路由-get传值-动态路由"><span class="nav-number">2.</span> <span class="nav-text">04koa 路由  get传值  动态路由</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#动态传值"><span class="nav-number">2.1.</span> <span class="nav-text">动态传值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#动态路由"><span class="nav-number">2.2.</span> <span class="nav-text">动态路由</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#动态路由可以传入多个值"><span class="nav-number">2.3.</span> <span class="nav-text">动态路由可以传入多个值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#应用级中间件，匹配任何路由-next-继续向下匹配"><span class="nav-number">2.4.</span> <span class="nav-text">应用级中间件，匹配任何路由  next() 继续向下匹配</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#路由级中间件"><span class="nav-number">2.5.</span> <span class="nav-text">路由级中间件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Koa中无论位置关系如何，都先执行应用级中间级，再执行路由级中间件"><span class="nav-number">2.6.</span> <span class="nav-text">Koa中无论位置关系如何，都先执行应用级中间级，再执行路由级中间件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#错误级中间件"><span class="nav-number">2.7.</span> <span class="nav-text">错误级中间件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#koa中间件的执行流程"><span class="nav-number">2.8.</span> <span class="nav-text">koa中间件的执行流程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用ejs模版引擎"><span class="nav-number">2.9.</span> <span class="nav-text">使用ejs模版引擎</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#需要在每一个模版里都渲染一个公共的数据-写一个中间件配置公共数据"><span class="nav-number">2.10.</span> <span class="nav-text">需要在每一个模版里都渲染一个公共的数据  写一个中间件配置公共数据</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#koa-post-提交数据-koa-bodyparser-中间件的使用"><span class="nav-number">3.</span> <span class="nav-text">koa post 提交数据 koa-bodyparser 中间件的使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#koa-static静态资源中间件"><span class="nav-number">4.</span> <span class="nav-text">koa-static静态资源中间件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在-Koa-中使用-art-template-模板引擎"><span class="nav-number">5.</span> <span class="nav-text">在 Koa 中使用 art-template 模板引擎</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Koa-Cookie-的使用"><span class="nav-number">6.</span> <span class="nav-text">Koa Cookie 的使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Koa-Session-的使用"><span class="nav-number">7.</span> <span class="nav-text">Koa Session 的使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#操作mongodb数据库"><span class="nav-number">8.</span> <span class="nav-text">操作mongodb数据库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#封装mongoDB库"><span class="nav-number">9.</span> <span class="nav-text">封装mongoDB库</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#config-js"><span class="nav-number">9.1.</span> <span class="nav-text">config.js</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#db-js"><span class="nav-number">9.2.</span> <span class="nav-text">db.js</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#app-js"><span class="nav-number">9.3.</span> <span class="nav-text">app.js</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#路由模块化"><span class="nav-number">10.</span> <span class="nav-text">路由模块化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#routes-admin-js"><span class="nav-number">10.1.</span> <span class="nav-text">routes/admin.js</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#app-js-1"><span class="nav-number">10.2.</span> <span class="nav-text">app.js</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
+  
+  &copy; &nbsp;  2011 - 
+  <span itemprop="copyrightYear">2019
+  </span>
+  <span class="with-love">
+    <i class="icon-next-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">应忠彬
+  </span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme by <a class="theme-link" href="http://blog.idhyt.com">idhyt</a>.<a class="theme-link" href="https://github.com/idhyt/hexo-theme-next/tree/magiclamp">Mala</a>
+</div>
+
+<!-- busuanzi -->
+
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+
+  <script type="text/javascript">
+    var disqus_shortname = 'xxx';
+    var disqus_identifier = '2019/03/10/koa2学习笔记/';
+    var disqus_title = 'koa2学习笔记';
+    var disqus_url = 'http://yoursite.com/2019/03/10/koa2学习笔记/';
+
+    function run_disqus_script(disqus_script){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }
+
+    run_disqus_script('count.js');
+    
+      run_disqus_script('embed.js');
+    
+  </script>
+
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+    });
+  </script>
+
+  
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+</body>
+</html>
